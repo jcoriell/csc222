@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "linux/vm-install-mac.html",
+    "href": "linux/vm-install-mac.html",
+    "title": "VM Install On Mac",
+    "section": "",
+    "text": "Introduction\nFollow the steps below to set up an Ubuntu LTS Machine on your m series chip Mac (m1, m2, etc.)\n\n\n\n\n\n\nNot sure on chip type?\n\n\n\nClick the  icon on the menubar and select About this mac.... It should be indicated under the “Chip” category if it is an m series chip.\n\n\n\n\n\n\n\n\nIf you don’t have an m series chip…\n\n\n\nIf your mac is not an m series mac, then follow the windows install.\n\n\n\n\nPrequisites\nm series mac with macOS\n\n\nSteps\n\nIf you do not already have Homebrew, install it by opening a terminal and running the following command. Otherwise skip this step.\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nInstall multipass with the following command.\nbrew install multipass\nRun the one of the following multipass command to create an instance with the name csc222 (or whatever you want to name it).\n# for a minimal machine with default specs (1 cpu, 5G disk space, 1G memory, )\nmultipass launch 22.04 --name csc222\n# for a more powerful machine that can have space for a gui\nmultipass launch 22.04 --name csc222 --cpus 2 --memory 4G --disk 50G\nOnce the machine is finished setting up. You can access it with the following command. If you named it something other than csc222, use that in place of csc222.\nmultipass shell csc222\nOnce access to the machine is granted, create a user in the machine for yourself. The example below adds a user named josh.\nsudo adduser josh\nTo add yourself to the group of users that can use the command sudo, run the following, but use your username, not josh.\nsudo usermod -aG sudo josh\n\n\n\n(Optional) Add a GUI to your machine\n\nIn the shell on your VM, run the following commands. Note that this may take a few minutes.\nsudo apt update\nsudo apt install ubuntu-desktop xrdp\nWhile the second command is processing, download Microsoft Remote Desktop on your mac by going to the app store.\nMicrosoft Remote Desktop\nOpen another Terminal on your mac and and type multipass list to get the IP address of the machine. It should be something like 10.49.93.209 or 192.168.64.6 (not that exactly, but similar).\nOpen Microsoft RDP and add the connection."
+  },
+  {
+    "objectID": "linux/additional-steps.html",
+    "href": "linux/additional-steps.html",
+    "title": "Additional Steps",
+    "section": "",
+    "text": "Open the terminal by clicking on the monitor icon at the bottom-left of the desktop. Or you can click on the “start button” (the LM logo at the bottom-left of the desktop) then, click on System and scroll to Terminal Emulator.\nUpdate the Linux Ubuntu system by running the following three commands.\nsudo apt-get update\nsudo apt-get upgrade\nsudo apt-get dist-upgrade\nInstall essential build tools (for programming)\nsudo apt-get install build-essential\nInstall Vim (the ubiquitous text editor)\nsudo apt-get install vim\nCleanup the system\nsudo apt-get autoremove\nsudo apt-get clean\nsudo apt-get autoclean\nSet the autorun script when opening up a terminal.\n\nWe’ll first copy the default provided by the OS.\nsudo cp /etc/bash.bashrc ~/.bashrc\nThen, we ensure that we own it (more on this later).\nsudo chown $USER:$USER ~/.bashrc\nFinally, we’ll load it into the current terminal\nsource ~/.bashrc\n\nAdd the following useful aliases to the the ./bashrc file.\n\nOpen ~/.bashrc in one of the following text editors:\n\nVim - opens in the terminal, there is a learning curve with this one\nvim ~/.bashrc\nNano - opens in the terminal, not a strong learning curve. The ^ symbol means ctrl. So ^x means to type ctrl + x\nnano ~/.bashrc\ngedit - a GUI based text editor\ngedit ~/.bashrc\n\nThe following helpful aliases can be added to the end of the file:\nalias c='clear'\nalias h='history'\nalias j='jobs'\nalias ls='ls -CF --group-directories-first --color=auto $*'\nalias lss='ls -Alh $*'\nalias m='more'\nalias p='ps -ef'\nalias ~='cd ~'\n\nFinally, load them into the current terminal via: source ~/.bashrc"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "website",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "terminal/index.html",
+    "href": "terminal/index.html",
+    "title": "Terminal Commands",
+    "section": "",
+    "text": "These are basic controls that are useful for using the terminal.\nup - show previous command down - show next command tab - autocomplete ctrl + l - clear ctrl + c - cancel ctrl + r - search ctrl + d - close the terminal\nman [another command] - shows manual for other commands whoami - current user dat - date and time clear - also clears terminal\n\n\n\npwd - print working directory ls - list contents of current directory ls [directory name] - list contents of the directory mentioned ls -a - list all the files, including hidden ls -l - lists the long listing ls -al - combines the previous two ls -r - reverses the list\ncd - changes the directory cd ~ changes it to the home directory cd [directory name] - change to the mentioned directory cd / - changes to the root directory cd - - switches to the last directory\nmac: open [directory] win: start [directory] linux: xdg-open [directory]"
+  },
+  {
+    "objectID": "terminal/index.html#terminal-commands",
+    "href": "terminal/index.html#terminal-commands",
+    "title": "Terminal Commands",
+    "section": "",
+    "text": "These are basic controls that are useful for using the terminal.\nup - show previous command down - show next command tab - autocomplete ctrl + l - clear ctrl + c - cancel ctrl + r - search ctrl + d - close the terminal\nman [another command] - shows manual for other commands whoami - current user dat - date and time clear - also clears terminal\n\n\n\npwd - print working directory ls - list contents of current directory ls [directory name] - list contents of the directory mentioned ls -a - list all the files, including hidden ls -l - lists the long listing ls -al - combines the previous two ls -r - reverses the list\ncd - changes the directory cd ~ changes it to the home directory cd [directory name] - change to the mentioned directory cd / - changes to the root directory cd - - switches to the last directory\nmac: open [directory] win: start [directory] linux: xdg-open [directory]"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "linux/vm-install-win.html",
+    "href": "linux/vm-install-win.html",
+    "title": "VM Install On Windows",
+    "section": "",
+    "text": "In this course you will use a Unix environment. Specifically, you should use the latest LTS release of Ubuntu to ensure you are running the same system as the instructor. If you are using Windows, follow the instructions provided below to install Virtual Box and an Ubuntu virtual machine."
+  },
+  {
+    "objectID": "linux/vm-install-win.html#partitioning-the-drive",
+    "href": "linux/vm-install-win.html#partitioning-the-drive",
+    "title": "VM Install On Windows",
+    "section": "Partitioning the Drive",
+    "text": "Partitioning the Drive\n\nNow we will add 4 partitions for /boot, swap, /, and /home to the free space. This setup will result in wiping /boot, /, and swap when updating the OS but /home will not be touched resulting in faster updates (~30 minutes).\n\n\n\nThe partition for /boot stores the Linux kernel images. Set the following parameters.\n        size    2048 MB\n        type    primary\n    location    beginning\n      use as    ext2\n mount point    /boot\n\n\n\nThe partition for the swap area is for memory swap space and hibernation.\n        size    if RAM size &gt;= 4 GB, size = RAM size.\n                otherwise, size = 2x RAM size but no more than 8 GB.\n                Ex: \n                    2 GB RAM: 4 GB swap\n                    4 GB RAM: 4 GB swap\n\n        type    primary\n    location    end\n      use as    swap area\n\n\n\n\n\n\n\nWarning\n\n\n\nThe values in the following image may not match your values\n\n\n\n\nThe partition for / stores the OS, OS configuration files, and applications.\n       size    ~35% of space left\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /\n\n\n\nThe partition for /home stores your files (application configuration, settings, pictures, etc)\n       size    ~65% (the last portion of free space)\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /home\n\n\n\nClick Install Now after creating the partitions."
+  },
+  {
+    "objectID": "linux/vm-install-win.html#final-setup",
+    "href": "linux/vm-install-win.html#final-setup",
+    "title": "VM Install On Windows",
+    "section": "Final Setup",
+    "text": "Final Setup\n\nSet the timezone to the Chicago timezone (for Central).\nSet the user.\nExample:\n    name: zak\n    computer name: zak-csc222\n    username: zak\n    password: something fairly strong that you will remember\n\n    require my password to log in\n    don't encrypt my home folder\nAfter this it will start installing/copying files.\nReboot into Linux!\nGo to the Additional Steps."
+  }
+]
