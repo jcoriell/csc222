@@ -21,20 +21,6 @@
     "text": "Nothing to see here."
   },
   {
-    "objectID": "terminal/index.html",
-    "href": "terminal/index.html",
-    "title": "Terminal Commands",
-    "section": "",
-    "text": "These are basic controls that are useful for using the terminal.\nup - show previous command down - show next command tab - autocomplete ctrl + l - clear ctrl + c - cancel ctrl + r - search ctrl + d - close the terminal\nman [another command] - shows manual for other commands whoami - current user dat - date and time clear - also clears terminal\n\n\n\npwd - print working directory ls - list contents of current directory ls [directory name] - list contents of the directory mentioned ls -a - list all the files, including hidden ls -l - lists the long listing ls -al - combines the previous two ls -r - reverses the list\ncd - changes the directory cd ~ changes it to the home directory cd [directory name] - change to the mentioned directory cd / - changes to the root directory cd - - switches to the last directory\nmac: open [directory] win: start [directory] linux: xdg-open [directory]"
-  },
-  {
-    "objectID": "terminal/index.html#terminal-commands",
-    "href": "terminal/index.html#terminal-commands",
-    "title": "Terminal Commands",
-    "section": "",
-    "text": "These are basic controls that are useful for using the terminal.\nup - show previous command down - show next command tab - autocomplete ctrl + l - clear ctrl + c - cancel ctrl + r - search ctrl + d - close the terminal\nman [another command] - shows manual for other commands whoami - current user dat - date and time clear - also clears terminal\n\n\n\npwd - print working directory ls - list contents of current directory ls [directory name] - list contents of the directory mentioned ls -a - list all the files, including hidden ls -l - lists the long listing ls -al - combines the previous two ls -r - reverses the list\ncd - changes the directory cd ~ changes it to the home directory cd [directory name] - change to the mentioned directory cd / - changes to the root directory cd - - switches to the last directory\nmac: open [directory] win: start [directory] linux: xdg-open [directory]"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",

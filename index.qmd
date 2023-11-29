@@ -1,7 +1,6 @@
 ---
-title: "website"
+title: "CSC 222 Systems Programming"
 ---
 
-This is a Quarto website.
+Nothing to see here. 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
