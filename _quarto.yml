@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "CSC 222 Systems Programming"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Linux Install"
+        contents:
+          - linux/vm-install-win.qmd
+          - linux/vm-install-mac.qmd
+          - linux/additional-steps.qmd
+
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

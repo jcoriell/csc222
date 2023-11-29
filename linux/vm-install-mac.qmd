@@ -1,0 +1,82 @@
+---
+title: "VM Install On Mac"
+---
+
+### Introduction
+
+Follow the steps below to set up an Ubuntu LTS Machine on your m series chip Mac (m1, m2, etc.)
+
+:::{.callout-tip}
+# Not sure on chip type? 
+Click the  icon on the menubar and select `About this mac...`. It should be indicated under the "Chip" category if it is an m series chip.
+:::
+
+:::{.callout-tip}
+# If you don't have an m series chip...
+If your mac is not an m series mac, then follow the windows install.
+:::
+
+### Prequisites
+
+m series mac with macOS
+
+### Steps
+
+1. If you do not already have Homebrew, install it by opening a terminal and running the following command. Otherwise skip this step.
+
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+2. Install multipass with the following command.
+
+    ```sh
+    brew install multipass
+    ```
+
+3. Run the one of the following multipass command to create an instance with the name csc222 (or whatever you want to name it).
+
+    ```sh
+    # for a minimal machine with default specs (1 cpu, 5G disk space, 1G memory, )
+    multipass launch 22.04 --name csc222
+    ```
+
+    ```sh
+    # for a more powerful machine that can have space for a gui
+    multipass launch 22.04 --name csc222 --cpus 2 --memory 4G --disk 50G
+    ```
+    
+4. Once the machine is finished setting up. You can access it with the following command. If you named it something other than `csc222`, use that in place of `csc222`.
+
+    ```sh
+    multipass shell csc222
+    ```
+
+5. Once access to the machine is granted, create a user in the machine for yourself. The example below adds a user named josh.
+
+    ```sh
+    sudo adduser josh
+    ```
+
+6. To add yourself to the group of users that can use the command `sudo`, run the following, but use your username, not josh.
+
+    ```sh
+    sudo usermod -aG sudo josh
+    ```
+
+### (Optional) Add a GUI to your machine
+
+1. In the shell on your VM, run the following commands. Note that this may take a few minutes.
+
+    ```sh
+    sudo apt update
+    sudo apt install ubuntu-desktop xrdp
+    ```
+
+2. While the second command is processing, download Microsoft Remote Desktop on your mac by going to the app store. 
+
+    [Microsoft Remote Desktop](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)
+
+3. Open another Terminal on your mac and and type `multipass list` to get the IP address of the machine. It should be something like 10.49.93.209 or 192.168.64.6 (not that exactly, but similar).
+
+4. Open Microsoft RDP and add the connection.

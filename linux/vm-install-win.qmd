@@ -1,0 +1,186 @@
+---
+title: "VM Install On Windows"
+---
+
+### Introduction
+
+In this course you will use a Unix environment. Specifically, you should use the latest LTS release of Ubuntu
+to ensure you are running the same system as the instructor. If you are using Windows, follow the instructions provided below to install Virtual Box and an Ubuntu virtual machine.
+
+### Downloads
+
+1. Download and Install Oracle VM Virtual Box for your machine from [the virtual box download page](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html). 
+
+
+2. Download the Linux Ubuntu ISO (drive image) from [https://www.ubuntu.com/download/desktop](https://www.ubuntu.com/download/desktop) 
+
+### Creating the Virtual Machine
+
+1. Open VirtualBox
+
+2. Create a new VM with the following parameters and then click next.
+
+```
+    Name: CSC222
+    Type: Linux
+    Version: Ubuntu (64-bit) 
+    # If you can’t find 64-bit in the list of options, enable hardware virtualization.
+```
+
+
+![](images/image3.png)
+
+![](images/image4.png)
+
+
+3. Base Memory: Give the VM about 25% of your system's RAM. For example, if your computer has 4 GB of RAM, then give the virtual maching 1024 MB (1 GB). If your computer has 8 GB of RAM, then go with 2096 MB (2GB) for the virtual machine. For 16 GB on your computer, set 4192 MB (4 GB) of RAM to the VM. After setting the RAM, click next.
+
+![](images/image5.png)
+
+4. Virtual Hard Drive (VDI): If you have 100 GB to spare on your computer, give it 100 GB. Do not pre-allocate the full size. Leave it as dynamically allocated so that it only uses up as much space as it needs. Then click next and Finish.
+
+![](images/image6.png)
+
+### Editing the VM
+1. Select the VM and click settings.
+
+![](images/image7.png)
+
+
+2. Navigate to `General > Advanced` and set Shared Clipboard to Bidirectional.
+
+![](images/image8.png)
+
+
+
+3. Navigate to  `Storage` on the left hand side and select `💿 Empty` under `Storage Devices > Controller : IDE`
+
+4. On the right hand side of the window, click the disk icon `💿` to choose a virtual CD/DVD disk file. Find the Linux Ubunut ISO that you downloaded earlier.
+
+![](images/image9.png)
+
+
+5.  Navigate to `Network > Adapter 1`. Set `Attached To` to `Bridged Adapter` and select the proper network adapter to “connect” the virtual adapter.
+
+![](images/image10.png)
+
+6. Now click `Ok`.
+
+### Starting the VM
+
+1. Start the VM and select `Try or Install Ubuntu`. 
+
+![](images/image11.png)
+
+2. Once the Ubuntu ISO has booted, click the `Install Ubuntu` icon.
+
+![](images/image12.png)
+
+3. When prompted for the `Installation Type`, select `Something Else` and then continue.
+
+![](images/image13.png)
+
+4. Your hard drive should be referred to as something like /dev/sda. Select `New Partition Table`. A line with `free space` should appear. 
+
+![](images/image14.png)
+
+## Partitioning the Drive
+
+1. Now we will add 4 partitions for `/boot`, `swap`, `/`, and `/home` to the free space. This setup will result in wiping `/boot`, `/`, and swap when updating the OS but `/home` will not be touched resulting in faster updates (~30 minutes).
+
+![](images/image15.png)
+
+
+2.  The partition for `/boot` stores the Linux kernel images. Set the following parameters.
+
+    ```
+            size    2048 MB
+            type    primary
+        location    beginning
+          use as    ext2
+     mount point    /boot
+    ```
+
+![](images/image16.png)
+
+
+3. The partition for the `swap` area is for memory swap space and hibernation. 
+
+    ```
+            size    if RAM size >= 4 GB, size = RAM size.
+                    otherwise, size = 2x RAM size but no more than 8 GB.
+                    Ex: 
+                        2 GB RAM: 4 GB swap
+                        4 GB RAM: 4 GB swap
+
+            type    primary
+        location    end
+          use as    swap area
+    ```
+
+:::{.callout-warning}
+The values in the following image may not match your values
+:::
+
+![](images/image17.png)
+
+
+4. The partition for `/` stores the OS, OS configuration files, and applications.
+
+    ```
+           size    ~35% of space left
+           type    primary
+       location    beginning
+         use as    ext4
+    mount point    /
+    ```
+
+![](images/image18.png)
+
+
+5.  The partition for `/home` stores your files (application configuration, settings, pictures, etc)
+
+    ```
+           size    ~65% (the last portion of free space)
+           type    primary
+       location    beginning
+         use as    ext4
+    mount point    /home
+    ```
+
+![](images/image19.png)
+
+
+
+6. Click `Install Now` after creating the partitions.
+
+
+## Final Setup
+
+1. Set the timezone to the Chicago timezone (for Central).
+
+2. Set the user. 
+
+    ```
+    Example:
+        name: zak
+        computer name: zak-csc222
+        username: zak
+        password: something fairly strong that you will remember
+        
+        require my password to log in
+        don't encrypt my home folder
+    ```
+
+3. After this it will start installing/copying files.
+
+4. Reboot into Linux!
+
+5. Go to the [Additional Steps](additional-steps.html).
+
+
+
+
+
+
+

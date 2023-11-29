@@ -1,0 +1,99 @@
+---
+title: Additional Steps
+---
+
+
+1. Open the terminal by clicking on the monitor icon at the bottom-left of the desktop. Or you can click on the “start button” (the LM logo at the bottom-left of the desktop) then, click on `System` and scroll to `Terminal Emulator`.
+
+2. Update the Linux Ubuntu system by running the following three commands. 
+
+    ```sh
+    sudo apt-get update
+    ```
+
+    ```sh
+    sudo apt-get upgrade
+    ```
+    
+    ```sh
+    sudo apt-get dist-upgrade
+    ```
+
+3. Install essential build tools (for programming)
+
+    ```sh
+    sudo apt-get install build-essential
+    ```
+
+4. Install Vim (the ubiquitous text editor)
+
+    ```sh
+    sudo apt-get install vim
+    ```
+
+5. Cleanup the system
+
+    ```sh
+    sudo apt-get autoremove
+    sudo apt-get clean
+    sudo apt-get autoclean
+    ```
+
+6. Set the autorun script when opening up a terminal. 
+
+    1. We'll first copy the default provided by the OS.
+
+        ```sh
+        sudo cp /etc/bash.bashrc ~/.bashrc
+        ```
+
+    2. Then, we ensure that we own it (more on this later).
+
+        ```sh
+        sudo chown $USER:$USER ~/.bashrc
+        ```
+
+    3. Finally, we'll load it into the current terminal
+
+        ```sh
+        source ~/.bashrc
+        ```
+
+7. Add the following useful aliases to the the ./bashrc file.
+
+    1. Open ~/.bashrc in one of the following text editors:
+
+        - Vim - opens in the terminal, there is a learning curve with this one
+
+            ```sh
+            vim ~/.bashrc
+            ```
+        
+        - Nano - opens in the terminal, not a strong learning curve. The `^` symbol means `ctrl`. So `^x` means to type `ctrl + x`
+
+            ```sh
+            nano ~/.bashrc
+            ```
+        
+        - gedit - a GUI based text editor
+        
+            ```sh
+            gedit ~/.bashrc
+            ```
+
+    2. The following helpful aliases can be added to the end of the file:
+
+        ```txt
+        alias c='clear'
+        alias h='history'
+        alias j='jobs'
+        alias ls='ls -CF --group-directories-first --color=auto $*'
+        alias lss='ls -Alh $*'
+        alias m='more'
+        alias p='ps -ef'
+        alias ~='cd ~'
+        ```
+
+8. Finally, load them into the current terminal via: source ~/.bashrc
+
+
