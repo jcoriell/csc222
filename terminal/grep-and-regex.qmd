@@ -1,0 +1,269 @@
+---
+title: Grep and Regular Expressions
+---
+
+## grep 
+
+grep stands for Globally search for a Regular Expression and Print
+
+### Example
+
+1. Create some files to work with.
+
+    ```sh
+    echo "testing 1 2 3" > test1.txt
+    echo "testing 4 5 6" > test2.txt
+    echo "TESTING 7 8 9" > test3.txt
+    mkdir "test-folder"
+    cd "test-folder"
+    echo "folder testing 1 2 3" > test4.text
+    echo "folder testing 4 5 6" > test4.text
+    echo "FOLDER TESTING 7 8 9" > test4.text
+    cd ..
+    ```
+
+2. The format to search for strings in files is `grep [thing you're searching for] [filename].
+
+    ```sh
+    grep testing test1.txt  # searching for the word testing in text1.txt
+
+    # * can be used as a wild card
+    grep testing test*.txt  # searching for the word testing in any file with the format test*.txt
+    grep testing *          # searching for testing in any file
+
+    # applying some flags (more exist)
+    grep -l test *.txt          # -l only shows the file names, not the content
+    grep -i testing test*.txt   # -i ignores case
+    grep -ir testing *          # -r searches recursively
+    ```
+
+## Regular Expressions
+
+Regular expressions are used to express patterns within text. Using them in conjunction with grep can result in powerful searches.
+
+To follow the following examples, run the commands below.
+
+```sh
+# navigate to documents and download the following
+wget https://raw.githubusercontent.com/jcoriell/download/main/regex-sample.txt
+wget https://raw.githubusercontent.com/dwyl/english-words/master/words.txt
+
+# confirm the files are there
+ls                      
+
+# peek inside the files
+more regex-sample.txt   
+more words.txt          
+```
+
+### Searching for a simple strings
+
+For exact matching of characters, words, and phrases, you can use the characters.
+
+```sh
+# -P flag stands for Perl, can use -E here instead
+# later notations will require -P
+grep -P "abc" regex-sample.txt     
+grep -P "coriell" regex-sample.txt 
+```
+
+### Meta Characters
+
+Some characters require a slash (escape) in front of them to include them as part of the search because they are meta characters that have special meaning. More on these can be found in the subsections that follow.
+
+```
+Character   Meaning
+.           - any character except new line
+[           - grouping
+{           - quantifying
+()          - grouping 
+\           - escape
+^           - starts with 
+$           - ends with 
+|           - or
+?           - a quantifier
+*           - another quantifier
++           - another quantifier
+```
+
+#### Examples
+
+```sh
+# Search for a dot
+grep -P "\." regex-sample.txt
+```
+
+```sh
+# search for an open parenthesis
+grep -P "\(" regex-sample.txt
+```
+
+```sh
+# search for any character and then the letter c
+grep -P ".c" regex-sample.txt
+```
+
+### Character Types
+
+You can specify different types of characters such as digits or whitespace. These notations require the usage of the -P flag.
+
+```
+Character   Meaning
+.           - any character except new line
+\d          - digit (0-9)
+\D          - not a digit (not 0-9)
+\w          - a Word character (a-z, A-Z, 0-9, _)
+\W          - not one of the word characters
+\s          - whitespace (space, tab, newline)
+\S          - note whitespace
+```
+
+#### Examples
+
+```sh
+# search for three consecutive digits
+grep -P "\d\d\d" regex-sample.txt
+```
+
+```sh
+# search for three digits, any, three digits, any, then 4 digits
+grep -P "\d\d\d.\d\d\d.\d\d\d\d" regex-sample.txt
+```
+
+```sh
+# search for consecutive word characters
+grep -P "\w\w\w\w" regex-sample.txt
+```
+
+```sh
+# search for whitespace
+grep -P "\s" regex-sample.txt
+```
+
+
+### Boundaries
+
+```
+Character   Meaning
+\b          - word boundary
+\B          - not a word boundary
+^           - beginning of a line
+$           - end of a line
+```
+
+#### Examples
+
+```sh
+# find 3 word characters between two boundaries
+grep -P "\b\w\w\w\b" regex-sample.txt
+```
+
+```sh
+# find h at the beginning of a line
+grep -P "^h" regex-sample.txt
+```
+
+```sh
+# find h at the beginning of a word
+grep -P "\bh" regex-sample.txt
+```
+
+```sh
+# find 4 word characters at the end of a line
+grep -P "\w\w\w\w$" regex-sample.txt
+```
+
+```sh
+# find lines that start with a and count them
+# wc is for word count
+grep -P "^a" words.txt | wc -l 
+```
+
+```sh
+# find lines that start with a, have three characters, then end with b.
+# store then in a file called result.txt
+grep -P "^a...b$" words.txt > result.txt
+more result.txt # view it
+```
+
+```sh
+# starts with a, 5th letter is b. 
+# shows individual word count
+grep -P "^a...b" words.txt | wc -w 
+```
+
+
+### Groupings
+
+Groupings allow us to combine different types of characters or patterns.
+
+```
+Character   Meaning
+[]          matches characters in brackets
+[^ ]        matches characters not in brackets
+|           or
+()          group
+```
+
+#### Examples
+
+```sh
+# find any character from a to z
+grep -P "[a-z]" regex-sample.txt
+```
+```sh
+# find any character from a to z or A-Z
+grep -P "[a-zA-Z]" regex-sample.txt
+
+```sh
+# find occurrances of a dot followed by a character a-z or A-Z
+grep -P "\.[a-zA-Z]" regex-sample.txt 
+```
+
+```sh
+# find a dot folled by three characters in a-z or A-Z
+grep -P "\.[a-zA-Z][a-zA-Z][a-zA-Z]" regex-sample.txt
+```
+
+```sh
+# find a dot followed by edu or com
+grep -P "\.(edu|com)" regex-sample.txt
+```
+
+
+### Quanitfiers
+
+The quantifiers help us say how many of a type of character or characters we might want in parts of the expression.
+The quantifiers come after the thing it is quantifying.
+
+```
+Character   Meaning
+*           - 0 or more
++           - 1 or more
+?           - 0 or one
+{3}         - exact number (exactly 3 here)
+{1,5}       - range {min, max} (minimum of 1, max of 5 in example)
+```
+
+#### Examples
+```sh
+# find occurrance of a dot followed by 3 characters in a-z or A-Z
+grep -P -o "\.[a-zA-Z]{3}" regex-sample.txt # -o shows only non empty parts
+```
+
+```sh
+# find occurrances of a dot followed by at least 2 characters in a-z or A-Z
+grep -P "\.[a-zA-Z]{2,}" regex-sample.txt
+```
+
+
+```sh
+# find 
+#   - one or more characters in a-z or A-Z or 0-9
+#   - followed by an @ symbol
+#   - followed by one or more characters in a-z or A-Z
+#   - followed by a dot 
+#   - followed by at least two characters in a-z or A-Z
+grep -P "[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,}" regex-sample.txt
+```
+

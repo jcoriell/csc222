@@ -1,0 +1,120 @@
+---
+title: File Permissions
+---
+
+## Introduction
+
+File permissions are expressed with a 10 character string.
+
+To see the file permissions for files in a directory run `ls -l`.
+
+The output will resemble the following:
+
+```
+drwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop
+drwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents
+drwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads
+```
+
+The first set of characters such as `drwxr-xr-x` denotes the file permissions.
+
+The third and fouth columns denote the user and group assigned to the file.
+
+## File Permission Breakdown
+
+Let's break down the permission string `drwxr-xr-x`.
+
+1. The 1st character is the type of file. The most common characters you will see here are:
+
+    ```
+    - for file.
+    d for directory.
+    l for link.
+    ```
+
+    In the permissions `drwxr-xr-x`, the first character is `d`, so we have a directory.
+
+2. The next 9 characters are for 3 different permission classes
+    
+    a. The owner of the file is the first set of 3 characters.
+        
+        In the string `drwxr-xr-x`, we have `rwx` which means the owner can read, write, and execute the file.
+
+    b. The group for the file is the second set of 3.
+
+        In the string `drwxr-xr-x`, we have `r-x` which means anyone in the group for the file (users belong to groups) can read and execute the file.
+
+    c. The third set of 3 are for all other users (those not in the same user group, and not the owner)
+
+        In the string `drwxr-xr-x`, we have `r-x` which means all others can read and execute the file, but cannot modify it.
+
+
+## Changing File Permissions
+
+We use the command `chmod` to change the file permissions. You can use either of the following methods to change the permissions.
+
+## Using the characters that represent the permissions
+
+The characters for each type of user are:
+
+- `u` for owner 
+- `g` for group 
+- `o` for others
+- `a` for all
+
+The characters for permissions are:
+
+- `r` for read
+- `w` for write
+- `x` for execute
+
+To add permissions, combine a usertype character with `+` and one or more of the permission characters.
+
+To remove permissions, combine a usertype character with `-` and one or more of the permission characters.
+
+### Examples
+
+1. `chmod u+rwx filename` to give read write and execute permissions to the owner.
+
+2. `chmod g-x filename` to remove execute permissions from the group.
+
+## Using Numeric Values
+
+The values for each type of permission are:
+
+```
+r = 4
+w = 2
+x = 1
+```
+
+You can place them adjacent to each other to get combos
+
+```
+rw  = 4 + 2     = 6
+rwx = 4 + 2 + 1 = 7
+wx  =     2 + 1 = 3
+rx  = 4     + 1 = 5
+```
+
+When referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string `drwxr-xr-x` we have:
+
+```
+d    r w x    r - x    r - x
+     4 2 1    4   1    4   1
+
+Sum:     7        5        5
+Permission is 755
+```
+
+### Examples 
+
+1. `chmod 766 filename` to give:
+
+    - `rwx` permissions to the owner
+    - `rw` permissions to the group  
+    - `rw` permissions to the others
+
+## Changing Ownership
+
+- use the command `sudo chown [owner][:group] [filename]` to change the ownership of a file

@@ -3,4 +3,3 @@ title: "CSC 222 Systems Programming"
 ---
 
 Nothing to see here. 
-

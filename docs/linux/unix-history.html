@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CSC 222 Systems Programming - Additional Steps</title>
+<title>CSC 222 Systems Programming - Unix History</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/additional-steps.html">Additional Steps</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/unix-history.html">Unix History</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -143,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link">
+  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Unix History</span></a>
   </div>
 </li>
@@ -167,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/additional-steps.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linux/additional-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Additional Steps</span></a>
   </div>
 </li>
@@ -220,14 +186,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-linux" id="toc-why-linux" class="nav-link active" data-scroll-target="#why-linux">Why Linux?</a></li>
+  <li><a href="#history-of-unix-like-systems" id="toc-history-of-unix-like-systems" class="nav-link" data-scroll-target="#history-of-unix-like-systems">History of Unix Like Systems</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Additional Steps</h1>
+<h1 class="title">Unix History</h1>
 </div>
 
 
@@ -242,54 +215,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="why-linux" class="level2">
+<h2 class="anchored" data-anchor-id="why-linux">Why Linux?</h2>
 <ol type="1">
-<li><p>Open the terminal by clicking on the monitor icon at the bottom-left of the desktop. Or you can click on the “start button” (the LM logo at the bottom-left of the desktop) then, click on <code>System</code> and scroll to <code>Terminal Emulator</code>.</p></li>
-<li><p>Update the Linux Ubuntu system by running the following three commands.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get upgrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get dist-upgrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Install essential build tools (for programming)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Install Vim (the ubiquitous text editor)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Cleanup the system</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get autoremove</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get clean</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get autoclean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Set the autorun script when opening up a terminal.</p>
-<ol type="1">
-<li><p>We’ll first copy the default provided by the OS.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp /etc/bash.bashrc ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Then, we ensure that we own it (more on this later).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="va">$USER</span>:<span class="va">$USER</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Finally, we’ll load it into the current terminal</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol></li>
-<li><p>Add the following useful aliases to the the ./bashrc file.</p>
-<ol type="1">
-<li><p>Open ~/.bashrc in one of the following text editors:</p>
+<li><p>It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux. Examples include:</p>
 <ul>
-<li><p>Vim - opens in the terminal, there is a learning curve with this one</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Nano - opens in the terminal, not a strong learning curve. The <code>^</code> symbol means <code>ctrl</code>. So <code>^x</code> means to type <code>ctrl + x</code></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>gedit - a GUI based text editor</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gedit</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li>Netflix</li>
+<li>Twitter/X</li>
+<li>Facebook</li>
+<li>Instagram</li>
+<li>Google</li>
+<li>New York Stock Exchange</li>
+</ul>
+<p>Using an android phone? Android is a flavor of Linux.</p></li>
+<li><p>It’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.</p>
+<ul>
+<li><a href="GNU GPL">https://www.gnu.org/licenses/gpl-3.0.en.html</a></li>
 </ul></li>
-<li><p>The following helpful aliases can be added to the end of the file:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alias c='clear'</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>alias h='history'</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>alias j='jobs'</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>alias ls='ls -CF --group-directories-first --color=auto $*'</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>alias lss='ls -Alh $*'</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>alias m='more'</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>alias p='ps -ef'</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>alias ~='cd ~'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol></li>
-<li><p>Finally, load them into the current terminal via: source ~/.bashrc</p></li>
+<li><p>It’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.</p></li>
 </ol>
+</section>
+<section id="history-of-unix-like-systems" class="level2">
+<h2 class="anchored" data-anchor-id="history-of-unix-like-systems">History of Unix Like Systems</h2>
+<ul>
+<li><p>1969 The Unix operating system is developed by AT&amp;T/Bell Laboratories.</p>
+<ul>
+<li>First developed with Assembly but moved to primarily C</li>
+<li>Since it was primarily C, it was very portable</li>
+<li>AT&amp;T cannot sell it due to agreements not to enter the computing business</li>
+<li>AT&amp;T opts to distribute it under licenses to Labs and Universities</li>
+</ul></li>
+<li><p>1977 UC Berkly developed BSD (Berkley Software Distribution) as a Unix-like replacement.</p>
+<ul>
+<li>It contained code owned by AT&amp;T</li>
+<li>Will eventually lead to a lawsuit from AT&amp;T</li>
+</ul></li>
+<li><p>1983 GNU Operating System (Pronounced Guh-nu) started by Richard Stallman</p>
+<ul>
+<li>Its purpose was to be a free/open unix-like replacement for UNIX (that didn’t contain any code owned by AT&amp;T).</li>
+<li>GNU stands for GNU is Not Unix</li>
+<li>GNU’s kernel is GNU Hurd (started in 1990, before Linux, doesn’t become stable until 2001)
+<ul>
+<li>Note: The kernel of an OS is the system between the hardware and software of a machine. Main function is process, memory, and other resource management.</li>
+<li>The OS is the system as a whole; interface between user and hardware. An OS contains a kernel, applications, device drivers, utilities, etc.</li>
+</ul></li>
+</ul></li>
+<li><p>1991</p>
+<ul>
+<li>Finnish Grad Student Linus Torvalds emails about the OS he is working on.</li>
+<li>Linux kernel is developed</li>
+</ul></li>
+<li><p>1992</p>
+<ul>
+<li>BSDi gets sued by AT&amp;T, which slowed BSD development.</li>
+<li>The Linux kernel becomes the kernel for GNU.</li>
+<li>GNU/Linux is released as Free software under the GNU General Purpose License.
+<ul>
+<li>Note: When we say “Linux”, we really mean GNU/Linux. Linux is just the kernel.</li>
+</ul></li>
+<li>GNU License gave developers the ability to make custom OSs that felt like UNIX without the fear of being sued.</li>
+</ul></li>
+<li><p>1993 The Debian distrobution is born</p>
+<ul>
+<li>One of the most popular distros/family of distros</li>
+<li>Minimal, stable, good for general purpose pc usage and servers alike.</li>
+<li>Most distros are children of Debian including Ubuntu, Raspberry Pi OS, and SteamOS.</li>
+</ul></li>
+<li><p>1994 The Redhat Distrobution is born</p>
+<ul>
+<li>Primarily used for enterprise</li>
+<li>Distros in the Redhat family include Fedora (Distro of choice for Linus Torvalds) and CentOS</li>
+</ul></li>
+<li><p>2000/2002 Gentoo/Arch are born as more simplistic families of distrobutions</p></li>
+<li><p>In later 2000s we see some independent distros we are more familiar with such as</p>
+<ul>
+<li>FireOS (Amazon FireStick/Fire devices)</li>
+<li>Android (Google)</li>
+</ul></li>
+<li><p>Fun Fact: Linus Torvalds also created git for version control.</p></li>
+</ul>
+<p><a href="https://distrowatch.com/images/other/distro-family-tree.png">Distro Family Tree</a></p>
+<p>Source: A large portion of the information above comes from <a href="https://www.gnu.org/">GNU’s Website</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

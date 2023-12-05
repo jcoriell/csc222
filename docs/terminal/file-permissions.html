@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CSC 222 Systems Programming - Additional Steps</title>
+<title>CSC 222 Systems Programming - File Permissions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/additional-steps.html">Additional Steps</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../terminal/basic.html">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../terminal/file-permissions.html">File Permissions</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -167,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/additional-steps.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linux/additional-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Additional Steps</span></a>
   </div>
 </li>
@@ -202,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/file-permissions.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/file-permissions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">File Permissions</span></a>
   </div>
 </li>
@@ -220,14 +186,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#file-permission-breakdown" id="toc-file-permission-breakdown" class="nav-link" data-scroll-target="#file-permission-breakdown">File Permission Breakdown</a></li>
+  <li><a href="#changing-file-permissions" id="toc-changing-file-permissions" class="nav-link" data-scroll-target="#changing-file-permissions">Changing File Permissions</a></li>
+  <li><a href="#using-the-characters-that-represent-the-permissions" id="toc-using-the-characters-that-represent-the-permissions" class="nav-link" data-scroll-target="#using-the-characters-that-represent-the-permissions">Using the characters that represent the permissions</a>
+  <ul class="collapse">
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul></li>
+  <li><a href="#using-numeric-values" id="toc-using-numeric-values" class="nav-link" data-scroll-target="#using-numeric-values">Using Numeric Values</a>
+  <ul class="collapse">
+  <li><a href="#examples-1" id="toc-examples-1" class="nav-link" data-scroll-target="#examples-1">Examples</a></li>
+  </ul></li>
+  <li><a href="#changing-ownership" id="toc-changing-ownership" class="nav-link" data-scroll-target="#changing-ownership">Changing Ownership</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Additional Steps</h1>
+<h1 class="title">File Permissions</h1>
 </div>
 
 
@@ -242,54 +225,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>File permissions are expressed with a 10 character string.</p>
+<p>To see the file permissions for files in a directory run <code>ls -l</code>.</p>
+<p>The output will resemble the following:</p>
+<pre><code>drwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop
+drwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents
+drwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads</code></pre>
+<p>The first set of characters such as <code>drwxr-xr-x</code> denotes the file permissions.</p>
+<p>The third and fouth columns denote the user and group assigned to the file.</p>
+</section>
+<section id="file-permission-breakdown" class="level2">
+<h2 class="anchored" data-anchor-id="file-permission-breakdown">File Permission Breakdown</h2>
+<p>Let’s break down the permission string <code>drwxr-xr-x</code>.</p>
 <ol type="1">
-<li><p>Open the terminal by clicking on the monitor icon at the bottom-left of the desktop. Or you can click on the “start button” (the LM logo at the bottom-left of the desktop) then, click on <code>System</code> and scroll to <code>Terminal Emulator</code>.</p></li>
-<li><p>Update the Linux Ubuntu system by running the following three commands.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get upgrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get dist-upgrade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Install essential build tools (for programming)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Install Vim (the ubiquitous text editor)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Cleanup the system</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get autoremove</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get clean</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get autoclean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Set the autorun script when opening up a terminal.</p>
-<ol type="1">
-<li><p>We’ll first copy the default provided by the OS.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp /etc/bash.bashrc ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Then, we ensure that we own it (more on this later).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="va">$USER</span>:<span class="va">$USER</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Finally, we’ll load it into the current terminal</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>The 1st character is the type of file. The most common characters you will see here are:</p>
+<pre><code>- for file.
+d for directory.
+l for link.</code></pre>
+<p>In the permissions <code>drwxr-xr-x</code>, the first character is <code>d</code>, so we have a directory.</p></li>
+<li><p>The next 9 characters are for 3 different permission classes</p>
+<ol type="a">
+<li><p>The owner of the file is the first set of 3 characters.</p>
+<p>In the string <code>drwxr-xr-x</code>, we have <code>rwx</code> which means the owner can read, write, and execute the file.</p></li>
+<li><p>The group for the file is the second set of 3.</p>
+<p>In the string <code>drwxr-xr-x</code>, we have <code>r-x</code> which means anyone in the group for the file (users belong to groups) can read and execute the file.</p></li>
+<li><p>The third set of 3 are for all other users (those not in the same user group, and not the owner)</p>
+<p>In the string <code>drwxr-xr-x</code>, we have <code>r-x</code> which means all others can read and execute the file, but cannot modify it.</p></li>
 </ol></li>
-<li><p>Add the following useful aliases to the the ./bashrc file.</p>
-<ol type="1">
-<li><p>Open ~/.bashrc in one of the following text editors:</p>
-<ul>
-<li><p>Vim - opens in the terminal, there is a learning curve with this one</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Nano - opens in the terminal, not a strong learning curve. The <code>^</code> symbol means <code>ctrl</code>. So <code>^x</code> means to type <code>ctrl + x</code></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>gedit - a GUI based text editor</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gedit</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
-<li><p>The following helpful aliases can be added to the end of the file:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alias c='clear'</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>alias h='history'</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>alias j='jobs'</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>alias ls='ls -CF --group-directories-first --color=auto $*'</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>alias lss='ls -Alh $*'</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>alias m='more'</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>alias p='ps -ef'</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>alias ~='cd ~'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol></li>
-<li><p>Finally, load them into the current terminal via: source ~/.bashrc</p></li>
 </ol>
+</section>
+<section id="changing-file-permissions" class="level2">
+<h2 class="anchored" data-anchor-id="changing-file-permissions">Changing File Permissions</h2>
+<p>We use the command <code>chmod</code> to change the file permissions. You can use either of the following methods to change the permissions.</p>
+</section>
+<section id="using-the-characters-that-represent-the-permissions" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-characters-that-represent-the-permissions">Using the characters that represent the permissions</h2>
+<p>The characters for each type of user are:</p>
+<ul>
+<li><code>u</code> for owner</li>
+<li><code>g</code> for group</li>
+<li><code>o</code> for others</li>
+<li><code>a</code> for all</li>
+</ul>
+<p>The characters for permissions are:</p>
+<ul>
+<li><code>r</code> for read</li>
+<li><code>w</code> for write</li>
+<li><code>x</code> for execute</li>
+</ul>
+<p>To add permissions, combine a usertype character with <code>+</code> and one or more of the permission characters.</p>
+<p>To remove permissions, combine a usertype character with <code>-</code> and one or more of the permission characters.</p>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<ol type="1">
+<li><p><code>chmod u+rwx filename</code> to give read write and execute permissions to the owner.</p></li>
+<li><p><code>chmod g-x filename</code> to remove execute permissions from the group.</p></li>
+</ol>
+</section>
+</section>
+<section id="using-numeric-values" class="level2">
+<h2 class="anchored" data-anchor-id="using-numeric-values">Using Numeric Values</h2>
+<p>The values for each type of permission are:</p>
+<pre><code>r = 4
+w = 2
+x = 1</code></pre>
+<p>You can place them adjacent to each other to get combos</p>
+<pre><code>rw  = 4 + 2     = 6
+rwx = 4 + 2 + 1 = 7
+wx  =     2 + 1 = 3
+rx  = 4     + 1 = 5</code></pre>
+<p>When referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string <code>drwxr-xr-x</code> we have:</p>
+<pre><code>d    r w x    r - x    r - x
+     4 2 1    4   1    4   1
+
+Sum:     7        5        5
+Permission is 755</code></pre>
+<section id="examples-1" class="level3">
+<h3 class="anchored" data-anchor-id="examples-1">Examples</h3>
+<ol type="1">
+<li><p><code>chmod 766 filename</code> to give:</p>
+<ul>
+<li><code>rwx</code> permissions to the owner</li>
+<li><code>rw</code> permissions to the group<br>
+</li>
+<li><code>rw</code> permissions to the others</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="changing-ownership" class="level2">
+<h2 class="anchored" data-anchor-id="changing-ownership">Changing Ownership</h2>
+<ul>
+<li>use the command <code>sudo chown [owner][:group] [filename]</code> to change the ownership of a file</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

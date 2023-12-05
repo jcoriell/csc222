@@ -1,0 +1,76 @@
+---
+title: Unix History
+---
+
+## Why Linux?
+
+1. It's everywhere. Browsing the internet? Doom scrolling? Streaming a movie? 
+Most servers (~96%) run on some form of linux. 
+Examples include: 
+    - Netflix
+    - Twitter/X
+    - Facebook
+    - Instagram
+    - Google
+    - New York Stock Exchange
+
+    Using an android phone? Android is a flavor of Linux.
+
+
+2. It's versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.
+
+    -  [https://www.gnu.org/licenses/gpl-3.0.en.html](GNU GPL)
+
+3. It's a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.
+
+
+## History of Unix Like Systems
+
+- 1969 The Unix operating system is developed by AT&T/Bell Laboratories.
+    - First developed with Assembly but moved to primarily C
+    - Since it was primarily C, it was very portable
+    - AT&T cannot sell it due to agreements not to enter the computing business
+    - AT&T opts to distribute it under licenses to Labs and Universities
+
+- 1977 UC Berkly developed BSD (Berkley Software Distribution) as a Unix-like replacement. 
+    - It contained code owned by AT&T
+    - Will eventually lead to a lawsuit from AT&T
+
+- 1983 GNU Operating System (Pronounced Guh-nu) started by Richard Stallman 
+    - Its purpose was to be a free/open unix-like replacement for UNIX (that didn't contain any code owned by AT&T).
+    - GNU stands for GNU is Not Unix
+    - GNU's kernel is GNU Hurd (started in 1990, before Linux, doesn't become stable until 2001)
+        - Note: The kernel of an OS is the system between the hardware and software of a machine. Main function is process, memory, and other resource management.
+        - The OS is the system as a whole; interface between user and hardware. An OS contains a kernel, applications, device drivers, utilities, etc.
+
+- 1991
+    - Finnish Grad Student Linus Torvalds emails about the OS he is working on.
+    - Linux kernel is developed
+
+- 1992 
+    - BSDi gets sued by AT&T, which slowed BSD development. 
+    - The Linux kernel becomes the kernel for GNU. 
+    - GNU/Linux is released as Free software under the GNU General Purpose License. 
+        - Note: When we say "Linux", we really mean GNU/Linux. Linux is just the kernel. 
+    - GNU License gave developers the ability to make custom OSs that felt like UNIX without the fear of being sued. 
+
+- 1993 The Debian distrobution is born 
+    - One of the most popular distros/family of distros
+    - Minimal, stable, good for general purpose pc usage and servers alike.
+    - Most distros are children of Debian including Ubuntu, Raspberry Pi OS, and SteamOS.
+
+- 1994 The Redhat Distrobution is born
+    - Primarily used for enterprise 
+    - Distros in the Redhat family include Fedora (Distro of choice for Linus Torvalds) and CentOS
+
+- 2000/2002 Gentoo/Arch are born as more simplistic families of distrobutions
+
+- In later 2000s we see some independent distros we are more familiar with such as 
+    - FireOS (Amazon FireStick/Fire devices)
+    - Android (Google)
+
+- Fun Fact: Linus Torvalds also created git for version control.
+
+[Distro Family Tree](https://distrowatch.com/images/other/distro-family-tree.png) 
+
+Source: A large portion of the information above comes from [GNU's Website](https://www.gnu.org/)

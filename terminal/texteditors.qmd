@@ -1,0 +1,71 @@
+---
+title: Text Editors
+---
+
+## Vim
+
+- a terminal based text editor
+- steep learning curve, but very powerful
+- Once you get a hang of it, it's a good way to feel like you're better than everyone else
+- for help learning, run the command `vimtutor` in the terminal
+
+
+### Example
+
+In this example, we create a file, open it in vim, and add "hello world" to it.
+
+1. Create the file and open it in vim
+
+    ```sh
+    cd ~
+    mkdir vim-practice
+    cd vim-practice
+    touch helloworld.txt
+    vim helloworld.txt
+    ```
+
+2. Switch to insert mode by typing `i`
+
+    - modes:
+        - i for insert (escape to back out)
+        - v for visual
+        - shift+r for replace
+        - : for commands
+
+    - :wq to save and quit
+
+3. Type `hello world`.
+
+4. Press the escape key to back out.
+
+5. Save and exit by typing `:wq`.
+
+6. Run `cat helloworld.txt` to see the contents.
+
+
+## Nano
+
+- another terminal based text editor
+- simpler to use than vim
+
+
+### Example
+
+In this example, we create a file and add "hello world" to it using nano.
+
+1. Run the following commands
+
+    ```sh
+    cd ~
+    mkdir nano-practice
+    cd nano-practice
+    touch helloworld.txt
+    nano helloworld.txt
+    ```
+
+2. At this point, the file should be open. Type `hello world` on the first line.
+
+3. Type `ctrl + x` to be prompted to save and close.
+
+4. Run `cat helloworld.txt` to see the contents.
+
