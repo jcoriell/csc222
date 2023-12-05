@@ -1,0 +1,82 @@
+---
+title: Linux Filesystem
+---
+## Introduction
+
+The top level of the filesystem on many linux machines contains most of the following directories. You'll find a brief description of each below.
+
+## Directories
+
+### /bin
+
+- common binaries (i.e. applications you can run)
+- you'll find many of the commands you can use here, like `ls`
+- Note: `ls -l /bin` shows that it is a link to `/usr/bin`
+
+### /sbin
+
+- system binaries (applications for system admin, like `adduser`)
+
+### /home
+
+- the personal files for each user
+- Run `ls /home` to see a directory for yourself.
+
+### /lib
+
+- where shared libraries live.
+- code that applications can use to interact with the kernel
+- note, you will see lib files elsewhere, but this one is for the kernel specifically.
+
+### /etc
+
+- Short for et cetera (we say et-see)
+- Mainly contains configuration files
+
+### /dev
+
+- short for device
+- contains files related to devices attached to the machine (like a webcam)
+
+### /boot
+
+- contains the files necessary to boot the system.
+
+### /media
+
+- where external storage is auto mounted when you plug it in
+
+### /mnt 
+
+- where external storage is manually mounted
+
+### /opt
+
+- frequently where custom built software lands
+
+### /proc 
+
+- contains info about your computer 
+
+### /root 
+
+- home directory of the superuser
+- its not under /home for a reason (those are not the superuser)
+
+### /run
+
+- stores temporary data for system processes
+
+### /usr
+
+- where user's home directories used to be kept (now under /home)
+- contains a collection of stuff that needs to be shared by applications 
+
+### /tmp
+
+- contains temporary files
+
+### /var
+
+- short for variable
+- usually contains logs

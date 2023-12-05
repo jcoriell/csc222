@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CSC 222 Systems Programming</title>
+<title>CSC 222 Systems Programming - Linux Filesystem</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -61,7 +61,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -73,9 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      CSC 222 Systems Programming
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/linux-filesystem.html">Linux Filesystem</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -90,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">CSC 222 Systems Programming</a> 
+      <a href="../">CSC 222 Systems Programming</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -111,19 +109,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linux/vm-install-win.html" class="sidebar-item-text sidebar-link">
+  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unix History</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Linux Filesystem</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linux/vm-install-win.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VM Install On Windows</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linux/vm-install-mac.html" class="sidebar-item-text sidebar-link">
+  <a href="../linux/vm-install-mac.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VM Install On Mac</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linux/additional-steps.html" class="sidebar-item-text sidebar-link">
+  <a href="../linux/additional-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Additional Steps</span></a>
   </div>
 </li>
@@ -140,14 +150,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./terminal/basic.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/basic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to the Shell and Terminal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./terminal/redirection.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/redirection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Redirection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../terminal/texteditors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Text Editors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../terminal/file-permissions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">File Permissions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../terminal/grep-and-regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Grep and Regular Expressions</span></a>
   </div>
 </li>
       </ul>
@@ -158,14 +186,39 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#directories" id="toc-directories" class="nav-link" data-scroll-target="#directories">Directories</a>
+  <ul class="collapse">
+  <li><a href="#bin" id="toc-bin" class="nav-link" data-scroll-target="#bin">/bin</a></li>
+  <li><a href="#sbin" id="toc-sbin" class="nav-link" data-scroll-target="#sbin">/sbin</a></li>
+  <li><a href="#home" id="toc-home" class="nav-link" data-scroll-target="#home">/home</a></li>
+  <li><a href="#lib" id="toc-lib" class="nav-link" data-scroll-target="#lib">/lib</a></li>
+  <li><a href="#etc" id="toc-etc" class="nav-link" data-scroll-target="#etc">/etc</a></li>
+  <li><a href="#dev" id="toc-dev" class="nav-link" data-scroll-target="#dev">/dev</a></li>
+  <li><a href="#boot" id="toc-boot" class="nav-link" data-scroll-target="#boot">/boot</a></li>
+  <li><a href="#media" id="toc-media" class="nav-link" data-scroll-target="#media">/media</a></li>
+  <li><a href="#mnt" id="toc-mnt" class="nav-link" data-scroll-target="#mnt">/mnt</a></li>
+  <li><a href="#opt" id="toc-opt" class="nav-link" data-scroll-target="#opt">/opt</a></li>
+  <li><a href="#proc" id="toc-proc" class="nav-link" data-scroll-target="#proc">/proc</a></li>
+  <li><a href="#root" id="toc-root" class="nav-link" data-scroll-target="#root">/root</a></li>
+  <li><a href="#run" id="toc-run" class="nav-link" data-scroll-target="#run">/run</a></li>
+  <li><a href="#usr" id="toc-usr" class="nav-link" data-scroll-target="#usr">/usr</a></li>
+  <li><a href="#tmp" id="toc-tmp" class="nav-link" data-scroll-target="#tmp">/tmp</a></li>
+  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var">/var</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">CSC 222 Systems Programming</h1>
+<h1 class="title">Linux Filesystem</h1>
 </div>
 
 
@@ -180,9 +233,121 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Nothing to see here.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The top level of the filesystem on many linux machines contains most of the following directories. You’ll find a brief description of each below.</p>
+</section>
+<section id="directories" class="level2">
+<h2 class="anchored" data-anchor-id="directories">Directories</h2>
+<section id="bin" class="level3">
+<h3 class="anchored" data-anchor-id="bin">/bin</h3>
+<ul>
+<li>common binaries (i.e.&nbsp;applications you can run)</li>
+<li>you’ll find many of the commands you can use here, like <code>ls</code></li>
+<li>Note: <code>ls -l /bin</code> shows that it is a link to <code>/usr/bin</code></li>
+</ul>
+</section>
+<section id="sbin" class="level3">
+<h3 class="anchored" data-anchor-id="sbin">/sbin</h3>
+<ul>
+<li>system binaries (applications for system admin, like <code>adduser</code>)</li>
+</ul>
+</section>
+<section id="home" class="level3">
+<h3 class="anchored" data-anchor-id="home">/home</h3>
+<ul>
+<li>the personal files for each user</li>
+<li>Run <code>ls /home</code> to see a directory for yourself.</li>
+</ul>
+</section>
+<section id="lib" class="level3">
+<h3 class="anchored" data-anchor-id="lib">/lib</h3>
+<ul>
+<li>where shared libraries live.</li>
+<li>code that applications can use to interact with the kernel</li>
+<li>note, you will see lib files elsewhere, but this one is for the kernel specifically.</li>
+</ul>
+</section>
+<section id="etc" class="level3">
+<h3 class="anchored" data-anchor-id="etc">/etc</h3>
+<ul>
+<li>Short for et cetera (we say et-see)</li>
+<li>Mainly contains configuration files</li>
+</ul>
+</section>
+<section id="dev" class="level3">
+<h3 class="anchored" data-anchor-id="dev">/dev</h3>
+<ul>
+<li>short for device</li>
+<li>contains files related to devices attached to the machine (like a webcam)</li>
+</ul>
+</section>
+<section id="boot" class="level3">
+<h3 class="anchored" data-anchor-id="boot">/boot</h3>
+<ul>
+<li>contains the files necessary to boot the system.</li>
+</ul>
+</section>
+<section id="media" class="level3">
+<h3 class="anchored" data-anchor-id="media">/media</h3>
+<ul>
+<li>where external storage is auto mounted when you plug it in</li>
+</ul>
+</section>
+<section id="mnt" class="level3">
+<h3 class="anchored" data-anchor-id="mnt">/mnt</h3>
+<ul>
+<li>where external storage is manually mounted</li>
+</ul>
+</section>
+<section id="opt" class="level3">
+<h3 class="anchored" data-anchor-id="opt">/opt</h3>
+<ul>
+<li>frequently where custom built software lands</li>
+</ul>
+</section>
+<section id="proc" class="level3">
+<h3 class="anchored" data-anchor-id="proc">/proc</h3>
+<ul>
+<li>contains info about your computer</li>
+</ul>
+</section>
+<section id="root" class="level3">
+<h3 class="anchored" data-anchor-id="root">/root</h3>
+<ul>
+<li>home directory of the superuser</li>
+<li>its not under /home for a reason (those are not the superuser)</li>
+</ul>
+</section>
+<section id="run" class="level3">
+<h3 class="anchored" data-anchor-id="run">/run</h3>
+<ul>
+<li>stores temporary data for system processes</li>
+</ul>
+</section>
+<section id="usr" class="level3">
+<h3 class="anchored" data-anchor-id="usr">/usr</h3>
+<ul>
+<li>where user’s home directories used to be kept (now under /home)</li>
+<li>contains a collection of stuff that needs to be shared by applications</li>
+</ul>
+</section>
+<section id="tmp" class="level3">
+<h3 class="anchored" data-anchor-id="tmp">/tmp</h3>
+<ul>
+<li>contains temporary files</li>
+</ul>
+</section>
+<section id="var" class="level3">
+<h3 class="anchored" data-anchor-id="var">/var</h3>
+<ul>
+<li>short for variable</li>
+<li>usually contains logs</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

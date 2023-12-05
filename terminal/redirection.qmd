@@ -1,0 +1,55 @@
+---
+title: Redirection
+---
+
+## Standard Output
+
+- abbreviated as stdout
+- represented with `>`
+- used to redirect the result of a command somewhere else
+- the contents of the file are overwritten when using `>`
+- can use `>>` to append to the contents of a file
+
+### Example
+```sh
+echo "hello world" > helloworld.txt
+```
+
+
+## Standard Input
+
+- abbreviated as stdin
+- represented with `<`
+- can be used to provide input into a program 
+
+
+## Standard Error
+
+- abbreviated as stderr
+- represented with `2>`
+- can append with `2>>`
+- if an error is produced, you can redirect it elsewhere.
+
+
+### Example
+
+```sh
+notarealcommand 2> error-file.txt
+```
+
+
+## Pipe
+
+- represented with `|`
+- creates a "pipe" or "pipline" between two programs
+- takes the output of the one command and uses it as input it into another command
+
+### Example 
+
+List the contents of /usr/bin, but use `more` to view them in a paginated way.
+
+```sh
+ls -al /usr/bin | more
+```
+
+

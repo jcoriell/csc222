@@ -10,9 +10,20 @@ website:
     contents:
       - section: "Linux Install"
         contents:
+          - linux/unix-history.qmd
+          - linux/linux-filesystem.qmd
           - linux/vm-install-win.qmd
           - linux/vm-install-mac.qmd
           - linux/additional-steps.qmd
+      - section: "Shell and Terminal"
+        contents:
+          - terminal/basic.qmd
+          - terminal/redirection.qmd
+          - terminal/texteditors.qmd
+          - terminal/file-permissions.qmd
+          - terminal/grep-and-regex.qmd
+
+
 
 
 format:
