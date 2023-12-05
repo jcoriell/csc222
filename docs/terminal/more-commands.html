@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CSC 222 Systems Programming - Basic</title>
+<title>CSC 222 Systems Programming - More Commands</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,7 +73,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../terminal/controls.html">Terminal</a></li><li class="breadcrumb-item"><a href="../terminal/controls.html">Basic</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      CSC 222 Systems Programming
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -109,6 +111,18 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unix History</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linux Filesystem</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../linux/vm-install-win.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VM Install On Windows</span></a>
   </div>
@@ -130,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Terminal</span></a>
+ <span class="menu-text">Shell and Terminal</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -138,8 +152,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/controls.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Basic</span></a>
+  <a href="../terminal/basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to the Shell and Terminal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../terminal/redirection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Redirection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../terminal/texteditors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Text Editors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../terminal/file-permissions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">File Permissions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../terminal/grep-and-regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Grep and Regular Expressions</span></a>
   </div>
 </li>
       </ul>
@@ -150,14 +188,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#find" id="toc-find" class="nav-link active" data-scroll-target="#find">find</a></li>
+  <li><a href="#and" id="toc-and" class="nav-link" data-scroll-target="#and">&amp;&amp;, ||, and ;</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Basic</h1>
+<h1 class="title">More Commands</h1>
 </div>
 
 
@@ -172,16 +217,32 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>These are basic controls that are useful for using the terminal.</p>
-<p><code>up</code> - show previous command</p>
-<p><code>down</code> - show next command</p>
-<p><code>tab</code> - autocomplete</p>
-<p><code>ctrl + l</code> - clear</p>
-<p><code>ctrl + c</code> - cancel</p>
-<p><code>ctrl + r</code> - search</p>
-<p><code>ctrl + d</code> - close the terminal</p>
+<section id="find" class="level2">
+<h2 class="anchored" data-anchor-id="find">find</h2>
+<ul>
+<li><p>Typicall used to find a file or directory.</p></li>
+<li><p>Recall grep is typically used to find patterns inside files</p></li>
+<li><p>Examples:</p></li>
+</ul>
+<pre><code>find . -name "test1.txt"</code></pre>
+</section>
+<section id="and" class="level2">
+<h2 class="anchored" data-anchor-id="and">&amp;&amp;, ||, and ;</h2>
+<ul>
+<li><p>use <code>&amp;&amp;</code>, <code>||</code> and <code>;</code> to chain commands together</p></li>
+<li><p>command before <code>&amp;&amp;</code> must complete without error for command after <code>&amp;&amp;</code> to execute</p></li>
+<li><p>command before <code>||</code> must result in an error for command after <code>||</code> to execute</p></li>
+<li><p>use ; to just separate two commands on the same line</p></li>
+</ul>
+<pre><code>echo "hi" &gt; test.txt &amp;&amp; echo "hello.txt"
+find . --name "test1.txt" &amp;&amp; echo ok        # error example
+find . -name "test1.txt" &amp;&amp; echo ok         # no error
+
+find . --name "test1.txt" || echo error        # error example
+find . -name "test1.txt" || echo error        # no error</code></pre>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
