@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -220,26 +254,34 @@ ul.task-list li input[type="checkbox"] {
 <section id="find" class="level2">
 <h2 class="anchored" data-anchor-id="find">find</h2>
 <ul>
-<li><p>Typicall used to find a file or directory.</p></li>
+<li><p>Typically used to find a file or directory.</p></li>
 <li><p>Recall grep is typically used to find patterns inside files</p></li>
-<li><p>Examples:</p></li>
 </ul>
-<pre><code>find . -name "test1.txt"</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example with find</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"test1.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="and" class="level2">
 <h2 class="anchored" data-anchor-id="and">&amp;&amp;, ||, and ;</h2>
 <ul>
-<li><p>use <code>&amp;&amp;</code>, <code>||</code> and <code>;</code> to chain commands together</p></li>
-<li><p>command before <code>&amp;&amp;</code> must complete without error for command after <code>&amp;&amp;</code> to execute</p></li>
-<li><p>command before <code>||</code> must result in an error for command after <code>||</code> to execute</p></li>
-<li><p>use ; to just separate two commands on the same line</p></li>
+<li><p>Use <code>&amp;&amp;</code>, <code>||</code> and <code>;</code> to chain commands together</p></li>
+<li><p>The command before <code>&amp;&amp;</code> must complete without error for the command after <code>&amp;&amp;</code> to execute</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example with success on first command</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"hi"</span> <span class="op">&gt;</span> test.txt <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"hello.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example with an error on the first command with &amp;&amp;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">--name</span> <span class="st">"test1.txt"</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> ok</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># after fixing the error</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"test1.txt"</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> ok</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>The command before <code>||</code> must result in an error for the command after <code>||</code> to execute</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example with || with an error</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">--name</span> <span class="st">"test1.txt"</span> <span class="kw">||</span> <span class="bu">echo</span> error</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># after fixing the error</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"test1.txt"</span> <span class="kw">||</span> <span class="bu">echo</span> error        <span class="co"># no error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Use <code>;</code> to just separate two commands on the same line</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># echo ok happens even though find will throw and error</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">--name</span> test1.txt<span class="kw">;</span> <span class="bu">echo</span> ok</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
-<pre><code>echo "hi" &gt; test.txt &amp;&amp; echo "hello.txt"
-find . --name "test1.txt" &amp;&amp; echo ok        # error example
-find . -name "test1.txt" &amp;&amp; echo ok         # no error
-
-find . --name "test1.txt" || echo error        # error example
-find . -name "test1.txt" || echo error        # no error</code></pre>
 
 
 </section>
