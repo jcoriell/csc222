@@ -1,129 +1,122 @@
 [
   {
-    "objectID": "linux/linux-filesystem.html",
-    "href": "linux/linux-filesystem.html",
-    "title": "Linux Filesystem",
+    "objectID": "c programming/01-basics.html",
+    "href": "c programming/01-basics.html",
+    "title": "Basics",
     "section": "",
-    "text": "The top level of the filesystem on many linux machines contains most of the following directories. You’ll find a brief description of each below."
+    "text": "Before completing any of the following, be sure your system can compile c programs. To check, open the terminal and type gcc --version. gcc is the GNU compiler for the C programming language. If you hit an error, you need to install it using one of the following:\n# On Ubuntu\n\n# this command installs gcc, g++, libc6-dev, make, and dpkg-dev\nsudo apt-get build-essential"
   },
   {
-    "objectID": "linux/linux-filesystem.html#introduction",
-    "href": "linux/linux-filesystem.html#introduction",
-    "title": "Linux Filesystem",
+    "objectID": "c programming/01-basics.html#introduction",
+    "href": "c programming/01-basics.html#introduction",
+    "title": "Basics",
     "section": "",
-    "text": "The top level of the filesystem on many linux machines contains most of the following directories. You’ll find a brief description of each below."
+    "text": "Before completing any of the following, be sure your system can compile c programs. To check, open the terminal and type gcc --version. gcc is the GNU compiler for the C programming language. If you hit an error, you need to install it using one of the following:\n# On Ubuntu\n\n# this command installs gcc, g++, libc6-dev, make, and dpkg-dev\nsudo apt-get build-essential"
   },
   {
-    "objectID": "linux/linux-filesystem.html#directories",
-    "href": "linux/linux-filesystem.html#directories",
-    "title": "Linux Filesystem",
-    "section": "Directories",
-    "text": "Directories\n\n/bin\n\ncommon binaries (i.e. applications you can run)\nyou’ll find many of the commands you can use here, like ls\nNote: ls -l /bin shows that it is a link to /usr/bin\n\n\n\n/sbin\n\nsystem binaries (applications for system admin, like adduser)\n\n\n\n/home\n\nthe personal files for each user\nRun ls /home to see a directory for yourself.\n\n\n\n/lib\n\nwhere shared libraries live.\ncode that applications can use to interact with the kernel\nnote, you will see lib files elsewhere, but this one is for the kernel specifically.\n\n\n\n/etc\n\nShort for et cetera (we say et-see)\nMainly contains configuration files\n\n\n\n/dev\n\nshort for device\ncontains files related to devices attached to the machine (like a webcam)\n\n\n\n/boot\n\ncontains the files necessary to boot the system.\n\n\n\n/media\n\nwhere external storage is auto mounted when you plug it in\n\n\n\n/mnt\n\nwhere external storage is manually mounted\n\n\n\n/opt\n\nfrequently where custom built software lands\n\n\n\n/proc\n\ncontains info about your computer\n\n\n\n/root\n\nhome directory of the superuser\nits not under /home for a reason (those are not the superuser)\n\n\n\n/run\n\nstores temporary data for system processes\n\n\n\n/usr\n\nwhere user’s home directories used to be kept (now under /home)\ncontains a collection of stuff that needs to be shared by applications\n\n\n\n/tmp\n\ncontains temporary files\n\n\n\n/var\n\nshort for variable\nusually contains logs"
+    "objectID": "c programming/01-basics.html#hello-world",
+    "href": "c programming/01-basics.html#hello-world",
+    "title": "Basics",
+    "section": "Hello World!",
+    "text": "Hello World!\n#include &lt;stdio.h&gt;\n\nint main(){\n    printf(\"Hello World!\"); // No new line unless you say to do it.\n    printf(\"Hello again!\\n\"); // Now has a new line\n    printf(\"Hello there!\");\n\n    return 0;\n}"
   },
   {
-    "objectID": "linux/vm-install-win.html",
-    "href": "linux/vm-install-win.html",
-    "title": "VM Install On Windows",
+    "objectID": "c programming/01-basics.html#variables-and-format-specifiers",
+    "href": "c programming/01-basics.html#variables-and-format-specifiers",
+    "title": "Basics",
+    "section": "Variables and Format Specifiers",
+    "text": "Variables and Format Specifiers"
+  },
+  {
+    "objectID": "c programming/01-basics.html#passing-arguments-into-the-program",
+    "href": "c programming/01-basics.html#passing-arguments-into-the-program",
+    "title": "Basics",
+    "section": "Passing Arguments into the Program",
+    "text": "Passing Arguments into the Program"
+  },
+  {
+    "objectID": "c programming/01-basics.html#data-types",
+    "href": "c programming/01-basics.html#data-types",
+    "title": "Basics",
+    "section": "Data Types",
+    "text": "Data Types"
+  },
+  {
+    "objectID": "linux/vm-install-mac.html",
+    "href": "linux/vm-install-mac.html",
+    "title": "VM Install On Mac",
     "section": "",
-    "text": "In this course you will use a Unix environment. Specifically, you should use the latest LTS release of Ubuntu to ensure you are running the same system as the instructor. If you are using Windows, follow the instructions provided below to install Virtual Box and an Ubuntu virtual machine."
+    "text": "Introduction\nFollow the steps below to set up an Ubuntu LTS Machine on your m series chip Mac (m1, m2, etc.)\n\n\n\n\n\n\nNot sure on chip type?\n\n\n\nClick the  icon on the menubar and select About this mac.... It should be indicated under the “Chip” category if it is an m series chip.\n\n\n\n\n\n\n\n\nIf you don’t have an m series chip…\n\n\n\nIf your mac is not an m series mac, then follow the windows install.\n\n\n\n\nPrequisites\nm series mac with macOS\n\n\nSteps\n\nIf you do not already have Homebrew, install it by opening a terminal and running the following command. Otherwise skip this step.\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nInstall multipass with the following command.\nbrew install multipass\nRun the one of the following multipass command to create an instance with the name csc222 (or whatever you want to name it).\n# for a minimal machine with default specs (1 cpu, 5G disk space, 1G memory, )\nmultipass launch 22.04 --name csc222\n# for a more powerful machine that can have space for a gui\nmultipass launch 22.04 --name csc222 --cpus 2 --memory 4G --disk 50G\nOnce the machine is finished setting up. You can access it with the following command. If you named it something other than csc222, use that in place of csc222.\nmultipass shell csc222\nOnce access to the machine is granted, create a user in the machine for yourself. The example below adds a user named josh.\nsudo adduser josh\nTo add yourself to the group of users that can use the command sudo, run the following, but use your username, not josh.\nsudo usermod -aG sudo josh\n\n\n\n(Optional) Add a GUI to your machine\n\nIn the shell on your VM, run the following commands. Note that this may take a few minutes.\nsudo apt update\nsudo apt install ubuntu-desktop xrdp\nWhile the second command is processing, download Microsoft Remote Desktop on your mac by going to the app store.\nMicrosoft Remote Desktop\nOpen another Terminal on your mac and and type multipass list to get the IP address of the machine. It should be something like 10.49.93.209 or 192.168.64.6 (not that exactly, but similar).\nOpen Microsoft RDP and add the connection."
   },
   {
-    "objectID": "linux/vm-install-win.html#partitioning-the-drive",
-    "href": "linux/vm-install-win.html#partitioning-the-drive",
-    "title": "VM Install On Windows",
-    "section": "Partitioning the Drive",
-    "text": "Partitioning the Drive\n\nNow we will add 4 partitions for /boot, swap, /, and /home to the free space. This setup will result in wiping /boot, /, and swap when updating the OS but /home will not be touched resulting in faster updates (~30 minutes).\n\n\n\nThe partition for /boot stores the Linux kernel images. Set the following parameters.\n        size    2048 MB\n        type    primary\n    location    beginning\n      use as    ext2\n mount point    /boot\n\n\n\nThe partition for the swap area is for memory swap space and hibernation.\n        size    if RAM size &gt;= 4 GB, size = RAM size.\n                otherwise, size = 2x RAM size but no more than 8 GB.\n                Ex: \n                    2 GB RAM: 4 GB swap\n                    4 GB RAM: 4 GB swap\n\n        type    primary\n    location    end\n      use as    swap area\n\n\n\n\n\n\n\nWarning\n\n\n\nThe values in the following image may not match your values\n\n\n\n\nThe partition for / stores the OS, OS configuration files, and applications.\n       size    ~35% of space left\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /\n\n\n\nThe partition for /home stores your files (application configuration, settings, pictures, etc)\n       size    ~65% (the last portion of free space)\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /home\n\n\n\nClick Install Now after creating the partitions."
-  },
-  {
-    "objectID": "linux/vm-install-win.html#final-setup",
-    "href": "linux/vm-install-win.html#final-setup",
-    "title": "VM Install On Windows",
-    "section": "Final Setup",
-    "text": "Final Setup\n\nSet the timezone to the Chicago timezone (for Central).\nSet the user.\nExample:\n    name: zak\n    computer name: zak-csc222\n    username: zak\n    password: something fairly strong that you will remember\n\n    require my password to log in\n    don't encrypt my home folder\nAfter this it will start installing/copying files.\nReboot into Linux!\nGo to the Additional Steps."
-  },
-  {
-    "objectID": "linux/unix-history.html",
-    "href": "linux/unix-history.html",
-    "title": "Unix History",
+    "objectID": "linux/additional-steps.html",
+    "href": "linux/additional-steps.html",
+    "title": "Additional Steps",
     "section": "",
-    "text": "It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux. Examples include:\n\nNetflix\nTwitter/X\nFacebook\nInstagram\nGoogle\nNew York Stock Exchange\n\nUsing an android phone? Android is a flavor of Linux.\nIt’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.\n\nhttps://www.gnu.org/licenses/gpl-3.0.en.html\n\nIt’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms."
+    "text": "Open the terminal by clicking on the monitor icon at the bottom-left of the desktop. Or you can click on the “start button” (the LM logo at the bottom-left of the desktop) then, click on System and scroll to Terminal Emulator.\nUpdate the Linux Ubuntu system by running the following three commands.\nsudo apt-get update\nsudo apt-get upgrade\nsudo apt-get dist-upgrade\nInstall essential build tools (for programming)\nsudo apt-get install build-essential\nInstall Vim (the ubiquitous text editor)\nsudo apt-get install vim\nCleanup the system\nsudo apt-get autoremove\nsudo apt-get clean\nsudo apt-get autoclean\nSet the autorun script when opening up a terminal.\n\nWe’ll first copy the default provided by the OS.\nsudo cp /etc/bash.bashrc ~/.bashrc\nThen, we ensure that we own it (more on this later).\nsudo chown $USER:$USER ~/.bashrc\nFinally, we’ll load it into the current terminal\nsource ~/.bashrc\n\nAdd the following useful aliases to the the ./bashrc file.\n\nOpen ~/.bashrc in one of the following text editors:\n\nVim - opens in the terminal, there is a learning curve with this one\nvim ~/.bashrc\nNano - opens in the terminal, not a strong learning curve. The ^ symbol means ctrl. So ^x means to type ctrl + x\nnano ~/.bashrc\ngedit - a GUI based text editor\ngedit ~/.bashrc\n\nThe following helpful aliases can be added to the end of the file:\nalias c='clear'\nalias h='history'\nalias j='jobs'\nalias ls='ls -CF --group-directories-first --color=auto $*'\nalias lss='ls -Alh $*'\nalias m='more'\nalias p='ps -ef'\nalias ~='cd ~'\n\nFinally, load them into the current terminal via: source ~/.bashrc"
   },
   {
-    "objectID": "linux/unix-history.html#why-linux",
-    "href": "linux/unix-history.html#why-linux",
-    "title": "Unix History",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux. Examples include:\n\nNetflix\nTwitter/X\nFacebook\nInstagram\nGoogle\nNew York Stock Exchange\n\nUsing an android phone? Android is a flavor of Linux.\nIt’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.\n\nhttps://www.gnu.org/licenses/gpl-3.0.en.html\n\nIt’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms."
+    "text": "About this site"
   },
   {
-    "objectID": "linux/unix-history.html#history-of-unix-like-systems",
-    "href": "linux/unix-history.html#history-of-unix-like-systems",
-    "title": "Unix History",
-    "section": "History of Unix Like Systems",
-    "text": "History of Unix Like Systems\n\n1969 The Unix operating system is developed by AT&T/Bell Laboratories.\n\nFirst developed with Assembly but moved to primarily C\nSince it was primarily C, it was very portable\nAT&T cannot sell it due to agreements not to enter the computing business\nAT&T opts to distribute it under licenses to Labs and Universities\n\n1977 UC Berkly developed BSD (Berkley Software Distribution) as a Unix-like replacement.\n\nIt contained code owned by AT&T\nWill eventually lead to a lawsuit from AT&T\n\n1983 GNU Operating System (Pronounced Guh-nu) started by Richard Stallman\n\nIts purpose was to be a free/open unix-like replacement for UNIX (that didn’t contain any code owned by AT&T).\nGNU stands for GNU is Not Unix\nGNU’s kernel is GNU Hurd (started in 1990, before Linux, doesn’t become stable until 2001)\n\nNote: The kernel of an OS is the system between the hardware and software of a machine. Main function is process, memory, and other resource management.\nThe OS is the system as a whole; interface between user and hardware. An OS contains a kernel, applications, device drivers, utilities, etc.\n\n\n1991\n\nFinnish Grad Student Linus Torvalds emails about the OS he is working on.\nLinux kernel is developed\n\n1992\n\nBSDi gets sued by AT&T, which slowed BSD development.\nThe Linux kernel becomes the kernel for GNU.\nGNU/Linux is released as Free software under the GNU General Purpose License.\n\nNote: When we say “Linux”, we really mean GNU/Linux. Linux is just the kernel.\n\nGNU License gave developers the ability to make custom OSs that felt like UNIX without the fear of being sued.\n\n1993 The Debian distrobution is born\n\nOne of the most popular distros/family of distros\nMinimal, stable, good for general purpose pc usage and servers alike.\nMost distros are children of Debian including Ubuntu, Raspberry Pi OS, and SteamOS.\n\n1994 The Redhat Distrobution is born\n\nPrimarily used for enterprise\nDistros in the Redhat family include Fedora (Distro of choice for Linus Torvalds) and CentOS\n\n2000/2002 Gentoo/Arch are born as more simplistic families of distrobutions\nIn later 2000s we see some independent distros we are more familiar with such as\n\nFireOS (Amazon FireStick/Fire devices)\nAndroid (Google)\n\nFun Fact: Linus Torvalds also created git for version control.\n\nDistro Family Tree\nSource: A large portion of the information above comes from GNU’s Website"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CSC 222 Systems Programming",
+    "objectID": "terminal/redirection.html",
+    "href": "terminal/redirection.html",
+    "title": "Redirection",
     "section": "",
-    "text": "Nothing to see here."
+    "text": "abbreviated as stdout\nrepresented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\necho \"hello world\" &gt; helloworld.txt"
   },
   {
-    "objectID": "terminal/basic.html",
-    "href": "terminal/basic.html",
-    "title": "Introduction to the Shell and Terminal",
+    "objectID": "terminal/redirection.html#standard-output",
+    "href": "terminal/redirection.html#standard-output",
+    "title": "Redirection",
     "section": "",
-    "text": "Def: The shell is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.\nDef: The terminal is the interface the user interacts with. This is where you type the commands for the shell.\nCommon Shells include:\n- Bourn Again Shell (bash - linux distros, macOS)\n- z-shell (zsh - linux distros, macOS)\n- powershell (windows)\n- gitbash (windows)"
+    "text": "abbreviated as stdout\nrepresented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\necho \"hello world\" &gt; helloworld.txt"
   },
   {
-    "objectID": "terminal/basic.html#introduction",
-    "href": "terminal/basic.html#introduction",
-    "title": "Introduction to the Shell and Terminal",
+    "objectID": "terminal/redirection.html#standard-input",
+    "href": "terminal/redirection.html#standard-input",
+    "title": "Redirection",
+    "section": "Standard Input",
+    "text": "Standard Input\n\nabbreviated as stdin\nrepresented with &lt;\ncan be used to provide input into a program"
+  },
+  {
+    "objectID": "terminal/redirection.html#standard-error",
+    "href": "terminal/redirection.html#standard-error",
+    "title": "Redirection",
+    "section": "Standard Error",
+    "text": "Standard Error\n\nabbreviated as stderr\nrepresented with 2&gt;\ncan append with 2&gt;&gt;\nif an error is produced, you can redirect it elsewhere.\n\n\nExample\nnotarealcommand 2&gt; error-file.txt"
+  },
+  {
+    "objectID": "terminal/redirection.html#pipe",
+    "href": "terminal/redirection.html#pipe",
+    "title": "Redirection",
+    "section": "Pipe",
+    "text": "Pipe\n\nrepresented with |\ncreates a “pipe” or “pipline” between two programs\ntakes the output of the one command and uses it as input it into another command\n\n\nExample\nList the contents of /usr/bin, but use more to view them in a paginated way.\nls -al /usr/bin | more"
+  },
+  {
+    "objectID": "terminal/grep-and-regex.html",
+    "href": "terminal/grep-and-regex.html",
+    "title": "Grep and Regular Expressions",
     "section": "",
-    "text": "Def: The shell is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.\nDef: The terminal is the interface the user interacts with. This is where you type the commands for the shell.\nCommon Shells include:\n- Bourn Again Shell (bash - linux distros, macOS)\n- z-shell (zsh - linux distros, macOS)\n- powershell (windows)\n- gitbash (windows)"
+    "text": "grep stands for Globally search for a Regular Expression and Print\n\n\n\nCreate some files to work with.\necho \"testing 1 2 3\" &gt; test1.txt\necho \"testing 4 5 6\" &gt; test2.txt\necho \"TESTING 7 8 9\" &gt; test3.txt\nmkdir \"test-folder\"\ncd \"test-folder\"\necho \"folder testing 1 2 3\" &gt; test4.text\necho \"folder testing 4 5 6\" &gt; test4.text\necho \"FOLDER TESTING 7 8 9\" &gt; test4.text\ncd ..\nThe format to search for strings in files is `grep [thing you’re searching for] [filename].\ngrep testing test1.txt  # searching for the word testing in text1.txt\n\n# * can be used as a wild card\ngrep testing test*.txt  # searching for the word testing in any file with the format test*.txt\ngrep testing *          # searching for testing in any file\n\n# applying some flags (more exist)\ngrep -l test *.txt          # -l only shows the file names, not the content\ngrep -i testing test*.txt   # -i ignores case\ngrep -ir testing *          # -r searches recursively"
   },
   {
-    "objectID": "terminal/basic.html#controls",
-    "href": "terminal/basic.html#controls",
-    "title": "Introduction to the Shell and Terminal",
-    "section": "Controls",
-    "text": "Controls\nThese are basic controls that are useful for using the terminal.\nup - show previous command\ndown - show next command\ntab - autocomplete\nctrl + l - clear\nctrl + c - cancel\nctrl + r - search\nctrl + d - close the terminal\nctrl + a - jump to the beginning of the line\nctrl + e - jump to the end of the line\nalt + [left arrow key/right arrow key] - move the cursor left/right by the word"
-  },
-  {
-    "objectID": "terminal/basic.html#some-basic-commands",
-    "href": "terminal/basic.html#some-basic-commands",
-    "title": "Introduction to the Shell and Terminal",
-    "section": "Some Basic Commands",
-    "text": "Some Basic Commands\nA set of basic commands for your reference. Complete usage is not illustrated.\nsudo - use when you need superuser privelages (short for superuser do)\npwd - print working directory\nmkdir [new directory name] - create a new directory\ntouch [new file name] - create a file\nls - list the contents of the a directory\ncd [destination] - change the directory\nman [command] - show the manual for a command\nrm [filename] - remove a file\nrmdir [directory name] - remove a directory\n\nExample\nThis example illustrates some usage of the commands above.\ncd ~                # navigate to the home directory\nmkdir example-1     # create a directory named example-1\ncd example-1        # navigate into the directory named example-1\npwd                 # print the current working directory just to see \ntouch new-file.txt  # create a file named new-file.txt\ntouch .secret-file  # create a file that starts with a .\nls                  # list out the files in the current directory\nls -a               # list all the files (including hidden ones)\nls -alh             # list the files, include details about each one, in a human readable format\ncd ..               # go up one directory\nrm -rf example-1    # remove the folder your created and everything in it"
-  },
-  {
-    "objectID": "terminal/basic.html#more-commands",
-    "href": "terminal/basic.html#more-commands",
-    "title": "Introduction to the Shell and Terminal",
-    "section": "More Commands",
-    "text": "More Commands\nA set of more commands for your reference. Complete usage is not illustrated.\ncat [filename] - returns the contents of the file\nmore [filename] - allows you to view the contents in a paginated manner\necho [a message] - returns the message\ncp [source] [destination] - copies a file from the source to a destination\nmv [source] [destination] - moves a file from the source to a destination\nhistory - see the history of previous commands that were typed\nclear - clears what is displayed in the terminal\nwget [url] - downloads the contents at the url\n\nExample\nThe following is an an example of using some of the commands above.\ncd ~                                                    # navigate home\nmkdir books                                             # create a directory called books\ncd books\necho \"Let's download a book\"                            # produce a message\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt   # download \"A Tale of Two Cities\"\nls                                                      # list the files\nmv pg98.txt a-tale-of-two-cities.txt                    # rename the book\nmore a-tale-of-two-cities.txt                           # read the book"
-  },
-  {
-    "objectID": "terminal/more-commands.html",
-    "href": "terminal/more-commands.html",
-    "title": "More Commands",
+    "objectID": "terminal/grep-and-regex.html#grep",
+    "href": "terminal/grep-and-regex.html#grep",
+    "title": "Grep and Regular Expressions",
     "section": "",
-    "text": "Typicall used to find a file or directory.\nRecall grep is typically used to find patterns inside files\nExamples:\n\nfind . -name \"test1.txt\""
+    "text": "grep stands for Globally search for a Regular Expression and Print\n\n\n\nCreate some files to work with.\necho \"testing 1 2 3\" &gt; test1.txt\necho \"testing 4 5 6\" &gt; test2.txt\necho \"TESTING 7 8 9\" &gt; test3.txt\nmkdir \"test-folder\"\ncd \"test-folder\"\necho \"folder testing 1 2 3\" &gt; test4.text\necho \"folder testing 4 5 6\" &gt; test4.text\necho \"FOLDER TESTING 7 8 9\" &gt; test4.text\ncd ..\nThe format to search for strings in files is `grep [thing you’re searching for] [filename].\ngrep testing test1.txt  # searching for the word testing in text1.txt\n\n# * can be used as a wild card\ngrep testing test*.txt  # searching for the word testing in any file with the format test*.txt\ngrep testing *          # searching for testing in any file\n\n# applying some flags (more exist)\ngrep -l test *.txt          # -l only shows the file names, not the content\ngrep -i testing test*.txt   # -i ignores case\ngrep -ir testing *          # -r searches recursively"
   },
   {
-    "objectID": "terminal/more-commands.html#find",
-    "href": "terminal/more-commands.html#find",
-    "title": "More Commands",
-    "section": "",
-    "text": "Typicall used to find a file or directory.\nRecall grep is typically used to find patterns inside files\nExamples:\n\nfind . -name \"test1.txt\""
-  },
-  {
-    "objectID": "terminal/more-commands.html#and",
-    "href": "terminal/more-commands.html#and",
-    "title": "More Commands",
-    "section": "&&, ||, and ;",
-    "text": "&&, ||, and ;\n\nuse &&, || and ; to chain commands together\ncommand before && must complete without error for command after && to execute\ncommand before || must result in an error for command after || to execute\nuse ; to just separate two commands on the same line\n\necho \"hi\" &gt; test.txt && echo \"hello.txt\"\nfind . --name \"test1.txt\" && echo ok        # error example\nfind . -name \"test1.txt\" && echo ok         # no error\n\nfind . --name \"test1.txt\" || echo error        # error example\nfind . -name \"test1.txt\" || echo error        # no error"
+    "objectID": "terminal/grep-and-regex.html#regular-expressions",
+    "href": "terminal/grep-and-regex.html#regular-expressions",
+    "title": "Grep and Regular Expressions",
+    "section": "Regular Expressions",
+    "text": "Regular Expressions\nRegular expressions are used to express patterns within text. Using them in conjunction with grep can result in powerful searches.\nTo follow the following examples, run the commands below.\n# navigate to documents and download the following\nwget https://raw.githubusercontent.com/jcoriell/download/main/regex-sample.txt\nwget https://raw.githubusercontent.com/dwyl/english-words/master/words.txt\n\n# confirm the files are there\nls                      \n\n# peek inside the files\nmore regex-sample.txt   \nmore words.txt          \n\nSearching for a simple strings\nFor exact matching of characters, words, and phrases, you can use the characters.\n# -P flag stands for Perl, can use -E here instead\n# later notations will require -P\ngrep -P \"abc\" regex-sample.txt     \ngrep -P \"coriell\" regex-sample.txt \n\n\nMeta Characters\nSome characters require a slash (escape) in front of them to include them as part of the search because they are meta characters that have special meaning. More on these can be found in the subsections that follow.\nCharacter   Meaning\n.           - any character except new line\n[           - grouping\n{           - quantifying\n()          - grouping \n\\           - escape\n^           - starts with \n$           - ends with \n|           - or\n?           - a quantifier\n*           - another quantifier\n+           - another quantifier\n\nExamples\n# Search for a dot\ngrep -P \"\\.\" regex-sample.txt\n# search for an open parenthesis\ngrep -P \"\\(\" regex-sample.txt\n# search for any character and then the letter c\ngrep -P \".c\" regex-sample.txt\n\n\n\nCharacter Types\nYou can specify different types of characters such as digits or whitespace. These notations require the usage of the -P flag.\nCharacter   Meaning\n.           - any character except new line\n\\d          - digit (0-9)\n\\D          - not a digit (not 0-9)\n\\w          - a Word character (a-z, A-Z, 0-9, _)\n\\W          - not one of the word characters\n\\s          - whitespace (space, tab, newline)\n\\S          - note whitespace\n\nExamples\n# search for three consecutive digits\ngrep -P \"\\d\\d\\d\" regex-sample.txt\n# search for three digits, any, three digits, any, then 4 digits\ngrep -P \"\\d\\d\\d.\\d\\d\\d.\\d\\d\\d\\d\" regex-sample.txt\n# search for consecutive word characters\ngrep -P \"\\w\\w\\w\\w\" regex-sample.txt\n# search for whitespace\ngrep -P \"\\s\" regex-sample.txt\n\n\n\nBoundaries\nCharacter   Meaning\n\\b          - word boundary\n\\B          - not a word boundary\n^           - beginning of a line\n$           - end of a line\n\nExamples\n# find 3 word characters between two boundaries\ngrep -P \"\\b\\w\\w\\w\\b\" regex-sample.txt\n# find h at the beginning of a line\ngrep -P \"^h\" regex-sample.txt\n# find h at the beginning of a word\ngrep -P \"\\bh\" regex-sample.txt\n# find 4 word characters at the end of a line\ngrep -P \"\\w\\w\\w\\w$\" regex-sample.txt\n# find lines that start with a and count them\n# wc is for word count\ngrep -P \"^a\" words.txt | wc -l \n# find lines that start with a, have three characters, then end with b.\n# store then in a file called result.txt\ngrep -P \"^a...b$\" words.txt &gt; result.txt\nmore result.txt # view it\n# starts with a, 5th letter is b. \n# shows individual word count\ngrep -P \"^a...b\" words.txt | wc -w \n\n\n\nGroupings\nGroupings allow us to combine different types of characters or patterns.\nCharacter   Meaning\n[]          matches characters in brackets\n[^ ]        matches characters not in brackets\n|           or\n()          group\n\nExamples\n# find any character from a to z\ngrep -P \"[a-z]\" regex-sample.txt\n# find any character from a to z or A-Z\ngrep -P \"[a-zA-Z]\" regex-sample.txt\n\n```sh\n# find occurrances of a dot followed by a character a-z or A-Z\ngrep -P \"\\.[a-zA-Z]\" regex-sample.txt \n# find a dot folled by three characters in a-z or A-Z\ngrep -P \"\\.[a-zA-Z][a-zA-Z][a-zA-Z]\" regex-sample.txt\n# find a dot followed by edu or com\ngrep -P \"\\.(edu|com)\" regex-sample.txt\n\n\n\nQuanitfiers\nThe quantifiers help us say how many of a type of character or characters we might want in parts of the expression. The quantifiers come after the thing it is quantifying.\nCharacter   Meaning\n*           - 0 or more\n+           - 1 or more\n?           - 0 or one\n{3}         - exact number (exactly 3 here)\n{1,5}       - range {min, max} (minimum of 1, max of 5 in example)\n\nExamples\n# find occurrance of a dot followed by 3 characters in a-z or A-Z\ngrep -P -o \"\\.[a-zA-Z]{3}\" regex-sample.txt # -o shows only non empty parts\n# find occurrances of a dot followed by at least 2 characters in a-z or A-Z\ngrep -P \"\\.[a-zA-Z]{2,}\" regex-sample.txt\n# find \n#   - one or more characters in a-z or A-Z or 0-9\n#   - followed by an @ symbol\n#   - followed by one or more characters in a-z or A-Z\n#   - followed by a dot \n#   - followed by at least two characters in a-z or A-Z\ngrep -P \"[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]{2,}\" regex-sample.txt"
   },
   {
     "objectID": "terminal/texteditors.html",
@@ -145,6 +138,27 @@
     "title": "Text Editors",
     "section": "Nano",
     "text": "Nano\n\nanother terminal based text editor\nsimpler to use than vim\n\n\nExample\nIn this example, we create a file and add “hello world” to it using nano.\n\nRun the following commands\ncd ~\nmkdir nano-practice\ncd nano-practice\ntouch helloworld.txt\nnano helloworld.txt\nAt this point, the file should be open. Type hello world on the first line.\nType ctrl + x to be prompted to save and close.\nRun cat helloworld.txt to see the contents."
+  },
+  {
+    "objectID": "terminal/more-commands.html",
+    "href": "terminal/more-commands.html",
+    "title": "More Commands",
+    "section": "",
+    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\""
+  },
+  {
+    "objectID": "terminal/more-commands.html#find",
+    "href": "terminal/more-commands.html#find",
+    "title": "More Commands",
+    "section": "",
+    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\""
+  },
+  {
+    "objectID": "terminal/more-commands.html#and",
+    "href": "terminal/more-commands.html#and",
+    "title": "More Commands",
+    "section": "&&, ||, and ;",
+    "text": "&&, ||, and ;\n\nUse &&, || and ; to chain commands together\nThe command before && must complete without error for the command after && to execute\n# example with success on first command\necho \"hi\" &gt; test.txt && echo \"hello.txt\"\n# example with an error on the first command with &&\nfind . --name \"test1.txt\" && echo ok\n\n# after fixing the error\nfind . -name \"test1.txt\" && echo ok\nThe command before || must result in an error for the command after || to execute\n# example with || with an error\nfind . --name \"test1.txt\" || echo error\n\n# after fixing the error\nfind . -name \"test1.txt\" || echo error        # no error\nUse ; to just separate two commands on the same line\n# echo ok happens even though find will throw and error\nfind --name test1.txt; echo ok"
   },
   {
     "objectID": "terminal/file-permissions.html",
@@ -196,80 +210,108 @@
     "text": "Changing Ownership\n\nuse the command sudo chown [owner][:group] [filename] to change the ownership of a file"
   },
   {
-    "objectID": "terminal/grep-and-regex.html",
-    "href": "terminal/grep-and-regex.html",
-    "title": "Grep and Regular Expressions",
+    "objectID": "terminal/basic.html",
+    "href": "terminal/basic.html",
+    "title": "Introduction to the Shell and Terminal",
     "section": "",
-    "text": "grep stands for Globally search for a Regular Expression and Print\n\n\n\nCreate some files to work with.\necho \"testing 1 2 3\" &gt; test1.txt\necho \"testing 4 5 6\" &gt; test2.txt\necho \"TESTING 7 8 9\" &gt; test3.txt\nmkdir \"test-folder\"\ncd \"test-folder\"\necho \"folder testing 1 2 3\" &gt; test4.text\necho \"folder testing 4 5 6\" &gt; test4.text\necho \"FOLDER TESTING 7 8 9\" &gt; test4.text\ncd ..\nThe format to search for strings in files is `grep [thing you’re searching for] [filename].\ngrep testing test1.txt  # searching for the word testing in text1.txt\n\n# * can be used as a wild card\ngrep testing test*.txt  # searching for the word testing in any file with the format test*.txt\ngrep testing *          # searching for testing in any file\n\n# applying some flags (more exist)\ngrep -l test *.txt          # -l only shows the file names, not the content\ngrep -i testing test*.txt   # -i ignores case\ngrep -ir testing *          # -r searches recursively"
+    "text": "Def: The shell is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.\nDef: The terminal is the interface the user interacts with. This is where you type the commands for the shell.\nCommon Shells include:\n- Bourn Again Shell (bash - linux distros, macOS)\n- z-shell (zsh - linux distros, macOS)\n- powershell (windows)\n- gitbash (windows)"
   },
   {
-    "objectID": "terminal/grep-and-regex.html#grep",
-    "href": "terminal/grep-and-regex.html#grep",
-    "title": "Grep and Regular Expressions",
+    "objectID": "terminal/basic.html#introduction",
+    "href": "terminal/basic.html#introduction",
+    "title": "Introduction to the Shell and Terminal",
     "section": "",
-    "text": "grep stands for Globally search for a Regular Expression and Print\n\n\n\nCreate some files to work with.\necho \"testing 1 2 3\" &gt; test1.txt\necho \"testing 4 5 6\" &gt; test2.txt\necho \"TESTING 7 8 9\" &gt; test3.txt\nmkdir \"test-folder\"\ncd \"test-folder\"\necho \"folder testing 1 2 3\" &gt; test4.text\necho \"folder testing 4 5 6\" &gt; test4.text\necho \"FOLDER TESTING 7 8 9\" &gt; test4.text\ncd ..\nThe format to search for strings in files is `grep [thing you’re searching for] [filename].\ngrep testing test1.txt  # searching for the word testing in text1.txt\n\n# * can be used as a wild card\ngrep testing test*.txt  # searching for the word testing in any file with the format test*.txt\ngrep testing *          # searching for testing in any file\n\n# applying some flags (more exist)\ngrep -l test *.txt          # -l only shows the file names, not the content\ngrep -i testing test*.txt   # -i ignores case\ngrep -ir testing *          # -r searches recursively"
+    "text": "Def: The shell is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.\nDef: The terminal is the interface the user interacts with. This is where you type the commands for the shell.\nCommon Shells include:\n- Bourn Again Shell (bash - linux distros, macOS)\n- z-shell (zsh - linux distros, macOS)\n- powershell (windows)\n- gitbash (windows)"
   },
   {
-    "objectID": "terminal/grep-and-regex.html#regular-expressions",
-    "href": "terminal/grep-and-regex.html#regular-expressions",
-    "title": "Grep and Regular Expressions",
-    "section": "Regular Expressions",
-    "text": "Regular Expressions\nRegular expressions are used to express patterns within text. Using them in conjunction with grep can result in powerful searches.\nTo follow the following examples, run the commands below.\n# navigate to documents and download the following\nwget https://raw.githubusercontent.com/jcoriell/download/main/regex-sample.txt\nwget https://raw.githubusercontent.com/dwyl/english-words/master/words.txt\n\n# confirm the files are there\nls                      \n\n# peek inside the files\nmore regex-sample.txt   \nmore words.txt          \n\nSearching for a simple strings\nFor exact matching of characters, words, and phrases, you can use the characters.\n# -P flag stands for Perl, can use -E here instead\n# later notations will require -P\ngrep -P \"abc\" regex-sample.txt     \ngrep -P \"coriell\" regex-sample.txt \n\n\nMeta Characters\nSome characters require a slash (escape) in front of them to include them as part of the search because they are meta characters that have special meaning. More on these can be found in the subsections that follow.\nCharacter   Meaning\n.           - any character except new line\n[           - grouping\n{           - quantifying\n()          - grouping \n\\           - escape\n^           - starts with \n$           - ends with \n|           - or\n?           - a quantifier\n*           - another quantifier\n+           - another quantifier\n\nExamples\n# Search for a dot\ngrep -P \"\\.\" regex-sample.txt\n# search for an open parenthesis\ngrep -P \"\\(\" regex-sample.txt\n# search for any character and then the letter c\ngrep -P \".c\" regex-sample.txt\n\n\n\nCharacter Types\nYou can specify different types of characters such as digits or whitespace. These notations require the usage of the -P flag.\nCharacter   Meaning\n.           - any character except new line\n\\d          - digit (0-9)\n\\D          - not a digit (not 0-9)\n\\w          - a Word character (a-z, A-Z, 0-9, _)\n\\W          - not one of the word characters\n\\s          - whitespace (space, tab, newline)\n\\S          - note whitespace\n\nExamples\n# search for three consecutive digits\ngrep -P \"\\d\\d\\d\" regex-sample.txt\n# search for three digits, any, three digits, any, then 4 digits\ngrep -P \"\\d\\d\\d.\\d\\d\\d.\\d\\d\\d\\d\" regex-sample.txt\n# search for consecutive word characters\ngrep -P \"\\w\\w\\w\\w\" regex-sample.txt\n# search for whitespace\ngrep -P \"\\s\" regex-sample.txt\n\n\n\nBoundaries\nCharacter   Meaning\n\\b          - word boundary\n\\B          - not a word boundary\n^           - beginning of a line\n$           - end of a line\n\nExamples\n# find 3 word characters between two boundaries\ngrep -P \"\\b\\w\\w\\w\\b\" regex-sample.txt\n# find h at the beginning of a line\ngrep -P \"^h\" regex-sample.txt\n# find h at the beginning of a word\ngrep -P \"\\bh\" regex-sample.txt\n# find 4 word characters at the end of a line\ngrep -P \"\\w\\w\\w\\w$\" regex-sample.txt\n# find lines that start with a and count them\n# wc is for word count\ngrep -P \"^a\" words.txt | wc -l \n# find lines that start with a, have three characters, then end with b.\n# store then in a file called result.txt\ngrep -P \"^a...b$\" words.txt &gt; result.txt\nmore result.txt # view it\n# starts with a, 5th letter is b. \n# shows individual word count\ngrep -P \"^a...b\" words.txt | wc -w \n\n\n\nGroupings\nGroupings allow us to combine different types of characters or patterns.\nCharacter   Meaning\n[]          matches characters in brackets\n[^ ]        matches characters not in brackets\n|           or\n()          group\n\nExamples\n# find any character from a to z\ngrep -P \"[a-z]\" regex-sample.txt\n# find any character from a to z or A-Z\ngrep -P \"[a-zA-Z]\" regex-sample.txt\n\n```sh\n# find occurrances of a dot followed by a character a-z or A-Z\ngrep -P \"\\.[a-zA-Z]\" regex-sample.txt \n# find a dot folled by three characters in a-z or A-Z\ngrep -P \"\\.[a-zA-Z][a-zA-Z][a-zA-Z]\" regex-sample.txt\n# find a dot followed by edu or com\ngrep -P \"\\.(edu|com)\" regex-sample.txt\n\n\n\nQuanitfiers\nThe quantifiers help us say how many of a type of character or characters we might want in parts of the expression. The quantifiers come after the thing it is quantifying.\nCharacter   Meaning\n*           - 0 or more\n+           - 1 or more\n?           - 0 or one\n{3}         - exact number (exactly 3 here)\n{1,5}       - range {min, max} (minimum of 1, max of 5 in example)\n\nExamples\n# find occurrance of a dot followed by 3 characters in a-z or A-Z\ngrep -P -o \"\\.[a-zA-Z]{3}\" regex-sample.txt # -o shows only non empty parts\n# find occurrances of a dot followed by at least 2 characters in a-z or A-Z\ngrep -P \"\\.[a-zA-Z]{2,}\" regex-sample.txt\n# find \n#   - one or more characters in a-z or A-Z or 0-9\n#   - followed by an @ symbol\n#   - followed by one or more characters in a-z or A-Z\n#   - followed by a dot \n#   - followed by at least two characters in a-z or A-Z\ngrep -P \"[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]{2,}\" regex-sample.txt"
+    "objectID": "terminal/basic.html#controls",
+    "href": "terminal/basic.html#controls",
+    "title": "Introduction to the Shell and Terminal",
+    "section": "Controls",
+    "text": "Controls\nThese are basic controls that are useful for using the terminal.\nup - show previous command\ndown - show next command\ntab - autocomplete\nctrl + l - clear\nctrl + c - cancel\nctrl + r - search\nctrl + d - close the terminal\nctrl + a - jump to the beginning of the line\nctrl + e - jump to the end of the line\nalt + [left arrow key/right arrow key] - move the cursor left/right by the word"
   },
   {
-    "objectID": "terminal/redirection.html",
-    "href": "terminal/redirection.html",
-    "title": "Redirection",
+    "objectID": "terminal/basic.html#some-basic-commands",
+    "href": "terminal/basic.html#some-basic-commands",
+    "title": "Introduction to the Shell and Terminal",
+    "section": "Some Basic Commands",
+    "text": "Some Basic Commands\nA set of basic commands for your reference. Complete usage is not illustrated.\nsudo - use when you need superuser privelages (short for superuser do)\npwd - print working directory\nmkdir [new directory name] - create a new directory\ntouch [new file name] - create a file\nls - list the contents of the a directory\ncd [destination] - change the directory\nman [command] - show the manual for a command\nrm [filename] - remove a file\nrmdir [directory name] - remove a directory\n\nExample\nThis example illustrates some usage of the commands above.\ncd ~                # navigate to the home directory\nmkdir example-1     # create a directory named example-1\ncd example-1        # navigate into the directory named example-1\npwd                 # print the current working directory just to see \ntouch new-file.txt  # create a file named new-file.txt\ntouch .secret-file  # create a file that starts with a .\nls                  # list out the files in the current directory\nls -a               # list all the files (including hidden ones)\nls -alh             # list the files, include details about each one, in a human readable format\ncd ..               # go up one directory\nrm -rf example-1    # remove the folder your created and everything in it"
+  },
+  {
+    "objectID": "terminal/basic.html#more-commands",
+    "href": "terminal/basic.html#more-commands",
+    "title": "Introduction to the Shell and Terminal",
+    "section": "More Commands",
+    "text": "More Commands\nA set of more commands for your reference. Complete usage is not illustrated.\ncat [filename] - returns the contents of the file\nmore [filename] - allows you to view the contents in a paginated manner\necho [a message] - returns the message\ncp [source] [destination] - copies a file from the source to a destination\nmv [source] [destination] - moves a file from the source to a destination\nhistory - see the history of previous commands that were typed\nclear - clears what is displayed in the terminal\nwget [url] - downloads the contents at the url\n\nExample\nThe following is an an example of using some of the commands above.\ncd ~                                                    # navigate home\nmkdir books                                             # create a directory called books\ncd books\necho \"Let's download a book\"                            # produce a message\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt   # download \"A Tale of Two Cities\"\nls                                                      # list the files\nmv pg98.txt a-tale-of-two-cities.txt                    # rename the book\nmore a-tale-of-two-cities.txt                           # read the book"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CSC 222 Systems Programming",
     "section": "",
-    "text": "abbreviated as stdout\nrepresented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\necho \"hello world\" &gt; helloworld.txt"
+    "text": "Nothing to see here."
   },
   {
-    "objectID": "terminal/redirection.html#standard-output",
-    "href": "terminal/redirection.html#standard-output",
-    "title": "Redirection",
+    "objectID": "linux/unix-history.html",
+    "href": "linux/unix-history.html",
+    "title": "Unix History",
     "section": "",
-    "text": "abbreviated as stdout\nrepresented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\necho \"hello world\" &gt; helloworld.txt"
+    "text": "It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux. Examples include:\n\nNetflix\nTwitter/X\nFacebook\nInstagram\nGoogle\nNew York Stock Exchange\n\nUsing an android phone? Android is a flavor of Linux.\nIt’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.\n\nhttps://www.gnu.org/licenses/gpl-3.0.en.html\n\nIt’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms."
   },
   {
-    "objectID": "terminal/redirection.html#standard-input",
-    "href": "terminal/redirection.html#standard-input",
-    "title": "Redirection",
-    "section": "Standard Input",
-    "text": "Standard Input\n\nabbreviated as stdin\nrepresented with &lt;\ncan be used to provide input into a program"
-  },
-  {
-    "objectID": "terminal/redirection.html#standard-error",
-    "href": "terminal/redirection.html#standard-error",
-    "title": "Redirection",
-    "section": "Standard Error",
-    "text": "Standard Error\n\nabbreviated as stderr\nrepresented with 2&gt;\ncan append with 2&gt;&gt;\nif an error is produced, you can redirect it elsewhere.\n\n\nExample\nnotarealcommand 2&gt; error-file.txt"
-  },
-  {
-    "objectID": "terminal/redirection.html#pipe",
-    "href": "terminal/redirection.html#pipe",
-    "title": "Redirection",
-    "section": "Pipe",
-    "text": "Pipe\n\nrepresented with |\ncreates a “pipe” or “pipline” between two programs\ntakes the output of the one command and uses it as input it into another command\n\n\nExample\nList the contents of /usr/bin, but use more to view them in a paginated way.\nls -al /usr/bin | more"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "linux/unix-history.html#why-linux",
+    "href": "linux/unix-history.html#why-linux",
+    "title": "Unix History",
     "section": "",
-    "text": "About this site"
+    "text": "It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux. Examples include:\n\nNetflix\nTwitter/X\nFacebook\nInstagram\nGoogle\nNew York Stock Exchange\n\nUsing an android phone? Android is a flavor of Linux.\nIt’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.\n\nhttps://www.gnu.org/licenses/gpl-3.0.en.html\n\nIt’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms."
   },
   {
-    "objectID": "linux/additional-steps.html",
-    "href": "linux/additional-steps.html",
-    "title": "Additional Steps",
-    "section": "",
-    "text": "Open the terminal by clicking on the monitor icon at the bottom-left of the desktop. Or you can click on the “start button” (the LM logo at the bottom-left of the desktop) then, click on System and scroll to Terminal Emulator.\nUpdate the Linux Ubuntu system by running the following three commands.\nsudo apt-get update\nsudo apt-get upgrade\nsudo apt-get dist-upgrade\nInstall essential build tools (for programming)\nsudo apt-get install build-essential\nInstall Vim (the ubiquitous text editor)\nsudo apt-get install vim\nCleanup the system\nsudo apt-get autoremove\nsudo apt-get clean\nsudo apt-get autoclean\nSet the autorun script when opening up a terminal.\n\nWe’ll first copy the default provided by the OS.\nsudo cp /etc/bash.bashrc ~/.bashrc\nThen, we ensure that we own it (more on this later).\nsudo chown $USER:$USER ~/.bashrc\nFinally, we’ll load it into the current terminal\nsource ~/.bashrc\n\nAdd the following useful aliases to the the ./bashrc file.\n\nOpen ~/.bashrc in one of the following text editors:\n\nVim - opens in the terminal, there is a learning curve with this one\nvim ~/.bashrc\nNano - opens in the terminal, not a strong learning curve. The ^ symbol means ctrl. So ^x means to type ctrl + x\nnano ~/.bashrc\ngedit - a GUI based text editor\ngedit ~/.bashrc\n\nThe following helpful aliases can be added to the end of the file:\nalias c='clear'\nalias h='history'\nalias j='jobs'\nalias ls='ls -CF --group-directories-first --color=auto $*'\nalias lss='ls -Alh $*'\nalias m='more'\nalias p='ps -ef'\nalias ~='cd ~'\n\nFinally, load them into the current terminal via: source ~/.bashrc"
+    "objectID": "linux/unix-history.html#history-of-unix-like-systems",
+    "href": "linux/unix-history.html#history-of-unix-like-systems",
+    "title": "Unix History",
+    "section": "History of Unix Like Systems",
+    "text": "History of Unix Like Systems\n\n1969 The Unix operating system is developed by AT&T/Bell Laboratories.\n\nFirst developed with Assembly but moved to primarily C\nSince it was primarily C, it was very portable\nAT&T cannot sell it due to agreements not to enter the computing business\nAT&T opts to distribute it under licenses to Labs and Universities\n\n1977 UC Berkly developed BSD (Berkley Software Distribution) as a Unix-like replacement.\n\nIt contained code owned by AT&T\nWill eventually lead to a lawsuit from AT&T\n\n1983 GNU Operating System (Pronounced Guh-nu) started by Richard Stallman\n\nIts purpose was to be a free/open unix-like replacement for UNIX (that didn’t contain any code owned by AT&T).\nGNU stands for GNU is Not Unix\nGNU’s kernel is GNU Hurd (started in 1990, before Linux, doesn’t become stable until 2001)\n\nNote: The kernel of an OS is the system between the hardware and software of a machine. Main function is process, memory, and other resource management.\nThe OS is the system as a whole; interface between user and hardware. An OS contains a kernel, applications, device drivers, utilities, etc.\n\n\n1991\n\nFinnish Grad Student Linus Torvalds emails about the OS he is working on.\nLinux kernel is developed\n\n1992\n\nBSDi gets sued by AT&T, which slowed BSD development.\nThe Linux kernel becomes the kernel for GNU.\nGNU/Linux is released as Free software under the GNU General Purpose License.\n\nNote: When we say “Linux”, we really mean GNU/Linux. Linux is just the kernel.\n\nGNU License gave developers the ability to make custom OSs that felt like UNIX without the fear of being sued.\n\n1993 The Debian distrobution is born\n\nOne of the most popular distros/family of distros\nMinimal, stable, good for general purpose pc usage and servers alike.\nMost distros are children of Debian including Ubuntu, Raspberry Pi OS, and SteamOS.\n\n1994 The Redhat Distrobution is born\n\nPrimarily used for enterprise\nDistros in the Redhat family include Fedora (Distro of choice for Linus Torvalds) and CentOS\n\n2000/2002 Gentoo/Arch are born as more simplistic families of distrobutions\nIn later 2000s we see some independent distros we are more familiar with such as\n\nFireOS (Amazon FireStick/Fire devices)\nAndroid (Google)\n\nFun Fact: Linus Torvalds also created git for version control.\n\nDistro Family Tree\nSource: A large portion of the information above comes from GNU’s Website"
   },
   {
-    "objectID": "linux/vm-install-mac.html",
-    "href": "linux/vm-install-mac.html",
-    "title": "VM Install On Mac",
+    "objectID": "linux/vm-install-win.html",
+    "href": "linux/vm-install-win.html",
+    "title": "VM Install On Windows",
     "section": "",
-    "text": "Introduction\nFollow the steps below to set up an Ubuntu LTS Machine on your m series chip Mac (m1, m2, etc.)\n\n\n\n\n\n\nNot sure on chip type?\n\n\n\nClick the  icon on the menubar and select About this mac.... It should be indicated under the “Chip” category if it is an m series chip.\n\n\n\n\n\n\n\n\nIf you don’t have an m series chip…\n\n\n\nIf your mac is not an m series mac, then follow the windows install.\n\n\n\n\nPrequisites\nm series mac with macOS\n\n\nSteps\n\nIf you do not already have Homebrew, install it by opening a terminal and running the following command. Otherwise skip this step.\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nInstall multipass with the following command.\nbrew install multipass\nRun the one of the following multipass command to create an instance with the name csc222 (or whatever you want to name it).\n# for a minimal machine with default specs (1 cpu, 5G disk space, 1G memory, )\nmultipass launch 22.04 --name csc222\n# for a more powerful machine that can have space for a gui\nmultipass launch 22.04 --name csc222 --cpus 2 --memory 4G --disk 50G\nOnce the machine is finished setting up. You can access it with the following command. If you named it something other than csc222, use that in place of csc222.\nmultipass shell csc222\nOnce access to the machine is granted, create a user in the machine for yourself. The example below adds a user named josh.\nsudo adduser josh\nTo add yourself to the group of users that can use the command sudo, run the following, but use your username, not josh.\nsudo usermod -aG sudo josh\n\n\n\n(Optional) Add a GUI to your machine\n\nIn the shell on your VM, run the following commands. Note that this may take a few minutes.\nsudo apt update\nsudo apt install ubuntu-desktop xrdp\nWhile the second command is processing, download Microsoft Remote Desktop on your mac by going to the app store.\nMicrosoft Remote Desktop\nOpen another Terminal on your mac and and type multipass list to get the IP address of the machine. It should be something like 10.49.93.209 or 192.168.64.6 (not that exactly, but similar).\nOpen Microsoft RDP and add the connection."
+    "text": "In this course you will use a Unix environment. Specifically, you should use the latest LTS release of Ubuntu to ensure you are running the same system as the instructor. If you are using Windows, follow the instructions provided below to install Virtual Box and an Ubuntu virtual machine."
+  },
+  {
+    "objectID": "linux/vm-install-win.html#partitioning-the-drive",
+    "href": "linux/vm-install-win.html#partitioning-the-drive",
+    "title": "VM Install On Windows",
+    "section": "Partitioning the Drive",
+    "text": "Partitioning the Drive\n\nNow we will add 4 partitions for /boot, swap, /, and /home to the free space. This setup will result in wiping /boot, /, and swap when updating the OS but /home will not be touched resulting in faster updates (~30 minutes).\n\n\n\nThe partition for /boot stores the Linux kernel images. Set the following parameters.\n        size    2048 MB\n        type    primary\n    location    beginning\n      use as    ext2\n mount point    /boot\n\n\n\nThe partition for the swap area is for memory swap space and hibernation.\n        size    if RAM size &gt;= 4 GB, size = RAM size.\n                otherwise, size = 2x RAM size but no more than 8 GB.\n                Ex: \n                    2 GB RAM: 4 GB swap\n                    4 GB RAM: 4 GB swap\n\n        type    primary\n    location    end\n      use as    swap area\n\n\n\n\n\n\n\nWarning\n\n\n\nThe values in the following image may not match your values\n\n\n\n\nThe partition for / stores the OS, OS configuration files, and applications.\n       size    ~35% of space left\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /\n\n\n\nThe partition for /home stores your files (application configuration, settings, pictures, etc)\n       size    ~65% (the last portion of free space)\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /home\n\n\n\nClick Install Now after creating the partitions."
+  },
+  {
+    "objectID": "linux/vm-install-win.html#final-setup",
+    "href": "linux/vm-install-win.html#final-setup",
+    "title": "VM Install On Windows",
+    "section": "Final Setup",
+    "text": "Final Setup\n\nSet the timezone to the Chicago timezone (for Central).\nSet the user.\nExample:\n    name: zak\n    computer name: zak-csc222\n    username: zak\n    password: something fairly strong that you will remember\n\n    require my password to log in\n    don't encrypt my home folder\nAfter this it will start installing/copying files.\nReboot into Linux!\nGo to the Additional Steps."
+  },
+  {
+    "objectID": "linux/linux-filesystem.html",
+    "href": "linux/linux-filesystem.html",
+    "title": "Linux Filesystem",
+    "section": "",
+    "text": "The top level of the filesystem on many linux machines contains most of the following directories. You’ll find a brief description of each below."
+  },
+  {
+    "objectID": "linux/linux-filesystem.html#introduction",
+    "href": "linux/linux-filesystem.html#introduction",
+    "title": "Linux Filesystem",
+    "section": "",
+    "text": "The top level of the filesystem on many linux machines contains most of the following directories. You’ll find a brief description of each below."
+  },
+  {
+    "objectID": "linux/linux-filesystem.html#directories",
+    "href": "linux/linux-filesystem.html#directories",
+    "title": "Linux Filesystem",
+    "section": "Directories",
+    "text": "Directories\n\n/bin\n\ncommon binaries (i.e. applications you can run)\nyou’ll find many of the commands you can use here, like ls\nNote: ls -l /bin shows that it is a link to /usr/bin\n\n\n\n/sbin\n\nsystem binaries (applications for system admin, like adduser)\n\n\n\n/home\n\nthe personal files for each user\nRun ls /home to see a directory for yourself.\n\n\n\n/lib\n\nwhere shared libraries live.\ncode that applications can use to interact with the kernel\nnote, you will see lib files elsewhere, but this one is for the kernel specifically.\n\n\n\n/etc\n\nShort for et cetera (we say et-see)\nMainly contains configuration files\n\n\n\n/dev\n\nshort for device\ncontains files related to devices attached to the machine (like a webcam)\n\n\n\n/boot\n\ncontains the files necessary to boot the system.\n\n\n\n/media\n\nwhere external storage is auto mounted when you plug it in\n\n\n\n/mnt\n\nwhere external storage is manually mounted\n\n\n\n/opt\n\nfrequently where custom built software lands\n\n\n\n/proc\n\ncontains info about your computer\n\n\n\n/root\n\nhome directory of the superuser\nits not under /home for a reason (those are not the superuser)\n\n\n\n/run\n\nstores temporary data for system processes\n\n\n\n/usr\n\nwhere user’s home directories used to be kept (now under /home)\ncontains a collection of stuff that needs to be shared by applications\n\n\n\n/tmp\n\ncontains temporary files\n\n\n\n/var\n\nshort for variable\nusually contains logs"
   }
 ]

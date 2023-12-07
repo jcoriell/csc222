@@ -22,6 +22,7 @@ website:
           - terminal/texteditors.qmd
           - terminal/file-permissions.qmd
           - terminal/grep-and-regex.qmd
+          - terminal/more-commands.qmd
 
 
 

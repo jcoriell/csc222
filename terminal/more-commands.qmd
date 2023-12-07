@@ -4,31 +4,50 @@ title: More Commands
 
 ## find
 
-- Typicall used to find a file or directory.
+- Typically used to find a file or directory.
 
 - Recall grep is typically used to find patterns inside files
     
-- Examples:
 
-```
+
+```sh
+# Example with find
 find . -name "test1.txt"
 ```
 
 ## &&, ||, and ;
 
-- use `&&`, `||` and `;` to chain commands together
+- Use `&&`, `||` and `;` to chain commands together
 
-- command before `&&` must complete without error for command after `&&` to execute
+- The command before `&&` must complete without error for the command after `&&` to execute
 
-- command before `||` must result in an error for command after `||` to execute
+    ```sh
+    # example with success on first command
+    echo "hi" > test.txt && echo "hello.txt"
+    ```
 
-- use ; to just separate two commands on the same line
+    ```sh
+    # example with an error on the first command with &&
+    find . --name "test1.txt" && echo ok
 
-```
-echo "hi" > test.txt && echo "hello.txt"
-find . --name "test1.txt" && echo ok        # error example
-find . -name "test1.txt" && echo ok         # no error
+    # after fixing the error
+    find . -name "test1.txt" && echo ok
+    ```
 
-find . --name "test1.txt" || echo error        # error example
-find . -name "test1.txt" || echo error        # no error
-```
+- The command before `||` must result in an error for the command after `||` to execute
+
+    ```sh
+    # example with || with an error
+    find . --name "test1.txt" || echo error
+
+    # after fixing the error
+    find . -name "test1.txt" || echo error        # no error
+    ```
+
+- Use `;` to just separate two commands on the same line
+
+    ```sh
+    # echo ok happens even though find will throw and error
+    find --name test1.txt; echo ok
+    ```
+
