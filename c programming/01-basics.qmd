@@ -1,0 +1,38 @@
+---
+title: Basics
+---
+
+## Introduction
+
+Before completing any of the following, be sure your system can compile c programs. To check, open the terminal and type `gcc --version`. `gcc` is the GNU compiler for the C programming language. If you hit an error, you need to install it using one of the following:
+
+```sh
+# On Ubuntu
+
+# this command installs gcc, g++, libc6-dev, make, and dpkg-dev
+sudo apt-get build-essential
+```
+
+## Hello World!
+
+```c
+#include <stdio.h>
+
+int main(){
+    printf("Hello World!"); // No new line unless you say to do it.
+    printf("Hello again!\n"); // Now has a new line
+    printf("Hello there!");
+
+    return 0;
+}
+```
+
+## Variables and Format Specifiers
+
+
+
+## Passing Arguments into the Program
+
+
+## Data Types
+
