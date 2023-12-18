@@ -1,45 +1,94 @@
 [
   {
-    "objectID": "c programming/01-basics.html",
-    "href": "c programming/01-basics.html",
-    "title": "Basics",
+    "objectID": "c-programming/01-HelloWorld.html",
+    "href": "c-programming/01-HelloWorld.html",
+    "title": "Hello World",
     "section": "",
-    "text": "Before completing any of the following, be sure your system can compile c programs. To check, open the terminal and type gcc --version. gcc is the GNU compiler for the C programming language. If you hit an error, you need to install it using one of the following:\n# On Ubuntu\n\n# this command installs gcc, g++, libc6-dev, make, and dpkg-dev\nsudo apt-get build-essential"
+    "text": "Before completing any of the following, be sure your system can compile c programs.\nTo check if you can compile c programs, open the terminal and type gcc --version. gcc is the GNU Compiler Collection. If you hit an error, you can install it on your Ubuntu virutal machine using the following:\n# this command installs gcc, g++, libc6-dev, make, and dpkg-dev\nsudo apt-get build-essential\nOnce installed, run the command gcc --version again."
   },
   {
-    "objectID": "c programming/01-basics.html#introduction",
-    "href": "c programming/01-basics.html#introduction",
-    "title": "Basics",
+    "objectID": "c-programming/01-HelloWorld.html#setting-up",
+    "href": "c-programming/01-HelloWorld.html#setting-up",
+    "title": "Hello World",
     "section": "",
-    "text": "Before completing any of the following, be sure your system can compile c programs. To check, open the terminal and type gcc --version. gcc is the GNU compiler for the C programming language. If you hit an error, you need to install it using one of the following:\n# On Ubuntu\n\n# this command installs gcc, g++, libc6-dev, make, and dpkg-dev\nsudo apt-get build-essential"
+    "text": "Before completing any of the following, be sure your system can compile c programs.\nTo check if you can compile c programs, open the terminal and type gcc --version. gcc is the GNU Compiler Collection. If you hit an error, you can install it on your Ubuntu virutal machine using the following:\n# this command installs gcc, g++, libc6-dev, make, and dpkg-dev\nsudo apt-get build-essential\nOnce installed, run the command gcc --version again."
   },
   {
-    "objectID": "c programming/01-basics.html#hello-world",
-    "href": "c programming/01-basics.html#hello-world",
-    "title": "Basics",
+    "objectID": "c-programming/01-HelloWorld.html#hello-world",
+    "href": "c-programming/01-HelloWorld.html#hello-world",
+    "title": "Hello World",
     "section": "Hello World!",
-    "text": "Hello World!\n#include &lt;stdio.h&gt;\n\nint main(){\n    printf(\"Hello World!\"); // No new line unless you say to do it.\n    printf(\"Hello again!\\n\"); // Now has a new line\n    printf(\"Hello there!\");\n\n    return 0;\n}"
+    "text": "Hello World!\nCreate a file called hello.c and put the following contents in it.\n#include &lt;stdio.h&gt;\n\nint main(){\n    printf(\"Hello World!\"); // No new line unless you say to do it.\n    printf(\"Hello again!\\n\"); // Now has a new line\n    printf(\"Hello there!\");\n\n    return 0;\n}\nCompile the program with the following command:\ngcc hello.c -o hello\nIn the command, we invoke gcc to compile the program called hello.c. We use the -o flag to specify the name of the executable file that the compiliation process outputs. In this case, we are calling it hello.\nTo run the executable file, type ./hello into the terminal. You should see the three messages printed in the terminal."
   },
   {
-    "objectID": "c programming/01-basics.html#variables-and-format-specifiers",
-    "href": "c programming/01-basics.html#variables-and-format-specifiers",
-    "title": "Basics",
-    "section": "Variables and Format Specifiers",
-    "text": "Variables and Format Specifiers"
+    "objectID": "c-programming/01-HelloWorld.html#command-line-input",
+    "href": "c-programming/01-HelloWorld.html#command-line-input",
+    "title": "Hello World",
+    "section": "Command Line Input",
+    "text": "Command Line Input\nThe following program shows how to take command line input.\n#include &lt;stdio.h&gt;\n\nint main(int argc, char *argv[]){\n    // ^ a standard signature for taking in command line arguments\n    // argc represents the number of arguments coming in. \n    // argv a pointer to where the arguments are stored in memory\n    \n    // printing the inputs\n    printf(\"argc: %d\\n\", argc);\n    \n    for (int i=0; i &lt; argc; i++){\n        printf(\"argv[%d]: %s\\n\", i, argv[i]);\n    }\n\n    // argv ends with a null pointer\n    printf(\"argv[%d]: %s\\n\", argc, argv[argc]);\n\n    return 0;\n}\nCompile and run the program, but provide space separated arguments on execution.\nExample: In this example the executable is named CommandLineArgs and the arguments hi, how, are, and you are provided.\n./CommandLineArgs hi how are you"
   },
   {
-    "objectID": "c programming/01-basics.html#passing-arguments-into-the-program",
-    "href": "c programming/01-basics.html#passing-arguments-into-the-program",
-    "title": "Basics",
-    "section": "Passing Arguments into the Program",
-    "text": "Passing Arguments into the Program"
+    "objectID": "c-programming/02-DataTypes.html",
+    "href": "c-programming/02-DataTypes.html",
+    "title": "Data Types and Format Specifiers",
+    "section": "",
+    "text": "An example of the int data type and the corresponding format specifiers.\n#include &lt;stdio.h&gt;\n\nint main(){\n    /////// int\n    //  - should be at least 16 bits (2 bytes)\n    //  - Typically 4 bytes on most 32 and 64 bit machines\n    //  - 4 bytes of 0s: 00000000 00000000 00000000 00000000\n\n    printf(\"\\nints:\\n\");\n    int w;          // declaration\n    w = 10;         // initialization\n    int age = 21;   // both declaration and initilization\n\n    // print the integer associated with x\n    // %d is the format specifier for integers),\n    printf(\"The value of w is %d\\n\", w);  \n\n    // check the size on your machine\n    printf(\"The size of an int is %lu bytes\\n\", sizeof(w));\n\n    /////// short int\n    //  - should be at least 16 bits (2 bytes)\n    //  - Typically 2 bytes on most 32 and 64 bit machines\n    printf(\"\\nshort int:\\n\");\n    short x = 20;\n    printf(\"The value of x is `%d\\n\", x);\n    printf(\"The size of a short int is %lu bytes\\n\", sizeof(x));\n\n\n    /////// long int\n    //  - should be at least 32 bits (4 bytes)\n    //  - Typically 8 bytes on most 64 bit machines, but 4 bytes on 32 bit machines\n    printf(\"\\nlong int:\\n\");\n    long y = 20;\n    printf(\"The value of y is `%ld\\n\", y);\n    printf(\"The size of a long is %lu bytes\\n\", sizeof(y));\n\n    /////// long long int\n    //  - should be at least 64 bits (8 bytes)\n    //  - Typically 8 bytes\n    printf(\"\\nlong int:\\n\");\n    long long int z = 20;\n    printf(\"The value of z is `%lld\\n\", z);\n    printf(\"The size of a long long is %lu bytes\\n\", sizeof(z));\n\n    // unsigned versions of the above also\n    //  - Range includes only positive values\n    printf(\"\\nunsigned int:\\n\");\n    unsigned int u = 20;\n    printf(\"The value of u is %u\\n\", u);\n    printf(\"The size of an unsigned int is %lu bytes\\n\", sizeof(u));\n}"
   },
   {
-    "objectID": "c programming/01-basics.html#data-types",
-    "href": "c programming/01-basics.html#data-types",
-    "title": "Basics",
-    "section": "Data Types",
-    "text": "Data Types"
+    "objectID": "c-programming/02-DataTypes.html#ints",
+    "href": "c-programming/02-DataTypes.html#ints",
+    "title": "Data Types and Format Specifiers",
+    "section": "",
+    "text": "An example of the int data type and the corresponding format specifiers.\n#include &lt;stdio.h&gt;\n\nint main(){\n    /////// int\n    //  - should be at least 16 bits (2 bytes)\n    //  - Typically 4 bytes on most 32 and 64 bit machines\n    //  - 4 bytes of 0s: 00000000 00000000 00000000 00000000\n\n    printf(\"\\nints:\\n\");\n    int w;          // declaration\n    w = 10;         // initialization\n    int age = 21;   // both declaration and initilization\n\n    // print the integer associated with x\n    // %d is the format specifier for integers),\n    printf(\"The value of w is %d\\n\", w);  \n\n    // check the size on your machine\n    printf(\"The size of an int is %lu bytes\\n\", sizeof(w));\n\n    /////// short int\n    //  - should be at least 16 bits (2 bytes)\n    //  - Typically 2 bytes on most 32 and 64 bit machines\n    printf(\"\\nshort int:\\n\");\n    short x = 20;\n    printf(\"The value of x is `%d\\n\", x);\n    printf(\"The size of a short int is %lu bytes\\n\", sizeof(x));\n\n\n    /////// long int\n    //  - should be at least 32 bits (4 bytes)\n    //  - Typically 8 bytes on most 64 bit machines, but 4 bytes on 32 bit machines\n    printf(\"\\nlong int:\\n\");\n    long y = 20;\n    printf(\"The value of y is `%ld\\n\", y);\n    printf(\"The size of a long is %lu bytes\\n\", sizeof(y));\n\n    /////// long long int\n    //  - should be at least 64 bits (8 bytes)\n    //  - Typically 8 bytes\n    printf(\"\\nlong int:\\n\");\n    long long int z = 20;\n    printf(\"The value of z is `%lld\\n\", z);\n    printf(\"The size of a long long is %lu bytes\\n\", sizeof(z));\n\n    // unsigned versions of the above also\n    //  - Range includes only positive values\n    printf(\"\\nunsigned int:\\n\");\n    unsigned int u = 20;\n    printf(\"The value of u is %u\\n\", u);\n    printf(\"The size of an unsigned int is %lu bytes\\n\", sizeof(u));\n}"
+  },
+  {
+    "objectID": "c-programming/02-DataTypes.html#chars",
+    "href": "c-programming/02-DataTypes.html#chars",
+    "title": "Data Types and Format Specifiers",
+    "section": "Chars",
+    "text": "Chars\nAn example of the int data type and the corresponding format specifiers.\n#include &lt;stdio.h&gt;\n\nint main(){\n    // char \n    //      - single character\n    //      - 1 byte of memory (8 bits)\n    //      - can also store integers -128 to +127; \n    //      - note that integers correspond to ASCII values\n    //      - unsigned char can store from 0 to 255 since they're all positive;\n\n    char letter = 'a';\n    printf(\"\\nletter: %c\\n\", letter);\n    printf(\"size: %lu byte\\n\", sizeof(letter));\n\n    char another = 100;\n    printf(\"\\nanother - as char: %c\\n\", another);\n    printf(\"another - as int: %d\\n\", another); \n    printf(\"size: %lu byte\\n\", sizeof(another));\n\n\n    unsigned char anotherOne = 250; // outside bounds of ascii\n    printf(\"\\nanotherOne - as char: %c\\n\", anotherOne);\n    printf(\"anotherOne - as int: %d\\n\", anotherOne);\n    printf(\"size: %lu byte\\n\", sizeof(anotherOne));\n\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/02-DataTypes.html#floats-and-doubles",
+    "href": "c-programming/02-DataTypes.html#floats-and-doubles",
+    "title": "Data Types and Format Specifiers",
+    "section": "Floats and Doubles",
+    "text": "Floats and Doubles\nAn example of floats and doubles.\n#include &lt;stdio.h&gt;\n\nint main(){\n\n    /* float\n        -  represented using a 32-bit IEEE 754 single precision floating point number\n            -  8 bits for the exponent\n            -  24 for the signicand\n                - 1 bit for sign\n                - 23 for mantissa\n        - note that you cannot trust precion after a certain number of decimal places.\n        - the following code showcases that. \n    */\n    \n    float x = 12.1234567890123456789012;\n    printf(\"x: %.22f\\n\", x);\n    long int numBits = sizeof(x) * 8;\n    printf(\"size of x: %lu bytes\\n\", sizeof(x));\n    printf(\"size of x: %lu bits \\n\", numBits);\n\n\n    /* double\n        -  represented using a 64-bit IEEE 754 double precision floating point number\n            -  11 bits for the exponent\n            -  53 bits for the significand\n                - 1 bit for sign\n                - 52 for mantissa\n\n        - note that you cannot trust precion after a certain number of decimal places.\n        - the following code showcases that.        \n    */\n    double y = 12.1234567890123456789012;\n    printf(\"\\ny: %.22lf\\n\", y);\n    numBits = sizeof(y) * 8;\n    printf(\"size of y: %lu bytes\\n\", sizeof(y));\n    printf(\"size of y: %lu bits \\n\", numBits);\n\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/05-More-on-Data.html",
+    "href": "c-programming/05-More-on-Data.html",
+    "title": "More on Data",
+    "section": "",
+    "text": "#include &lt;stdio.h&gt;\n\nint main(){\n    // a pointer is a reference to a memory location\n    // use * to state that something is a pointer\n    int faveNum = 10;               // normal variable\n    int *faveNumPtr  = &faveNum;    // a pointer for an integer (faveNum is an integer)\n                                    // the & means \"address at\" fave num.\n\n    \n    printf(\"My fave num is %d and it is stored at %p\\n\", faveNum, faveNumPtr);\n\n    // we can access the value associated with a pointer through the indirection operator *\n    printf(\"My fave num is %d\", *faveNumPtr);\n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/05-More-on-Data.html#pointers",
+    "href": "c-programming/05-More-on-Data.html#pointers",
+    "title": "More on Data",
+    "section": "",
+    "text": "#include &lt;stdio.h&gt;\n\nint main(){\n    // a pointer is a reference to a memory location\n    // use * to state that something is a pointer\n    int faveNum = 10;               // normal variable\n    int *faveNumPtr  = &faveNum;    // a pointer for an integer (faveNum is an integer)\n                                    // the & means \"address at\" fave num.\n\n    \n    printf(\"My fave num is %d and it is stored at %p\\n\", faveNum, faveNumPtr);\n\n    // we can access the value associated with a pointer through the indirection operator *\n    printf(\"My fave num is %d\", *faveNumPtr);\n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/05-More-on-Data.html#arrays",
+    "href": "c-programming/05-More-on-Data.html#arrays",
+    "title": "More on Data",
+    "section": "Arrays",
+    "text": "Arrays\n#include &lt;stdio.h&gt;\n\nint main(){\n\n    // arrays are collections of similar values in contiguous memory locations\n    int someNums[] = {1, 2, 3, 4, 5, 6}; // size of 6\n    int moreNums[10]; // size of 10\n\n\n    // note that the identifier can be used as a pointer to the memory location of the first item\n    printf(\"The mem addr of the array is %p\\n\", someNums);          // note: not using &, but you can.\n    printf(\"The mem addr of the first item is %p\\n\", &someNums[0]); // note: need to use & to get address at\n\n    // when in the space the array was defined, you can use sizeof to get how large it is\n    printf(\"The num of bytes in the array is %lu\\n\", sizeof(someNums));\n    printf(\"That makes sense because 4 bytes (per int) * 6 items = %lu\\n\", sizeof(someNums));\n    \n    // We can use sizeof to get the length of the array\n    printf(\"The length of the array is %lu\\n\", sizeof(someNums) / sizeof(int));\n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/05-More-on-Data.html#looping-with-arrays",
+    "href": "c-programming/05-More-on-Data.html#looping-with-arrays",
+    "title": "More on Data",
+    "section": "Looping with Arrays",
+    "text": "Looping with Arrays\n#include &lt;stdio.h&gt;\n\nint main(){\n\n    // arrays are collections of similar values in contiguous memory locations\n\n    int someNums[] = {1, 2, 3, 4, 5, 6}; // size of 6\n    int moreNums[10]; // size of 10\n\n    // using a while loop to assign values to myOtherFaves\n    int counter = 0;\n    while (counter &lt; 10){\n        moreNums[counter] = counter;\n        printf(\"Added %d as a value to myOtherFaves\\n\", counter);\n        counter++;\n    }\n\n    // using a for loop to access each value\n    // we get the upper limit of the incrementer\n    // by dividing the number of bytes of the array by the size of the data type\n    // here, the identifier someNums is not treated as a pointer\n    size_t n = sizeof(someNums) / sizeof(int);\n    for (int i = 0; i &lt; n; i++){\n        printf(\"The %dth item in the array is %d\\n\", i, someNums[i]);\n    }\n\n    // note there is also a do while loop\n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/05-More-on-Data.html#functions-with-arrays",
+    "href": "c-programming/05-More-on-Data.html#functions-with-arrays",
+    "title": "More on Data",
+    "section": "Functions with Arrays",
+    "text": "Functions with Arrays\n#include &lt;stdio.h&gt;\n\n\nvoid addStuff(int myArray[], int myArrayLength){ // a signature that takes in an array\n    // the array decays to a pointer when passed through\n    // so sizeof() returns the size of the pointer now\n    // we can pass in the size of the array in addition to the array (if we need the size)\n    // note: you can still use the index to access values inside the functions\n\n    for(int i=0; i &lt; myArrayLength; i++){\n        myArray[i] = i * 2;\n    }\n}\n\nvoid viewStuff(int *myArray, int myArrayLength){// a signature that takes in an array\n    // common to use the pointer notation * here since it will decay to a pointer\n    for (int i=0; i &lt; myArrayLength; i++){\n        printf(\"The item at index %d is %d\\n\", i, myArray[i]);\n    }\n}\n\nint main(){\n\n    int ages[5];\n\n    // get the length here, since this is where we defined it.\n    size_t length = sizeof(ages) / sizeof(int); \n\n    // pass the length into the function\n    addStuff(ages, length);\n    viewStuff(ages, length);\n\n    return 0;\n}"
   },
   {
     "objectID": "linux/vm-install-mac.html",
@@ -313,5 +362,54 @@
     "title": "Linux Filesystem",
     "section": "Directories",
     "text": "Directories\n\n/bin\n\ncommon binaries (i.e. applications you can run)\nyou’ll find many of the commands you can use here, like ls\nNote: ls -l /bin shows that it is a link to /usr/bin\n\n\n\n/sbin\n\nsystem binaries (applications for system admin, like adduser)\n\n\n\n/home\n\nthe personal files for each user\nRun ls /home to see a directory for yourself.\n\n\n\n/lib\n\nwhere shared libraries live.\ncode that applications can use to interact with the kernel\nnote, you will see lib files elsewhere, but this one is for the kernel specifically.\n\n\n\n/etc\n\nShort for et cetera (we say et-see)\nMainly contains configuration files\n\n\n\n/dev\n\nshort for device\ncontains files related to devices attached to the machine (like a webcam)\n\n\n\n/boot\n\ncontains the files necessary to boot the system.\n\n\n\n/media\n\nwhere external storage is auto mounted when you plug it in\n\n\n\n/mnt\n\nwhere external storage is manually mounted\n\n\n\n/opt\n\nfrequently where custom built software lands\n\n\n\n/proc\n\ncontains info about your computer\n\n\n\n/root\n\nhome directory of the superuser\nits not under /home for a reason (those are not the superuser)\n\n\n\n/run\n\nstores temporary data for system processes\n\n\n\n/usr\n\nwhere user’s home directories used to be kept (now under /home)\ncontains a collection of stuff that needs to be shared by applications\n\n\n\n/tmp\n\ncontains temporary files\n\n\n\n/var\n\nshort for variable\nusually contains logs"
+  },
+  {
+    "objectID": "c-programming/03-Operators.html",
+    "href": "c-programming/03-Operators.html",
+    "title": "Operators",
+    "section": "",
+    "text": "#include &lt;stdio.h&gt;\n\nint main(){\n    // arithmetic operators\n    // +    add\n    // -    sub\n    // *    multiply\n    // /    division\n    // %    mod \n\n\n    // example 1:\n    int a = 3;\n    int b = 40;\n    int result = a + b;\n    printf(\"a + b = %d \\n\", result);\n\n    // example 2:\n    int remainder = b % a;\n    printf(\"b %% a = %d\", remainder); \n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/03-Operators.html#arithmetic-operators",
+    "href": "c-programming/03-Operators.html#arithmetic-operators",
+    "title": "Operators",
+    "section": "",
+    "text": "#include &lt;stdio.h&gt;\n\nint main(){\n    // arithmetic operators\n    // +    add\n    // -    sub\n    // *    multiply\n    // /    division\n    // %    mod \n\n\n    // example 1:\n    int a = 3;\n    int b = 40;\n    int result = a + b;\n    printf(\"a + b = %d \\n\", result);\n\n    // example 2:\n    int remainder = b % a;\n    printf(\"b %% a = %d\", remainder); \n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/03-Operators.html#logical",
+    "href": "c-programming/03-Operators.html#logical",
+    "title": "Operators",
+    "section": "Logical",
+    "text": "Logical\n#include &lt;stdio.h&gt;\n#include &lt;stdbool.h&gt; // need to use true and false as booleans\n\nint main(){\n\n    // &&  - logical and\n    // ||  - logical or\n    // !   - logical not\n\n    if (1 && 1){\n        printf(\"True and True\\n\");\n    }\n\n    if (1 && 0){\n        // wont print\n        printf(\"True and False\\n\");\n    }\n\n    if (1 || 0){\n        printf(\"True OR False\\n\");\n    }\n\n    if (!0 || 0){\n        printf(\"Not True OR False\\n\");\n    }\n\n    if (true){\n        printf(\"TRUE\");\n    }\n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/03-Operators.html#bitwise",
+    "href": "c-programming/03-Operators.html#bitwise",
+    "title": "Operators",
+    "section": "Bitwise",
+    "text": "Bitwise\nNote: When compiling with the directive #include &lt;math.h&gt;, you may need to end the command with -lm. An example follows:\ngcc [fileName.c] -o [executableName] -lm\n#include &lt;stdio.h&gt;\n#include &lt;math.h&gt;\n\nint main(){\n\n    unsigned int a = 10;            // 1010\n    unsigned int b = 15;            // 1111\n    \n\n    // bitwise and - &\n    unsigned int result = a & b; \n    /*\n        1010    &lt;- 10\n    &   1111    &lt;- 15\n    =   1010    -&gt; 10\n    */  \n    printf(\"Ex 1: %d\\n\", result);\n\n\n\n    // bitwise or - |\n    unsigned int result2 = 10 | 15;\n    /*\n        1010    &lt;- 10\n    |   1111    &lt;- 15\n    =   1111    -&gt; 15\n    */  \n    printf(\"Ex 2: %d\\n\", result2);\n\n\n\n    // bitwise not/flip/ones complement - ~\n    unsigned int result3 = ~a;      \n    // ~a -&gt; ~1010 but....\n    // remember if an unsigned int is 4 bytes, then we have:\n    //      00000000 00000000 00000000 00001010 \n    // So bit flipping results in: \n    //      11111111 11111111 11111111 11110101 -&gt; 4,294,967,285\n    printf(\"Ex 3: %u\\n\", result3);\n\n\n\n    // bitwise xor - ^\n    unsigned int result4 = a ^ b;\n    /*\n        1010    &lt;- 10\n    ^   1111    &lt;- 15\n    =   0101    -&gt;  5\n    */  \n    printf(\"Ex 4: %u\\n\", result4);\n\n\n    // right shift - &gt;&gt;\n    /*\n          15 &gt;&gt; 3  \n        1111 &gt;&gt; 3 -&gt; 0001 -&gt; 1\n    */\n    u_int32_t result5 = b &gt;&gt; 3;\n    printf(\"Ex 5: %u\\n\", result5);\n\n\n    // left shift - &lt;&lt;\n    /*\n          15 &lt;&lt; 2  \n        1111 &lt;&lt; 2 -&gt; 111100 -&gt; 60\n    */\n    u_int32_t result6 = b &lt;&lt; 2;\n    printf(\"Ex 5: %u\\n\", result6);\n\n\n    // Shifting can be used for power of 2 multiplication and division:\n\n    // Left shift for power of 2 multiplication:\n    // It's faster for a machine than traditional multiplication\n    // u &lt;&lt; k = u * pow(2, k)\n    int u = 3; \n    int k = 2;\n    printf(\"%d\\n\", u &lt;&lt; k);\n    printf(\"%lf\\n\", u * pow(2, k));  // requires #include &lt;math.h&gt; directive \n\n    // Right shift for power of 2 division:\n    // u &gt;&gt; k = u / pow(2, k)\n    int u2 = 2500;\n    int k2 = 3;\n    printf(\"%d\\n\", u2 &gt;&gt; k2);\n    printf(\"%f\", u2 / pow(2, k2));  // requires #include &lt;math.h&gt; directive \n\n    printf(\"\\n\");\n    return 0;\n\n}"
+  },
+  {
+    "objectID": "c-programming/04-Functions.html",
+    "href": "c-programming/04-Functions.html",
+    "title": "Functions",
+    "section": "",
+    "text": "#include &lt;stdio.h&gt;\n\n// you can define functions up here\n// must state return type and types for the formal parameters\nint addOne(int value){\n    return value + 1;\n}\n\n\nint main(){\n\n    int num = 10;\n    int result = addOne(num);\n    result = addOne(result);\n\n    printf(\"You started with %d.\\n\", num);\n    printf(\"Now you have %d.\\n\", result);\n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/04-Functions.html#defining-functions",
+    "href": "c-programming/04-Functions.html#defining-functions",
+    "title": "Functions",
+    "section": "",
+    "text": "#include &lt;stdio.h&gt;\n\n// you can define functions up here\n// must state return type and types for the formal parameters\nint addOne(int value){\n    return value + 1;\n}\n\n\nint main(){\n\n    int num = 10;\n    int result = addOne(num);\n    result = addOne(result);\n\n    printf(\"You started with %d.\\n\", num);\n    printf(\"Now you have %d.\\n\", result);\n\n    printf(\"\\n\");\n    return 0;\n}"
+  },
+  {
+    "objectID": "c-programming/04-Functions.html#function-prototyping",
+    "href": "c-programming/04-Functions.html#function-prototyping",
+    "title": "Functions",
+    "section": "Function Prototyping",
+    "text": "Function Prototyping\n#include &lt;stdio.h&gt;\n\n// we could just prototype the functions up here\n// for function prototyping, we only need to state the name and types\n// stating parameter identifiers is optional\nint addOne(int);\n\n\n\n\nint main(){\n    int num = 10;\n    int result = addOne(num);\n\n    printf(\"Start: %d\\n\", num);\n    printf(\"End: %d\\n\", result);\n\n    printf(\"\\n\");\n    return 0;\n}\n\n\n// then define them down here\nint addOne(int value){\n    return value + 1;\n}"
   }
 ]
