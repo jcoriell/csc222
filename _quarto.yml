@@ -23,6 +23,13 @@ website:
           - terminal/file-permissions.qmd
           - terminal/grep-and-regex.qmd
           - terminal/more-commands.qmd
+      - section: "C Programming"
+        contents:
+          - c-programming/01-HelloWorld.qmd
+          - c-programming/02-DataTypes.qmd
+          - c-programming/03-Operators.qmd
+          - c-programming/04-Functions.qmd
+          - c-programming/05-More-on-Data.qmd
 
 
 
