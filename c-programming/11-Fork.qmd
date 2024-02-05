@@ -1,0 +1,101 @@
+---
+title: Fork
+---
+
+
+## Basics
+
+```c 
+#include <stdio.h>
+#include <unistd.h>
+
+int main(){
+    // fork creates a child process
+    fork();
+
+    printf("This should print twice.\n");
+
+    return 0;
+}
+```
+
+## Working within Processes
+
+```c 
+#include <stdio.h>
+#include <unistd.h>
+
+int main(){
+    int pid = fork();
+
+    // if fork returns -1, it failed to create the child
+    if (pid < 0){
+        printf("Failed to create child process\n");
+        return 1;
+    }
+
+    // when pid == 0, then you're in the child process
+    // if it's greater than zero, you're in the parent process
+
+    if (pid == 0){
+        printf("I'm in the child process\n");
+    } else {
+        printf("I'm in the parent process\n");
+    }
+
+    printf("Hi from both\n");
+
+    return 0;
+
+}
+```
+
+## Process IDs
+
+```c 
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+// #include <wait.h>
+
+int main(){
+
+    pid_t pid = fork();
+
+    if (pid < 0){
+        printf("Failed to create child.");
+        return 1;
+    }
+
+    if (pid == 0){
+        printf("pid in child: %d\n", pid);
+        printf("From child, id of child is: %d\n", getpid());
+        printf("From child, id of parent is: %d\n", getppid());
+    } else {
+        printf("pid in parent: %d\n", pid);
+        printf("From parent, id of parent is: %d\n", getpid());
+        wait(NULL);
+    }
+
+    return 0;
+}
+```
+
+## fflush 
+
+```c 
+#include <stdio.h>
+#include <unistd.h>
+
+int main(){
+
+    printf("THis should print once!!!!");
+    fflush(stdout);
+    
+    fork();
+
+    printf("This should print twice\n");
+
+    return 0;
+}
+```

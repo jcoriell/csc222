@@ -1,0 +1,118 @@
+---
+title: Structs and Unions
+---
+
+## Structs
+
+```c 
+#include <stdio.h>
+
+// structs are collections of variables of different types
+// the members are like properties/state in Object oriented programming
+// memory is allocated for each member separately
+// all members values can be accessed/used at the same time
+
+struct Person{
+    int age;        // location of first member is the same as the location of the struct
+    char name[20];  // location of the second member is adjacent to the first
+};
+
+int main(){
+    struct Person bill = {10, "Bill"};
+    struct Person amanda = {20, "Amanda"};
+
+    // look at bill
+    printf("%s is %d years old\n", bill.name, bill.age);
+    printf("%s is located at %p\n", bill.name, &bill);
+    printf("%s's age is located at %p\n", bill.name, &bill.age);
+    printf("%s's name is located at %p\n", bill.name, &bill.name);
+
+    // look at amanda
+    printf("%s is %d years old\n", amanda.name, amanda.age);
+    printf("%s is located at %p\n", amanda.name, &amanda);
+    printf("%s's age is located at %p\n", amanda.name, &amanda.age);
+    printf("%s's name is located at %p\n", amanda.name, &amanda.name);
+
+    return 0;
+}
+```
+
+## Structs and Pointers
+
+```c 
+#include <stdio.h>
+#include <string.h>
+
+struct Person{
+    char name[20];
+    int age;
+};
+
+int main(){
+    struct Person amanda = {"Amanda", 20};
+    struct Person *amandaPtr = &amanda;
+
+    // -> operator accesses the value at a member via the pointer
+    printf("%s's age is %d\n", amandaPtr->name, amandaPtr->age);
+    
+    // or through indirection (dereferencing)
+    printf("%s's age is %d\n", (*amandaPtr).name, (*amandaPtr).age);
+}
+```
+
+## Struct with Malloc
+
+```c 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    int age;
+    char name[20];
+} Person;
+
+int main(){
+    Person *personPtr;
+
+    personPtr = malloc(sizeof(Person));
+
+    personPtr->age=30;
+    strcpy(personPtr->name, "Buzz Lightyear");
+
+
+    printf("%s's age is %d\n", personPtr->name, personPtr->age);
+
+    return 0;
+}
+```
+
+## Unions
+
+```c 
+#include <stdio.h>
+#include <string.h>
+
+// unions are collection of variables of different datatypes
+// the members again are kinda like the properties in OOP
+// memory is NOT allocated for each member separately
+// can only access/use one member at a time
+// one common space for all the members
+
+union Student{
+    float gpa;
+    char name[10];
+};
+
+
+int main(){
+    union Student student;
+    student.gpa = 3.4;
+    // strcpy(student.name, "Tony");
+
+    printf("gpa: %f\n", student.gpa);
+
+    return 0;
+}
+```
+

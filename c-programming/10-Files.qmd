@@ -1,0 +1,39 @@
+---
+title: Files
+---
+
+## Reading Files
+
+```c 
+#include <stdio.h>
+
+int main(){
+    FILE *filePtr;
+
+    // provide the path to your file in place of readable.txt
+    filePtr = fopen("readable.txt", "r");
+
+    // good practice
+    if (filePtr == NULL){
+        printf("the file does not exist");
+        return 1;
+    }
+
+    char contents[100];
+    /*
+    // reads and prints the first line only
+    fgets(contents, 100, filePtr);
+    printf("%s", contents);
+    */
+
+    // to read more than the first line
+    while (fgets(contents, 100, filePtr)){
+        printf("%s", contents);
+    }
+
+    fclose(filePtr);
+
+    return 0;
+
+}
+```

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CSC 222 Systems Programming - Linux Filesystem</title>
+<title>CSC 222 Systems Programming - Exec Functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -73,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/linux-filesystem.html">Linux Filesystem</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../c-programming/01-HelloWorld.html">C Programming</a></li><li class="breadcrumb-item"><a href="../c-programming/13-Exec-Functions.html">Exec Functions</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -115,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linux Filesystem</span></a>
   </div>
 </li>
@@ -269,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exec Functions</span></a>
   </div>
 </li>
@@ -285,25 +319,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#directories" id="toc-directories" class="nav-link" data-scroll-target="#directories">Directories</a>
+  <li><a href="#about-execl" id="toc-about-execl" class="nav-link active" data-scroll-target="#about-execl">About execl</a>
   <ul class="collapse">
-  <li><a href="#bin" id="toc-bin" class="nav-link" data-scroll-target="#bin">/bin</a></li>
-  <li><a href="#sbin" id="toc-sbin" class="nav-link" data-scroll-target="#sbin">/sbin</a></li>
-  <li><a href="#home" id="toc-home" class="nav-link" data-scroll-target="#home">/home</a></li>
-  <li><a href="#lib" id="toc-lib" class="nav-link" data-scroll-target="#lib">/lib</a></li>
-  <li><a href="#etc" id="toc-etc" class="nav-link" data-scroll-target="#etc">/etc</a></li>
-  <li><a href="#dev" id="toc-dev" class="nav-link" data-scroll-target="#dev">/dev</a></li>
-  <li><a href="#boot" id="toc-boot" class="nav-link" data-scroll-target="#boot">/boot</a></li>
-  <li><a href="#media" id="toc-media" class="nav-link" data-scroll-target="#media">/media</a></li>
-  <li><a href="#mnt" id="toc-mnt" class="nav-link" data-scroll-target="#mnt">/mnt</a></li>
-  <li><a href="#opt" id="toc-opt" class="nav-link" data-scroll-target="#opt">/opt</a></li>
-  <li><a href="#proc" id="toc-proc" class="nav-link" data-scroll-target="#proc">/proc</a></li>
-  <li><a href="#root" id="toc-root" class="nav-link" data-scroll-target="#root">/root</a></li>
-  <li><a href="#run" id="toc-run" class="nav-link" data-scroll-target="#run">/run</a></li>
-  <li><a href="#usr" id="toc-usr" class="nav-link" data-scroll-target="#usr">/usr</a></li>
-  <li><a href="#tmp" id="toc-tmp" class="nav-link" data-scroll-target="#tmp">/tmp</a></li>
-  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var">/var</a></li>
+  <li><a href="#execl-example" id="toc-execl-example" class="nav-link" data-scroll-target="#execl-example">Execl Example</a></li>
+  <li><a href="#execlp-example" id="toc-execlp-example" class="nav-link" data-scroll-target="#execlp-example">Execlp Example</a></li>
+  </ul></li>
+  <li><a href="#about-execv" id="toc-about-execv" class="nav-link" data-scroll-target="#about-execv">About Execv</a>
+  <ul class="collapse">
+  <li><a href="#execv-example" id="toc-execv-example" class="nav-link" data-scroll-target="#execv-example">Execv Example</a></li>
+  <li><a href="#execvp-example" id="toc-execvp-example" class="nav-link" data-scroll-target="#execvp-example">Execvp Example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -313,7 +337,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Linux Filesystem</h1>
+<h1 class="title">Exec Functions</h1>
 </div>
 
 
@@ -328,117 +352,90 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The top level of the filesystem on many linux machines contains most of the following directories. You’ll find a brief description of each below.</p>
+<section id="about-execl" class="level2">
+<h2 class="anchored" data-anchor-id="about-execl">About execl</h2>
+<pre><code>1. execl
+    format: execl(char *path, char *arg0, char *arg1, ..., NULL)
+        - loads and runs an executable with args
+        - path - the path to the executable
+        - arg0 is the name of the executable
+        - arg1 is the first space separated argument 
+        - ...
+        - NULL follows all the args
+        - returns -1 if there is an error
+    
+2. execlp
+    format: execlp(char *file, char *arg0, char *arg1, ..., NULL)
+        - similar to execl
+        - main difference is the file is sought for in the PATH environment variable
+
+3. execle
+    format: execle(char *path, char *arg0, char *arg1, ..., NULL, char *envp[])
+        - environment variables are in the format "NAME=VALUE"
+        - Ex: "HOME=/home/usr"</code></pre>
+<section id="execl-example" class="level3">
+<h3 class="anchored" data-anchor-id="execl-example">Execl Example</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// example of execl</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    execl<span class="op">(</span><span class="st">"/bin/ls"</span><span class="op">,</span> <span class="st">"ls"</span><span class="op">,</span> <span class="st">"-al"</span><span class="op">,</span> <span class="st">"-h"</span><span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="directories" class="level2">
-<h2 class="anchored" data-anchor-id="directories">Directories</h2>
-<section id="bin" class="level3">
-<h3 class="anchored" data-anchor-id="bin">/bin</h3>
-<ul>
-<li>common binaries (i.e.&nbsp;applications you can run)</li>
-<li>you’ll find many of the commands you can use here, like <code>ls</code></li>
-<li>Note: <code>ls -l /bin</code> shows that it is a link to <code>/usr/bin</code></li>
-</ul>
+<section id="execlp-example" class="level3">
+<h3 class="anchored" data-anchor-id="execlp-example">Execlp Example</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// example of execl</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    execlp<span class="op">(</span><span class="st">"ls"</span><span class="op">,</span> <span class="st">"ls"</span><span class="op">,</span> <span class="st">"-al"</span><span class="op">,</span> <span class="st">"-h"</span><span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="sbin" class="level3">
-<h3 class="anchored" data-anchor-id="sbin">/sbin</h3>
-<ul>
-<li>system binaries (applications for system admin, like <code>adduser</code>)</li>
-</ul>
 </section>
-<section id="home" class="level3">
-<h3 class="anchored" data-anchor-id="home">/home</h3>
-<ul>
-<li>the personal files for each user</li>
-<li>Run <code>ls /home</code> to see a directory for yourself.</li>
-</ul>
+<section id="about-execv" class="level2">
+<h2 class="anchored" data-anchor-id="about-execv">About Execv</h2>
+<pre><code>The v is for vector (not velociraptor)
+
+1. execv
+    format:  execv(char *path, char *args[])
+        - the first element of args is the name of the executable
+        - the last element of args is NULL
+
+2. execvp
+    format: execvp(char *filename, char *args[])
+        - looks at the PATH environment variable for the 
+            executable </code></pre>
+<section id="execv-example" class="level3">
+<h3 class="anchored" data-anchor-id="execv-example">Execv Example</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>args<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ls"</span><span class="op">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"-a"</span><span class="op">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"-l"</span><span class="op">,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"-h"</span><span class="op">,</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        NULL</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    execv<span class="op">(</span><span class="st">"/bin/ls"</span><span class="op">,</span> args<span class="op">);</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="lib" class="level3">
-<h3 class="anchored" data-anchor-id="lib">/lib</h3>
-<ul>
-<li>where shared libraries live.</li>
-<li>code that applications can use to interact with the kernel</li>
-<li>note, you will see lib files elsewhere, but this one is for the kernel specifically.</li>
-</ul>
-</section>
-<section id="etc" class="level3">
-<h3 class="anchored" data-anchor-id="etc">/etc</h3>
-<ul>
-<li>Short for et cetera (we say et-see)</li>
-<li>Mainly contains configuration files</li>
-</ul>
-</section>
-<section id="dev" class="level3">
-<h3 class="anchored" data-anchor-id="dev">/dev</h3>
-<ul>
-<li>short for device</li>
-<li>contains files related to devices attached to the machine (like a webcam)</li>
-</ul>
-</section>
-<section id="boot" class="level3">
-<h3 class="anchored" data-anchor-id="boot">/boot</h3>
-<ul>
-<li>contains the files necessary to boot the system.</li>
-</ul>
-</section>
-<section id="media" class="level3">
-<h3 class="anchored" data-anchor-id="media">/media</h3>
-<ul>
-<li>where external storage is auto mounted when you plug it in</li>
-</ul>
-</section>
-<section id="mnt" class="level3">
-<h3 class="anchored" data-anchor-id="mnt">/mnt</h3>
-<ul>
-<li>where external storage is manually mounted</li>
-</ul>
-</section>
-<section id="opt" class="level3">
-<h3 class="anchored" data-anchor-id="opt">/opt</h3>
-<ul>
-<li>frequently where custom built software lands</li>
-</ul>
-</section>
-<section id="proc" class="level3">
-<h3 class="anchored" data-anchor-id="proc">/proc</h3>
-<ul>
-<li>contains info about your computer</li>
-</ul>
-</section>
-<section id="root" class="level3">
-<h3 class="anchored" data-anchor-id="root">/root</h3>
-<ul>
-<li>home directory of the superuser</li>
-<li>its not under /home for a reason (those are not the superuser)</li>
-</ul>
-</section>
-<section id="run" class="level3">
-<h3 class="anchored" data-anchor-id="run">/run</h3>
-<ul>
-<li>stores temporary data for system processes</li>
-</ul>
-</section>
-<section id="usr" class="level3">
-<h3 class="anchored" data-anchor-id="usr">/usr</h3>
-<ul>
-<li>where user’s home directories used to be kept (now under /home)</li>
-<li>contains a collection of stuff that needs to be shared by applications</li>
-</ul>
-</section>
-<section id="tmp" class="level3">
-<h3 class="anchored" data-anchor-id="tmp">/tmp</h3>
-<ul>
-<li>contains temporary files</li>
-</ul>
-</section>
-<section id="var" class="level3">
-<h3 class="anchored" data-anchor-id="var">/var</h3>
-<ul>
-<li>short for variable</li>
-<li>usually contains logs</li>
-</ul>
+<section id="execvp-example" class="level3">
+<h3 class="anchored" data-anchor-id="execvp-example">Execvp Example</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>args<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ls"</span><span class="op">,</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"-a"</span><span class="op">,</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"-l"</span><span class="op">,</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"-h"</span><span class="op">,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        NULL</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    execvp<span class="op">(</span><span class="st">"ls"</span><span class="op">,</span> args<span class="op">);</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
