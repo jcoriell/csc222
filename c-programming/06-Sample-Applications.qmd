@@ -1,0 +1,121 @@
+---
+title: Sample Applications
+---
+
+
+## Vowel Counter
+
+```c
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h> // includes tolower()
+
+// function prototyping
+int countVowels(char*);
+
+int main(){
+    char sentence[100];
+    int numVowels;
+
+    printf("Give me a sentence to count the vowels: ");
+    fgets(sentence, 100, stdin);
+
+    numVowels = countVowels(sentence);
+    printf("There were %d vowels.", numVowels);
+
+    printf("\n");
+    return 0;
+}
+
+int countVowels(char *sentence){
+    int count = 0;
+
+    for (int i=0; i < strlen(sentence); i++){
+        switch(tolower(sentence[i])){
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+                count++;
+        }
+    }
+
+    return count;
+}
+```
+
+
+## Grade Calculator
+
+```c
+#include <stdio.h>
+
+char calcuateGrade(float);
+
+int main(){
+
+    float score;
+    printf("What was the score you received? ");
+    scanf("%f", &score);
+
+    char grade = calculateGrade(score);
+    printf("It looks like you got a(n) %c", grade);
+    
+    printf("\n");
+    return 0;
+}
+
+char calculateGrade(float value){
+    if (value >= 90){
+        return 'A';
+    } else if (value >= 80){
+        return 'B';
+    } else if (value >=70){
+        return 'C';
+    } else if (value >= 60){
+        return 'D';
+    } else if (value >= 50){
+        return 'E';
+    } else {
+        return 'F';
+    }
+
+}
+```
+
+## Bubble Sort
+
+```c
+#include <stdio.h>
+
+
+void bubbleSort(int*, size_t);
+
+int main(){
+    int myList[] = {10, 9, 8, 7, 6};
+    size_t listSize = sizeof(myList) / sizeof(int);
+    
+    bubbleSort(myList, listSize);
+
+    for (int i = 0; i < listSize; i++){
+        printf("%d ", myList[i]);
+    }
+
+    printf("\n");
+    return 0;
+}
+
+void bubbleSort(int *aList, size_t listSize){
+    for (int i=0; i < listSize - 1; i++){
+        for (int j = 0; j < listSize - 1 - i;  j++){
+            if (aList[j+1] < aList[j]){
+                // swap
+                int temp = aList[j];
+                aList[j] = aList[j+1];
+                aList[j+1] = temp;
+            }
+        }
+    }
+}
+```

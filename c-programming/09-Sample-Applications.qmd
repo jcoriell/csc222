@@ -1,0 +1,116 @@
+---
+title: Sample Applications
+---
+
+## Average
+
+```c 
+#include <stdio.h>
+#include <stdlib.h>
+
+double calculateAvg(int *grades, int size){
+    double average = 0;
+    for (int i =0; i < size; i++){
+        average += grades[i];
+    }
+    average /= size;
+    return average;
+}
+
+int main(){
+    int qty;
+    int *array;
+
+    printf("How many grades do you have? ");
+    scanf("%d", &qty);
+
+    // allocate enough space to store the number of grades the 
+    // user said they would provide
+    array = malloc(sizeof(int) * qty);
+
+    for (int i=0; i < qty; i++){
+        printf("Give me a grade: ");
+        scanf("%d", &array[i]);
+    }
+
+    printf("The grades you provided are: ");
+    for (int i = 0; i < qty; i++){
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+
+    // calculate the average
+    double average = calculateAvg(array, qty);
+    printf("The average is %.2lf\n", average);
+
+    free(array);
+
+    return 0;
+}
+```
+
+
+## Library of Books
+
+```c 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char name[255];
+    int birthYear;
+} Author;
+
+typedef struct{
+    char title[255];
+    Author author;
+    int pubYear;
+} Book;
+
+
+void readLine(char *target, int targetSize){
+
+    fgets(target, targetSize, stdin);
+
+    // replace newline with null character
+    size_t length = strlen(target);
+    if (length > 0 && target[length-1] == '\n'){
+        target[length-1] = '\0';
+    }
+
+}
+
+int main(){
+    
+    int numBooks;
+    printf("Let's build a library. How many books do you plan on adding? ");
+    scanf("%d", &numBooks);
+    getchar(); // reads a single character
+
+    Book *library = malloc(sizeof(Book) * numBooks);
+
+    for (int i=0; i < numBooks; i++){
+        printf("Book title: ");
+        readLine(library[i].title, sizeof(library[i].title));
+
+        printf("Author: ");
+        readLine(library[i].author.name, sizeof(library[i].author.name));
+
+        printf("Pub Year: ");
+        scanf("%d", &library[i].pubYear);
+        getchar();
+
+    }
+
+    printf("Here is the infor you provided:\n");
+
+    for(int i=0; i < numBooks; i++){
+        printf("Title: %s\n", library[i].title);
+        printf("Author: %s\n", library[i].author.name);
+        printf("Pub Year: %d\n", library[i].pubYear);
+    }
+
+    return 0;
+}
+```

@@ -30,6 +30,14 @@ website:
           - c-programming/03-Operators.qmd
           - c-programming/04-Functions.qmd
           - c-programming/05-More-on-Data.qmd
+          - c-programming/06-Sample-Applications.qmd
+          - c-programming/07-Memory-Allocation.qmd
+          - c-programming/08-Structs-and-Unions.qmd
+          - c-programming/09-Sample-Applications.qmd
+          - c-programming/10-Files.qmd
+          - c-programming/11-Fork.qmd
+          - c-programming/12-Piping.qmd
+          - c-programming/13-Exec-Functions.qmd
 
 
 

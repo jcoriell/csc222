@@ -1,0 +1,102 @@
+---
+title: Exec Functions
+---
+
+## About execl
+
+    1. execl
+        format: execl(char *path, char *arg0, char *arg1, ..., NULL)
+            - loads and runs an executable with args
+            - path - the path to the executable
+            - arg0 is the name of the executable
+            - arg1 is the first space separated argument 
+            - ...
+            - NULL follows all the args
+            - returns -1 if there is an error
+        
+    2. execlp
+        format: execlp(char *file, char *arg0, char *arg1, ..., NULL)
+            - similar to execl
+            - main difference is the file is sought for in the PATH environment variable
+
+    3. execle
+        format: execle(char *path, char *arg0, char *arg1, ..., NULL, char *envp[])
+            - environment variables are in the format "NAME=VALUE"
+            - Ex: "HOME=/home/usr"
+
+### Execl Example
+
+```c
+#include <unistd.h>
+
+int main(){
+    // example of execl
+    execl("/bin/ls", "ls", "-al", "-h", NULL);
+}
+```
+
+### Execlp Example
+
+```c
+#include <unistd.h>
+
+int main(){
+    // example of execl
+    execlp("ls", "ls", "-al", "-h", NULL);
+}
+```
+
+
+## About Execv 
+
+
+
+    The v is for vector (not velociraptor)
+
+    1. execv
+        format:  execv(char *path, char *args[])
+            - the first element of args is the name of the executable
+            - the last element of args is NULL
+
+    2. execvp
+        format: execvp(char *filename, char *args[])
+            - looks at the PATH environment variable for the 
+                executable 
+
+
+### Execv Example 
+
+```c 
+#include <unistd.h>
+
+int main(){
+    char *args[] = {
+        "ls",
+        "-a",
+        "-l",
+        "-h",
+        NULL
+    };
+    execv("/bin/ls", args);
+    
+}
+```
+
+
+### Execvp Example
+
+```c 
+#include <unistd.h>
+
+int main(){
+    char *args[] = {
+        "ls",
+        "-a",
+        "-l",
+        "-h",
+        NULL
+    };
+    execvp("ls", args);
+    
+}
+```

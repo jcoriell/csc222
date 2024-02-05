@@ -1,0 +1,118 @@
+---
+title: Memory Allocation
+---
+
+## Malloc 
+
+```c
+#include <stdio.h>
+#include <stdlib.h> // required for malloc()
+
+int main(){
+
+    int *value;
+
+    // malloc lets us dynamically allocate memory on the heap
+    value = malloc(4); // allows for 4 bytes to be stored at `value`
+    value = malloc(sizeof(int) * 10);
+
+    // set each value in the array
+    for (int i=0; i < 10;  i++){
+        value[i] = i * 2;
+    }
+
+    // print each value
+    for (int i=0; i < 10; i++){
+        printf("%d ", value[i]);
+    }
+    printf("\n");
+
+    // the function free() frees up the space taken by a dynamically 
+    // allocated reference
+    free(value);
+
+    // reallocate value with a new size
+    value = malloc(sizeof(int) * 20);
+
+    // note that malloc does not zero out the data that was there
+    // note the operating system may cause it to zero out as a security feature
+
+    for (int i = 0; i < 10; i++){
+        printf("%d ", value[i]);
+    }
+
+    printf("\n");
+
+    return 0;
+}
+```
+
+## Calloc
+
+```c
+#include <stdio.h>
+#include <stdlib.h> // needed for calloc
+
+int main(){
+    // calloc gaurantees that the allocated memory will be zeroed out
+    // two args: number of things, size of each thing
+    int *value = calloc(10, sizeof(int));
+
+    for (int i=0; i < 10; i++){
+        printf("%d ", value[i]);
+    }
+
+    free(value);
+    printf("\n");
+    
+    return 0;
+}
+```
+
+## Realloc
+
+```c
+#include <stdio.h>
+#include <stdlib.h> // needed for realloc
+
+
+void append(int *array, int *arrayLength, int newValue);
+
+int main(){
+    int length = 1;
+    int *array = malloc(sizeof(int) * length);
+
+    array[0] = 42;
+
+    for (int i=0; i < length; i++){
+        printf("%d \n", array[i]);
+    }
+
+    append(array, &length, 4);
+    append(array, &length, 10);
+    append(array, &length, 13);
+
+    for (int i=0; i < length; i++){
+        printf("%d ", array[i]);
+    }
+
+    printf("\n");
+    return 0;
+
+}
+
+void append(int *array, int *arrayLength, int newValue){
+
+    // set the new value of arrayLength
+    // remember: * is dereferencing the pointer (its gettin the value)
+    *arrayLength = *arrayLength + 1;
+
+    // allocated space for one more item
+    int *array2 = realloc(array, *arrayLength);
+
+    // reset the identifier so we can use it again
+    array = array2;
+
+    array[*arrayLength-1] = newValue;
+}
+```
