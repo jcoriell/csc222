@@ -1,0 +1,26 @@
+---
+title: Case
+---
+
+## Example
+
+```bash
+#!/bin/bash
+
+echo "What is your favorite food? "
+
+echo "1 - Pizza"
+echo "2 - Pineapples"
+echo "3 - Pineapple Pizza"
+
+read food;
+
+case $food in 
+    1) echo "Pizza is a great choice.";;
+    2) echo "Mmm. Great fruit";;
+    3) echo "Spicy choice. You must not be Remy.";;
+    *) echo "That wasn't an option"
+esac
+
+
+```

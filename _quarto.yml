@@ -38,6 +38,16 @@ website:
           - c-programming/11-Fork.qmd
           - c-programming/12-Piping.qmd
           - c-programming/13-Exec-Functions.qmd
+      - section: "Bash Scripting"
+        contents:
+          - bash-scripting/01-Intro.qmd
+          - bash-scripting/02-Args.qmd
+          - bash-scripting/03-Conditionals.qmd
+          - bash-scripting/04-Exit-Codes.qmd
+          - bash-scripting/05-Case.qmd
+          - bash-scripting/06-Loops.qmd
+          - bash-scripting/07-Functions.qmd
+
 
 
 
