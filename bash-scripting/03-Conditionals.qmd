@@ -1,0 +1,155 @@
+---
+title: Conditionals
+---
+
+## If with test
+
+```bash
+#!/bin/bash
+
+# with test
+if test $1 -gt 5
+then
+    echo "It is greater than 5"
+fi 
+
+if test $1 -lt 5
+then 
+    echo "It is less than 5"
+else
+    echo "It is not less than 5"
+fi
+```
+
+## if with brackets
+
+```bash
+#!/bin/bash
+
+# test but using brackets
+# must put space around the brackets
+if [ $1 -lt 10 ]
+then 
+    echo "$1 is less than 10"
+elif [ $1 -gt 10 ]
+then
+    echo "$1 is greater than 10"
+else 
+    echo "$1 is 10"
+fi 
+```
+
+## Comparison Operators
+
+```bash
+
+
+# don't run this file
+# just showing the operators
+
+### integer comparisons
+
+[ 3 -ge 2 ]  # greater than or equal to
+(( 5 >= 3 )) # option with paren
+
+[ 3 -gt 2 ]  # greater than
+(( 5 > 2 ))  # with paren
+
+[ 5 -lt 10 ] # less than
+(( 5 < 3 ))  # with paren
+
+[ 5 -le 10 ] # less than or equal to
+(( 5 <= 10 )) # with paren
+
+[ 5 -eq 5 ]   # equal to
+              # no == for ints
+
+[ 5 -ne 5 ]   # not equal to
+
+##### String comparisons
+# equality
+[ "apple" == "apple" ] # returns true
+
+myvar="hi you"
+[ $myvar == "hi you" ] # returns false, performs word splitting on "hi you"
+
+[[ $myvar == "hi you" ]] # returns true
+[ "$myvar" == "hi you" ] # or put the variable in quotes to return true
+
+# double brackets can help with pattern matching
+[[ "apple" == a* ]]  # returns ture, bc apple starts with an a (* for wildcard)
+
+#  checking for ASCII alphabetical order with > or <
+[[ "apple" < "banana" ]] # returns true
+[ "apple" \< "banana" ]  # can use \< if using single brackets
+
+# check for an empty string with -z
+avar=""
+[ -z $avar ]  # returns true
+
+# check if a string is not null/empty
+[ -n $avar ]  # return false
+
+```
+
+## File Testing
+
+```bash
+#!/bin/bash
+
+filename="hello.txt"
+
+[[ -e $filename ]] # returns true if any file/directory with the name exists
+                    # use double brackets to avoid word splitting 
+
+[[ -f $filename ]] # returns true if a regular file exists
+
+[[ -r $filename ]] # check for a readable file
+
+[ -d $filename ] # check for a directory
+
+[ -L $filename ] # check for a symbolic link
+
+# there are many more flags
+# man test give more info
+
+```
+
+## Logical Operators
+
+```bash
+# and
+[ 1 -eq 1 -a 2 -eq 2 ]  # -a for and
+[[ 1 -eq 1 && 2 -eq 2 ]]  # double amp in double bracket
+[ 1 -eq 1 ] && [2 -eq 2 ] # double amp outside of single bracket
+
+# or
+[ 1 -eq 1 -o 2 -eq 2 ]  # -o for or
+[[ 1 -eq 1 || 2 -eq 2 ]]  # double pipe in double bracket
+[ 1 -eq 1 ] || [2 -eq 2 ] # double pipe outside of single bracket
+
+# not is ! (just put it out front)
+[ ! -f "hello.txt" ]
+```
+
+## Existance Example
+
+```bash
+#!/bin/bash
+
+if [ -f "hello world.txt" ]
+then
+    echo "The file hello world.txt exists"
+else
+    echo "The file does not exist"
+fi
+
+# check if some directories exist
+if [ -d "../01 Intro" -a -d "../02 Args" ]
+then 
+    echo "They exist"
+else  
+    echo "They don't"
+fi 
+```
+

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CSC 222 Systems Programming - File Permissions</title>
+<title>CSC 222 Systems Programming - Functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -73,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../terminal/basic.html">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../terminal/file-permissions.html">File Permissions</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/07-Functions.html">Functions</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -168,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/file-permissions.html" class="sidebar-item-text sidebar-link active">
+  <a href="../terminal/file-permissions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">File Permissions</span></a>
   </div>
 </li>
@@ -322,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../bash-scripting/07-Functions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
@@ -338,18 +372,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#file-permission-breakdown" id="toc-file-permission-breakdown" class="nav-link" data-scroll-target="#file-permission-breakdown">File Permission Breakdown</a></li>
-  <li><a href="#changing-file-permissions" id="toc-changing-file-permissions" class="nav-link" data-scroll-target="#changing-file-permissions">Changing File Permissions</a></li>
-  <li><a href="#using-the-characters-that-represent-the-permissions" id="toc-using-the-characters-that-represent-the-permissions" class="nav-link" data-scroll-target="#using-the-characters-that-represent-the-permissions">Using the characters that represent the permissions</a>
-  <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  </ul></li>
-  <li><a href="#using-numeric-values" id="toc-using-numeric-values" class="nav-link" data-scroll-target="#using-numeric-values">Using Numeric Values</a>
-  <ul class="collapse">
-  <li><a href="#examples-1" id="toc-examples-1" class="nav-link" data-scroll-target="#examples-1">Examples</a></li>
-  </ul></li>
-  <li><a href="#changing-ownership" id="toc-changing-ownership" class="nav-link" data-scroll-target="#changing-ownership">Changing Ownership</a></li>
+  <li><a href="#simple-function" id="toc-simple-function" class="nav-link active" data-scroll-target="#simple-function">Simple function</a></li>
+  <li><a href="#with-args" id="toc-with-args" class="nav-link" data-scroll-target="#with-args">With Args</a></li>
+  <li><a href="#local-variables" id="toc-local-variables" class="nav-link" data-scroll-target="#local-variables">Local Variables</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
   </ul>
 </nav>
     </div>
@@ -358,7 +384,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">File Permissions</h1>
+<h1 class="title">Functions</h1>
 </div>
 
 
@@ -373,101 +399,72 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>File permissions are expressed with a 10 character string.</p>
-<p>To see the file permissions for files in a directory run <code>ls -l</code>.</p>
-<p>The output will resemble the following:</p>
-<pre><code>drwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop
-drwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents
-drwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads</code></pre>
-<p>The first set of characters such as <code>drwxr-xr-x</code> denotes the file permissions.</p>
-<p>The third and fouth columns denote the user and group assigned to the file.</p>
+<section id="simple-function" class="level2">
+<h2 class="anchored" data-anchor-id="simple-function">Simple function</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># defining functions</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hello ()</span> <span class="kw">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Hello from a function"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Exiting the function"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># calling the function</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span>   <span class="co"># no parenthesis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="file-permission-breakdown" class="level2">
-<h2 class="anchored" data-anchor-id="file-permission-breakdown">File Permission Breakdown</h2>
-<p>Let’s break down the permission string <code>drwxr-xr-x</code>.</p>
-<ol type="1">
-<li><p>The 1st character is the type of file. The most common characters you will see here are:</p>
-<pre><code>- for file.
-d for directory.
-l for link.</code></pre>
-<p>In the permissions <code>drwxr-xr-x</code>, the first character is <code>d</code>, so we have a directory.</p></li>
-<li><p>The next 9 characters are for 3 different permission classes</p>
-<ol type="a">
-<li><p>The owner of the file is the first set of 3 characters.</p>
-<p>In the string <code>drwxr-xr-x</code>, we have <code>rwx</code> which means the owner can read, write, and execute the file.</p></li>
-<li><p>The group for the file is the second set of 3.</p>
-<p>In the string <code>drwxr-xr-x</code>, we have <code>r-x</code> which means anyone in the group for the file (users belong to groups) can read and execute the file.</p></li>
-<li><p>The third set of 3 are for all other users (those not in the same user group, and not the owner)</p>
-<p>In the string <code>drwxr-xr-x</code>, we have <code>r-x</code> which means all others can read and execute the file, but cannot modify it.</p></li>
-</ol></li>
-</ol>
+<section id="with-args" class="level2">
+<h2 class="anchored" data-anchor-id="with-args">With Args</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># can use word function without paren</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> hello</span> <span class="kw">{</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this takes one arg</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># it's just like for a file</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"first arg </span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># if not using function use paren</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">helloAgain ()</span> <span class="kw">{</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"All args </span><span class="va">$@</span><span class="st">"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span> <span class="st">"this"</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ex">helloAgain</span> hi today is thursday</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="changing-file-permissions" class="level2">
-<h2 class="anchored" data-anchor-id="changing-file-permissions">Changing File Permissions</h2>
-<p>We use the command <code>chmod</code> to change the file permissions. You can use either of the following methods to change the permissions.</p>
+<section id="local-variables" class="level2">
+<h2 class="anchored" data-anchor-id="local-variables">Local Variables</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">globalvar</span><span class="op">=</span><span class="st">"this is global"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">helloLocal ()</span> <span class="kw">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">localvar</span><span class="op">=</span><span class="st">"this is local"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">globalvar</span><span class="op">=</span><span class="st">"this is also local"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$globalvar</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$localvar</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">helloLocal</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$globalvar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="using-the-characters-that-represent-the-permissions" class="level2">
-<h2 class="anchored" data-anchor-id="using-the-characters-that-represent-the-permissions">Using the characters that represent the permissions</h2>
-<p>The characters for each type of user are:</p>
-<ul>
-<li><code>u</code> for owner</li>
-<li><code>g</code> for group</li>
-<li><code>o</code> for others</li>
-<li><code>a</code> for all</li>
-</ul>
-<p>The characters for permissions are:</p>
-<ul>
-<li><code>r</code> for read</li>
-<li><code>w</code> for write</li>
-<li><code>x</code> for execute</li>
-</ul>
-<p>To add permissions, combine a usertype character with <code>+</code> and one or more of the permission characters.</p>
-<p>To remove permissions, combine a usertype character with <code>-</code> and one or more of the permission characters.</p>
-<section id="examples" class="level3">
-<h3 class="anchored" data-anchor-id="examples">Examples</h3>
-<ol type="1">
-<li><p><code>chmod u+rwx filename</code> to give read write and execute permissions to the owner.</p></li>
-<li><p><code>chmod g-x filename</code> to remove execute permissions from the group.</p></li>
-</ol>
-</section>
-</section>
-<section id="using-numeric-values" class="level2">
-<h2 class="anchored" data-anchor-id="using-numeric-values">Using Numeric Values</h2>
-<p>The values for each type of permission are:</p>
-<pre><code>r = 4
-w = 2
-x = 1</code></pre>
-<p>You can place them adjacent to each other to get combos</p>
-<pre><code>rw  = 4 + 2     = 6
-rwx = 4 + 2 + 1 = 7
-wx  =     2 + 1 = 3
-rx  = 4     + 1 = 5</code></pre>
-<p>When referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string <code>drwxr-xr-x</code> we have:</p>
-<pre><code>d    r w x    r - x    r - x
-     4 2 1    4   1    4   1
-
-Sum:     7        5        5
-Permission is 755</code></pre>
-<section id="examples-1" class="level3">
-<h3 class="anchored" data-anchor-id="examples-1">Examples</h3>
-<ol type="1">
-<li><p><code>chmod 766 filename</code> to give:</p>
-<ul>
-<li><code>rwx</code> permissions to the owner</li>
-<li><code>rw</code> permissions to the group<br>
-</li>
-<li><code>rw</code> permissions to the others</li>
-</ul></li>
-</ol>
-</section>
-</section>
-<section id="changing-ownership" class="level2">
-<h2 class="anchored" data-anchor-id="changing-ownership">Changing Ownership</h2>
-<ul>
-<li>use the command <code>sudo chown [owner][:group] [filename]</code> to change the ownership of a file</li>
-</ul>
+<section id="returns" class="level2">
+<h2 class="anchored" data-anchor-id="returns">Returns</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">helloReturn ()</span> <span class="kw">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add 25 to the first arg</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">someresult</span><span class="op">=</span><span class="va">$((</span><span class="dv">25</span> <span class="op">+</span> <span class="va">$1))</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return requires numeric values</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">$someresult</span> <span class="co"># use echo for strings</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">helloReturn</span> 20</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
