@@ -5,7 +5,7 @@ title: Virtual Machine Install
 This page provides instructions on installing an Ubuntu Virtual Machine regardless of the host system (i.e. whether you have a Windows or Mac x86 machine or an ARM based m-series Mac) using virtual box.
 
 
-## Virtual Box
+## Virtual Box Download
 
 1. Download Virtual Box from Oracle by visiting [https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html](!https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html){target="_blank"}.
 
@@ -14,13 +14,13 @@ This page provides instructions on installing an Ubuntu Virtual Machine regardle
 
 ## VM Download
 
-In these instructions, we use Ubuntu Server 24.10 or Ubuntu Server 24.04. If you use Ubuntu 24.04, it is suggested you do not update when prompted during the install (it will just slow it down).
+These instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).
 
 Download the appropriate image for your host machine:
 
-- If you have an x86 based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
+- If you have an **x86/amd64** based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 
-- If you have an arm based machine (m-series Macs and few windows machines), go here for Ubuntu Server: [https://ubuntu.com/download/server/arm](https://ubuntu.com/download/server/arm)
+- If you have an **arm** based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: [https://ubuntu.com/download/server/arm](https://ubuntu.com/download/server/arm)
 
 - You are welcome to use any other Linux distro, links not provided.
 
@@ -72,20 +72,36 @@ Once it is done, turn the machine off by closing the window and selecting the op
 
 ## Setting Up Your Machine
 
-Click the Ubuntu icon in the bottom left corner and find the terminal (you can drag and drop it to the dock on the left hand side if you want easier access).
+Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access. 
 
-Run the following:
+Open the Terminal (shortcut is `ctrl+alt+t`) and run the following:
 
-1. For programming tools
-Sudo apt-get install build-essential
 
-2. For vim
-Sudo apt-get install vim
+1. For programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.
+
+    - g++ is the GNU compiler for the C++ language
+    - gcc is the GNU compiler for the C language
+    - make is used to interpret "makefiles" which are used to control the build process of projects
+    - libc6-dev is a GNU C library
+    - dpkg-dev is used to upload, build, and unpack Debian source packages
+
+    ```bash
+    sudo apt-get install build-essential
+    ```
+    
+2. For vim (VI-iMproved):
+
+    ```Bash
+    sudo apt-get install vim
+    ```
 
 3. For cleanup
-Sudo apt-get auto remove
-Sudo apt-get clean
-Sudo apt-get auto clean
+
+    ```sh
+    sudo apt-get autoremove
+    sudo apt-get clean
+    sudo apt-get autoclean
+    ```
 
 4. For vs code (if you enjoy using it), follow the instructions here:
 

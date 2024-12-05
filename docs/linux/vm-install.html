@@ -385,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#virtual-box" id="toc-virtual-box" class="nav-link active" data-scroll-target="#virtual-box">Virtual Box</a></li>
+  <li><a href="#virtual-box-download" id="toc-virtual-box-download" class="nav-link active" data-scroll-target="#virtual-box-download">Virtual Box Download</a></li>
   <li><a href="#vm-download" id="toc-vm-download" class="nav-link" data-scroll-target="#vm-download">VM Download</a></li>
   <li><a href="#vm-setup" id="toc-vm-setup" class="nav-link" data-scroll-target="#vm-setup">VM Setup</a>
   <ul class="collapse">
@@ -419,8 +419,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This page provides instructions on installing an Ubuntu Virtual Machine regardless of the host system (i.e.&nbsp;whether you have a Windows or Mac x86 machine or an ARM based m-series Mac) using virtual box.</p>
-<section id="virtual-box" class="level2">
-<h2 class="anchored" data-anchor-id="virtual-box">Virtual Box</h2>
+<section id="virtual-box-download" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-box-download">Virtual Box Download</h2>
 <ol type="1">
 <li><p>Download Virtual Box from Oracle by visiting <a href="!https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html" target="_blank">https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html</a>.</p></li>
 <li><p>Install Virtual Box</p></li>
@@ -428,11 +428,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="vm-download" class="level2">
 <h2 class="anchored" data-anchor-id="vm-download">VM Download</h2>
-<p>In these instructions, we use Ubuntu Server 24.10 or Ubuntu Server 24.04. If you use Ubuntu 24.04, it is suggested you do not update when prompted during the install (it will just slow it down).</p>
+<p>These instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).</p>
 <p>Download the appropriate image for your host machine:</p>
 <ul>
-<li><p>If you have an x86 based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p></li>
-<li><p>If you have an arm based machine (m-series Macs and few windows machines), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server/arm">https://ubuntu.com/download/server/arm</a></p></li>
+<li><p>If you have an <strong>x86/amd64</strong> based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p></li>
+<li><p>If you have an <strong>arm</strong> based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server/arm">https://ubuntu.com/download/server/arm</a></p></li>
 <li><p>You are welcome to use any other Linux distro, links not provided.</p></li>
 </ul>
 </section>
@@ -467,12 +467,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="setting-up-your-machine" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-your-machine">Setting Up Your Machine</h2>
-<p>Click the Ubuntu icon in the bottom left corner and find the terminal (you can drag and drop it to the dock on the left hand side if you want easier access).</p>
-<p>Run the following:</p>
+<p>Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.</p>
+<p>Open the Terminal (shortcut is <code>ctrl+alt+t</code>) and run the following:</p>
 <ol type="1">
-<li><p>For programming tools Sudo apt-get install build-essential</p></li>
-<li><p>For vim Sudo apt-get install vim</p></li>
-<li><p>For cleanup Sudo apt-get auto remove Sudo apt-get clean Sudo apt-get auto clean</p></li>
+<li><p>For programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.</p>
+<ul>
+<li>g++ is the GNU compiler for the C++ language</li>
+<li>gcc is the GNU compiler for the C language</li>
+<li>make is used to interpret “makefiles” which are used to control the build process of projects</li>
+<li>libc6-dev is a GNU C library</li>
+<li>dpkg-dev is used to upload, build, and unpack Debian source packages</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>For vim (VI-iMproved):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>For cleanup</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get autoremove</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get clean</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get autoclean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>For vs code (if you enjoy using it), follow the instructions here:</p></li>
 </ol>
 <p>https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/</p>

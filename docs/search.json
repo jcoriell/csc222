@@ -312,7 +312,7 @@
     "href": "linux/vm-install.html#vm-download",
     "title": "Virtual Machine Install",
     "section": "VM Download",
-    "text": "VM Download\nIn these instructions, we use Ubuntu Server 24.10 or Ubuntu Server 24.04. If you use Ubuntu 24.04, it is suggested you do not update when prompted during the install (it will just slow it down).\nDownload the appropriate image for your host machine:\n\nIf you have an x86 based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: https://ubuntu.com/download/server\nIf you have an arm based machine (m-series Macs and few windows machines), go here for Ubuntu Server: https://ubuntu.com/download/server/arm\nYou are welcome to use any other Linux distro, links not provided.",
+    "text": "VM Download\nThese instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).\nDownload the appropriate image for your host machine:\n\nIf you have an x86/amd64 based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: https://ubuntu.com/download/server\nIf you have an arm based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: https://ubuntu.com/download/server/arm\nYou are welcome to use any other Linux distro, links not provided.",
     "crumbs": [
       "Linux Install",
       "Virtual Machine Install"
@@ -345,7 +345,7 @@
     "href": "linux/vm-install.html#setting-up-your-machine",
     "title": "Virtual Machine Install",
     "section": "Setting Up Your Machine",
-    "text": "Setting Up Your Machine\nClick the Ubuntu icon in the bottom left corner and find the terminal (you can drag and drop it to the dock on the left hand side if you want easier access).\nRun the following:\n\nFor programming tools Sudo apt-get install build-essential\nFor vim Sudo apt-get install vim\nFor cleanup Sudo apt-get auto remove Sudo apt-get clean Sudo apt-get auto clean\nFor vs code (if you enjoy using it), follow the instructions here:\n\nhttps://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/",
+    "text": "Setting Up Your Machine\nClick the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.\nOpen the Terminal (shortcut is ctrl+alt+t) and run the following:\n\nFor programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.\n\ng++ is the GNU compiler for the C++ language\ngcc is the GNU compiler for the C language\nmake is used to interpret “makefiles” which are used to control the build process of projects\nlibc6-dev is a GNU C library\ndpkg-dev is used to upload, build, and unpack Debian source packages\n\nsudo apt-get install build-essential\nFor vim (VI-iMproved):\nsudo apt-get install vim\nFor cleanup\nsudo apt-get autoremove\nsudo apt-get clean\nsudo apt-get autoclean\nFor vs code (if you enjoy using it), follow the instructions here:\n\nhttps://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/",
     "crumbs": [
       "Linux Install",
       "Virtual Machine Install"
@@ -1353,6 +1353,17 @@
     "crumbs": [
       "C Programming",
       "Piping"
+    ]
+  },
+  {
+    "objectID": "linux/vm-install.html#virtual-box-download",
+    "href": "linux/vm-install.html#virtual-box-download",
+    "title": "Virtual Machine Install",
+    "section": "Virtual Box Download",
+    "text": "Virtual Box Download\n\nDownload Virtual Box from Oracle by visiting https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html.\nInstall Virtual Box",
+    "crumbs": [
+      "Linux Install",
+      "Virtual Machine Install"
     ]
   }
 ]
