@@ -86,21 +86,21 @@ Open the Terminal (shortcut is `ctrl+alt+t`) and run the following:
     - dpkg-dev is used to upload, build, and unpack Debian source packages
 
     ```bash
-    sudo apt-get install build-essential
+    sudo apt install build-essential
     ```
     
 2. For vim (VI-iMproved):
 
     ```Bash
-    sudo apt-get install vim
+    sudo apt install vim
     ```
 
 3. For cleanup
 
     ```sh
-    sudo apt-get autoremove
-    sudo apt-get clean
-    sudo apt-get autoclean
+    sudo apt autoremove
+    sudo apt clean
+    sudo apt autoclean
     ```
 
 4. For VS Code (if you enjoy using it), follow the instructions here:
