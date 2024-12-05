@@ -103,7 +103,7 @@ Open the Terminal (shortcut is `ctrl+alt+t`) and run the following:
     sudo apt-get autoclean
     ```
 
-4. For vs code (if you enjoy using it), follow the instructions here:
+4. For VS Code (if you enjoy using it), follow the instructions here:
 
 https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/
 

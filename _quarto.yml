@@ -11,11 +11,11 @@ website:
       - section: "Linux Install"
         contents:
           - linux/unix-history.qmd
-          - linux/linux-filesystem.qmd
           - linux/vm-install.qmd
-          - linux/vm-install-win.qmd
-          - linux/vm-install-mac.qmd
-          - linux/additional-steps.qmd
+          - linux/linux-filesystem.qmd
+          # - linux/vm-install-win.qmd
+          # - linux/vm-install-mac.qmd
+          # - linux/additional-steps.qmd
       - section: "Shell and Terminal"
         contents:
           - terminal/basic.qmd
