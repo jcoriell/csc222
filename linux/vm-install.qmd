@@ -1,0 +1,94 @@
+---
+title: Virtual Machine Install
+---
+
+This page provides instructions on installing an Ubuntu Virtual Machine regardless of the host system (i.e. whether you have a Windows or Mac x86 machine or an ARM based m-series Mac) using virtual box.
+
+
+## Virtual Box
+
+1. Download Virtual Box from Oracle by visiting [https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html](!https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html){target="_blank"}.
+
+2. Install Virtual Box
+
+
+## VM Download
+
+In these instructions, we use Ubuntu Server 24.10 or Ubuntu Server 24.04. If you use Ubuntu 24.04, it is suggested you do not update when prompted during the install (it will just slow it down).
+
+Download the appropriate image for your host machine:
+
+- If you have an x86 based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
+
+- If you have an arm based machine (m-series Macs and few windows machines), go here for Ubuntu Server: [https://ubuntu.com/download/server/arm](https://ubuntu.com/download/server/arm)
+
+- You are welcome to use any other Linux distro, links not provided.
+
+# VM Setup
+
+1. Create a new VM in virtual box.
+
+3. Skip the unattended install by checking the box to skip it.
+
+4. Base Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.
+
+5. Processors: It is up to you how many you want it to be able to use. I chose 4.
+
+6. Hard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. **Do not** pre-allocate the storage.
+
+7. You can click "Finish" at this point.
+
+
+## Booting the VM
+
+Note: At some point during the install you may be asked to update it. This is not required and could take a long time.  
+
+1. Boot the VM by selecting it in the left navigation and clicking "Start".
+
+9. When prompted, select "Try to Install Ubuntu".
+
+10. The install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. For lack of security, and since it is just for class, consider something simple like your name and 123456.
+
+11. Once it is installed it will prompt to reboot. It'll ask you to login with the username and password once you reboot.
+
+
+## Setting Up the GUI
+
+If you installed Ubuntu Desktop, or any other distro that came with a GUI, you can skip this step.
+
+If you don't want a GUI, you can skip this step, but you'll be using vim/nano to edit files, which is fine but there is a steep learning curve for vim.
+
+If you want a GUI (not required, but nice to have), you need to run the following two commands separately:
+
+```bash
+sudo apt update
+```
+
+```bash
+sudo apt install ubuntu-desktop
+```
+
+Once it is done, turn the machine off by closing the window and selecting the option to turn the machine off. Then start the machine and log back in. There should be a GUI at this point.
+
+## Setting Up Your Machine
+
+Click the Ubuntu icon in the bottom left corner and find the terminal (you can drag and drop it to the dock on the left hand side if you want easier access).
+
+Run the following:
+
+1. For programming tools
+Sudo apt-get install build-essential
+
+2. For vim
+Sudo apt-get install vim
+
+3. For cleanup
+Sudo apt-get auto remove
+Sudo apt-get clean
+Sudo apt-get auto clean
+
+4. For vs code (if you enjoy using it), follow the instructions here:
+
+https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/
+
+

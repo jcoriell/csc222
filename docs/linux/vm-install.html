@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unix History – CSC 222 Systems Programming</title>
+<title>Virtual Machine Install – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -80,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/unix-history.html">Unix History</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/vm-install.html">Virtual Machine Install</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -116,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unix History</span></a>
   </div>
 </li>
@@ -128,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/vm-install.html" class="sidebar-item-text sidebar-link">
+  <a href="../linux/vm-install.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Virtual Machine Install</span></a>
   </div>
 </li>
@@ -351,17 +385,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-linux" id="toc-why-linux" class="nav-link active" data-scroll-target="#why-linux">Why Linux?</a></li>
-  <li><a href="#history-of-unix-like-systems" id="toc-history-of-unix-like-systems" class="nav-link" data-scroll-target="#history-of-unix-like-systems">History of Unix Like Systems</a></li>
+  <li><a href="#virtual-box" id="toc-virtual-box" class="nav-link active" data-scroll-target="#virtual-box">Virtual Box</a></li>
+  <li><a href="#vm-download" id="toc-vm-download" class="nav-link" data-scroll-target="#vm-download">VM Download</a></li>
+  <li><a href="#vm-setup" id="toc-vm-setup" class="nav-link" data-scroll-target="#vm-setup">VM Setup</a>
+  <ul class="collapse">
+  <li><a href="#booting-the-vm" id="toc-booting-the-vm" class="nav-link" data-scroll-target="#booting-the-vm">Booting the VM</a></li>
+  <li><a href="#setting-up-the-gui" id="toc-setting-up-the-gui" class="nav-link" data-scroll-target="#setting-up-the-gui">Setting Up the GUI</a></li>
+  <li><a href="#setting-up-your-machine" id="toc-setting-up-your-machine" class="nav-link" data-scroll-target="#setting-up-your-machine">Setting Up Your Machine</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/unix-history.html">Unix History</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/vm-install.html">Virtual Machine Install</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Unix History</h1>
+<h1 class="title">Virtual Machine Install</h1>
 </div>
 
 
@@ -378,89 +418,67 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="why-linux" class="level2">
-<h2 class="anchored" data-anchor-id="why-linux">Why Linux?</h2>
+<p>This page provides instructions on installing an Ubuntu Virtual Machine regardless of the host system (i.e.&nbsp;whether you have a Windows or Mac x86 machine or an ARM based m-series Mac) using virtual box.</p>
+<section id="virtual-box" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-box">Virtual Box</h2>
 <ol type="1">
-<li><p>It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux. Examples include:</p>
-<ul>
-<li>Netflix</li>
-<li>Twitter/X</li>
-<li>Facebook</li>
-<li>Instagram</li>
-<li>Google</li>
-<li>New York Stock Exchange</li>
-</ul>
-<p>Using an android phone? Android is a flavor of Linux.</p></li>
-<li><p>It’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.</p>
-<ul>
-<li><a href="GNU GPL">https://www.gnu.org/licenses/gpl-3.0.en.html</a></li>
-</ul></li>
-<li><p>It’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.</p></li>
+<li><p>Download Virtual Box from Oracle by visiting <a href="!https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html" target="_blank">https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html</a>.</p></li>
+<li><p>Install Virtual Box</p></li>
 </ol>
 </section>
-<section id="history-of-unix-like-systems" class="level2">
-<h2 class="anchored" data-anchor-id="history-of-unix-like-systems">History of Unix Like Systems</h2>
+<section id="vm-download" class="level2">
+<h2 class="anchored" data-anchor-id="vm-download">VM Download</h2>
+<p>In these instructions, we use Ubuntu Server 24.10 or Ubuntu Server 24.04. If you use Ubuntu 24.04, it is suggested you do not update when prompted during the install (it will just slow it down).</p>
+<p>Download the appropriate image for your host machine:</p>
 <ul>
-<li><p>1969 The Unix operating system is developed by AT&amp;T/Bell Laboratories.</p>
-<ul>
-<li>First developed with Assembly but moved to primarily C</li>
-<li>Since it was primarily C, it was very portable</li>
-<li>AT&amp;T cannot sell it due to agreements not to enter the computing business</li>
-<li>AT&amp;T opts to distribute it under licenses to Labs and Universities</li>
-</ul></li>
-<li><p>1977 UC Berkly developed BSD (Berkley Software Distribution) as a Unix-like replacement.</p>
-<ul>
-<li>It contained code owned by AT&amp;T</li>
-<li>Will eventually lead to a lawsuit from AT&amp;T</li>
-</ul></li>
-<li><p>1983 GNU Operating System (Pronounced Guh-nu) started by Richard Stallman</p>
-<ul>
-<li>Its purpose was to be a free/open unix-like replacement for UNIX (that didn’t contain any code owned by AT&amp;T).</li>
-<li>GNU stands for GNU is Not Unix</li>
-<li>GNU’s kernel is GNU Hurd (started in 1990, before Linux, doesn’t become stable until 2001)
-<ul>
-<li>Note: The kernel of an OS is the system between the hardware and software of a machine. Main function is process, memory, and other resource management.</li>
-<li>The OS is the system as a whole; interface between user and hardware. An OS contains a kernel, applications, device drivers, utilities, etc.</li>
-</ul></li>
-</ul></li>
-<li><p>1991</p>
-<ul>
-<li>Finnish Grad Student Linus Torvalds emails about the OS he is working on.</li>
-<li>Linux kernel is developed</li>
-</ul></li>
-<li><p>1992</p>
-<ul>
-<li>BSDi gets sued by AT&amp;T, which slowed BSD development.</li>
-<li>The Linux kernel becomes the kernel for GNU.</li>
-<li>GNU/Linux is released as Free software under the GNU General Purpose License.
-<ul>
-<li>Note: When we say “Linux”, we really mean GNU/Linux. Linux is just the kernel.</li>
-</ul></li>
-<li>GNU License gave developers the ability to make custom OSs that felt like UNIX without the fear of being sued.</li>
-</ul></li>
-<li><p>1993 The Debian distrobution is born</p>
-<ul>
-<li>One of the most popular distros/family of distros</li>
-<li>Minimal, stable, good for general purpose pc usage and servers alike.</li>
-<li>Most distros are children of Debian including Ubuntu, Raspberry Pi OS, and SteamOS.</li>
-</ul></li>
-<li><p>1994 The Redhat Distrobution is born</p>
-<ul>
-<li>Primarily used for enterprise</li>
-<li>Distros in the Redhat family include Fedora (Distro of choice for Linus Torvalds) and CentOS</li>
-</ul></li>
-<li><p>2000/2002 Gentoo/Arch are born as more simplistic families of distrobutions</p></li>
-<li><p>In later 2000s we see some independent distros we are more familiar with such as</p>
-<ul>
-<li>FireOS (Amazon FireStick/Fire devices)</li>
-<li>Android (Google)</li>
-</ul></li>
-<li><p>Fun Fact: Linus Torvalds also created git for version control.</p></li>
+<li><p>If you have an x86 based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p></li>
+<li><p>If you have an arm based machine (m-series Macs and few windows machines), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server/arm">https://ubuntu.com/download/server/arm</a></p></li>
+<li><p>You are welcome to use any other Linux distro, links not provided.</p></li>
 </ul>
-<p><a href="https://distrowatch.com/images/other/distro-family-tree.png">Distro Family Tree</a></p>
-<p>Source: A large portion of the information above comes from <a href="https://www.gnu.org/">GNU’s Website</a></p>
+</section>
+<section id="vm-setup" class="level1">
+<h1>VM Setup</h1>
+<ol type="1">
+<li><p>Create a new VM in virtual box.</p></li>
+<li><p>Skip the unattended install by checking the box to skip it.</p></li>
+<li><p>Base Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.</p></li>
+<li><p>Processors: It is up to you how many you want it to be able to use. I chose 4.</p></li>
+<li><p>Hard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. <strong>Do not</strong> pre-allocate the storage.</p></li>
+<li><p>You can click “Finish” at this point.</p></li>
+</ol>
+<section id="booting-the-vm" class="level2">
+<h2 class="anchored" data-anchor-id="booting-the-vm">Booting the VM</h2>
+<p>Note: At some point during the install you may be asked to update it. This is not required and could take a long time.</p>
+<ol type="1">
+<li><p>Boot the VM by selecting it in the left navigation and clicking “Start”.</p></li>
+<li><p>When prompted, select “Try to Install Ubuntu”.</p></li>
+<li><p>The install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. For lack of security, and since it is just for class, consider something simple like your name and 123456.</p></li>
+<li><p>Once it is installed it will prompt to reboot. It’ll ask you to login with the username and password once you reboot.</p></li>
+</ol>
+</section>
+<section id="setting-up-the-gui" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-the-gui">Setting Up the GUI</h2>
+<p>If you installed Ubuntu Desktop, or any other distro that came with a GUI, you can skip this step.</p>
+<p>If you don’t want a GUI, you can skip this step, but you’ll be using vim/nano to edit files, which is fine but there is a steep learning curve for vim.</p>
+<p>If you want a GUI (not required, but nice to have), you need to run the following two commands separately:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ubuntu-desktop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once it is done, turn the machine off by closing the window and selecting the option to turn the machine off. Then start the machine and log back in. There should be a GUI at this point.</p>
+</section>
+<section id="setting-up-your-machine" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-your-machine">Setting Up Your Machine</h2>
+<p>Click the Ubuntu icon in the bottom left corner and find the terminal (you can drag and drop it to the dock on the left hand side if you want easier access).</p>
+<p>Run the following:</p>
+<ol type="1">
+<li><p>For programming tools Sudo apt-get install build-essential</p></li>
+<li><p>For vim Sudo apt-get install vim</p></li>
+<li><p>For cleanup Sudo apt-get auto remove Sudo apt-get clean Sudo apt-get auto clean</p></li>
+<li><p>For vs code (if you enjoy using it), follow the instructions here:</p></li>
+</ol>
+<p>https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
