@@ -24,7 +24,7 @@ Download the appropriate image for your host machine:
 
 - You are welcome to use any other Linux distro, links not provided.
 
-# VM Setup
+## VM Setup
 
 1. Create a new VM in virtual box.
 

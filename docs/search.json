@@ -319,6 +319,17 @@
     ]
   },
   {
+    "objectID": "linux/vm-install.html#vm-setup",
+    "href": "linux/vm-install.html#vm-setup",
+    "title": "Virtual Machine Install",
+    "section": "VM Setup",
+    "text": "VM Setup\n\nCreate a new VM in virtual box.\nSkip the unattended install by checking the box to skip it.\nBase Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.\nProcessors: It is up to you how many you want it to be able to use. I chose 4.\nHard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. Do not pre-allocate the storage.\nYou can click “Finish” at this point.",
+    "crumbs": [
+      "Linux Install",
+      "Virtual Machine Install"
+    ]
+  },
+  {
     "objectID": "linux/vm-install.html#booting-the-vm",
     "href": "linux/vm-install.html#booting-the-vm",
     "title": "Virtual Machine Install",
