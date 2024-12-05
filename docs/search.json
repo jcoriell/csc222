@@ -297,11 +297,11 @@
     ]
   },
   {
-    "objectID": "linux/vm-install.html#virtual-box",
-    "href": "linux/vm-install.html#virtual-box",
+    "objectID": "linux/vm-install.html#virtual-box-download",
+    "href": "linux/vm-install.html#virtual-box-download",
     "title": "Virtual Machine Install",
-    "section": "Virtual Box",
-    "text": "Virtual Box\n\nDownload Virtual Box from Oracle by visiting https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html.\nInstall Virtual Box",
+    "section": "Virtual Box Download",
+    "text": "Virtual Box Download\n\nDownload Virtual Box from Oracle by visiting https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html.\nInstall Virtual Box",
     "crumbs": [
       "Linux Install",
       "Virtual Machine Install"
@@ -1353,17 +1353,6 @@
     "crumbs": [
       "C Programming",
       "Piping"
-    ]
-  },
-  {
-    "objectID": "linux/vm-install.html#virtual-box-download",
-    "href": "linux/vm-install.html#virtual-box-download",
-    "title": "Virtual Machine Install",
-    "section": "Virtual Box Download",
-    "text": "Virtual Box Download\n\nDownload Virtual Box from Oracle by visiting https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html.\nInstall Virtual Box",
-    "crumbs": [
-      "Linux Install",
-      "Virtual Machine Install"
     ]
   }
 ]
