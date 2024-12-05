@@ -1,0 +1,76 @@
+---
+title: Hello World
+---
+
+## Setting Up
+
+Before completing any of the following, be sure your system can compile c programs. 
+
+To check if you can compile c programs, open the terminal and type `gcc --version`. `gcc` is the GNU Compiler Collection. If you hit an error, you can install it on your Ubuntu virutal machine using the following:
+
+```sh
+# this command installs gcc, g++, libc6-dev, make, and dpkg-dev
+sudo apt-get build-essential
+```
+
+Once installed, run the command `gcc --version` again.
+
+## Hello World!
+
+Create a file called `hello.c` and put the following contents in it.
+
+```c
+#include <stdio.h>
+
+int main(){
+    printf("Hello World!"); // No new line unless you say to do it.
+    printf("Hello again!\n"); // Now has a new line
+    printf("Hello there!");
+
+    return 0;
+}
+```
+
+Compile the program with the following command:
+
+```sh
+gcc hello.c -o hello
+```
+
+In the command, we invoke gcc to compile the program called `hello.c`. We use the `-o` flag to specify the name of the executable file that the compiliation process outputs. In this case, we are calling it `hello`.
+
+To run the executable file, type `./hello` into the terminal. You should see the three messages printed in the terminal.
+
+
+## Command Line Input
+
+The following program shows how to take command line input.
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[]){
+    // ^ a standard signature for taking in command line arguments
+    // argc represents the number of arguments coming in. 
+    // argv a pointer to where the arguments are stored in memory
+    
+    // printing the inputs
+    printf("argc: %d\n", argc);
+    
+    for (int i=0; i < argc; i++){
+        printf("argv[%d]: %s\n", i, argv[i]);
+    }
+
+    // argv ends with a null pointer
+    printf("argv[%d]: %s\n", argc, argv[argc]);
+
+    return 0;
+}
+```
+
+Compile and run the program, but provide space separated arguments on execution.
+
+Example: In this example the executable is named `CommandLineArgs` and the arguments `hi`, `how`, `are`, and `you` are provided.
+```sh
+./CommandLineArgs hi how are you
+```

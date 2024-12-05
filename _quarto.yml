@@ -12,6 +12,7 @@ website:
         contents:
           - linux/unix-history.qmd
           - linux/linux-filesystem.qmd
+          - linux/vm-install.qmd
           - linux/vm-install-win.qmd
           - linux/vm-install-mac.qmd
           - linux/additional-steps.qmd
@@ -23,6 +24,31 @@ website:
           - terminal/file-permissions.qmd
           - terminal/grep-and-regex.qmd
           - terminal/more-commands.qmd
+      - section: "C Programming"
+        contents:
+          - c-programming/01-HelloWorld.qmd
+          - c-programming/02-DataTypes.qmd
+          - c-programming/03-Operators.qmd
+          - c-programming/04-Functions.qmd
+          - c-programming/05-More-on-Data.qmd
+          - c-programming/06-Sample-Applications.qmd
+          - c-programming/07-Memory-Allocation.qmd
+          - c-programming/08-Structs-and-Unions.qmd
+          - c-programming/09-Sample-Applications.qmd
+          - c-programming/10-Files.qmd
+          - c-programming/11-Fork.qmd
+          - c-programming/12-Piping.qmd
+          - c-programming/13-Exec-Functions.qmd
+      - section: "Bash Scripting"
+        contents:
+          - bash-scripting/01-Intro.qmd
+          - bash-scripting/02-Args.qmd
+          - bash-scripting/03-Conditionals.qmd
+          - bash-scripting/04-Exit-Codes.qmd
+          - bash-scripting/05-Case.qmd
+          - bash-scripting/06-Loops.qmd
+          - bash-scripting/07-Functions.qmd
+
 
 
 

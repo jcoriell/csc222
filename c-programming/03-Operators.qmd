@@ -1,0 +1,176 @@
+---
+title: Operators
+---
+
+## Arithmetic Operators
+
+
+```c
+#include <stdio.h>
+
+int main(){
+    // arithmetic operators
+    // +    add
+    // -    sub
+    // *    multiply
+    // /    division
+    // %    mod 
+
+
+    // example 1:
+    int a = 3;
+    int b = 40;
+    int result = a + b;
+    printf("a + b = %d \n", result);
+
+    // example 2:
+    int remainder = b % a;
+    printf("b %% a = %d", remainder); 
+
+    printf("\n");
+    return 0;
+}
+```
+
+
+## Logical 
+
+
+```c
+#include <stdio.h>
+#include <stdbool.h> // need to use true and false as booleans
+
+int main(){
+
+    // &&  - logical and
+    // ||  - logical or
+    // !   - logical not
+
+    if (1 && 1){
+        printf("True and True\n");
+    }
+
+    if (1 && 0){
+        // wont print
+        printf("True and False\n");
+    }
+
+    if (1 || 0){
+        printf("True OR False\n");
+    }
+
+    if (!0 || 0){
+        printf("Not True OR False\n");
+    }
+
+    if (true){
+        printf("TRUE");
+    }
+
+    printf("\n");
+    return 0;
+}
+```
+
+
+## Bitwise
+
+Note: When compiling with the directive `#include <math.h>`, you may need to end the command with `-lm`. An example follows:
+
+```sh
+gcc [fileName.c] -o [executableName] -lm
+```
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+
+    unsigned int a = 10;            // 1010
+    unsigned int b = 15;            // 1111
+    
+
+    // bitwise and - &
+    unsigned int result = a & b; 
+    /*
+        1010    <- 10
+    &   1111    <- 15
+    =   1010    -> 10
+    */  
+    printf("Ex 1: %d\n", result);
+
+
+
+    // bitwise or - |
+    unsigned int result2 = 10 | 15;
+    /*
+        1010    <- 10
+    |   1111    <- 15
+    =   1111    -> 15
+    */  
+    printf("Ex 2: %d\n", result2);
+
+
+
+    // bitwise not/flip/ones complement - ~
+    unsigned int result3 = ~a;      
+    // ~a -> ~1010 but....
+    // remember if an unsigned int is 4 bytes, then we have:
+    //      00000000 00000000 00000000 00001010 
+    // So bit flipping results in: 
+    //      11111111 11111111 11111111 11110101 -> 4,294,967,285
+    printf("Ex 3: %u\n", result3);
+
+
+
+    // bitwise xor - ^
+    unsigned int result4 = a ^ b;
+    /*
+        1010    <- 10
+    ^   1111    <- 15
+    =   0101    ->  5
+    */  
+    printf("Ex 4: %u\n", result4);
+
+
+    // right shift - >>
+    /*
+          15 >> 3  
+        1111 >> 3 -> 0001 -> 1
+    */
+    u_int32_t result5 = b >> 3;
+    printf("Ex 5: %u\n", result5);
+
+
+    // left shift - <<
+    /*
+          15 << 2  
+        1111 << 2 -> 111100 -> 60
+    */
+    u_int32_t result6 = b << 2;
+    printf("Ex 5: %u\n", result6);
+
+
+    // Shifting can be used for power of 2 multiplication and division:
+
+    // Left shift for power of 2 multiplication:
+    // It's faster for a machine than traditional multiplication
+    // u << k = u * pow(2, k)
+    int u = 3; 
+    int k = 2;
+    printf("%d\n", u << k);
+    printf("%lf\n", u * pow(2, k));  // requires #include <math.h> directive 
+
+    // Right shift for power of 2 division:
+    // u >> k = u / pow(2, k)
+    int u2 = 2500;
+    int k2 = 3;
+    printf("%d\n", u2 >> k2);
+    printf("%f", u2 / pow(2, k2));  // requires #include <math.h> directive 
+
+    printf("\n");
+    return 0;
+
+}
+```

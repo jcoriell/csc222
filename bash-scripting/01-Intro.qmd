@@ -1,0 +1,114 @@
+---
+title: Intro
+---
+
+
+## Hello World
+
+```bash
+#!/bin/bash
+
+# Above is the shebang
+
+# For mac
+# Update bash with homebrew
+# If installed with homebrew the default location is
+# /opt/homebrew/bin/bash
+# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable
+
+echo Hello World
+echo I am `whoami`
+echo Today is `date`
+echo Current working directory is $(pwd)
+
+```
+
+## Variables
+
+```bash
+#!/bin/bash
+
+# setting variables (no spaces adjacent to = )
+myVar=10
+anotherVar="the variable is..."
+
+# accessing the variables ($ right infront of the variable)
+echo "The var is $myVar"
+echo The var is $myVar    # double quotes were not required 
+
+# single quotes would not have worked
+echo 'This is not my var: $myVar' # single quotes are a literal
+
+# escape special characters
+echo "The banana is \$$myVar" 
+
+# have characters adjacent to variables with curlies
+echo "The banana is \$${myVar}s" 
+```
+
+## Arrays
+
+```bash
+#!/usr/bin/env bash
+
+
+# declare and assign
+groceries=("bread" "milk" "eggs")
+
+# access
+echo ${groceries[1]}
+
+# declare first, assign later
+declare -a numeric_array   # numeric array - index is numeric
+declare -A associative_array # Associative array (bash v4+) 
+
+# assign
+numeric_array[0]="Hello"
+numeric_array[1]="Worlds"
+
+# reading values
+echo "${numeric_array[0]} ${numeric_array[1]}"
+echo "${numeric_array[@]}"
+
+# append to the array
+numeric_array+=("Another Thing")
+
+# quantity of things in the array
+echo "${#numeric_array[@]}"
+
+# Associative Arrays
+associative_array[firstname]="Josh"
+associative_array[lastname]="Coriell"
+
+echo "${associative_array[firstname]} ${associative_array[lastname]}" 
+```
+
+## Prompting
+
+```bash
+#!/bin/bash
+
+
+# use read with -p for prompt
+read -p "Enter your first and last name: " first last
+
+echo Give me a secret:
+read -s secret
+
+echo First is $first 
+echo Last is $last
+echo Secret is $secret
+```
+
+## Math
+
+```bash
+#!/bin/bash
+
+# math
+echo $((2.3 + 3))
+echo $((3 - 4))
+echo $((3 * 4))
+echo $((5 / 2)) # integer divsion
+echo $((5 % 2))
+```

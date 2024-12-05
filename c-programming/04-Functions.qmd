@@ -1,0 +1,62 @@
+---
+title: Functions
+---
+
+## Defining Functions
+
+```c
+#include <stdio.h>
+
+// you can define functions up here
+// must state return type and types for the formal parameters
+int addOne(int value){
+    return value + 1;
+}
+
+
+int main(){
+
+    int num = 10;
+    int result = addOne(num);
+    result = addOne(result);
+
+    printf("You started with %d.\n", num);
+    printf("Now you have %d.\n", result);
+
+    printf("\n");
+    return 0;
+}
+```
+
+
+## Function Prototyping
+
+```c
+#include <stdio.h>
+
+// we could just prototype the functions up here
+// for function prototyping, we only need to state the name and types
+// stating parameter identifiers is optional
+int addOne(int);
+
+
+
+
+int main(){
+    int num = 10;
+    int result = addOne(num);
+
+    printf("Start: %d\n", num);
+    printf("End: %d\n", result);
+
+    printf("\n");
+    return 0;
+}
+
+
+// then define them down here
+int addOne(int value){
+    return value + 1;
+}
+
+```

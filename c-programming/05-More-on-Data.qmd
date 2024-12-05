@@ -1,0 +1,236 @@
+---
+title: More on Data
+---
+
+## Pointers
+
+```c
+#include <stdio.h>
+
+int main(){
+    // a pointer is a reference to a memory location
+    // use * to state that something is a pointer
+    int faveNum = 10;               // normal variable
+    int *faveNumPtr  = &faveNum;    // a pointer for an integer (faveNum is an integer)
+                                    // the & means "address at" fave num.
+
+    
+    printf("My fave num is %d and it is stored at %p\n", faveNum, faveNumPtr);
+
+    // we can access the value associated with a pointer through the indirection operator *
+    printf("My fave num is %d", *faveNumPtr);
+
+    printf("\n");
+    return 0;
+}
+```
+
+## Arrays
+
+
+```c
+#include <stdio.h>
+
+int main(){
+
+    // arrays are collections of similar values in contiguous memory locations
+    int someNums[] = {1, 2, 3, 4, 5, 6}; // size of 6
+    int moreNums[10]; // size of 10
+
+
+    // note that the identifier can be used as a pointer to the memory location of the first item
+    printf("The mem addr of the array is %p\n", someNums);          // note: not using &, but you can.
+    printf("The mem addr of the first item is %p\n", &someNums[0]); // note: need to use & to get address at
+
+    // when in the space the array was defined, you can use sizeof to get how large it is
+    printf("The num of bytes in the array is %lu\n", sizeof(someNums));
+    printf("That makes sense because 4 bytes (per int) * 6 items = %lu\n", sizeof(someNums));
+    
+    // We can use sizeof to get the length of the array
+    printf("The length of the array is %lu\n", sizeof(someNums) / sizeof(int));
+
+    printf("\n");
+    return 0;
+}
+```
+
+
+## Looping with Arrays 
+
+```c
+#include <stdio.h>
+
+int main(){
+
+    // arrays are collections of similar values in contiguous memory locations
+
+    int someNums[] = {1, 2, 3, 4, 5, 6}; // size of 6
+    int moreNums[10]; // size of 10
+
+    // using a while loop to assign values to myOtherFaves
+    int counter = 0;
+    while (counter < 10){
+        moreNums[counter] = counter;
+        printf("Added %d as a value to myOtherFaves\n", counter);
+        counter++;
+    }
+
+    // using a for loop to access each value
+    // we get the upper limit of the incrementer
+    // by dividing the number of bytes of the array by the size of the data type
+    // here, the identifier someNums is not treated as a pointer
+    size_t n = sizeof(someNums) / sizeof(int);
+    for (int i = 0; i < n; i++){
+        printf("The %dth item in the array is %d\n", i, someNums[i]);
+    }
+
+    // note there is also a do while loop
+
+    printf("\n");
+    return 0;
+}
+```
+
+
+## Functions with Arrays
+
+```c
+#include <stdio.h>
+
+
+void addStuff(int myArray[], int myArrayLength){ // a signature that takes in an array
+    // the array decays to a pointer when passed through
+    // so sizeof() returns the size of the pointer now
+    // we can pass in the size of the array in addition to the array (if we need the size)
+    // note: you can still use the index to access values inside the functions
+
+    for(int i=0; i < myArrayLength; i++){
+        myArray[i] = i * 2;
+    }
+}
+
+void viewStuff(int *myArray, int myArrayLength){// a signature that takes in an array
+    // common to use the pointer notation * here since it will decay to a pointer
+    for (int i=0; i < myArrayLength; i++){
+        printf("The item at index %d is %d\n", i, myArray[i]);
+    }
+}
+
+int main(){
+
+    int ages[5];
+
+    // get the length here, since this is where we defined it.
+    size_t length = sizeof(ages) / sizeof(int); 
+
+    // pass the length into the function
+    addStuff(ages, length);
+    viewStuff(ages, length);
+
+    return 0;
+}
+```
+
+
+## Strings
+
+### Basics
+
+```c
+#include <stdio.h>
+#include <string.h> // helpful string functions
+
+int main(){
+
+    // string are character arrays
+    // the arrays terminate with  \0 <- the null character
+    char aMessage[] = "Hi how are you";
+    printf("%s\n", aMessage);
+
+    // Getting the size of a string
+    // this counts the null character
+    printf("size: %lu\n", sizeof(aMessage) / sizeof(char));
+    
+    // helpful function from string.h
+    printf("size again %lu\n", strlen(aMessage));
+
+    // comparing two strings
+    char hello[] = "hello";
+    char you1[] = "you";
+    char you2[] = "you";
+
+    if (strcmp(hello, you1) == 0){
+        printf("They're equal - 1");
+    } else {
+        printf("They not equal - 1");
+    }
+
+    // strcmp returns -1, 0, or 1:
+    // 0 when they're equal
+    // -1 if the first string is "less than" string 2 (ascii values)
+    // 1 if the first string is "greater than" string 2 (ascii)
+    if (strcmp(you1, you2) == 0){
+        printf("They're equal - 2");
+    } else{
+        printf("They're not equal - 2");
+    }
+
+    // Reassigning string values
+    strcpy(hello, "you");
+
+    return 0;
+}
+```
+
+### scanf example
+
+```c
+#include <stdio.h>
+
+int main(){
+    char name[25];
+    int age;
+    
+    // prompt with a print statement
+    printf("What is your name? ");
+    scanf("%s", name);
+
+    printf("What is your age? ");
+    scanf("%d", &age); // & is for 'address at'
+
+    printf("Hi %s, your age is %d\n", name, age);
+
+    // taking more than one input
+    printf("What is your name and age? ");
+    scanf("%s %d", name, &age);
+
+    printf("Hi %s, your age is %d\n", name, age);
+    printf("\n");
+    return 0;
+}
+```
+
+### fgets example
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+    char afullline[100];
+
+    // f get s stands file get string
+    // typically used for reading lines of files
+    // but we can use it with stdin to prompt
+    printf("Type a sentence: ");
+    fgets(afullline, 100, stdin);
+
+    // fgets automatically adds a new line character to the end
+    // to remove it 
+    afullline[strlen(afullline) - 1] = '\0';
+    printf("You said: %s", afullline);
+
+    return 0;
+}
+```

@@ -1,0 +1,99 @@
+---
+title: Hello World
+---
+
+
+## While
+
+```bash
+#!/bin/bash
+
+counter=0
+while [ $counter -le 10 ]
+do 
+    echo $counter
+    # counter=$((counter+1))
+    # ((counter++)) # returns the value of counter before 
+    # ((++counter)) # returns the value of counter after
+    ((counter+=1))
+    sleep 0.5
+done 
+```
+
+## For 
+
+```bash
+#!/bin/bash
+
+# traditional for loop
+for (( i=0 ; i < 5 ; i++ )) # don't forget the spaces
+do 
+    echo "Counter $i"
+done
+
+# for each loops
+for i in 1 2 3 4 5
+do
+    echo "Value: $i"
+done 
+
+# A range of values
+for i in {0..5}     # no spaces
+do 
+    echo "Range: $i"
+done 
+
+# specify an increment
+for i in {0..10..2} # count from 0 to 10 by 2 (bash 4+)
+do 
+    echo "Inc: $i"
+done 
+
+```
+
+## Loop over files
+
+```bash
+#!/bin/bash
+
+# looping over files in this directory
+for file in *
+do
+    if [ -f "$file" ]
+    then 
+        echo $file
+    fi
+done 
+
+parent_dir=".."
+for directory in $parent_dir/*
+do
+    if [ -d "$directory" ]
+    then 
+        echo $directory
+    fi
+done 
+
+absolute_dir="/Users/josh/Desktop"
+for directory in $absolute_dir/*
+do 
+    if [ -d "$directory" ] 
+    then
+        echo $directory
+    fi 
+done 
+
+```
+
+## Loop over args
+
+```bash
+#!/bin/bash
+
+# recall: to access args use $@
+
+for arg in $@
+do 
+    echo $arg
+done
+```
