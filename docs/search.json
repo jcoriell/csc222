@@ -312,7 +312,7 @@
     "href": "linux/vm-install.html#vm-download",
     "title": "Virtual Machine Install",
     "section": "VM Download",
-    "text": "VM Download\nThese instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).\nDownload the appropriate image for your host machine:\n\nIf you have an x86/amd64 based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: https://ubuntu.com/download/server\nIf you have an arm based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: https://ubuntu.com/download/server/arm\nYou are welcome to use any other Linux distro, links not provided.",
+    "text": "VM Download\nThese instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).\n\nDownload the appropriate image for your host machine:\n\nIf you have an x86/amd64 based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: https://ubuntu.com/download/server\nIf you have an arm based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: https://ubuntu.com/download/server/arm\nYou are welcome to use any other Linux distro, links not provided.\n\nMove the image to the folder for this course on your computer so you can easily find it.",
     "crumbs": [
       "Linux Install",
       "Virtual Machine Install"
@@ -323,18 +323,18 @@
     "href": "linux/vm-install.html#vm-setup",
     "title": "Virtual Machine Install",
     "section": "VM Setup",
-    "text": "VM Setup\n\nCreate a new VM in virtual box.\nSkip the unattended install by checking the box to skip it.\nBase Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.\nProcessors: It is up to you how many you want it to be able to use. I chose 4.\nHard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. Do not pre-allocate the storage.\nYou can click “Finish” at this point.",
+    "text": "VM Setup\n\nCreate a new VM in virtual box by clicking NEW.\nFill out the required information. Here are some notes:\n\nFor the ISO, be sure to select the .iso file downloaded.\nSkip the unattended install by checking the box to skip it.\nBase Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.\nProcessors: It is up to you how many you want it to be able to use. I chose 4.\nHard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. Do not pre-allocate the storage.\n\nClick “Finish” to finish this portion of the setup. This does not install the machine.",
     "crumbs": [
       "Linux Install",
       "Virtual Machine Install"
     ]
   },
   {
-    "objectID": "linux/vm-install.html#booting-the-vm",
-    "href": "linux/vm-install.html#booting-the-vm",
+    "objectID": "linux/vm-install.html#installing-and-booting-the-vm",
+    "href": "linux/vm-install.html#installing-and-booting-the-vm",
     "title": "Virtual Machine Install",
-    "section": "Booting the VM",
-    "text": "Booting the VM\nNote: At some point during the install you may be asked to update it. This is not required and could take a long time.\n\nBoot the VM by selecting it in the left navigation and clicking “Start”.\nWhen prompted, select “Try to Install Ubuntu”.\nThe install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. For lack of security, and since it is just for class, consider something simple like your name and 123456.\nOnce it is installed it will prompt to reboot. It’ll ask you to login with the username and password once you reboot.",
+    "section": "Installing and Booting the VM",
+    "text": "Installing and Booting the VM\nNote: At some point during the install you may be asked to update it. This is not required and could take a long time.\n\nBoot the VM by selecting it in the left navigation and clicking “Start”.\nWhen prompted, select “Try to Install Ubuntu”.\nThe install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. For lack of security, and since it is just for class, consider something simple like your name and 123456.\nOnce it is installed it will prompt to reboot. It’ll ask you to login with the username and password once you reboot.",
     "crumbs": [
       "Linux Install",
       "Virtual Machine Install"
@@ -472,7 +472,7 @@
     "href": "terminal/basic.html#more-commands",
     "title": "Introduction to the Shell and Terminal",
     "section": "More Commands",
-    "text": "More Commands\nA set of more commands for your reference. Complete usage is not illustrated.\ncat [filename] - returns the contents of the file\nmore [filename] - allows you to view the contents in a paginated manner\necho [a message] - returns the message\ncp [source] [destination] - copies a file from the source to a destination\nmv [source] [destination] - moves a file from the source to a destination\nhistory - see the history of previous commands that were typed\nclear - clears what is displayed in the terminal\nwget [url] - downloads the contents at the url\n\nExample\nThe following is an an example of using some of the commands above.\ncd ~                                                    # navigate home\nmkdir books                                             # create a directory called books\ncd books\necho \"Let's download a book\"                            # produce a message\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt   # download \"A Tale of Two Cities\"\nls                                                      # list the files\nmv pg98.txt a-tale-of-two-cities.txt                    # rename the book\nmore a-tale-of-two-cities.txt                           # read the book",
+    "text": "More Commands\nA set of more commands for your reference. Complete usage is not illustrated.\ncat [filename] - returns the contents of the file\nmore [filename] - allows you to view the contents in a paginated manner\necho [a message] - returns the message\ncp [source] [destination] - copies a file from the source to a destination\nmv [source] [destination] - moves a file from the source to a destination\nhistory - see the history of previous commands that were typed\nclear - clears what is displayed in the terminal\nwget [url] - downloads the contents at the url\n\nExample\nThe following is an an example of using some of the commands above.\ncd ~                                                    # navigate home\nmkdir books                                             # create a directory called books\ncd books\necho \"Let's download a book\"                            # produce a message\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt   # download \"A Tale of Two Cities\"\nls                                                      # list the files\nmv pg98.txt a-tale-of-two-cities.txt                    # rename the book\nmore a-tale-of-two-cities.txt                           # read the book\n\n\nReference\nA Tale of Two Cities\nCajun Night Before Christmas",
     "crumbs": [
       "Shell and Terminal",
       "Introduction to the Shell and Terminal"

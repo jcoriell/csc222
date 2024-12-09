@@ -370,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#virtual-box-download" id="toc-virtual-box-download" class="nav-link active" data-scroll-target="#virtual-box-download">Virtual Box Download</a></li>
   <li><a href="#vm-download" id="toc-vm-download" class="nav-link" data-scroll-target="#vm-download">VM Download</a></li>
   <li><a href="#vm-setup" id="toc-vm-setup" class="nav-link" data-scroll-target="#vm-setup">VM Setup</a></li>
-  <li><a href="#booting-the-vm" id="toc-booting-the-vm" class="nav-link" data-scroll-target="#booting-the-vm">Booting the VM</a></li>
+  <li><a href="#installing-and-booting-the-vm" id="toc-installing-and-booting-the-vm" class="nav-link" data-scroll-target="#installing-and-booting-the-vm">Installing and Booting the VM</a></li>
   <li><a href="#setting-up-the-gui" id="toc-setting-up-the-gui" class="nav-link" data-scroll-target="#setting-up-the-gui">Setting Up the GUI</a></li>
   <li><a href="#setting-up-your-machine" id="toc-setting-up-your-machine" class="nav-link" data-scroll-target="#setting-up-your-machine">Setting Up Your Machine</a></li>
   </ul>
@@ -409,26 +409,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="vm-download" class="level2">
 <h2 class="anchored" data-anchor-id="vm-download">VM Download</h2>
 <p>These instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).</p>
-<p>Download the appropriate image for your host machine:</p>
+<ol type="1">
+<li><p>Download the appropriate image for your host machine:</p>
 <ul>
 <li><p>If you have an <strong>x86/amd64</strong> based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p></li>
 <li><p>If you have an <strong>arm</strong> based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server/arm">https://ubuntu.com/download/server/arm</a></p></li>
 <li><p>You are welcome to use any other Linux distro, links not provided.</p></li>
-</ul>
+</ul></li>
+<li><p>Move the image to the folder for this course on your computer so you can easily find it.</p></li>
+</ol>
 </section>
 <section id="vm-setup" class="level2">
 <h2 class="anchored" data-anchor-id="vm-setup">VM Setup</h2>
 <ol type="1">
-<li><p>Create a new VM in virtual box.</p></li>
+<li><p>Create a new VM in virtual box by clicking NEW.</p></li>
+<li><p>Fill out the required information. Here are some notes:</p>
+<ul>
+<li><p>For the ISO, be sure to select the .iso file downloaded.</p></li>
 <li><p>Skip the unattended install by checking the box to skip it.</p></li>
 <li><p>Base Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.</p></li>
 <li><p>Processors: It is up to you how many you want it to be able to use. I chose 4.</p></li>
 <li><p>Hard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. <strong>Do not</strong> pre-allocate the storage.</p></li>
-<li><p>You can click “Finish” at this point.</p></li>
+</ul></li>
+<li><p>Click “Finish” to finish this portion of the setup. This does not install the machine.</p></li>
 </ol>
 </section>
-<section id="booting-the-vm" class="level2">
-<h2 class="anchored" data-anchor-id="booting-the-vm">Booting the VM</h2>
+<section id="installing-and-booting-the-vm" class="level2">
+<h2 class="anchored" data-anchor-id="installing-and-booting-the-vm">Installing and Booting the VM</h2>
 <p>Note: At some point during the install you may be asked to update it. This is not required and could take a long time.</p>
 <ol type="1">
 <li><p>Boot the VM by selecting it in the left navigation and clicking “Start”.</p></li>

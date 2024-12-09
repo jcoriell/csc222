@@ -16,40 +16,47 @@ This page provides instructions on installing an Ubuntu Virtual Machine regardle
 
 These instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).
 
-Download the appropriate image for your host machine:
+1. Download the appropriate image for your host machine:
 
-- If you have an **x86/amd64** based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
+    - If you have an **x86/amd64** based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 
-- If you have an **arm** based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: [https://ubuntu.com/download/server/arm](https://ubuntu.com/download/server/arm)
+    - If you have an **arm** based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: [https://ubuntu.com/download/server/arm](https://ubuntu.com/download/server/arm)
 
-- You are welcome to use any other Linux distro, links not provided.
+    - You are welcome to use any other Linux distro, links not provided.
+
+2. Move the image to the folder for this course on your computer so you can easily find it.
+
 
 ## VM Setup
 
-1. Create a new VM in virtual box.
+1. Create a new VM in virtual box by clicking NEW.
 
-3. Skip the unattended install by checking the box to skip it.
+2. Fill out the required information. Here are some notes:
 
-4. Base Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.
+    - For the ISO, be sure to select the .iso file downloaded.
 
-5. Processors: It is up to you how many you want it to be able to use. I chose 4.
+    - Skip the unattended install by checking the box to skip it.
 
-6. Hard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. **Do not** pre-allocate the storage.
+    - Base Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.
 
-7. You can click "Finish" at this point.
+    - Processors: It is up to you how many you want it to be able to use. I chose 4.
+
+    - Hard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. **Do not** pre-allocate the storage.
+
+3. Click "Finish" to finish this portion of the setup. This does not install the machine.
 
 
-## Booting the VM
+## Installing and Booting the VM
 
 Note: At some point during the install you may be asked to update it. This is not required and could take a long time.  
 
 1. Boot the VM by selecting it in the left navigation and clicking "Start".
 
-9. When prompted, select "Try to Install Ubuntu".
+2. When prompted, select "Try to Install Ubuntu".
 
-10. The install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. For lack of security, and since it is just for class, consider something simple like your name and 123456.
+3. The install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. For lack of security, and since it is just for class, consider something simple like your name and 123456.
 
-11. Once it is installed it will prompt to reboot. It'll ask you to login with the username and password once you reboot.
+4. Once it is installed it will prompt to reboot. It'll ask you to login with the username and password once you reboot.
 
 
 ## Setting Up the GUI
