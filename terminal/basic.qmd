@@ -124,8 +124,9 @@ more a-tale-of-two-cities.txt                           # read the book
 
 [A Tale of Two Cities](https://www.gutenberg.org/cache/epub/98/pg98.txt){target="_blank"}
 
-<a href="cajun-night-before-christmas.txt">Cajun Night Before Christmas</a>
+<a href="cnbc.txt" target="_blank">Cajun Night Before Christmas</a>
 
+<a href="mbe.mp3" target="_blank">Meow</a>
 
 
 
