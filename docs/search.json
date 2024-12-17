@@ -996,6 +996,17 @@
     ]
   },
   {
+    "objectID": "terminal/grep-and-regex.html#files",
+    "href": "terminal/grep-and-regex.html#files",
+    "title": "Grep and Regular Expressions",
+    "section": "Files",
+    "text": "Files\nMeow Meow Meow",
+    "crumbs": [
+      "Shell and Terminal",
+      "Grep and Regular Expressions"
+    ]
+  },
+  {
     "objectID": "terminal/redirection.html",
     "href": "terminal/redirection.html",
     "title": "Redirection",
