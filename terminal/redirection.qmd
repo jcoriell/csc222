@@ -41,7 +41,7 @@ notarealcommand 2> error-file.txt
 ## Pipe
 
 - represented with `|`
-- creates a "pipe" or "pipline" between two programs
+- creates a "pipe" or "pipeline" between two programs
 - takes the output of the one command and uses it as input it into another command
 
 ### Example 
