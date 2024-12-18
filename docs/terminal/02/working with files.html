@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Virtual Machine Install – CSC 222 Systems Programming</title>
+<title>Working with Files – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/vm-install.html">Virtual Machine Install</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../../terminal/02/working with files.html">Working with Files</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">CSC 222 Systems Programming</a> 
+      <a href="../../">CSC 222 Systems Programming</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -150,19 +150,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link">
+  <a href="../../linux/unix-history.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unix History</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/vm-install.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../linux/vm-install.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virtual Machine Install</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
+  <a href="../../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linux Filesystem</span></a>
   </div>
 </li>
@@ -170,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../terminal/" class="sidebar-item-text sidebar-link">
+            <a href="../../terminal/" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Shell and Terminal</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -179,55 +179,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/00/background.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/00/background.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Background</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/01/navigation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/01/navigation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Navigation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/02/working with files.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/02/working with files.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Working with Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/basic.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/basic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to the Shell and Terminal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/redirection.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/redirection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Redirection</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/texteditors.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/texteditors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Text Editors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/file-permissions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/file-permissions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">File Permissions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/grep-and-regex.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/grep-and-regex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Grep and Regular Expressions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/more-commands.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/more-commands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">More Commands</span></a>
   </div>
 </li>
@@ -244,79 +244,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hello World</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Types and Format Specifiers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/03-Operators.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/03-Operators.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/04-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/04-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">More on Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sample Applications</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/07-Memory-Allocation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/07-Memory-Allocation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memory Allocation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Structs and Unions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sample Applications</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/10-Files.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/10-Files.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/11-Fork.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/11-Fork.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fork</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/12-Piping.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/12-Piping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Piping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../c-programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exec Functions</span></a>
   </div>
 </li>
@@ -333,43 +333,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bash-scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/02-Args.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bash-scripting/02-Args.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Args</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bash-scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conditionals</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/05-Case.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bash-scripting/05-Case.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Case</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bash-scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hello World</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bash-scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
@@ -385,21 +385,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#virtual-box-download" id="toc-virtual-box-download" class="nav-link active" data-scroll-target="#virtual-box-download">Virtual Box Download</a></li>
-  <li><a href="#vm-download" id="toc-vm-download" class="nav-link" data-scroll-target="#vm-download">VM Download</a></li>
-  <li><a href="#vm-setup" id="toc-vm-setup" class="nav-link" data-scroll-target="#vm-setup">VM Setup</a></li>
-  <li><a href="#installing-and-booting-the-vm" id="toc-installing-and-booting-the-vm" class="nav-link" data-scroll-target="#installing-and-booting-the-vm">Installing and Booting the VM</a></li>
-  <li><a href="#setting-up-the-gui" id="toc-setting-up-the-gui" class="nav-link" data-scroll-target="#setting-up-the-gui">Setting Up the GUI</a></li>
-  <li><a href="#setting-up-your-machine" id="toc-setting-up-your-machine" class="nav-link" data-scroll-target="#setting-up-your-machine">Setting Up Your Machine</a></li>
+  <li><a href="#commands" id="toc-commands" class="nav-link active" data-scroll-target="#commands">Commands</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linux/unix-history.html">Linux Install</a></li><li class="breadcrumb-item"><a href="../linux/vm-install.html">Virtual Machine Install</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../../terminal/02/working with files.html">Working with Files</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Virtual Machine Install</h1>
+<h1 class="title">Working with Files</h1>
 </div>
 
 
@@ -416,82 +412,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page provides instructions on installing an Ubuntu Virtual Machine regardless of the host system (i.e.&nbsp;whether you have a Windows or Mac x86 machine or an ARM based m-series Mac) using virtual box.</p>
-<section id="virtual-box-download" class="level2">
-<h2 class="anchored" data-anchor-id="virtual-box-download">Virtual Box Download</h2>
-<ol type="1">
-<li><p>Download Virtual Box from Oracle by visiting <a href="!https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html" target="_blank">https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html</a>.</p></li>
-<li><p>Install Virtual Box</p></li>
-</ol>
+<section id="commands" class="level2">
+<h2 class="anchored" data-anchor-id="commands">Commands</h2>
+<p>The following commands are commonly used commands for working with files.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>         <span class="co"># show the contents of a file</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span>        <span class="co"># show the contents of a file, forward scrolling/jumping</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span>        <span class="co"># show the contents of a file, forward and backward scrolling</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span>          <span class="co"># copy a file</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span>          <span class="co"># move a file, rename a file</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span>        <span class="co"># download stuff (sudo apt install wget)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">xdg-open</span>    <span class="co"># open a file or url in its default application</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="vm-download" class="level2">
-<h2 class="anchored" data-anchor-id="vm-download">VM Download</h2>
-<p>These instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).</p>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
 <ol type="1">
-<li><p>Download the appropriate image for your host machine:</p>
-<ul>
-<li><p>If you have an <strong>x86/amd64</strong> based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p></li>
-<li><p>If you have an <strong>arm</strong> based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server/arm">https://ubuntu.com/download/server/arm</a></p></li>
-<li><p>You are welcome to use any other Linux distro, links not provided.</p></li>
-</ul></li>
-<li><p>Move the image to the folder for this course on your computer so you can easily find it.</p></li>
-</ol>
-</section>
-<section id="vm-setup" class="level2">
-<h2 class="anchored" data-anchor-id="vm-setup">VM Setup</h2>
-<ol type="1">
-<li><p>Create a new VM in virtual box by clicking NEW.</p></li>
-<li><p>Fill out the required information. Here are some notes:</p>
-<ul>
-<li><p>For the ISO, be sure to select the .iso file downloaded.</p></li>
-<li><p>Skip the unattended install by checking the box to skip it.</p></li>
-<li><p>Base Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.</p></li>
-<li><p>Processors: It is up to you how many you want it to be able to use. I chose 4.</p></li>
-<li><p>Hard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. <strong>Do not</strong> pre-allocate the storage.</p></li>
-</ul></li>
-<li><p>Click “Finish” to finish this portion of the setup. This does not install the machine.</p></li>
-</ol>
-</section>
-<section id="installing-and-booting-the-vm" class="level2">
-<h2 class="anchored" data-anchor-id="installing-and-booting-the-vm">Installing and Booting the VM</h2>
-<p>Note: At some point during the install you may be asked to update it. This is not required and could take a long time.</p>
-<ol type="1">
-<li><p>Boot the VM by selecting it in the left navigation and clicking “Start”.</p></li>
-<li><p>When prompted, select “Try to Install Ubuntu”.</p></li>
-<li><p>The install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. For lack of security, and since it is just for class, consider something simple like your name and 123456.</p></li>
-<li><p>Once it is installed it will prompt to reboot. It’ll ask you to login with the username and password once you reboot.</p></li>
-</ol>
-</section>
-<section id="setting-up-the-gui" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-the-gui">Setting Up the GUI</h2>
-<p>If you installed Ubuntu Desktop, or any other distro that came with a GUI, you can skip this step.</p>
-<p>If you don’t want a GUI, you can skip this step, but you’ll be using vim/nano to edit files, which is fine but there is a steep learning curve for vim.</p>
-<p>If you want a GUI (not required, but nice to have), you need to run the following two commands separately:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ubuntu-desktop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Once it is done, turn the machine off by closing the window and selecting the option to turn the machine off. Then start the machine and log back in. There should be a GUI at this point.</p>
-</section>
-<section id="setting-up-your-machine" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-your-machine">Setting Up Your Machine</h2>
-<p>Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.</p>
-<p>Open the Terminal (shortcut is <code>ctrl+alt+t</code>) and run the following:</p>
-<ol type="1">
-<li><p>For programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.</p>
-<ul>
-<li>g++ is the GNU compiler for the C++ language</li>
-<li>gcc is the GNU compiler for the C language</li>
-<li>make is used to interpret “makefiles” which are used to control the build process of projects</li>
-<li>libc6-dev is a GNU C library</li>
-<li>dpkg-dev is used to upload, build, and unpack Debian source packages</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>For vim (VI-iMproved):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>For cleanup</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoremove</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt clean</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoclean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>For VS Code (if you enjoy using it), follow the instructions here: <a href="https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/">https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/</a></p></li>
+<li><p>Navigate to Desktop and create a books and music directory</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> books music</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Navigate into the newly created books directory and download a book</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> books</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.gutenberg.org/cache/epub/98/pg98.txt </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Rename the book</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> pg98.txt a-tale-of-two-cities.txt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> a-tale-of-two-cities.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Download another book</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://jcoriell.github.io/csc222/terminal/cnbc.txt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> cnbc.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Navigate to the music directory from the books directory and download a song</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> music</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://jcoriell.github.io/csc222/terminal/mbe.mp3</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xdg-open</span> mbe.mp3    <span class="co"># open it with the default application for the system</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 
 

@@ -17,7 +17,11 @@ website:
           # - linux/vm-install-mac.qmd
           # - linux/additional-steps.qmd
       - section: "Shell and Terminal"
+        href: terminal/
         contents:
+          - terminal/00/background.qmd
+          - terminal/01/navigation.qmd
+          - terminal/02/working with files.qmd
           - terminal/basic.qmd
           - terminal/redirection.qmd
           - terminal/texteditors.qmd

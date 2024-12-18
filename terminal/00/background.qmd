@@ -1,0 +1,42 @@
+---
+title: Background
+---
+
+## Terminal vs Shell
+
+
+::: {.callout-note}
+## Definition
+The shell is an interpreter that takes the commands you type and passes them to the operating system for execution.
+:::
+
+::: {.callout-note}
+## Definition
+The Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.
+:::
+
+Note: We frequently use these terms interchangably, although they are different things.
+
+
+## Various Shells
+
+- bash - bash stands for Bourn Again SHell. Most unix-like systems use the bash shell.
+- zsh - Read allowed as zsh or as Z shell. A bash-like shell.
+- powershell - PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework [[source]](https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.4){target="_blank"}
+- gitbash - bash emulation for windows [[source]](https://gitforwindows.org/){target="_blank"}
+- fish - friendly interactive shell [[source]](https://fishshell.com/){target="_blank"}
+
+## Various Terminals
+
+- Terminal application on macOS
+- Terminal application on Ubuntu
+- Terminal application on Windows
+
+
+## Absolute vs Relative Filepaths
+
+Absolute filepaths describe the filepath from the root of the filesystem.
+
+Relative filepaths describe the filepath from where you currently are.
+
+If it starts with a /, or the ~, then it is an absolute filepath. If not, it is relative.

@@ -1,0 +1,65 @@
+---
+title: Working with Files
+---
+
+## Commands
+
+The following commands are commonly used commands for working with files.
+
+
+```sh
+cat         # show the contents of a file
+more        # show the contents of a file, forward scrolling/jumping
+less        # show the contents of a file, forward and backward scrolling
+cp          # copy a file
+mv          # move a file, rename a file
+wget        # download stuff (sudo apt install wget)
+xdg-open    # open a file or url in its default application
+```
+
+## Example
+
+
+1. Navigate to Desktop and create a books and music directory
+
+    ```sh
+    cd ~/Desktop
+    mkdir books music
+    ```
+
+2. Navigate into the newly created books directory and download a book
+
+    ```sh
+    cd books
+    wget https://www.gutenberg.org/cache/epub/98/pg98.txt 
+    ls
+    ```
+
+3. Rename the book
+
+    ```sh
+    mv pg98.txt a-tale-of-two-cities.txt
+    more a-tale-of-two-cities.txt 
+    ```
+
+
+4. Download another book
+
+    ```sh
+    wget https://jcoriell.github.io/csc222/terminal/cnbc.txt
+    more cnbc.txt
+    ```
+
+5. Navigate to the music directory from the books directory and download a song
+
+    ```sh
+    cd ..
+    cd music
+    wget https://jcoriell.github.io/csc222/terminal/mbe.mp3
+    xdg-open mbe.mp3    # open it with the default application for the system
+    ```
+
+
+
+
+

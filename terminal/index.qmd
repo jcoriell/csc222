@@ -1,0 +1,13 @@
+---
+title: Introduction
+---
+
+## Overview 
+
+In this section we explore various commands of a bash shell.
+
+Contents: 
+
+- [Background](/terminal/00 Background/index.qmd)
+
+

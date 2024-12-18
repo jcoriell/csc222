@@ -479,113 +479,138 @@
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html",
-    "href": "terminal/file-permissions.html",
-    "title": "File Permissions",
+    "objectID": "terminal/00/background.html",
+    "href": "terminal/00/background.html",
+    "title": "Background",
     "section": "",
-    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe third and fouth columns denote the user and group assigned to the file.",
+    "text": "Definition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nNote: We frequently use these terms interchangably, although they are different things.",
     "crumbs": [
       "Shell and Terminal",
-      "File Permissions"
+      "Background"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#introduction",
-    "href": "terminal/file-permissions.html#introduction",
-    "title": "File Permissions",
+    "objectID": "terminal/00/background.html#terminal-vs-shell",
+    "href": "terminal/00/background.html#terminal-vs-shell",
+    "title": "Background",
     "section": "",
-    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe third and fouth columns denote the user and group assigned to the file.",
+    "text": "Definition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nNote: We frequently use these terms interchangably, although they are different things.",
     "crumbs": [
       "Shell and Terminal",
-      "File Permissions"
+      "Background"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#file-permission-breakdown",
-    "href": "terminal/file-permissions.html#file-permission-breakdown",
-    "title": "File Permissions",
-    "section": "File Permission Breakdown",
-    "text": "File Permission Breakdown\nLet’s break down the permission string drwxr-xr-x.\n\nThe 1st character is the type of file. The most common characters you will see here are:\n- for file.\nd for directory.\nl for link.\nIn the permissions drwxr-xr-x, the first character is d, so we have a directory.\nThe next 9 characters are for 3 different permission classes\n\nThe owner of the file is the first set of 3 characters.\nIn the string drwxr-xr-x, we have rwx which means the owner can read, write, and execute the file.\nThe group for the file is the second set of 3.\nIn the string drwxr-xr-x, we have r-x which means anyone in the group for the file (users belong to groups) can read and execute the file.\nThe third set of 3 are for all other users (those not in the same user group, and not the owner)\nIn the string drwxr-xr-x, we have r-x which means all others can read and execute the file, but cannot modify it.",
+    "objectID": "terminal/00/background.html#various-shells",
+    "href": "terminal/00/background.html#various-shells",
+    "title": "Background",
+    "section": "Various Shells",
+    "text": "Various Shells\n\nbash - bash stands for Bourn Again SHell. Most unix-like systems use the bash shell.\nzsh - Read allowed as zsh or as Z shell. A bash-like shell.\npowershell - PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework [source]\ngitbash - bash emulation for windows [source]\nfish - friendly interactive shell [source]",
     "crumbs": [
       "Shell and Terminal",
-      "File Permissions"
+      "Background"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#changing-file-permissions",
-    "href": "terminal/file-permissions.html#changing-file-permissions",
-    "title": "File Permissions",
-    "section": "Changing File Permissions",
-    "text": "Changing File Permissions\nWe use the command chmod to change the file permissions. You can use either of the following methods to change the permissions.",
+    "objectID": "terminal/00/background.html#various-terminals",
+    "href": "terminal/00/background.html#various-terminals",
+    "title": "Background",
+    "section": "Various Terminals",
+    "text": "Various Terminals\n\nTerminal application on macOS\nTerminal application on Ubuntu\nTerminal application on Windows",
     "crumbs": [
       "Shell and Terminal",
-      "File Permissions"
+      "Background"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#using-the-characters-that-represent-the-permissions",
-    "href": "terminal/file-permissions.html#using-the-characters-that-represent-the-permissions",
-    "title": "File Permissions",
-    "section": "Using the characters that represent the permissions",
-    "text": "Using the characters that represent the permissions\nThe characters for each type of user are:\n\nu for owner\ng for group\no for others\na for all\n\nThe characters for permissions are:\n\nr for read\nw for write\nx for execute\n\nTo add permissions, combine a usertype character with + and one or more of the permission characters.\nTo remove permissions, combine a usertype character with - and one or more of the permission characters.\n\nExamples\n\nchmod u+rwx filename to give read write and execute permissions to the owner.\nchmod g-x filename to remove execute permissions from the group.",
+    "objectID": "terminal/00/background.html#absolute-vs-relative-filepaths",
+    "href": "terminal/00/background.html#absolute-vs-relative-filepaths",
+    "title": "Background",
+    "section": "Absolute vs Relative Filepaths",
+    "text": "Absolute vs Relative Filepaths\nAbsolute filepaths describe the filepath from the root of the filesystem.\nRelative filepaths describe the filepath from where you currently are.\nIf it starts with a /, or the ~, then it is an absolute filepath. If not, it is relative.",
     "crumbs": [
       "Shell and Terminal",
-      "File Permissions"
+      "Background"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#using-numeric-values",
-    "href": "terminal/file-permissions.html#using-numeric-values",
-    "title": "File Permissions",
-    "section": "Using Numeric Values",
-    "text": "Using Numeric Values\nThe values for each type of permission are:\nr = 4\nw = 2\nx = 1\nYou can place them adjacent to each other to get combos\nrw  = 4 + 2     = 6\nrwx = 4 + 2 + 1 = 7\nwx  =     2 + 1 = 3\nrx  = 4     + 1 = 5\nWhen referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string drwxr-xr-x we have:\nd    r w x    r - x    r - x\n     4 2 1    4   1    4   1\n\nSum:     7        5        5\nPermission is 755\n\nExamples\n\nchmod 766 filename to give:\n\nrwx permissions to the owner\nrw permissions to the group\n\nrw permissions to the others",
-    "crumbs": [
-      "Shell and Terminal",
-      "File Permissions"
-    ]
-  },
-  {
-    "objectID": "terminal/file-permissions.html#changing-ownership",
-    "href": "terminal/file-permissions.html#changing-ownership",
-    "title": "File Permissions",
-    "section": "Changing Ownership",
-    "text": "Changing Ownership\n\nuse the command sudo chown [owner][:group] [filename] to change the ownership of a file",
-    "crumbs": [
-      "Shell and Terminal",
-      "File Permissions"
-    ]
-  },
-  {
-    "objectID": "terminal/more-commands.html",
-    "href": "terminal/more-commands.html",
-    "title": "More Commands",
+    "objectID": "terminal/index.html",
+    "href": "terminal/index.html",
+    "title": "Introduction",
     "section": "",
-    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\"",
-    "crumbs": [
-      "Shell and Terminal",
-      "More Commands"
-    ]
+    "text": "In this section we explore various commands of a bash shell.\nContents:\n\nBackground"
   },
   {
-    "objectID": "terminal/more-commands.html#find",
-    "href": "terminal/more-commands.html#find",
-    "title": "More Commands",
+    "objectID": "terminal/index.html#overview",
+    "href": "terminal/index.html#overview",
+    "title": "Introduction",
     "section": "",
-    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\"",
+    "text": "In this section we explore various commands of a bash shell.\nContents:\n\nBackground"
+  },
+  {
+    "objectID": "terminal/texteditors.html",
+    "href": "terminal/texteditors.html",
+    "title": "Text Editors",
+    "section": "",
+    "text": "a terminal based text editor\nsteep learning curve, but very powerful\nOnce you get a hang of it, it’s a good way to feel like you’re better than everyone else\nfor help learning, run the command vimtutor in the terminal\n\n\n\nIn this example, we create a file, open it in vim, and add “hello world” to it.\n\nCreate the file and open it in vim\ncd ~\nmkdir vim-practice\ncd vim-practice\ntouch helloworld.txt\nvim helloworld.txt\nSwitch to insert mode by typing i\n\nmodes:\n\ni for insert (escape to back out)\nv for visual\nshift+r for replace\n: for commands\n\n:wq to save and quit\n\nType hello world.\nPress the escape key to back out.\nSave and exit by typing :wq.\nRun cat helloworld.txt to see the contents.",
     "crumbs": [
       "Shell and Terminal",
-      "More Commands"
+      "Text Editors"
     ]
   },
   {
-    "objectID": "terminal/more-commands.html#and",
-    "href": "terminal/more-commands.html#and",
-    "title": "More Commands",
-    "section": "&&, ||, and ;",
-    "text": "&&, ||, and ;\n\nUse &&, || and ; to chain commands together\nThe command before && must complete without error for the command after && to execute\n# example with success on first command\necho \"hi\" &gt; test.txt && echo \"hello.txt\"\n# example with an error on the first command with &&\nfind . --name \"test1.txt\" && echo ok\n\n# after fixing the error\nfind . -name \"test1.txt\" && echo ok\nThe command before || must result in an error for the command after || to execute\n# example with || with an error\nfind . --name \"test1.txt\" || echo error\n\n# after fixing the error\nfind . -name \"test1.txt\" || echo error        # no error\nUse ; to just separate two commands on the same line\n# echo ok happens even though find will throw and error\nfind --name test1.txt; echo ok",
+    "objectID": "terminal/texteditors.html#vim",
+    "href": "terminal/texteditors.html#vim",
+    "title": "Text Editors",
+    "section": "",
+    "text": "a terminal based text editor\nsteep learning curve, but very powerful\nOnce you get a hang of it, it’s a good way to feel like you’re better than everyone else\nfor help learning, run the command vimtutor in the terminal\n\n\n\nIn this example, we create a file, open it in vim, and add “hello world” to it.\n\nCreate the file and open it in vim\ncd ~\nmkdir vim-practice\ncd vim-practice\ntouch helloworld.txt\nvim helloworld.txt\nSwitch to insert mode by typing i\n\nmodes:\n\ni for insert (escape to back out)\nv for visual\nshift+r for replace\n: for commands\n\n:wq to save and quit\n\nType hello world.\nPress the escape key to back out.\nSave and exit by typing :wq.\nRun cat helloworld.txt to see the contents.",
     "crumbs": [
       "Shell and Terminal",
-      "More Commands"
+      "Text Editors"
+    ]
+  },
+  {
+    "objectID": "terminal/texteditors.html#nano",
+    "href": "terminal/texteditors.html#nano",
+    "title": "Text Editors",
+    "section": "Nano",
+    "text": "Nano\n\nanother terminal based text editor\nsimpler to use than vim\n\n\nExample\nIn this example, we create a file and add “hello world” to it using nano.\n\nRun the following commands\ncd ~\nmkdir nano-practice\ncd nano-practice\ntouch helloworld.txt\nnano helloworld.txt\nAt this point, the file should be open. Type hello world on the first line.\nType ctrl + x to be prompted to save and close.\nRun cat helloworld.txt to see the contents.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Text Editors"
+    ]
+  },
+  {
+    "objectID": "terminal/02/working with files.html",
+    "href": "terminal/02/working with files.html",
+    "title": "Working with Files",
+    "section": "",
+    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application",
+    "crumbs": [
+      "Shell and Terminal",
+      "Working with Files"
+    ]
+  },
+  {
+    "objectID": "terminal/02/working with files.html#commands",
+    "href": "terminal/02/working with files.html#commands",
+    "title": "Working with Files",
+    "section": "",
+    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application",
+    "crumbs": [
+      "Shell and Terminal",
+      "Working with Files"
+    ]
+  },
+  {
+    "objectID": "terminal/02/working with files.html#example",
+    "href": "terminal/02/working with files.html#example",
+    "title": "Working with Files",
+    "section": "Example",
+    "text": "Example\n\nNavigate to Desktop and create a books and music directory\ncd ~/Desktop\nmkdir books music\nNavigate into the newly created books directory and download a book\ncd books\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt \nls\nRename the book\nmv pg98.txt a-tale-of-two-cities.txt\nmore a-tale-of-two-cities.txt \nDownload another book\nwget https://jcoriell.github.io/csc222/terminal/cnbc.txt\nmore cnbc.txt\nNavigate to the music directory from the books directory and download a song\ncd ..\ncd music\nwget https://jcoriell.github.io/csc222/terminal/mbe.mp3\nxdg-open mbe.mp3    # open it with the default application for the system",
+    "crumbs": [
+      "Shell and Terminal",
+      "Working with Files"
     ]
   },
   {
@@ -930,36 +955,113 @@
     ]
   },
   {
-    "objectID": "terminal/texteditors.html",
-    "href": "terminal/texteditors.html",
-    "title": "Text Editors",
+    "objectID": "terminal/more-commands.html",
+    "href": "terminal/more-commands.html",
+    "title": "More Commands",
     "section": "",
-    "text": "a terminal based text editor\nsteep learning curve, but very powerful\nOnce you get a hang of it, it’s a good way to feel like you’re better than everyone else\nfor help learning, run the command vimtutor in the terminal\n\n\n\nIn this example, we create a file, open it in vim, and add “hello world” to it.\n\nCreate the file and open it in vim\ncd ~\nmkdir vim-practice\ncd vim-practice\ntouch helloworld.txt\nvim helloworld.txt\nSwitch to insert mode by typing i\n\nmodes:\n\ni for insert (escape to back out)\nv for visual\nshift+r for replace\n: for commands\n\n:wq to save and quit\n\nType hello world.\nPress the escape key to back out.\nSave and exit by typing :wq.\nRun cat helloworld.txt to see the contents.",
+    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\"",
     "crumbs": [
       "Shell and Terminal",
-      "Text Editors"
+      "More Commands"
     ]
   },
   {
-    "objectID": "terminal/texteditors.html#vim",
-    "href": "terminal/texteditors.html#vim",
-    "title": "Text Editors",
+    "objectID": "terminal/more-commands.html#find",
+    "href": "terminal/more-commands.html#find",
+    "title": "More Commands",
     "section": "",
-    "text": "a terminal based text editor\nsteep learning curve, but very powerful\nOnce you get a hang of it, it’s a good way to feel like you’re better than everyone else\nfor help learning, run the command vimtutor in the terminal\n\n\n\nIn this example, we create a file, open it in vim, and add “hello world” to it.\n\nCreate the file and open it in vim\ncd ~\nmkdir vim-practice\ncd vim-practice\ntouch helloworld.txt\nvim helloworld.txt\nSwitch to insert mode by typing i\n\nmodes:\n\ni for insert (escape to back out)\nv for visual\nshift+r for replace\n: for commands\n\n:wq to save and quit\n\nType hello world.\nPress the escape key to back out.\nSave and exit by typing :wq.\nRun cat helloworld.txt to see the contents.",
+    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\"",
     "crumbs": [
       "Shell and Terminal",
-      "Text Editors"
+      "More Commands"
     ]
   },
   {
-    "objectID": "terminal/texteditors.html#nano",
-    "href": "terminal/texteditors.html#nano",
-    "title": "Text Editors",
-    "section": "Nano",
-    "text": "Nano\n\nanother terminal based text editor\nsimpler to use than vim\n\n\nExample\nIn this example, we create a file and add “hello world” to it using nano.\n\nRun the following commands\ncd ~\nmkdir nano-practice\ncd nano-practice\ntouch helloworld.txt\nnano helloworld.txt\nAt this point, the file should be open. Type hello world on the first line.\nType ctrl + x to be prompted to save and close.\nRun cat helloworld.txt to see the contents.",
+    "objectID": "terminal/more-commands.html#and",
+    "href": "terminal/more-commands.html#and",
+    "title": "More Commands",
+    "section": "&&, ||, and ;",
+    "text": "&&, ||, and ;\n\nUse &&, || and ; to chain commands together\nThe command before && must complete without error for the command after && to execute\n# example with success on first command\necho \"hi\" &gt; test.txt && echo \"hello.txt\"\n# example with an error on the first command with &&\nfind . --name \"test1.txt\" && echo ok\n\n# after fixing the error\nfind . -name \"test1.txt\" && echo ok\nThe command before || must result in an error for the command after || to execute\n# example with || with an error\nfind . --name \"test1.txt\" || echo error\n\n# after fixing the error\nfind . -name \"test1.txt\" || echo error        # no error\nUse ; to just separate two commands on the same line\n# echo ok happens even though find will throw and error\nfind --name test1.txt; echo ok",
     "crumbs": [
       "Shell and Terminal",
-      "Text Editors"
+      "More Commands"
+    ]
+  },
+  {
+    "objectID": "terminal/file-permissions.html",
+    "href": "terminal/file-permissions.html",
+    "title": "File Permissions",
+    "section": "",
+    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe third and fouth columns denote the user and group assigned to the file.",
+    "crumbs": [
+      "Shell and Terminal",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/file-permissions.html#introduction",
+    "href": "terminal/file-permissions.html#introduction",
+    "title": "File Permissions",
+    "section": "",
+    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe third and fouth columns denote the user and group assigned to the file.",
+    "crumbs": [
+      "Shell and Terminal",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/file-permissions.html#file-permission-breakdown",
+    "href": "terminal/file-permissions.html#file-permission-breakdown",
+    "title": "File Permissions",
+    "section": "File Permission Breakdown",
+    "text": "File Permission Breakdown\nLet’s break down the permission string drwxr-xr-x.\n\nThe 1st character is the type of file. The most common characters you will see here are:\n- for file.\nd for directory.\nl for link.\nIn the permissions drwxr-xr-x, the first character is d, so we have a directory.\nThe next 9 characters are for 3 different permission classes\n\nThe owner of the file is the first set of 3 characters.\nIn the string drwxr-xr-x, we have rwx which means the owner can read, write, and execute the file.\nThe group for the file is the second set of 3.\nIn the string drwxr-xr-x, we have r-x which means anyone in the group for the file (users belong to groups) can read and execute the file.\nThe third set of 3 are for all other users (those not in the same user group, and not the owner)\nIn the string drwxr-xr-x, we have r-x which means all others can read and execute the file, but cannot modify it.",
+    "crumbs": [
+      "Shell and Terminal",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/file-permissions.html#changing-file-permissions",
+    "href": "terminal/file-permissions.html#changing-file-permissions",
+    "title": "File Permissions",
+    "section": "Changing File Permissions",
+    "text": "Changing File Permissions\nWe use the command chmod to change the file permissions. You can use either of the following methods to change the permissions.",
+    "crumbs": [
+      "Shell and Terminal",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/file-permissions.html#using-the-characters-that-represent-the-permissions",
+    "href": "terminal/file-permissions.html#using-the-characters-that-represent-the-permissions",
+    "title": "File Permissions",
+    "section": "Using the characters that represent the permissions",
+    "text": "Using the characters that represent the permissions\nThe characters for each type of user are:\n\nu for owner\ng for group\no for others\na for all\n\nThe characters for permissions are:\n\nr for read\nw for write\nx for execute\n\nTo add permissions, combine a usertype character with + and one or more of the permission characters.\nTo remove permissions, combine a usertype character with - and one or more of the permission characters.\n\nExamples\n\nchmod u+rwx filename to give read write and execute permissions to the owner.\nchmod g-x filename to remove execute permissions from the group.",
+    "crumbs": [
+      "Shell and Terminal",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/file-permissions.html#using-numeric-values",
+    "href": "terminal/file-permissions.html#using-numeric-values",
+    "title": "File Permissions",
+    "section": "Using Numeric Values",
+    "text": "Using Numeric Values\nThe values for each type of permission are:\nr = 4\nw = 2\nx = 1\nYou can place them adjacent to each other to get combos\nrw  = 4 + 2     = 6\nrwx = 4 + 2 + 1 = 7\nwx  =     2 + 1 = 3\nrx  = 4     + 1 = 5\nWhen referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string drwxr-xr-x we have:\nd    r w x    r - x    r - x\n     4 2 1    4   1    4   1\n\nSum:     7        5        5\nPermission is 755\n\nExamples\n\nchmod 766 filename to give:\n\nrwx permissions to the owner\nrw permissions to the group\n\nrw permissions to the others",
+    "crumbs": [
+      "Shell and Terminal",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/file-permissions.html#changing-ownership",
+    "href": "terminal/file-permissions.html#changing-ownership",
+    "title": "File Permissions",
+    "section": "Changing Ownership",
+    "text": "Changing Ownership\n\nuse the command sudo chown [owner][:group] [filename] to change the ownership of a file",
+    "crumbs": [
+      "Shell and Terminal",
+      "File Permissions"
     ]
   },
   {
@@ -1004,6 +1106,39 @@
     "crumbs": [
       "Shell and Terminal",
       "Grep and Regular Expressions"
+    ]
+  },
+  {
+    "objectID": "terminal/01/navigation.html",
+    "href": "terminal/01/navigation.html",
+    "title": "Navigation",
+    "section": "",
+    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it",
+    "crumbs": [
+      "Shell and Terminal",
+      "Navigation"
+    ]
+  },
+  {
+    "objectID": "terminal/01/navigation.html#basic-commands-and-some-options",
+    "href": "terminal/01/navigation.html#basic-commands-and-some-options",
+    "title": "Navigation",
+    "section": "",
+    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it",
+    "crumbs": [
+      "Shell and Terminal",
+      "Navigation"
+    ]
+  },
+  {
+    "objectID": "terminal/01/navigation.html#example-1",
+    "href": "terminal/01/navigation.html#example-1",
+    "title": "Navigation",
+    "section": "Example",
+    "text": "Example\nThe following example uses the above commands to nagivate the file system and create and remove files and directories.\ncd ~                            # navigate to the home directory\ncd                              # also navigate to the home directory\npwd                             # prove it\nls                              # look at the files in the home directory\ncd Desktop                      # navigate to the Desktop \nmkdir programs                  # create a folder called programs\nmkdir csc222                    # create a folder called csc222\ncd programs                     # navigate into the folder called programs using the relative path\ntouch hello.py                  # create a file called hello.py\ntouch .gitignore                # create a hidden file \ntouch .another-hidden-file      # create another hidden file\nls                              # list the files\nls -a                           # list the files, include hidden ones \nls -l                           # list the files with details\nls -alh                         # list the files, include hidden ones, include details, make the size human readable (i.e. Kb, Mb, etc.)\nls -l hello.py                  # only list the info about hello.py\ncd ~/Desktop/csc222             # navigate to the csc222 folder using an absolute path \ncd ..                           # navigate up one folder\ncd programs                     # navigate back into programs            \nrm .another-hidden-file         # remove the file\ncd ..                           # navigate up one directory\nrm -rf programs                 # remove the programs folder and everything in it (recursive, force)",
+    "crumbs": [
+      "Shell and Terminal",
+      "Navigation"
     ]
   },
   {
