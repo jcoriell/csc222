@@ -19,15 +19,20 @@ website:
       - section: "Shell and Terminal"
         href: terminal/
         contents:
-          - terminal/00/background.qmd
-          - terminal/01/navigation.qmd
-          - terminal/02/working with files.qmd
-          - terminal/basic.qmd
-          - terminal/redirection.qmd
-          - terminal/texteditors.qmd
-          - terminal/file-permissions.qmd
-          - terminal/grep-and-regex.qmd
-          - terminal/more-commands.qmd
+          - terminal/00 Background.qmd
+          - terminal/01 Basic Commands.qmd
+          - terminal/02 Working With Files.qmd
+          - terminal/03 Other Useful Tips.qmd
+          - terminal/04 Redirection.qmd
+          - terminal/05 File Permissions.qmd
+          - section: Old
+            contents:
+              - terminal/old/basic.qmd
+              - terminal/old/redirection.qmd
+              - terminal/old/texteditors.qmd
+              - terminal/old/file-permissions.qmd
+              - terminal/old/grep-and-regex.qmd
+              - terminal/old/more-commands.qmd
       - section: "C Programming"
         contents:
           - c-programming/01-HelloWorld.qmd
@@ -59,7 +64,9 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      dark: darkly
+      light: cosmo
     css: styles.css
     toc: true
 

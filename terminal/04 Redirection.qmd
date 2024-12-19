@@ -1,0 +1,100 @@
+---
+title: Redirection
+---
+
+## Standard Output
+
+- frequently abbreviated as stdout
+- redirection represented with `>`
+- used to redirect the result of a command somewhere else
+- the contents of the file are overwritten when using `>`
+- can use `>>` to append to the contents of a file
+
+### Examples
+
+1. Output the results of one command to a file
+
+    ```sh
+    echo "print('hello world')" > hello.py
+    ```
+
+2. Output and concatenate the results to a new line in the file
+
+    ```sh
+    echo "print('another line')" >> hello.py
+    ```
+
+3. Output but erase the contents of `hello.py`
+
+    ```sh
+    echo "print('erase that old stuff')" > hello.py
+    ```
+
+
+## Standard Input
+
+- frequently abbreviated as stdin
+- redirection represented with `<`
+- can be used to provide input into a program 
+
+### Example
+
+1. Create a file named `name.txt` that contains your name.
+
+    ```sh
+    echo "josh" > name.txt   # create a file named name.txt that contains your name
+    ```
+
+2. Open a text editor
+
+    ```sh
+    vim greeting.py   # or nano greeting.py
+    ```
+
+3. Add the following code to the file.
+
+    ```Python
+    import sys
+    name = sys.stdin.read()
+    print(f"Hi {name}")
+    ```
+
+4. Save and close the file.
+
+5. Feed the contents of the `name.txt` file into the `greeting.py` file while running the python file.
+
+    ```sh 
+    python3 greeting.py < name.txt
+    ```
+
+## Standard Error
+
+- abbreviated as stderr
+- represented with `2>`
+- can append with `2>>`
+- if an error is produced, you can redirect it elsewhere.
+
+
+### Examples
+
+```sh
+notarealcommand 2> error-file.txt
+notarealcommand 2>> error-file.txt
+```
+
+
+## Pipe
+
+- represented with `|`
+- creates a "pipe" or "pipeline" between two programs
+- takes the output of the one command and uses it as input it into another command
+
+### Example 
+
+List the contents of /usr/bin, but use `more` to view them in a paginated way.
+
+```sh
+ls -al /usr/bin | more
+```
+
+

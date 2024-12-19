@@ -1,0 +1,183 @@
+---
+title: Working with Files
+---
+
+## Commands
+
+The following commands are commonly used commands for working with files.
+
+
+```sh
+cat         # show the contents of a file
+more        # show the contents of a file, forward scrolling/jumping
+less        # show the contents of a file, forward and backward scrolling
+cp          # copy a file
+mv          # move a file, rename a file
+wget        # download stuff (sudo apt install wget)
+xdg-open    # open a file or url in its default application
+```
+
+### Example
+
+
+1. Navigate to Desktop and create a books and music directory
+
+    ```sh
+    cd ~/Desktop
+    mkdir books music
+    ```
+
+2. Navigate into the newly created books directory and download a book
+
+    ```sh
+    cd books
+    wget https://www.gutenberg.org/cache/epub/98/pg98.txt 
+    ls
+    ```
+
+3. Rename the book
+
+    ```sh
+    mv pg98.txt a-tale-of-two-cities.txt
+    more a-tale-of-two-cities.txt 
+    ```
+
+
+4. Download another book
+
+    ```sh
+    wget https://jcoriell.github.io/csc222/files/cnbc.txt
+    more cnbc.txt
+    ```
+
+5. Navigate to the music directory from the books directory and download a song
+
+    ```sh
+    cd ..
+    cd music
+    wget https://jcoriell.github.io/csc222/files/mbe.mp3
+    xdg-open mbe.mp3    # open it with the default application for the system
+    ```
+
+## Text Editors
+
+
+### vim (Vi - Improved)
+
+- steep learning curve, but frequent users love it 
+- will make you better that everyone else 
+- can learn using the command `vimtutor`
+
+Open with the command: vim [filename]
+
+#### Vim Modes:
+
+    insert      - i to activate, escape to back out
+
+    replace     - r to enter replace mode, use it to write over text instead of inserting text
+                - escape to back out
+
+    visual      - v, V, or ctrl+v to activate character, line, or block visual mode 
+                - used to select text and apply commands to that text
+                - ex: copy, cut, replace, indent, search, and more...
+                - escape to back out 
+
+    command     - : to activate. Some common commands:
+                - w to save
+                - q to quit
+                - wq or x to save and quit
+                - q! to quit without saving
+                - e [filename] to open a file
+                - saveas [filename] to save the file as a new name
+                - [an integer] to jump to a line
+
+#### Example
+
+1. Use the following two commands to create a file somewhere on your system.
+
+    ```sh
+    cd ~/Desktop/programs               # navigate to a folder to complete the example in
+    vim random_number_generator.py      # open a file (it is ok if the file doesn't exist yet)
+    ```
+
+    At this point vim should have opened.
+
+2. Type `i` to enter insert mode and type the following code.
+
+    ```Python
+    import random
+
+    print(random.randint())
+    ```
+
+3. Now hit `escape` to exit insert mode.
+
+4. Move the cursor to the beginning of the word randint
+
+5. Hit `v` to enter visual mode.
+
+6. Use the `e` key to go to the END of the word (`b` goes to the Beginning)
+
+7. Use the `c` key to CHANGE the selected text to `random`. (we are replacing randint with `random`) 
+
+    At this point the python code should look like this:
+
+    ```Python
+    import random
+
+    print(random.random())
+    ```
+
+8. Use `escape` to exit insert mode.
+
+9. Use `:` to enter command mode.
+
+10. Type `wq` and hit enter to save and exit. 
+
+11. If you'd like to run the code, use the following command:
+
+    ```sh
+    python3 random_number_generator.py
+    ```
+
+::: {.callout-tip}
+It is recommended at this point that you run the `vimtutor` command if you'd like to learn more about using vim.
+:::
+
+### Nano
+
+- a simple to use terminal based text editor
+- little to no learning curve
+
+#### Example
+
+In this example, we create a file and add "hello world" to it using nano.
+
+1. Run the following commands
+
+    ```sh
+    cd ~/Desktop/programs       # navigate to a folder to store a file
+    touch helloworld.py
+    nano helloworld.py
+    ```
+
+2. At this point, the file should be open. Type `print("hello world")` on the first line.
+
+3. Type `ctrl + x` to be prompted to save and close.
+
+4. Run `cat helloworld.py` to see the contents.
+
+5. Run `python3 helloworld.py` to run the file.
+
+## Reference Files
+
+### Reference
+
+[A Tale of Two Cities](https://www.gutenberg.org/cache/epub/98/pg98.txt){target="_blank"}
+
+<a href="/files/cnbc.txt" target="_blank">Cajun Night Before Christmas</a>
+
+<a href="/files/mbe.mp3" target="_blank">Meow</a>
+
+
+

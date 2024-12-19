@@ -1,0 +1,32 @@
+---
+title: Other Useful Tips
+---
+
+## Other Useful Basic Commands
+
+```sh
+echo  [some-output] # create output... like print in python
+history             # show the terminal history
+history -c          # clear all the history from the terminal
+clear               # clear what is currently in the terminal (doesn't clear history)
+man [command]       # show the manual for a command 
+```
+
+## Other Useful Keyboard Shortcuts
+
+The following shortcuts can make your life a bit easier while working in the Terminal. This is not an exhaustive list of shortcuts.
+
+```
+up arrow        - pull up the previous command
+down arrow      - show the next command (if one exists)
+
+tab             - autocomplete based on what commands or files or directories are available
+ctrl + l        - clear
+ctrl + c        - cancel the currently running process 
+ctrl + r        - search through the history 
+
+ctrl + a (or the home key) - jump to beginning of line
+ctrl + e (or the end key)  - jump to the end of a line
+
+alt + left/right arrow key - navigate by word instead of character
+```

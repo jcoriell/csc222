@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>File Permissions – CSC 222 Systems Programming</title>
+<title>Introduction to the Shell and Terminal – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -80,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../terminal/file-permissions.html">File Permissions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../../terminal/old/basic.html">Old</a></li><li class="breadcrumb-item"><a href="../../terminal/old/basic.html">Introduction to the Shell and Terminal</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -95,7 +131,10 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">CSC 222 Systems Programming</a> 
+      <a href="../../">CSC 222 Systems Programming</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -116,19 +155,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link">
+  <a href="../../linux/unix-history.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unix History</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/vm-install.html" class="sidebar-item-text sidebar-link">
+  <a href="../../linux/vm-install.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virtual Machine Install</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
+  <a href="../../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linux Filesystem</span></a>
   </div>
 </li>
@@ -136,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../terminal/" class="sidebar-item-text sidebar-link">
+            <a href="../../terminal/" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Shell and Terminal</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -145,153 +184,93 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/00/background.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/00 Background.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Background</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/01/navigation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/01 Basic Commands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Navigation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/02/working with files.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/02 Working With Files.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working with Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/basic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to the Shell and Terminal</span></a>
+  <a href="../../terminal/03 Other Useful Tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Other Useful Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/redirection.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/04 Redirection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Redirection</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/texteditors.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/05 File Permissions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">File Permissions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Old</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../terminal/old/basic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introduction to the Shell and Terminal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../terminal/old/redirection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Redirection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../terminal/old/texteditors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Text Editors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/file-permissions.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../terminal/old/file-permissions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">File Permissions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/grep-and-regex.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/old/grep-and-regex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Grep and Regular Expressions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../terminal/more-commands.html" class="sidebar-item-text sidebar-link">
+  <a href="../../terminal/old/more-commands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">More Commands</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">C Programming</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Hello World</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Types and Format Specifiers</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/03-Operators.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Operators</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/04-Functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Functions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">More on Data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sample Applications</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/07-Memory-Allocation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Memory Allocation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Structs and Unions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sample Applications</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/10-Files.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/11-Fork.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fork</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/12-Piping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Piping</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c-programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exec Functions</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Bash Scripting</span></a>
+ <span class="menu-text">C Programming</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -299,43 +278,132 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/02-Args.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Args</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conditionals</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exit Codes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/05-Case.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Case</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hello World</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../c-programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Types and Format Specifiers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/03-Operators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/04-Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More on Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample Applications</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/07-Memory-Allocation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Memory Allocation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Structs and Unions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample Applications</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/10-Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/11-Fork.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fork</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/12-Piping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Piping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../c-programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exec Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bash Scripting</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../bash-scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../bash-scripting/02-Args.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Args</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../bash-scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conditionals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exit Codes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../bash-scripting/05-Case.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Case</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../bash-scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hello World</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../bash-scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
@@ -352,26 +420,25 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#file-permission-breakdown" id="toc-file-permission-breakdown" class="nav-link" data-scroll-target="#file-permission-breakdown">File Permission Breakdown</a></li>
-  <li><a href="#changing-file-permissions" id="toc-changing-file-permissions" class="nav-link" data-scroll-target="#changing-file-permissions">Changing File Permissions</a></li>
-  <li><a href="#using-the-characters-that-represent-the-permissions" id="toc-using-the-characters-that-represent-the-permissions" class="nav-link" data-scroll-target="#using-the-characters-that-represent-the-permissions">Using the characters that represent the permissions</a>
+  <li><a href="#controls" id="toc-controls" class="nav-link" data-scroll-target="#controls">Controls</a></li>
+  <li><a href="#some-basic-commands" id="toc-some-basic-commands" class="nav-link" data-scroll-target="#some-basic-commands">Some Basic Commands</a>
   <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   </ul></li>
-  <li><a href="#using-numeric-values" id="toc-using-numeric-values" class="nav-link" data-scroll-target="#using-numeric-values">Using Numeric Values</a>
+  <li><a href="#more-commands" id="toc-more-commands" class="nav-link" data-scroll-target="#more-commands">More Commands</a>
   <ul class="collapse">
-  <li><a href="#examples-1" id="toc-examples-1" class="nav-link" data-scroll-target="#examples-1">Examples</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul></li>
-  <li><a href="#changing-ownership" id="toc-changing-ownership" class="nav-link" data-scroll-target="#changing-ownership">Changing Ownership</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../terminal/file-permissions.html">File Permissions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../../terminal/old/basic.html">Old</a></li><li class="breadcrumb-item"><a href="../../terminal/old/basic.html">Introduction to the Shell and Terminal</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">File Permissions</h1>
+<h1 class="title">Introduction to the Shell and Terminal</h1>
 </div>
 
 
@@ -390,101 +457,87 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>File permissions are expressed with a 10 character string.</p>
-<p>To see the file permissions for files in a directory run <code>ls -l</code>.</p>
-<p>The output will resemble the following:</p>
-<pre><code>drwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop
-drwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents
-drwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads</code></pre>
-<p>The first set of characters such as <code>drwxr-xr-x</code> denotes the file permissions.</p>
-<p>The third and fouth columns denote the user and group assigned to the file.</p>
+<p>Def: The <strong>shell</strong> is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.</p>
+<p>Def: The <strong>terminal</strong> is the interface the user interacts with. This is where you type the commands for the shell.</p>
+<p>Common Shells include:</p>
+<pre><code>- Bourn Again Shell (bash - linux distros, macOS)
+- z-shell (zsh - linux distros, macOS)
+- powershell (windows)
+- gitbash (windows)</code></pre>
 </section>
-<section id="file-permission-breakdown" class="level2">
-<h2 class="anchored" data-anchor-id="file-permission-breakdown">File Permission Breakdown</h2>
-<p>Let’s break down the permission string <code>drwxr-xr-x</code>.</p>
-<ol type="1">
-<li><p>The 1st character is the type of file. The most common characters you will see here are:</p>
-<pre><code>- for file.
-d for directory.
-l for link.</code></pre>
-<p>In the permissions <code>drwxr-xr-x</code>, the first character is <code>d</code>, so we have a directory.</p></li>
-<li><p>The next 9 characters are for 3 different permission classes</p>
-<ol type="a">
-<li><p>The owner of the file is the first set of 3 characters.</p>
-<p>In the string <code>drwxr-xr-x</code>, we have <code>rwx</code> which means the owner can read, write, and execute the file.</p></li>
-<li><p>The group for the file is the second set of 3.</p>
-<p>In the string <code>drwxr-xr-x</code>, we have <code>r-x</code> which means anyone in the group for the file (users belong to groups) can read and execute the file.</p></li>
-<li><p>The third set of 3 are for all other users (those not in the same user group, and not the owner)</p>
-<p>In the string <code>drwxr-xr-x</code>, we have <code>r-x</code> which means all others can read and execute the file, but cannot modify it.</p></li>
-</ol></li>
-</ol>
+<section id="controls" class="level2">
+<h2 class="anchored" data-anchor-id="controls">Controls</h2>
+<p>These are basic controls that are useful for using the terminal.</p>
+<p><code>up</code> - show previous command</p>
+<p><code>down</code> - show next command</p>
+<p><code>tab</code> - autocomplete</p>
+<p><code>ctrl + l</code> - clear</p>
+<p><code>ctrl + c</code> - cancel</p>
+<p><code>ctrl + r</code> - search</p>
+<p><code>ctrl + d</code> - close the terminal</p>
+<p><code>ctrl + a</code> - jump to the beginning of the line</p>
+<p><code>ctrl + e</code> - jump to the end of the line</p>
+<p><code>alt + [left arrow key/right arrow key]</code> - move the cursor left/right by the word</p>
 </section>
-<section id="changing-file-permissions" class="level2">
-<h2 class="anchored" data-anchor-id="changing-file-permissions">Changing File Permissions</h2>
-<p>We use the command <code>chmod</code> to change the file permissions. You can use either of the following methods to change the permissions.</p>
-</section>
-<section id="using-the-characters-that-represent-the-permissions" class="level2">
-<h2 class="anchored" data-anchor-id="using-the-characters-that-represent-the-permissions">Using the characters that represent the permissions</h2>
-<p>The characters for each type of user are:</p>
-<ul>
-<li><code>u</code> for owner</li>
-<li><code>g</code> for group</li>
-<li><code>o</code> for others</li>
-<li><code>a</code> for all</li>
-</ul>
-<p>The characters for permissions are:</p>
-<ul>
-<li><code>r</code> for read</li>
-<li><code>w</code> for write</li>
-<li><code>x</code> for execute</li>
-</ul>
-<p>To add permissions, combine a usertype character with <code>+</code> and one or more of the permission characters.</p>
-<p>To remove permissions, combine a usertype character with <code>-</code> and one or more of the permission characters.</p>
-<section id="examples" class="level3">
-<h3 class="anchored" data-anchor-id="examples">Examples</h3>
-<ol type="1">
-<li><p><code>chmod u+rwx filename</code> to give read write and execute permissions to the owner.</p></li>
-<li><p><code>chmod g-x filename</code> to remove execute permissions from the group.</p></li>
-</ol>
+<section id="some-basic-commands" class="level2">
+<h2 class="anchored" data-anchor-id="some-basic-commands">Some Basic Commands</h2>
+<p>A set of basic commands for your reference. Complete usage is not illustrated.</p>
+<p><code>sudo</code> - use when you need superuser privelages (short for superuser do)</p>
+<p><code>pwd</code> - print working directory</p>
+<p><code>mkdir [new directory name]</code> - create a new directory</p>
+<p><code>touch [new file name]</code> - create a file</p>
+<p><code>ls</code> - list the contents of the a directory</p>
+<p><code>cd [destination]</code> - change the directory</p>
+<p><code>man [command]</code> - show the manual for a command</p>
+<p><code>rm [filename]</code> - remove a file</p>
+<p><code>rmdir [directory name]</code> - remove a directory</p>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>This example illustrates some usage of the commands above.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~                <span class="co"># navigate to the home directory</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> example-1     <span class="co"># create a directory named example-1</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> example-1        <span class="co"># navigate into the directory named example-1</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span>                 <span class="co"># print the current working directory just to see </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> new-file.txt  <span class="co"># create a file named new-file.txt</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> .secret-file  <span class="co"># create a file that starts with a .</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>                  <span class="co"># list out the files in the current directory</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span>               <span class="co"># list all the files (including hidden ones)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-alh</span>             <span class="co"># list the files, include details about each one, in a human readable format</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..               <span class="co"># go up one directory</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> example-1    <span class="co"># remove the folder your created and everything in it </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="using-numeric-values" class="level2">
-<h2 class="anchored" data-anchor-id="using-numeric-values">Using Numeric Values</h2>
-<p>The values for each type of permission are:</p>
-<pre><code>r = 4
-w = 2
-x = 1</code></pre>
-<p>You can place them adjacent to each other to get combos</p>
-<pre><code>rw  = 4 + 2     = 6
-rwx = 4 + 2 + 1 = 7
-wx  =     2 + 1 = 3
-rx  = 4     + 1 = 5</code></pre>
-<p>When referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string <code>drwxr-xr-x</code> we have:</p>
-<pre><code>d    r w x    r - x    r - x
-     4 2 1    4   1    4   1
-
-Sum:     7        5        5
-Permission is 755</code></pre>
-<section id="examples-1" class="level3">
-<h3 class="anchored" data-anchor-id="examples-1">Examples</h3>
-<ol type="1">
-<li><p><code>chmod 766 filename</code> to give:</p>
-<ul>
-<li><code>rwx</code> permissions to the owner</li>
-<li><code>rw</code> permissions to the group<br>
-</li>
-<li><code>rw</code> permissions to the others</li>
-</ul></li>
-</ol>
+<section id="more-commands" class="level2">
+<h2 class="anchored" data-anchor-id="more-commands">More Commands</h2>
+<p>A set of more commands for your reference. Complete usage is not illustrated.</p>
+<p><code>cat [filename]</code> - returns the contents of the file</p>
+<p><code>more [filename]</code> - allows you to view the contents in a paginated manner</p>
+<p><code>echo [a message]</code> - returns the message</p>
+<p><code>cp [source] [destination]</code> - copies a file from the source to a destination</p>
+<p><code>mv [source] [destination]</code> - moves a file from the source to a destination</p>
+<p><code>history</code> - see the history of previous commands that were typed</p>
+<p><code>clear</code> - clears what is displayed in the terminal</p>
+<p><code>wget [url]</code> - downloads the contents at the url</p>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<p>The following is an an example of using some of the commands above.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~                                                    <span class="co"># navigate home</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> books                                             <span class="co"># create a directory called books</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> books</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Let's download a book"</span>                            <span class="co"># produce a message</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.gutenberg.org/cache/epub/98/pg98.txt   <span class="co"># download "A Tale of Two Cities"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>                                                      <span class="co"># list the files</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> pg98.txt a-tale-of-two-cities.txt                    <span class="co"># rename the book</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> a-tale-of-two-cities.txt                           <span class="co"># read the book</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="changing-ownership" class="level2">
-<h2 class="anchored" data-anchor-id="changing-ownership">Changing Ownership</h2>
-<ul>
-<li>use the command <code>sudo chown [owner][:group] [filename]</code> to change the ownership of a file</li>
-</ul>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<p><a href="https://www.gutenberg.org/cache/epub/98/pg98.txt" target="_blank">A Tale of Two Cities</a></p>
+<p><a href="cnbc.txt" target="_blank">Cajun Night Before Christmas</a></p>
+<p><a href="mbe.mp3" target="_blank">Meow</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -508,6 +561,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

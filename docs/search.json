@@ -421,317 +421,465 @@
     "href": "index.html",
     "title": "CSC 222 Systems Programming",
     "section": "",
-    "text": "Nothing to see here."
+    "text": "The notes found here are for the Winter quarter of 2025. These notes will be changing periodically during this time period (from December 2024 through February 2025).\nFor an unchanging version of these notes see the previous iteration at https://jcoriell.github.io/csc222-winter-2024/."
   },
   {
-    "objectID": "terminal/basic.html",
-    "href": "terminal/basic.html",
-    "title": "Introduction to the Shell and Terminal",
+    "objectID": "terminal/04 Redirection.html",
+    "href": "terminal/04 Redirection.html",
+    "title": "Redirection",
     "section": "",
-    "text": "Def: The shell is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.\nDef: The terminal is the interface the user interacts with. This is where you type the commands for the shell.\nCommon Shells include:\n- Bourn Again Shell (bash - linux distros, macOS)\n- z-shell (zsh - linux distros, macOS)\n- powershell (windows)\n- gitbash (windows)",
+    "text": "frequently abbreviated as stdout\nredirection represented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\n\nOutput the results of one command to a file\necho \"print('hello world')\" &gt; hello.py\nOutput and concatenate the results to a new line in the file\necho \"print('another line')\" &gt;&gt; hello.py\nOutput but erase the contents of hello.py\necho \"print('erase that old stuff')\" &gt; hello.py",
     "crumbs": [
       "Shell and Terminal",
-      "Introduction to the Shell and Terminal"
+      "Redirection"
     ]
   },
   {
-    "objectID": "terminal/basic.html#introduction",
-    "href": "terminal/basic.html#introduction",
-    "title": "Introduction to the Shell and Terminal",
+    "objectID": "terminal/04 Redirection.html#standard-output",
+    "href": "terminal/04 Redirection.html#standard-output",
+    "title": "Redirection",
     "section": "",
-    "text": "Def: The shell is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.\nDef: The terminal is the interface the user interacts with. This is where you type the commands for the shell.\nCommon Shells include:\n- Bourn Again Shell (bash - linux distros, macOS)\n- z-shell (zsh - linux distros, macOS)\n- powershell (windows)\n- gitbash (windows)",
+    "text": "frequently abbreviated as stdout\nredirection represented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\n\nOutput the results of one command to a file\necho \"print('hello world')\" &gt; hello.py\nOutput and concatenate the results to a new line in the file\necho \"print('another line')\" &gt;&gt; hello.py\nOutput but erase the contents of hello.py\necho \"print('erase that old stuff')\" &gt; hello.py",
     "crumbs": [
       "Shell and Terminal",
-      "Introduction to the Shell and Terminal"
+      "Redirection"
     ]
   },
   {
-    "objectID": "terminal/basic.html#controls",
-    "href": "terminal/basic.html#controls",
-    "title": "Introduction to the Shell and Terminal",
-    "section": "Controls",
-    "text": "Controls\nThese are basic controls that are useful for using the terminal.\nup - show previous command\ndown - show next command\ntab - autocomplete\nctrl + l - clear\nctrl + c - cancel\nctrl + r - search\nctrl + d - close the terminal\nctrl + a - jump to the beginning of the line\nctrl + e - jump to the end of the line\nalt + [left arrow key/right arrow key] - move the cursor left/right by the word",
+    "objectID": "terminal/04 Redirection.html#standard-input",
+    "href": "terminal/04 Redirection.html#standard-input",
+    "title": "Redirection",
+    "section": "Standard Input",
+    "text": "Standard Input\n\nfrequently abbreviated as stdin\nredirection represented with &lt;\ncan be used to provide input into a program\n\n\nExample\n\nCreate a file named name.txt that contains your name.\necho \"josh\" &gt; name.txt   # create a file named name.txt that contains your name\nOpen a text editor\nvim greeting.py   # or nano greeting.py\nAdd the following code to the file.\nimport sys\nname = sys.stdin.read()\nprint(f\"Hi {name}\")\nSave and close the file.\nFeed the contents of the name.txt file into the greeting.py file while running the python file.\npython3 greeting.py &lt; name.txt",
     "crumbs": [
       "Shell and Terminal",
-      "Introduction to the Shell and Terminal"
+      "Redirection"
     ]
   },
   {
-    "objectID": "terminal/basic.html#some-basic-commands",
-    "href": "terminal/basic.html#some-basic-commands",
-    "title": "Introduction to the Shell and Terminal",
-    "section": "Some Basic Commands",
-    "text": "Some Basic Commands\nA set of basic commands for your reference. Complete usage is not illustrated.\nsudo - use when you need superuser privelages (short for superuser do)\npwd - print working directory\nmkdir [new directory name] - create a new directory\ntouch [new file name] - create a file\nls - list the contents of the a directory\ncd [destination] - change the directory\nman [command] - show the manual for a command\nrm [filename] - remove a file\nrmdir [directory name] - remove a directory\n\nExample\nThis example illustrates some usage of the commands above.\ncd ~                # navigate to the home directory\nmkdir example-1     # create a directory named example-1\ncd example-1        # navigate into the directory named example-1\npwd                 # print the current working directory just to see \ntouch new-file.txt  # create a file named new-file.txt\ntouch .secret-file  # create a file that starts with a .\nls                  # list out the files in the current directory\nls -a               # list all the files (including hidden ones)\nls -alh             # list the files, include details about each one, in a human readable format\ncd ..               # go up one directory\nrm -rf example-1    # remove the folder your created and everything in it",
+    "objectID": "terminal/04 Redirection.html#standard-error",
+    "href": "terminal/04 Redirection.html#standard-error",
+    "title": "Redirection",
+    "section": "Standard Error",
+    "text": "Standard Error\n\nabbreviated as stderr\nrepresented with 2&gt;\ncan append with 2&gt;&gt;\nif an error is produced, you can redirect it elsewhere.\n\n\nExamples\nnotarealcommand 2&gt; error-file.txt\nnotarealcommand 2&gt;&gt; error-file.txt",
     "crumbs": [
       "Shell and Terminal",
-      "Introduction to the Shell and Terminal"
+      "Redirection"
     ]
   },
   {
-    "objectID": "terminal/basic.html#more-commands",
-    "href": "terminal/basic.html#more-commands",
-    "title": "Introduction to the Shell and Terminal",
-    "section": "More Commands",
-    "text": "More Commands\nA set of more commands for your reference. Complete usage is not illustrated.\ncat [filename] - returns the contents of the file\nmore [filename] - allows you to view the contents in a paginated manner\necho [a message] - returns the message\ncp [source] [destination] - copies a file from the source to a destination\nmv [source] [destination] - moves a file from the source to a destination\nhistory - see the history of previous commands that were typed\nclear - clears what is displayed in the terminal\nwget [url] - downloads the contents at the url\n\nExample\nThe following is an an example of using some of the commands above.\ncd ~                                                    # navigate home\nmkdir books                                             # create a directory called books\ncd books\necho \"Let's download a book\"                            # produce a message\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt   # download \"A Tale of Two Cities\"\nls                                                      # list the files\nmv pg98.txt a-tale-of-two-cities.txt                    # rename the book\nmore a-tale-of-two-cities.txt                           # read the book\n\n\nReference\nA Tale of Two Cities\nCajun Night Before Christmas\nMeow",
+    "objectID": "terminal/04 Redirection.html#pipe",
+    "href": "terminal/04 Redirection.html#pipe",
+    "title": "Redirection",
+    "section": "Pipe",
+    "text": "Pipe\n\nrepresented with |\ncreates a “pipe” or “pipeline” between two programs\ntakes the output of the one command and uses it as input it into another command\n\n\nExample\nList the contents of /usr/bin, but use more to view them in a paginated way.\nls -al /usr/bin | more",
     "crumbs": [
       "Shell and Terminal",
-      "Introduction to the Shell and Terminal"
+      "Redirection"
     ]
   },
   {
-    "objectID": "terminal/00/background.html",
-    "href": "terminal/00/background.html",
-    "title": "Background",
+    "objectID": "terminal/01 Basic Commands.html",
+    "href": "terminal/01 Basic Commands.html",
+    "title": "Navigation",
     "section": "",
-    "text": "Definition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nNote: We frequently use these terms interchangably, although they are different things.",
+    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it",
     "crumbs": [
       "Shell and Terminal",
-      "Background"
+      "Navigation"
     ]
   },
   {
-    "objectID": "terminal/00/background.html#terminal-vs-shell",
-    "href": "terminal/00/background.html#terminal-vs-shell",
-    "title": "Background",
+    "objectID": "terminal/01 Basic Commands.html#basic-commands-and-some-options",
+    "href": "terminal/01 Basic Commands.html#basic-commands-and-some-options",
+    "title": "Navigation",
     "section": "",
-    "text": "Definition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nNote: We frequently use these terms interchangably, although they are different things.",
+    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it",
     "crumbs": [
       "Shell and Terminal",
-      "Background"
+      "Navigation"
     ]
   },
   {
-    "objectID": "terminal/00/background.html#various-shells",
-    "href": "terminal/00/background.html#various-shells",
-    "title": "Background",
-    "section": "Various Shells",
-    "text": "Various Shells\n\nbash - bash stands for Bourn Again SHell. Most unix-like systems use the bash shell.\nzsh - Read allowed as zsh or as Z shell. A bash-like shell.\npowershell - PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework [source]\ngitbash - bash emulation for windows [source]\nfish - friendly interactive shell [source]",
-    "crumbs": [
-      "Shell and Terminal",
-      "Background"
-    ]
-  },
-  {
-    "objectID": "terminal/00/background.html#various-terminals",
-    "href": "terminal/00/background.html#various-terminals",
-    "title": "Background",
-    "section": "Various Terminals",
-    "text": "Various Terminals\n\nTerminal application on macOS\nTerminal application on Ubuntu\nTerminal application on Windows",
-    "crumbs": [
-      "Shell and Terminal",
-      "Background"
-    ]
-  },
-  {
-    "objectID": "terminal/00/background.html#absolute-vs-relative-filepaths",
-    "href": "terminal/00/background.html#absolute-vs-relative-filepaths",
-    "title": "Background",
-    "section": "Absolute vs Relative Filepaths",
-    "text": "Absolute vs Relative Filepaths\nAbsolute filepaths describe the filepath from the root of the filesystem.\nRelative filepaths describe the filepath from where you currently are.\nIf it starts with a /, or the ~, then it is an absolute filepath. If not, it is relative.",
-    "crumbs": [
-      "Shell and Terminal",
-      "Background"
-    ]
-  },
-  {
-    "objectID": "terminal/index.html",
-    "href": "terminal/index.html",
-    "title": "Introduction",
-    "section": "",
-    "text": "In this section we explore various commands of a bash shell.\nContents:\n\nBackground"
-  },
-  {
-    "objectID": "terminal/index.html#overview",
-    "href": "terminal/index.html#overview",
-    "title": "Introduction",
-    "section": "",
-    "text": "In this section we explore various commands of a bash shell.\nContents:\n\nBackground"
-  },
-  {
-    "objectID": "terminal/texteditors.html",
-    "href": "terminal/texteditors.html",
-    "title": "Text Editors",
-    "section": "",
-    "text": "a terminal based text editor\nsteep learning curve, but very powerful\nOnce you get a hang of it, it’s a good way to feel like you’re better than everyone else\nfor help learning, run the command vimtutor in the terminal\n\n\n\nIn this example, we create a file, open it in vim, and add “hello world” to it.\n\nCreate the file and open it in vim\ncd ~\nmkdir vim-practice\ncd vim-practice\ntouch helloworld.txt\nvim helloworld.txt\nSwitch to insert mode by typing i\n\nmodes:\n\ni for insert (escape to back out)\nv for visual\nshift+r for replace\n: for commands\n\n:wq to save and quit\n\nType hello world.\nPress the escape key to back out.\nSave and exit by typing :wq.\nRun cat helloworld.txt to see the contents.",
-    "crumbs": [
-      "Shell and Terminal",
-      "Text Editors"
-    ]
-  },
-  {
-    "objectID": "terminal/texteditors.html#vim",
-    "href": "terminal/texteditors.html#vim",
-    "title": "Text Editors",
-    "section": "",
-    "text": "a terminal based text editor\nsteep learning curve, but very powerful\nOnce you get a hang of it, it’s a good way to feel like you’re better than everyone else\nfor help learning, run the command vimtutor in the terminal\n\n\n\nIn this example, we create a file, open it in vim, and add “hello world” to it.\n\nCreate the file and open it in vim\ncd ~\nmkdir vim-practice\ncd vim-practice\ntouch helloworld.txt\nvim helloworld.txt\nSwitch to insert mode by typing i\n\nmodes:\n\ni for insert (escape to back out)\nv for visual\nshift+r for replace\n: for commands\n\n:wq to save and quit\n\nType hello world.\nPress the escape key to back out.\nSave and exit by typing :wq.\nRun cat helloworld.txt to see the contents.",
-    "crumbs": [
-      "Shell and Terminal",
-      "Text Editors"
-    ]
-  },
-  {
-    "objectID": "terminal/texteditors.html#nano",
-    "href": "terminal/texteditors.html#nano",
-    "title": "Text Editors",
-    "section": "Nano",
-    "text": "Nano\n\nanother terminal based text editor\nsimpler to use than vim\n\n\nExample\nIn this example, we create a file and add “hello world” to it using nano.\n\nRun the following commands\ncd ~\nmkdir nano-practice\ncd nano-practice\ntouch helloworld.txt\nnano helloworld.txt\nAt this point, the file should be open. Type hello world on the first line.\nType ctrl + x to be prompted to save and close.\nRun cat helloworld.txt to see the contents.",
-    "crumbs": [
-      "Shell and Terminal",
-      "Text Editors"
-    ]
-  },
-  {
-    "objectID": "terminal/02/working with files.html",
-    "href": "terminal/02/working with files.html",
-    "title": "Working with Files",
-    "section": "",
-    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application",
-    "crumbs": [
-      "Shell and Terminal",
-      "Working with Files"
-    ]
-  },
-  {
-    "objectID": "terminal/02/working with files.html#commands",
-    "href": "terminal/02/working with files.html#commands",
-    "title": "Working with Files",
-    "section": "",
-    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application",
-    "crumbs": [
-      "Shell and Terminal",
-      "Working with Files"
-    ]
-  },
-  {
-    "objectID": "terminal/02/working with files.html#example",
-    "href": "terminal/02/working with files.html#example",
-    "title": "Working with Files",
+    "objectID": "terminal/01 Basic Commands.html#example-1",
+    "href": "terminal/01 Basic Commands.html#example-1",
+    "title": "Navigation",
     "section": "Example",
-    "text": "Example\n\nNavigate to Desktop and create a books and music directory\ncd ~/Desktop\nmkdir books music\nNavigate into the newly created books directory and download a book\ncd books\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt \nls\nRename the book\nmv pg98.txt a-tale-of-two-cities.txt\nmore a-tale-of-two-cities.txt \nDownload another book\nwget https://jcoriell.github.io/csc222/terminal/cnbc.txt\nmore cnbc.txt\nNavigate to the music directory from the books directory and download a song\ncd ..\ncd music\nwget https://jcoriell.github.io/csc222/terminal/mbe.mp3\nxdg-open mbe.mp3    # open it with the default application for the system",
+    "text": "Example\nThe following example uses the above commands to nagivate the file system and create and remove files and directories.\ncd ~                            # navigate to the home directory\ncd                              # also navigate to the home directory\npwd                             # prove it\nls                              # look at the files in the home directory\ncd Desktop                      # navigate to the Desktop \nmkdir programs                  # create a folder called programs\nmkdir csc222                    # create a folder called csc222\ncd programs                     # navigate into the folder called programs using the relative path\ntouch hello.py                  # create a file called hello.py\ntouch .gitignore                # create a hidden file \ntouch .another-hidden-file      # create another hidden file\nls                              # list the files\nls -a                           # list the files, include hidden ones \nls -l                           # list the files with details\nls -alh                         # list the files, include hidden ones, include details, make the size human readable (i.e. Kb, Mb, etc.)\nls -l hello.py                  # only list the info about hello.py\ncd ~/Desktop/csc222             # navigate to the csc222 folder using an absolute path \ncd ..                           # navigate up one folder\ncd programs                     # navigate back into programs            \nrm .another-hidden-file         # remove the file\ncd ..                           # navigate up one directory\nrm -rf programs                 # remove the programs folder and everything in it (recursive, force)",
     "crumbs": [
       "Shell and Terminal",
-      "Working with Files"
+      "Navigation"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html",
-    "href": "bash-scripting/07-Functions.html",
-    "title": "Functions",
+    "objectID": "terminal/old/redirection.html",
+    "href": "terminal/old/redirection.html",
+    "title": "Redirection",
     "section": "",
-    "text": "#!/bin/bash\n\n# defining functions\nhello () {\n    echo \"Hello from a function\"\n    echo \"Exiting the function\"\n}\n\n# calling the function\nhello   # no parenthesis",
+    "text": "abbreviated as stdout\nrepresented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\necho \"hello world\" &gt; helloworld.txt",
     "crumbs": [
-      "Bash Scripting",
-      "Functions"
+      "Shell and Terminal",
+      "Old",
+      "Redirection"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html#simple-function",
-    "href": "bash-scripting/07-Functions.html#simple-function",
-    "title": "Functions",
+    "objectID": "terminal/old/redirection.html#standard-output",
+    "href": "terminal/old/redirection.html#standard-output",
+    "title": "Redirection",
     "section": "",
-    "text": "#!/bin/bash\n\n# defining functions\nhello () {\n    echo \"Hello from a function\"\n    echo \"Exiting the function\"\n}\n\n# calling the function\nhello   # no parenthesis",
+    "text": "abbreviated as stdout\nrepresented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\necho \"hello world\" &gt; helloworld.txt",
     "crumbs": [
-      "Bash Scripting",
-      "Functions"
+      "Shell and Terminal",
+      "Old",
+      "Redirection"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html#with-args",
-    "href": "bash-scripting/07-Functions.html#with-args",
-    "title": "Functions",
-    "section": "With Args",
-    "text": "With Args\n\n#!/bin/bash\n\n# can use word function without paren\nfunction hello {\n    # this takes one arg\n    # it's just like for a file\n    echo \"first arg $1\"\n}\n\n\n# if not using function use paren\nhelloAgain () {\n    echo \"All args $@\"\n}\n\n\nhello \"this\"\nhelloAgain hi today is thursday",
+    "objectID": "terminal/old/redirection.html#standard-input",
+    "href": "terminal/old/redirection.html#standard-input",
+    "title": "Redirection",
+    "section": "Standard Input",
+    "text": "Standard Input\n\nabbreviated as stdin\nrepresented with &lt;\ncan be used to provide input into a program",
     "crumbs": [
-      "Bash Scripting",
-      "Functions"
+      "Shell and Terminal",
+      "Old",
+      "Redirection"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html#local-variables",
-    "href": "bash-scripting/07-Functions.html#local-variables",
-    "title": "Functions",
-    "section": "Local Variables",
-    "text": "Local Variables\n#!/bin/bash\n\nglobalvar=\"this is global\"\n\nhelloLocal () {\n    local localvar=\"this is local\"\n\n    local globalvar=\"this is also local\"\n    echo $globalvar\n    echo $localvar\n}\n\nhelloLocal\necho $globalvar",
+    "objectID": "terminal/old/redirection.html#standard-error",
+    "href": "terminal/old/redirection.html#standard-error",
+    "title": "Redirection",
+    "section": "Standard Error",
+    "text": "Standard Error\n\nabbreviated as stderr\nrepresented with 2&gt;\ncan append with 2&gt;&gt;\nif an error is produced, you can redirect it elsewhere.\n\n\nExample\nnotarealcommand 2&gt; error-file.txt",
     "crumbs": [
-      "Bash Scripting",
-      "Functions"
+      "Shell and Terminal",
+      "Old",
+      "Redirection"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html#returns",
-    "href": "bash-scripting/07-Functions.html#returns",
-    "title": "Functions",
-    "section": "Returns",
-    "text": "Returns\n#!/bin/bash\n\nhelloReturn () {\n    # add 25 to the first arg\n    local someresult=$((25 + $1))\n\n    # return requires numeric values\n    return $someresult # use echo for strings\n}\n\nhelloReturn 20\necho $?",
+    "objectID": "terminal/old/redirection.html#pipe",
+    "href": "terminal/old/redirection.html#pipe",
+    "title": "Redirection",
+    "section": "Pipe",
+    "text": "Pipe\n\nrepresented with |\ncreates a “pipe” or “pipeline” between two programs\ntakes the output of the one command and uses it as input it into another command\n\n\nExample\nList the contents of /usr/bin, but use more to view them in a paginated way.\nls -al /usr/bin | more",
     "crumbs": [
-      "Bash Scripting",
-      "Functions"
+      "Shell and Terminal",
+      "Old",
+      "Redirection"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html",
-    "href": "bash-scripting/01-Intro.html",
-    "title": "Intro",
+    "objectID": "terminal/old/grep-and-regex.html",
+    "href": "terminal/old/grep-and-regex.html",
+    "title": "Grep and Regular Expressions",
     "section": "",
-    "text": "#!/bin/bash\n\n# Above is the shebang\n\n# For mac\n# Update bash with homebrew\n# If installed with homebrew the default location is\n# /opt/homebrew/bin/bash\n# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable\n\necho Hello World\necho I am `whoami`\necho Today is `date`\necho Current working directory is $(pwd)",
+    "text": "grep stands for Globally search for a Regular Expression and Print\n\n\n\nCreate some files to work with.\necho \"testing 1 2 3\" &gt; test1.txt\necho \"testing 4 5 6\" &gt; test2.txt\necho \"TESTING 7 8 9\" &gt; test3.txt\nmkdir \"test-folder\"\ncd \"test-folder\"\necho \"folder testing 1 2 3\" &gt; test4.text\necho \"folder testing 4 5 6\" &gt; test4.text\necho \"FOLDER TESTING 7 8 9\" &gt; test4.text\ncd ..\nThe format to search for strings in files is `grep [thing you’re searching for] [filename].\ngrep testing test1.txt  # searching for the word testing in text1.txt\n\n# * can be used as a wild card\ngrep testing test*.txt  # searching for the word testing in any file with the format test*.txt\ngrep testing *          # searching for testing in any file\n\n# applying some flags (more exist)\ngrep -l test *.txt          # -l only shows the file names, not the content\ngrep -i testing test*.txt   # -i ignores case\ngrep -ir testing *          # -r searches recursively",
     "crumbs": [
-      "Bash Scripting",
-      "Intro"
+      "Shell and Terminal",
+      "Old",
+      "Grep and Regular Expressions"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html#hello-world",
-    "href": "bash-scripting/01-Intro.html#hello-world",
-    "title": "Intro",
+    "objectID": "terminal/old/grep-and-regex.html#grep",
+    "href": "terminal/old/grep-and-regex.html#grep",
+    "title": "Grep and Regular Expressions",
     "section": "",
-    "text": "#!/bin/bash\n\n# Above is the shebang\n\n# For mac\n# Update bash with homebrew\n# If installed with homebrew the default location is\n# /opt/homebrew/bin/bash\n# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable\n\necho Hello World\necho I am `whoami`\necho Today is `date`\necho Current working directory is $(pwd)",
+    "text": "grep stands for Globally search for a Regular Expression and Print\n\n\n\nCreate some files to work with.\necho \"testing 1 2 3\" &gt; test1.txt\necho \"testing 4 5 6\" &gt; test2.txt\necho \"TESTING 7 8 9\" &gt; test3.txt\nmkdir \"test-folder\"\ncd \"test-folder\"\necho \"folder testing 1 2 3\" &gt; test4.text\necho \"folder testing 4 5 6\" &gt; test4.text\necho \"FOLDER TESTING 7 8 9\" &gt; test4.text\ncd ..\nThe format to search for strings in files is `grep [thing you’re searching for] [filename].\ngrep testing test1.txt  # searching for the word testing in text1.txt\n\n# * can be used as a wild card\ngrep testing test*.txt  # searching for the word testing in any file with the format test*.txt\ngrep testing *          # searching for testing in any file\n\n# applying some flags (more exist)\ngrep -l test *.txt          # -l only shows the file names, not the content\ngrep -i testing test*.txt   # -i ignores case\ngrep -ir testing *          # -r searches recursively",
     "crumbs": [
-      "Bash Scripting",
-      "Intro"
+      "Shell and Terminal",
+      "Old",
+      "Grep and Regular Expressions"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html#variables",
-    "href": "bash-scripting/01-Intro.html#variables",
-    "title": "Intro",
-    "section": "Variables",
-    "text": "Variables\n#!/bin/bash\n\n# setting variables (no spaces adjacent to = )\nmyVar=10\nanotherVar=\"the variable is...\"\n\n# accessing the variables ($ right infront of the variable)\necho \"The var is $myVar\"\necho The var is $myVar    # double quotes were not required \n\n# single quotes would not have worked\necho 'This is not my var: $myVar' # single quotes are a literal\n\n# escape special characters\necho \"The banana is \\$$myVar\" \n\n# have characters adjacent to variables with curlies\necho \"The banana is \\$${myVar}s\"",
+    "objectID": "terminal/old/grep-and-regex.html#regular-expressions",
+    "href": "terminal/old/grep-and-regex.html#regular-expressions",
+    "title": "Grep and Regular Expressions",
+    "section": "Regular Expressions",
+    "text": "Regular Expressions\nRegular expressions are used to express patterns within text. Using them in conjunction with grep can result in powerful searches.\nTo follow the following examples, run the commands below.\n# navigate to documents and download the following\nwget https://raw.githubusercontent.com/jcoriell/download/main/regex-sample.txt\nwget https://raw.githubusercontent.com/dwyl/english-words/master/words.txt\n\n# confirm the files are there\nls                      \n\n# peek inside the files\nmore regex-sample.txt   \nmore words.txt          \n\nSearching for a simple strings\nFor exact matching of characters, words, and phrases, you can use the characters.\n# -P flag stands for Perl, can use -E here instead\n# later notations will require -P\ngrep -P \"abc\" regex-sample.txt     \ngrep -P \"coriell\" regex-sample.txt \n\n\nMeta Characters\nSome characters require a slash (escape) in front of them to include them as part of the search because they are meta characters that have special meaning. More on these can be found in the subsections that follow.\nCharacter   Meaning\n.           - any character except new line\n[           - grouping\n{           - quantifying\n()          - grouping \n\\           - escape\n^           - starts with \n$           - ends with \n|           - or\n?           - a quantifier\n*           - another quantifier\n+           - another quantifier\n\nExamples\n# Search for a dot\ngrep -P \"\\.\" regex-sample.txt\n# search for an open parenthesis\ngrep -P \"\\(\" regex-sample.txt\n# search for any character and then the letter c\ngrep -P \".c\" regex-sample.txt\n\n\n\nCharacter Types\nYou can specify different types of characters such as digits or whitespace. These notations require the usage of the -P flag.\nCharacter   Meaning\n.           - any character except new line\n\\d          - digit (0-9)\n\\D          - not a digit (not 0-9)\n\\w          - a Word character (a-z, A-Z, 0-9, _)\n\\W          - not one of the word characters\n\\s          - whitespace (space, tab, newline)\n\\S          - note whitespace\n\nExamples\n# search for three consecutive digits\ngrep -P \"\\d\\d\\d\" regex-sample.txt\n# search for three digits, any, three digits, any, then 4 digits\ngrep -P \"\\d\\d\\d.\\d\\d\\d.\\d\\d\\d\\d\" regex-sample.txt\n# search for consecutive word characters\ngrep -P \"\\w\\w\\w\\w\" regex-sample.txt\n# search for whitespace\ngrep -P \"\\s\" regex-sample.txt\n\n\n\nBoundaries\nCharacter   Meaning\n\\b          - word boundary\n\\B          - not a word boundary\n^           - beginning of a line\n$           - end of a line\n\nExamples\n# find 3 word characters between two boundaries\ngrep -P \"\\b\\w\\w\\w\\b\" regex-sample.txt\n# find h at the beginning of a line\ngrep -P \"^h\" regex-sample.txt\n# find h at the beginning of a word\ngrep -P \"\\bh\" regex-sample.txt\n# find 4 word characters at the end of a line\ngrep -P \"\\w\\w\\w\\w$\" regex-sample.txt\n# find lines that start with a and count them\n# wc is for word count\ngrep -P \"^a\" words.txt | wc -l \n# find lines that start with a, have three characters, then end with b.\n# store then in a file called result.txt\ngrep -P \"^a...b$\" words.txt &gt; result.txt\nmore result.txt # view it\n# starts with a, 5th letter is b. \n# shows individual word count\ngrep -P \"^a...b\" words.txt | wc -w \n\n\n\nGroupings\nGroupings allow us to combine different types of characters or patterns.\nCharacter   Meaning\n[]          matches characters in brackets\n[^ ]        matches characters not in brackets\n|           or\n()          group\n\nExamples\n# find any character from a to z\ngrep -P \"[a-z]\" regex-sample.txt\n# find any character from a to z or A-Z\ngrep -P \"[a-zA-Z]\" regex-sample.txt\n\n```sh\n# find occurrances of a dot followed by a character a-z or A-Z\ngrep -P \"\\.[a-zA-Z]\" regex-sample.txt \n# find a dot folled by three characters in a-z or A-Z\ngrep -P \"\\.[a-zA-Z][a-zA-Z][a-zA-Z]\" regex-sample.txt\n# find a dot followed by edu or com\ngrep -P \"\\.(edu|com)\" regex-sample.txt\n\n\n\nQuanitfiers\nThe quantifiers help us say how many of a type of character or characters we might want in parts of the expression. The quantifiers come after the thing it is quantifying.\nCharacter   Meaning\n*           - 0 or more\n+           - 1 or more\n?           - 0 or one\n{3}         - exact number (exactly 3 here)\n{1,5}       - range {min, max} (minimum of 1, max of 5 in example)\n\nExamples\n# find occurrance of a dot followed by 3 characters in a-z or A-Z\ngrep -P -o \"\\.[a-zA-Z]{3}\" regex-sample.txt # -o shows only non empty parts\n# find occurrances of a dot followed by at least 2 characters in a-z or A-Z\ngrep -P \"\\.[a-zA-Z]{2,}\" regex-sample.txt\n# find \n#   - one or more characters in a-z or A-Z or 0-9\n#   - followed by an @ symbol\n#   - followed by one or more characters in a-z or A-Z\n#   - followed by a dot \n#   - followed by at least two characters in a-z or A-Z\ngrep -P \"[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]{2,}\" regex-sample.txt",
     "crumbs": [
-      "Bash Scripting",
-      "Intro"
+      "Shell and Terminal",
+      "Old",
+      "Grep and Regular Expressions"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html#arrays",
-    "href": "bash-scripting/01-Intro.html#arrays",
-    "title": "Intro",
-    "section": "Arrays",
-    "text": "Arrays\n#!/usr/bin/env bash\n\n\n# declare and assign\ngroceries=(\"bread\" \"milk\" \"eggs\")\n\n# access\necho ${groceries[1]}\n\n# declare first, assign later\ndeclare -a numeric_array   # numeric array - index is numeric\ndeclare -A associative_array # Associative array (bash v4+) \n\n# assign\nnumeric_array[0]=\"Hello\"\nnumeric_array[1]=\"Worlds\"\n\n# reading values\necho \"${numeric_array[0]} ${numeric_array[1]}\"\necho \"${numeric_array[@]}\"\n\n# append to the array\nnumeric_array+=(\"Another Thing\")\n\n# quantity of things in the array\necho \"${#numeric_array[@]}\"\n\n# Associative Arrays\nassociative_array[firstname]=\"Josh\"\nassociative_array[lastname]=\"Coriell\"\n\necho \"${associative_array[firstname]} ${associative_array[lastname]}\"",
+    "objectID": "terminal/old/grep-and-regex.html#files",
+    "href": "terminal/old/grep-and-regex.html#files",
+    "title": "Grep and Regular Expressions",
+    "section": "Files",
+    "text": "Files\nMeow Meow Meow",
     "crumbs": [
-      "Bash Scripting",
-      "Intro"
+      "Shell and Terminal",
+      "Old",
+      "Grep and Regular Expressions"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html#prompting",
-    "href": "bash-scripting/01-Intro.html#prompting",
-    "title": "Intro",
-    "section": "Prompting",
-    "text": "Prompting\n#!/bin/bash\n\n\n# use read with -p for prompt\nread -p \"Enter your first and last name: \" first last\n\necho Give me a secret:\nread -s secret\n\necho First is $first \necho Last is $last\necho Secret is $secret",
+    "objectID": "terminal/old/file-permissions.html",
+    "href": "terminal/old/file-permissions.html",
+    "title": "File Permissions",
+    "section": "",
+    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe third and fouth columns denote the user and group assigned to the file.",
     "crumbs": [
-      "Bash Scripting",
-      "Intro"
+      "Shell and Terminal",
+      "Old",
+      "File Permissions"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html#math",
-    "href": "bash-scripting/01-Intro.html#math",
-    "title": "Intro",
-    "section": "Math",
-    "text": "Math\n#!/bin/bash\n\n# math\necho $((2.3 + 3))\necho $((3 - 4))\necho $((3 * 4))\necho $((5 / 2)) # integer divsion\necho $((5 % 2))",
+    "objectID": "terminal/old/file-permissions.html#introduction",
+    "href": "terminal/old/file-permissions.html#introduction",
+    "title": "File Permissions",
+    "section": "",
+    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe third and fouth columns denote the user and group assigned to the file.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/old/file-permissions.html#file-permission-breakdown",
+    "href": "terminal/old/file-permissions.html#file-permission-breakdown",
+    "title": "File Permissions",
+    "section": "File Permission Breakdown",
+    "text": "File Permission Breakdown\nLet’s break down the permission string drwxr-xr-x.\n\nThe 1st character is the type of file. The most common characters you will see here are:\n- for file.\nd for directory.\nl for link.\nIn the permissions drwxr-xr-x, the first character is d, so we have a directory.\nThe next 9 characters are for 3 different permission classes\n\nThe owner of the file is the first set of 3 characters.\nIn the string drwxr-xr-x, we have rwx which means the owner can read, write, and execute the file.\nThe group for the file is the second set of 3.\nIn the string drwxr-xr-x, we have r-x which means anyone in the group for the file (users belong to groups) can read and execute the file.\nThe third set of 3 are for all other users (those not in the same user group, and not the owner)\nIn the string drwxr-xr-x, we have r-x which means all others can read and execute the file, but cannot modify it.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/old/file-permissions.html#changing-file-permissions",
+    "href": "terminal/old/file-permissions.html#changing-file-permissions",
+    "title": "File Permissions",
+    "section": "Changing File Permissions",
+    "text": "Changing File Permissions\nWe use the command chmod to change the file permissions. You can use either of the following methods to change the permissions.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/old/file-permissions.html#using-the-characters-that-represent-the-permissions",
+    "href": "terminal/old/file-permissions.html#using-the-characters-that-represent-the-permissions",
+    "title": "File Permissions",
+    "section": "Using the characters that represent the permissions",
+    "text": "Using the characters that represent the permissions\nThe characters for each type of user are:\n\nu for owner\ng for group\no for others\na for all\n\nThe characters for permissions are:\n\nr for read\nw for write\nx for execute\n\nTo add permissions, combine a usertype character with + and one or more of the permission characters.\nTo remove permissions, combine a usertype character with - and one or more of the permission characters.\n\nExamples\n\nchmod u+rwx filename to give read write and execute permissions to the owner.\nchmod g-x filename to remove execute permissions from the group.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/old/file-permissions.html#using-numeric-values",
+    "href": "terminal/old/file-permissions.html#using-numeric-values",
+    "title": "File Permissions",
+    "section": "Using Numeric Values",
+    "text": "Using Numeric Values\nThe values for each type of permission are:\nr = 4\nw = 2\nx = 1\nYou can place them adjacent to each other to get combos\nrw  = 4 + 2     = 6\nrwx = 4 + 2 + 1 = 7\nwx  =     2 + 1 = 3\nrx  = 4     + 1 = 5\nWhen referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string drwxr-xr-x we have:\nd    r w x    r - x    r - x\n     4 2 1    4   1    4   1\n\nSum:     7        5        5\nPermission is 755\n\nExamples\n\nchmod 766 filename to give:\n\nrwx permissions to the owner\nrw permissions to the group\n\nrw permissions to the others",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/old/file-permissions.html#changing-ownership",
+    "href": "terminal/old/file-permissions.html#changing-ownership",
+    "title": "File Permissions",
+    "section": "Changing Ownership",
+    "text": "Changing Ownership\n\nuse the command sudo chown [owner][:group] [filename] to change the ownership of a file",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "File Permissions"
+    ]
+  },
+  {
+    "objectID": "terminal/old/more-commands.html",
+    "href": "terminal/old/more-commands.html",
+    "title": "More Commands",
+    "section": "",
+    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\"",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "More Commands"
+    ]
+  },
+  {
+    "objectID": "terminal/old/more-commands.html#find",
+    "href": "terminal/old/more-commands.html#find",
+    "title": "More Commands",
+    "section": "",
+    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\"",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "More Commands"
+    ]
+  },
+  {
+    "objectID": "terminal/old/more-commands.html#and",
+    "href": "terminal/old/more-commands.html#and",
+    "title": "More Commands",
+    "section": "&&, ||, and ;",
+    "text": "&&, ||, and ;\n\nUse &&, || and ; to chain commands together\nThe command before && must complete without error for the command after && to execute\n# example with success on first command\necho \"hi\" &gt; test.txt && echo \"hello.txt\"\n# example with an error on the first command with &&\nfind . --name \"test1.txt\" && echo ok\n\n# after fixing the error\nfind . -name \"test1.txt\" && echo ok\nThe command before || must result in an error for the command after || to execute\n# example with || with an error\nfind . --name \"test1.txt\" || echo error\n\n# after fixing the error\nfind . -name \"test1.txt\" || echo error        # no error\nUse ; to just separate two commands on the same line\n# echo ok happens even though find will throw and error\nfind --name test1.txt; echo ok",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "More Commands"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/05-Case.html",
+    "href": "bash-scripting/05-Case.html",
+    "title": "Case",
+    "section": "",
+    "text": "#!/bin/bash\n\necho \"What is your favorite food? \"\n\necho \"1 - Pizza\"\necho \"2 - Pineapples\"\necho \"3 - Pineapple Pizza\"\n\nread food;\n\ncase $food in \n    1) echo \"Pizza is a great choice.\";;\n    2) echo \"Mmm. Great fruit\";;\n    3) echo \"Spicy choice. You must not be Remy.\";;\n    *) echo \"That wasn't an option\"\nesac",
     "crumbs": [
       "Bash Scripting",
-      "Intro"
+      "Case"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/05-Case.html#example",
+    "href": "bash-scripting/05-Case.html#example",
+    "title": "Case",
+    "section": "",
+    "text": "#!/bin/bash\n\necho \"What is your favorite food? \"\n\necho \"1 - Pizza\"\necho \"2 - Pineapples\"\necho \"3 - Pineapple Pizza\"\n\nread food;\n\ncase $food in \n    1) echo \"Pizza is a great choice.\";;\n    2) echo \"Mmm. Great fruit\";;\n    3) echo \"Spicy choice. You must not be Remy.\";;\n    *) echo \"That wasn't an option\"\nesac",
+    "crumbs": [
+      "Bash Scripting",
+      "Case"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/04-Exit-Codes.html",
+    "href": "bash-scripting/04-Exit-Codes.html",
+    "title": "Exit Codes",
+    "section": "",
+    "text": "#!/bin/bash\n\n# exit code from last command\necho \"This: $?\"\n\n# typically success is 0, failure is typically &gt; 0\nls -abcdefg\necho $?",
+    "crumbs": [
+      "Bash Scripting",
+      "Exit Codes"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/04-Exit-Codes.html#exit-code",
+    "href": "bash-scripting/04-Exit-Codes.html#exit-code",
+    "title": "Exit Codes",
+    "section": "",
+    "text": "#!/bin/bash\n\n# exit code from last command\necho \"This: $?\"\n\n# typically success is 0, failure is typically &gt; 0\nls -abcdefg\necho $?",
+    "crumbs": [
+      "Bash Scripting",
+      "Exit Codes"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/04-Exit-Codes.html#use",
+    "href": "bash-scripting/04-Exit-Codes.html#use",
+    "title": "Exit Codes",
+    "section": "Use",
+    "text": "Use\n#!/bin/bash\n\nread -p \"What file would you like to remove? \" filename\n\nif [ ! -f $filename ]\nthen\n    echo \"That file does not exist...exiting\"\n    exit 1  # values less than 255\nfi \n\nrm $filename && echo \"File successfully removed\"",
+    "crumbs": [
+      "Bash Scripting",
+      "Exit Codes"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/06-Loops.html",
+    "href": "bash-scripting/06-Loops.html",
+    "title": "Hello World",
+    "section": "",
+    "text": "#!/bin/bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
+    "crumbs": [
+      "Bash Scripting",
+      "Hello World"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/06-Loops.html#while",
+    "href": "bash-scripting/06-Loops.html#while",
+    "title": "Hello World",
+    "section": "",
+    "text": "#!/bin/bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
+    "crumbs": [
+      "Bash Scripting",
+      "Hello World"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/06-Loops.html#for",
+    "href": "bash-scripting/06-Loops.html#for",
+    "title": "Hello World",
+    "section": "For",
+    "text": "For\n#!/bin/bash\n\n# traditional for loop\nfor (( i=0 ; i &lt; 5 ; i++ )) # don't forget the spaces\ndo \n    echo \"Counter $i\"\ndone\n\n# for each loops\nfor i in 1 2 3 4 5\ndo\n    echo \"Value: $i\"\ndone \n\n# A range of values\nfor i in {0..5}     # no spaces\ndo \n    echo \"Range: $i\"\ndone \n\n# specify an increment\nfor i in {0..10..2} # count from 0 to 10 by 2 (bash 4+)\ndo \n    echo \"Inc: $i\"\ndone",
+    "crumbs": [
+      "Bash Scripting",
+      "Hello World"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/06-Loops.html#loop-over-files",
+    "href": "bash-scripting/06-Loops.html#loop-over-files",
+    "title": "Hello World",
+    "section": "Loop over files",
+    "text": "Loop over files\n#!/bin/bash\n\n# looping over files in this directory\nfor file in *\ndo\n    if [ -f \"$file\" ]\n    then \n        echo $file\n    fi\ndone \n\nparent_dir=\"..\"\nfor directory in $parent_dir/*\ndo\n    if [ -d \"$directory\" ]\n    then \n        echo $directory\n    fi\ndone \n\nabsolute_dir=\"/Users/josh/Desktop\"\nfor directory in $absolute_dir/*\ndo \n    if [ -d \"$directory\" ] \n    then\n        echo $directory\n    fi \ndone",
+    "crumbs": [
+      "Bash Scripting",
+      "Hello World"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/06-Loops.html#loop-over-args",
+    "href": "bash-scripting/06-Loops.html#loop-over-args",
+    "title": "Hello World",
+    "section": "Loop over args",
+    "text": "Loop over args\n#!/bin/bash\n\n# recall: to access args use $@\n\nfor arg in $@\ndo \n    echo $arg\ndone",
+    "crumbs": [
+      "Bash Scripting",
+      "Hello World"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/02-Args.html",
+    "href": "bash-scripting/02-Args.html",
+    "title": "Args",
+    "section": "",
+    "text": "#!/bin/bash\n\n# you can get the individual args passed into a file\necho The file name is $0\necho The first arg is $1\necho The second arg is $2\n\n# The length of the args\necho The length of arg1 is ${#1}",
+    "crumbs": [
+      "Bash Scripting",
+      "Args"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/02-Args.html#individual-args",
+    "href": "bash-scripting/02-Args.html#individual-args",
+    "title": "Args",
+    "section": "",
+    "text": "#!/bin/bash\n\n# you can get the individual args passed into a file\necho The file name is $0\necho The first arg is $1\necho The second arg is $2\n\n# The length of the args\necho The length of arg1 is ${#1}",
+    "crumbs": [
+      "Bash Scripting",
+      "Args"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/02-Args.html#all-args",
+    "href": "bash-scripting/02-Args.html#all-args",
+    "title": "Args",
+    "section": "All Args",
+    "text": "All Args\n#!/bin/bash\n\necho \"All the args are $*\" # Access all the args as a string\n\necho \"All the args are $@\"  # Access as an array\n\necho Total number of args is $#\necho ${#@}",
+    "crumbs": [
+      "Bash Scripting",
+      "Args"
     ]
   },
   {
@@ -812,206 +960,393 @@
     ]
   },
   {
-    "objectID": "bash-scripting/02-Args.html",
-    "href": "bash-scripting/02-Args.html",
-    "title": "Args",
+    "objectID": "bash-scripting/01-Intro.html",
+    "href": "bash-scripting/01-Intro.html",
+    "title": "Intro",
     "section": "",
-    "text": "#!/bin/bash\n\n# you can get the individual args passed into a file\necho The file name is $0\necho The first arg is $1\necho The second arg is $2\n\n# The length of the args\necho The length of arg1 is ${#1}",
+    "text": "#!/bin/bash\n\n# Above is the shebang\n\n# For mac\n# Update bash with homebrew\n# If installed with homebrew the default location is\n# /opt/homebrew/bin/bash\n# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable\n\necho Hello World\necho I am `whoami`\necho Today is `date`\necho Current working directory is $(pwd)",
     "crumbs": [
       "Bash Scripting",
-      "Args"
+      "Intro"
     ]
   },
   {
-    "objectID": "bash-scripting/02-Args.html#individual-args",
-    "href": "bash-scripting/02-Args.html#individual-args",
-    "title": "Args",
+    "objectID": "bash-scripting/01-Intro.html#hello-world",
+    "href": "bash-scripting/01-Intro.html#hello-world",
+    "title": "Intro",
     "section": "",
-    "text": "#!/bin/bash\n\n# you can get the individual args passed into a file\necho The file name is $0\necho The first arg is $1\necho The second arg is $2\n\n# The length of the args\necho The length of arg1 is ${#1}",
+    "text": "#!/bin/bash\n\n# Above is the shebang\n\n# For mac\n# Update bash with homebrew\n# If installed with homebrew the default location is\n# /opt/homebrew/bin/bash\n# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable\n\necho Hello World\necho I am `whoami`\necho Today is `date`\necho Current working directory is $(pwd)",
     "crumbs": [
       "Bash Scripting",
-      "Args"
+      "Intro"
     ]
   },
   {
-    "objectID": "bash-scripting/02-Args.html#all-args",
-    "href": "bash-scripting/02-Args.html#all-args",
-    "title": "Args",
-    "section": "All Args",
-    "text": "All Args\n#!/bin/bash\n\necho \"All the args are $*\" # Access all the args as a string\n\necho \"All the args are $@\"  # Access as an array\n\necho Total number of args is $#\necho ${#@}",
+    "objectID": "bash-scripting/01-Intro.html#variables",
+    "href": "bash-scripting/01-Intro.html#variables",
+    "title": "Intro",
+    "section": "Variables",
+    "text": "Variables\n#!/bin/bash\n\n# setting variables (no spaces adjacent to = )\nmyVar=10\nanotherVar=\"the variable is...\"\n\n# accessing the variables ($ right infront of the variable)\necho \"The var is $myVar\"\necho The var is $myVar    # double quotes were not required \n\n# single quotes would not have worked\necho 'This is not my var: $myVar' # single quotes are a literal\n\n# escape special characters\necho \"The banana is \\$$myVar\" \n\n# have characters adjacent to variables with curlies\necho \"The banana is \\$${myVar}s\"",
     "crumbs": [
       "Bash Scripting",
-      "Args"
+      "Intro"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html",
-    "href": "bash-scripting/06-Loops.html",
-    "title": "Hello World",
+    "objectID": "bash-scripting/01-Intro.html#arrays",
+    "href": "bash-scripting/01-Intro.html#arrays",
+    "title": "Intro",
+    "section": "Arrays",
+    "text": "Arrays\n#!/usr/bin/env bash\n\n\n# declare and assign\ngroceries=(\"bread\" \"milk\" \"eggs\")\n\n# access\necho ${groceries[1]}\n\n# declare first, assign later\ndeclare -a numeric_array   # numeric array - index is numeric\ndeclare -A associative_array # Associative array (bash v4+) \n\n# assign\nnumeric_array[0]=\"Hello\"\nnumeric_array[1]=\"Worlds\"\n\n# reading values\necho \"${numeric_array[0]} ${numeric_array[1]}\"\necho \"${numeric_array[@]}\"\n\n# append to the array\nnumeric_array+=(\"Another Thing\")\n\n# quantity of things in the array\necho \"${#numeric_array[@]}\"\n\n# Associative Arrays\nassociative_array[firstname]=\"Josh\"\nassociative_array[lastname]=\"Coriell\"\n\necho \"${associative_array[firstname]} ${associative_array[lastname]}\"",
+    "crumbs": [
+      "Bash Scripting",
+      "Intro"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/01-Intro.html#prompting",
+    "href": "bash-scripting/01-Intro.html#prompting",
+    "title": "Intro",
+    "section": "Prompting",
+    "text": "Prompting\n#!/bin/bash\n\n\n# use read with -p for prompt\nread -p \"Enter your first and last name: \" first last\n\necho Give me a secret:\nread -s secret\n\necho First is $first \necho Last is $last\necho Secret is $secret",
+    "crumbs": [
+      "Bash Scripting",
+      "Intro"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/01-Intro.html#math",
+    "href": "bash-scripting/01-Intro.html#math",
+    "title": "Intro",
+    "section": "Math",
+    "text": "Math\n#!/bin/bash\n\n# math\necho $((2.3 + 3))\necho $((3 - 4))\necho $((3 * 4))\necho $((5 / 2)) # integer divsion\necho $((5 % 2))",
+    "crumbs": [
+      "Bash Scripting",
+      "Intro"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/07-Functions.html",
+    "href": "bash-scripting/07-Functions.html",
+    "title": "Functions",
     "section": "",
-    "text": "#!/bin/bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
+    "text": "#!/bin/bash\n\n# defining functions\nhello () {\n    echo \"Hello from a function\"\n    echo \"Exiting the function\"\n}\n\n# calling the function\nhello   # no parenthesis",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Functions"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html#while",
-    "href": "bash-scripting/06-Loops.html#while",
-    "title": "Hello World",
+    "objectID": "bash-scripting/07-Functions.html#simple-function",
+    "href": "bash-scripting/07-Functions.html#simple-function",
+    "title": "Functions",
     "section": "",
-    "text": "#!/bin/bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
+    "text": "#!/bin/bash\n\n# defining functions\nhello () {\n    echo \"Hello from a function\"\n    echo \"Exiting the function\"\n}\n\n# calling the function\nhello   # no parenthesis",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Functions"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html#for",
-    "href": "bash-scripting/06-Loops.html#for",
-    "title": "Hello World",
-    "section": "For",
-    "text": "For\n#!/bin/bash\n\n# traditional for loop\nfor (( i=0 ; i &lt; 5 ; i++ )) # don't forget the spaces\ndo \n    echo \"Counter $i\"\ndone\n\n# for each loops\nfor i in 1 2 3 4 5\ndo\n    echo \"Value: $i\"\ndone \n\n# A range of values\nfor i in {0..5}     # no spaces\ndo \n    echo \"Range: $i\"\ndone \n\n# specify an increment\nfor i in {0..10..2} # count from 0 to 10 by 2 (bash 4+)\ndo \n    echo \"Inc: $i\"\ndone",
+    "objectID": "bash-scripting/07-Functions.html#with-args",
+    "href": "bash-scripting/07-Functions.html#with-args",
+    "title": "Functions",
+    "section": "With Args",
+    "text": "With Args\n\n#!/bin/bash\n\n# can use word function without paren\nfunction hello {\n    # this takes one arg\n    # it's just like for a file\n    echo \"first arg $1\"\n}\n\n\n# if not using function use paren\nhelloAgain () {\n    echo \"All args $@\"\n}\n\n\nhello \"this\"\nhelloAgain hi today is thursday",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Functions"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html#loop-over-files",
-    "href": "bash-scripting/06-Loops.html#loop-over-files",
-    "title": "Hello World",
-    "section": "Loop over files",
-    "text": "Loop over files\n#!/bin/bash\n\n# looping over files in this directory\nfor file in *\ndo\n    if [ -f \"$file\" ]\n    then \n        echo $file\n    fi\ndone \n\nparent_dir=\"..\"\nfor directory in $parent_dir/*\ndo\n    if [ -d \"$directory\" ]\n    then \n        echo $directory\n    fi\ndone \n\nabsolute_dir=\"/Users/josh/Desktop\"\nfor directory in $absolute_dir/*\ndo \n    if [ -d \"$directory\" ] \n    then\n        echo $directory\n    fi \ndone",
+    "objectID": "bash-scripting/07-Functions.html#local-variables",
+    "href": "bash-scripting/07-Functions.html#local-variables",
+    "title": "Functions",
+    "section": "Local Variables",
+    "text": "Local Variables\n#!/bin/bash\n\nglobalvar=\"this is global\"\n\nhelloLocal () {\n    local localvar=\"this is local\"\n\n    local globalvar=\"this is also local\"\n    echo $globalvar\n    echo $localvar\n}\n\nhelloLocal\necho $globalvar",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Functions"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html#loop-over-args",
-    "href": "bash-scripting/06-Loops.html#loop-over-args",
-    "title": "Hello World",
-    "section": "Loop over args",
-    "text": "Loop over args\n#!/bin/bash\n\n# recall: to access args use $@\n\nfor arg in $@\ndo \n    echo $arg\ndone",
+    "objectID": "bash-scripting/07-Functions.html#returns",
+    "href": "bash-scripting/07-Functions.html#returns",
+    "title": "Functions",
+    "section": "Returns",
+    "text": "Returns\n#!/bin/bash\n\nhelloReturn () {\n    # add 25 to the first arg\n    local someresult=$((25 + $1))\n\n    # return requires numeric values\n    return $someresult # use echo for strings\n}\n\nhelloReturn 20\necho $?",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Functions"
     ]
   },
   {
-    "objectID": "bash-scripting/04-Exit-Codes.html",
-    "href": "bash-scripting/04-Exit-Codes.html",
-    "title": "Exit Codes",
+    "objectID": "terminal/03 Other Useful Tips.html",
+    "href": "terminal/03 Other Useful Tips.html",
+    "title": "Other Useful Tips",
     "section": "",
-    "text": "#!/bin/bash\n\n# exit code from last command\necho \"This: $?\"\n\n# typically success is 0, failure is typically &gt; 0\nls -abcdefg\necho $?",
-    "crumbs": [
-      "Bash Scripting",
-      "Exit Codes"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/04-Exit-Codes.html#exit-code",
-    "href": "bash-scripting/04-Exit-Codes.html#exit-code",
-    "title": "Exit Codes",
-    "section": "",
-    "text": "#!/bin/bash\n\n# exit code from last command\necho \"This: $?\"\n\n# typically success is 0, failure is typically &gt; 0\nls -abcdefg\necho $?",
-    "crumbs": [
-      "Bash Scripting",
-      "Exit Codes"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/04-Exit-Codes.html#use",
-    "href": "bash-scripting/04-Exit-Codes.html#use",
-    "title": "Exit Codes",
-    "section": "Use",
-    "text": "Use\n#!/bin/bash\n\nread -p \"What file would you like to remove? \" filename\n\nif [ ! -f $filename ]\nthen\n    echo \"That file does not exist...exiting\"\n    exit 1  # values less than 255\nfi \n\nrm $filename && echo \"File successfully removed\"",
-    "crumbs": [
-      "Bash Scripting",
-      "Exit Codes"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/05-Case.html",
-    "href": "bash-scripting/05-Case.html",
-    "title": "Case",
-    "section": "",
-    "text": "#!/bin/bash\n\necho \"What is your favorite food? \"\n\necho \"1 - Pizza\"\necho \"2 - Pineapples\"\necho \"3 - Pineapple Pizza\"\n\nread food;\n\ncase $food in \n    1) echo \"Pizza is a great choice.\";;\n    2) echo \"Mmm. Great fruit\";;\n    3) echo \"Spicy choice. You must not be Remy.\";;\n    *) echo \"That wasn't an option\"\nesac",
-    "crumbs": [
-      "Bash Scripting",
-      "Case"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/05-Case.html#example",
-    "href": "bash-scripting/05-Case.html#example",
-    "title": "Case",
-    "section": "",
-    "text": "#!/bin/bash\n\necho \"What is your favorite food? \"\n\necho \"1 - Pizza\"\necho \"2 - Pineapples\"\necho \"3 - Pineapple Pizza\"\n\nread food;\n\ncase $food in \n    1) echo \"Pizza is a great choice.\";;\n    2) echo \"Mmm. Great fruit\";;\n    3) echo \"Spicy choice. You must not be Remy.\";;\n    *) echo \"That wasn't an option\"\nesac",
-    "crumbs": [
-      "Bash Scripting",
-      "Case"
-    ]
-  },
-  {
-    "objectID": "terminal/more-commands.html",
-    "href": "terminal/more-commands.html",
-    "title": "More Commands",
-    "section": "",
-    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\"",
+    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command",
     "crumbs": [
       "Shell and Terminal",
-      "More Commands"
+      "Other Useful Tips"
     ]
   },
   {
-    "objectID": "terminal/more-commands.html#find",
-    "href": "terminal/more-commands.html#find",
-    "title": "More Commands",
+    "objectID": "terminal/03 Other Useful Tips.html#other-useful-basic-commands",
+    "href": "terminal/03 Other Useful Tips.html#other-useful-basic-commands",
+    "title": "Other Useful Tips",
     "section": "",
-    "text": "Typically used to find a file or directory.\nRecall grep is typically used to find patterns inside files\n\n# Example with find\nfind . -name \"test1.txt\"",
+    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command",
     "crumbs": [
       "Shell and Terminal",
-      "More Commands"
+      "Other Useful Tips"
     ]
   },
   {
-    "objectID": "terminal/more-commands.html#and",
-    "href": "terminal/more-commands.html#and",
-    "title": "More Commands",
-    "section": "&&, ||, and ;",
-    "text": "&&, ||, and ;\n\nUse &&, || and ; to chain commands together\nThe command before && must complete without error for the command after && to execute\n# example with success on first command\necho \"hi\" &gt; test.txt && echo \"hello.txt\"\n# example with an error on the first command with &&\nfind . --name \"test1.txt\" && echo ok\n\n# after fixing the error\nfind . -name \"test1.txt\" && echo ok\nThe command before || must result in an error for the command after || to execute\n# example with || with an error\nfind . --name \"test1.txt\" || echo error\n\n# after fixing the error\nfind . -name \"test1.txt\" || echo error        # no error\nUse ; to just separate two commands on the same line\n# echo ok happens even though find will throw and error\nfind --name test1.txt; echo ok",
+    "objectID": "terminal/03 Other Useful Tips.html#other-useful-keyboard-shortcuts",
+    "href": "terminal/03 Other Useful Tips.html#other-useful-keyboard-shortcuts",
+    "title": "Other Useful Tips",
+    "section": "Other Useful Keyboard Shortcuts",
+    "text": "Other Useful Keyboard Shortcuts\nThe following shortcuts can make your life a bit easier while working in the Terminal. This is not an exhaustive list of shortcuts.\nup arrow        - pull up the previous command\ndown arrow      - show the next command (if one exists)\n\ntab             - autocomplete based on what commands or files or directories are available\nctrl + l        - clear\nctrl + c        - cancel the currently running process \nctrl + r        - search through the history \n\nctrl + a (or the home key) - jump to beginning of line\nctrl + e (or the end key)  - jump to the end of a line\n\nalt + left/right arrow key - navigate by word instead of character",
     "crumbs": [
       "Shell and Terminal",
-      "More Commands"
+      "Other Useful Tips"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html",
-    "href": "terminal/file-permissions.html",
+    "objectID": "terminal/old/texteditors.html",
+    "href": "terminal/old/texteditors.html",
+    "title": "Text Editors",
+    "section": "",
+    "text": "a terminal based text editor\nsteep learning curve, but very powerful\nOnce you get a hang of it, it’s a good way to feel like you’re better than everyone else\nfor help learning, run the command vimtutor in the terminal\n\n\n\nIn this example, we create a file, open it in vim, and add “hello world” to it.\n\nCreate the file and open it in vim\ncd ~\nmkdir vim-practice\ncd vim-practice\ntouch helloworld.txt\nvim helloworld.txt\nSwitch to insert mode by typing i\n\nmodes:\n\ni for insert (escape to back out)\nv for visual\nshift+r for replace\n: for commands\n\n:wq to save and quit\n\nType hello world.\nPress the escape key to back out.\nSave and exit by typing :wq.\nRun cat helloworld.txt to see the contents.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "Text Editors"
+    ]
+  },
+  {
+    "objectID": "terminal/old/texteditors.html#vim",
+    "href": "terminal/old/texteditors.html#vim",
+    "title": "Text Editors",
+    "section": "",
+    "text": "a terminal based text editor\nsteep learning curve, but very powerful\nOnce you get a hang of it, it’s a good way to feel like you’re better than everyone else\nfor help learning, run the command vimtutor in the terminal\n\n\n\nIn this example, we create a file, open it in vim, and add “hello world” to it.\n\nCreate the file and open it in vim\ncd ~\nmkdir vim-practice\ncd vim-practice\ntouch helloworld.txt\nvim helloworld.txt\nSwitch to insert mode by typing i\n\nmodes:\n\ni for insert (escape to back out)\nv for visual\nshift+r for replace\n: for commands\n\n:wq to save and quit\n\nType hello world.\nPress the escape key to back out.\nSave and exit by typing :wq.\nRun cat helloworld.txt to see the contents.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "Text Editors"
+    ]
+  },
+  {
+    "objectID": "terminal/old/texteditors.html#nano",
+    "href": "terminal/old/texteditors.html#nano",
+    "title": "Text Editors",
+    "section": "Nano",
+    "text": "Nano\n\nanother terminal based text editor\nsimpler to use than vim\n\n\nExample\nIn this example, we create a file and add “hello world” to it using nano.\n\nRun the following commands\ncd ~\nmkdir nano-practice\ncd nano-practice\ntouch helloworld.txt\nnano helloworld.txt\nAt this point, the file should be open. Type hello world on the first line.\nType ctrl + x to be prompted to save and close.\nRun cat helloworld.txt to see the contents.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "Text Editors"
+    ]
+  },
+  {
+    "objectID": "terminal/old/index.html",
+    "href": "terminal/old/index.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "In this section we explore various commands of a bash shell.\nContents:\n\nBackground"
+  },
+  {
+    "objectID": "terminal/old/index.html#overview",
+    "href": "terminal/old/index.html#overview",
+    "title": "Introduction",
+    "section": "",
+    "text": "In this section we explore various commands of a bash shell.\nContents:\n\nBackground"
+  },
+  {
+    "objectID": "terminal/old/basic.html",
+    "href": "terminal/old/basic.html",
+    "title": "Introduction to the Shell and Terminal",
+    "section": "",
+    "text": "Def: The shell is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.\nDef: The terminal is the interface the user interacts with. This is where you type the commands for the shell.\nCommon Shells include:\n- Bourn Again Shell (bash - linux distros, macOS)\n- z-shell (zsh - linux distros, macOS)\n- powershell (windows)\n- gitbash (windows)",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "Introduction to the Shell and Terminal"
+    ]
+  },
+  {
+    "objectID": "terminal/old/basic.html#introduction",
+    "href": "terminal/old/basic.html#introduction",
+    "title": "Introduction to the Shell and Terminal",
+    "section": "",
+    "text": "Def: The shell is a program (interpreter) that takes the commands you type and passes them to the operating system for execution.\nDef: The terminal is the interface the user interacts with. This is where you type the commands for the shell.\nCommon Shells include:\n- Bourn Again Shell (bash - linux distros, macOS)\n- z-shell (zsh - linux distros, macOS)\n- powershell (windows)\n- gitbash (windows)",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "Introduction to the Shell and Terminal"
+    ]
+  },
+  {
+    "objectID": "terminal/old/basic.html#controls",
+    "href": "terminal/old/basic.html#controls",
+    "title": "Introduction to the Shell and Terminal",
+    "section": "Controls",
+    "text": "Controls\nThese are basic controls that are useful for using the terminal.\nup - show previous command\ndown - show next command\ntab - autocomplete\nctrl + l - clear\nctrl + c - cancel\nctrl + r - search\nctrl + d - close the terminal\nctrl + a - jump to the beginning of the line\nctrl + e - jump to the end of the line\nalt + [left arrow key/right arrow key] - move the cursor left/right by the word",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "Introduction to the Shell and Terminal"
+    ]
+  },
+  {
+    "objectID": "terminal/old/basic.html#some-basic-commands",
+    "href": "terminal/old/basic.html#some-basic-commands",
+    "title": "Introduction to the Shell and Terminal",
+    "section": "Some Basic Commands",
+    "text": "Some Basic Commands\nA set of basic commands for your reference. Complete usage is not illustrated.\nsudo - use when you need superuser privelages (short for superuser do)\npwd - print working directory\nmkdir [new directory name] - create a new directory\ntouch [new file name] - create a file\nls - list the contents of the a directory\ncd [destination] - change the directory\nman [command] - show the manual for a command\nrm [filename] - remove a file\nrmdir [directory name] - remove a directory\n\nExample\nThis example illustrates some usage of the commands above.\ncd ~                # navigate to the home directory\nmkdir example-1     # create a directory named example-1\ncd example-1        # navigate into the directory named example-1\npwd                 # print the current working directory just to see \ntouch new-file.txt  # create a file named new-file.txt\ntouch .secret-file  # create a file that starts with a .\nls                  # list out the files in the current directory\nls -a               # list all the files (including hidden ones)\nls -alh             # list the files, include details about each one, in a human readable format\ncd ..               # go up one directory\nrm -rf example-1    # remove the folder your created and everything in it",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "Introduction to the Shell and Terminal"
+    ]
+  },
+  {
+    "objectID": "terminal/old/basic.html#more-commands",
+    "href": "terminal/old/basic.html#more-commands",
+    "title": "Introduction to the Shell and Terminal",
+    "section": "More Commands",
+    "text": "More Commands\nA set of more commands for your reference. Complete usage is not illustrated.\ncat [filename] - returns the contents of the file\nmore [filename] - allows you to view the contents in a paginated manner\necho [a message] - returns the message\ncp [source] [destination] - copies a file from the source to a destination\nmv [source] [destination] - moves a file from the source to a destination\nhistory - see the history of previous commands that were typed\nclear - clears what is displayed in the terminal\nwget [url] - downloads the contents at the url\n\nExample\nThe following is an an example of using some of the commands above.\ncd ~                                                    # navigate home\nmkdir books                                             # create a directory called books\ncd books\necho \"Let's download a book\"                            # produce a message\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt   # download \"A Tale of Two Cities\"\nls                                                      # list the files\nmv pg98.txt a-tale-of-two-cities.txt                    # rename the book\nmore a-tale-of-two-cities.txt                           # read the book\n\n\nReference\nA Tale of Two Cities\nCajun Night Before Christmas\nMeow",
+    "crumbs": [
+      "Shell and Terminal",
+      "Old",
+      "Introduction to the Shell and Terminal"
+    ]
+  },
+  {
+    "objectID": "terminal/02 Working With Files.html",
+    "href": "terminal/02 Working With Files.html",
+    "title": "Working with Files",
+    "section": "",
+    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application\n\n\n\nNavigate to Desktop and create a books and music directory\ncd ~/Desktop\nmkdir books music\nNavigate into the newly created books directory and download a book\ncd books\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt \nls\nRename the book\nmv pg98.txt a-tale-of-two-cities.txt\nmore a-tale-of-two-cities.txt \nDownload another book\nwget https://jcoriell.github.io/csc222/files/cnbc.txt\nmore cnbc.txt\nNavigate to the music directory from the books directory and download a song\ncd ..\ncd music\nwget https://jcoriell.github.io/csc222/files/mbe.mp3\nxdg-open mbe.mp3    # open it with the default application for the system",
+    "crumbs": [
+      "Shell and Terminal",
+      "Working with Files"
+    ]
+  },
+  {
+    "objectID": "terminal/02 Working With Files.html#commands",
+    "href": "terminal/02 Working With Files.html#commands",
+    "title": "Working with Files",
+    "section": "",
+    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application\n\n\n\nNavigate to Desktop and create a books and music directory\ncd ~/Desktop\nmkdir books music\nNavigate into the newly created books directory and download a book\ncd books\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt \nls\nRename the book\nmv pg98.txt a-tale-of-two-cities.txt\nmore a-tale-of-two-cities.txt \nDownload another book\nwget https://jcoriell.github.io/csc222/files/cnbc.txt\nmore cnbc.txt\nNavigate to the music directory from the books directory and download a song\ncd ..\ncd music\nwget https://jcoriell.github.io/csc222/files/mbe.mp3\nxdg-open mbe.mp3    # open it with the default application for the system",
+    "crumbs": [
+      "Shell and Terminal",
+      "Working with Files"
+    ]
+  },
+  {
+    "objectID": "terminal/02 Working With Files.html#text-editors",
+    "href": "terminal/02 Working With Files.html#text-editors",
+    "title": "Working with Files",
+    "section": "Text Editors",
+    "text": "Text Editors\n\nvim (Vi - Improved)\n\nsteep learning curve, but frequent users love it\nwill make you better that everyone else\ncan learn using the command vimtutor\n\nOpen with the command: vim [filename]\n\nVim Modes:\ninsert      - i to activate, escape to back out\n\nreplace     - r to enter replace mode, use it to write over text instead of inserting text\n            - escape to back out\n\nvisual      - v, V, or ctrl+v to activate character, line, or block visual mode \n            - used to select text and apply commands to that text\n            - ex: copy, cut, replace, indent, search, and more...\n            - escape to back out \n\ncommand     - : to activate. Some common commands:\n            - w to save\n            - q to quit\n            - wq or x to save and quit\n            - q! to quit without saving\n            - e [filename] to open a file\n            - saveas [filename] to save the file as a new name\n            - [an integer] to jump to a line\n\n\nExample\n\nUse the following two commands to create a file somewhere on your system.\ncd ~/Desktop/programs               # navigate to a folder to complete the example in\nvim random_number_generator.py      # open a file (it is ok if the file doesn't exist yet)\nAt this point vim should have opened.\nType i to enter insert mode and type the following code.\nimport random\n\nprint(random.randint())\nNow hit escape to exit insert mode.\nMove the cursor to the beginning of the word randint\nHit v to enter visual mode.\nUse the e key to go to the END of the word (b goes to the Beginning)\nUse the c key to CHANGE the selected text to random. (we are replacing randint with random)\nAt this point the python code should look like this:\nimport random\n\nprint(random.random())\nUse escape to exit insert mode.\nUse : to enter command mode.\nType wq and hit enter to save and exit.\nIf you’d like to run the code, use the following command:\npython3 random_number_generator.py\n\n\n\n\n\n\n\nTip\n\n\n\nIt is recommended at this point that you run the vimtutor command if you’d like to learn more about using vim.\n\n\n\n\n\nNano\n\na simple to use terminal based text editor\nlittle to no learning curve\n\n\nExample\nIn this example, we create a file and add “hello world” to it using nano.\n\nRun the following commands\ncd ~/Desktop/programs       # navigate to a folder to store a file\ntouch helloworld.py\nnano helloworld.py\nAt this point, the file should be open. Type print(\"hello world\") on the first line.\nType ctrl + x to be prompted to save and close.\nRun cat helloworld.py to see the contents.\nRun python3 helloworld.py to run the file.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Working with Files"
+    ]
+  },
+  {
+    "objectID": "terminal/02 Working With Files.html#reference-files",
+    "href": "terminal/02 Working With Files.html#reference-files",
+    "title": "Working with Files",
+    "section": "Reference Files",
+    "text": "Reference Files\n\nReference\nA Tale of Two Cities\nCajun Night Before Christmas\nMeow",
+    "crumbs": [
+      "Shell and Terminal",
+      "Working with Files"
+    ]
+  },
+  {
+    "objectID": "terminal/00 Background.html",
+    "href": "terminal/00 Background.html",
+    "title": "Background",
+    "section": "",
+    "text": "Definition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nNote: We frequently use these terms interchangably, although they are different things.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "terminal/00 Background.html#terminal-vs-shell",
+    "href": "terminal/00 Background.html#terminal-vs-shell",
+    "title": "Background",
+    "section": "",
+    "text": "Definition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\n\n\n\n\n\n\nDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nNote: We frequently use these terms interchangably, although they are different things.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "terminal/00 Background.html#various-shells",
+    "href": "terminal/00 Background.html#various-shells",
+    "title": "Background",
+    "section": "Various Shells",
+    "text": "Various Shells\n\nbash - bash stands for Bourn Again SHell. Most unix-like systems use the bash shell.\nzsh - Read allowed as zsh or as Z shell. A bash-like shell.\npowershell - PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework [source]\ngitbash - bash emulation for windows [source]\nfish - friendly interactive shell [source]",
+    "crumbs": [
+      "Shell and Terminal",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "terminal/00 Background.html#various-terminals",
+    "href": "terminal/00 Background.html#various-terminals",
+    "title": "Background",
+    "section": "Various Terminals",
+    "text": "Various Terminals\n\nTerminal application on macOS\nTerminal application on Ubuntu\nTerminal application on Windows",
+    "crumbs": [
+      "Shell and Terminal",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "terminal/00 Background.html#absolute-vs-relative-filepaths",
+    "href": "terminal/00 Background.html#absolute-vs-relative-filepaths",
+    "title": "Background",
+    "section": "Absolute vs Relative Filepaths",
+    "text": "Absolute vs Relative Filepaths\nAbsolute filepaths describe the filepath from the root of the filesystem.\nRelative filepaths describe the filepath from where you currently are.\nIf it starts with a /, or the ~, then it is an absolute filepath. If not, it is relative.",
+    "crumbs": [
+      "Shell and Terminal",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "terminal/05 File Permissions.html",
+    "href": "terminal/05 File Permissions.html",
     "title": "File Permissions",
     "section": "",
-    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe third and fouth columns denote the user and group assigned to the file.",
+    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe second column represents the number of links to that file (2, 3, and 2 respectively.)\nThe third and fouth columns denote the user and group assigned to the file.\nThe fifth column represents the size for that file (4096 bytes for each of the above.)\nThe sixth column is the last date the file was modified.\nThe final column is the name of the file (directories in this case).",
     "crumbs": [
       "Shell and Terminal",
       "File Permissions"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#introduction",
-    "href": "terminal/file-permissions.html#introduction",
+    "objectID": "terminal/05 File Permissions.html#introduction",
+    "href": "terminal/05 File Permissions.html#introduction",
     "title": "File Permissions",
     "section": "",
-    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe third and fouth columns denote the user and group assigned to the file.",
+    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe second column represents the number of links to that file (2, 3, and 2 respectively.)\nThe third and fouth columns denote the user and group assigned to the file.\nThe fifth column represents the size for that file (4096 bytes for each of the above.)\nThe sixth column is the last date the file was modified.\nThe final column is the name of the file (directories in this case).",
     "crumbs": [
       "Shell and Terminal",
       "File Permissions"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#file-permission-breakdown",
-    "href": "terminal/file-permissions.html#file-permission-breakdown",
+    "objectID": "terminal/05 File Permissions.html#file-permission-breakdown",
+    "href": "terminal/05 File Permissions.html#file-permission-breakdown",
     "title": "File Permissions",
     "section": "File Permission Breakdown",
     "text": "File Permission Breakdown\nLet’s break down the permission string drwxr-xr-x.\n\nThe 1st character is the type of file. The most common characters you will see here are:\n- for file.\nd for directory.\nl for link.\nIn the permissions drwxr-xr-x, the first character is d, so we have a directory.\nThe next 9 characters are for 3 different permission classes\n\nThe owner of the file is the first set of 3 characters.\nIn the string drwxr-xr-x, we have rwx which means the owner can read, write, and execute the file.\nThe group for the file is the second set of 3.\nIn the string drwxr-xr-x, we have r-x which means anyone in the group for the file (users belong to groups) can read and execute the file.\nThe third set of 3 are for all other users (those not in the same user group, and not the owner)\nIn the string drwxr-xr-x, we have r-x which means all others can read and execute the file, but cannot modify it.",
@@ -1021,8 +1356,8 @@
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#changing-file-permissions",
-    "href": "terminal/file-permissions.html#changing-file-permissions",
+    "objectID": "terminal/05 File Permissions.html#changing-file-permissions",
+    "href": "terminal/05 File Permissions.html#changing-file-permissions",
     "title": "File Permissions",
     "section": "Changing File Permissions",
     "text": "Changing File Permissions\nWe use the command chmod to change the file permissions. You can use either of the following methods to change the permissions.",
@@ -1032,168 +1367,36 @@
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#using-the-characters-that-represent-the-permissions",
-    "href": "terminal/file-permissions.html#using-the-characters-that-represent-the-permissions",
+    "objectID": "terminal/05 File Permissions.html#using-the-characters-that-represent-the-permissions",
+    "href": "terminal/05 File Permissions.html#using-the-characters-that-represent-the-permissions",
     "title": "File Permissions",
     "section": "Using the characters that represent the permissions",
-    "text": "Using the characters that represent the permissions\nThe characters for each type of user are:\n\nu for owner\ng for group\no for others\na for all\n\nThe characters for permissions are:\n\nr for read\nw for write\nx for execute\n\nTo add permissions, combine a usertype character with + and one or more of the permission characters.\nTo remove permissions, combine a usertype character with - and one or more of the permission characters.\n\nExamples\n\nchmod u+rwx filename to give read write and execute permissions to the owner.\nchmod g-x filename to remove execute permissions from the group.",
+    "text": "Using the characters that represent the permissions\nThe characters for each type of user are:\n\nu for owner\ng for group\no for others\na for all\n\nThe characters for permissions are:\n\nr for read\nw for write\nx for execute\n\nTo add permissions, combine a usertype character with + and one or more of the permission characters.\nTo remove permissions, combine a usertype character with - and one or more of the permission characters.\n\nSamples\n\nchmod u+rwx filename to give read write and execute permissions to the owner.\nchmod g-x filename to remove execute permissions from the group.\n\n\n\nExample\n\nNavigate to a directory to work with. You may need to create one.\ncd ~/Desktop/programs/bash-scripts   \nCreate a bash script we can work with.\necho \"echo hello permissions\" &gt; permission-ex.sh \nView the permissions for all the files in this directory, or just the bash file.\nls -l                    # all the files\nls -l permission-ex.sh   # just permissions for that one file\nNotice it was not executable by the user.\nTry executing it just to see the error.\n./permission-ex.sh            # attempt to execute the file, get an error \nAdd execution permission and try to execute it again.\nchmod u+x                     # allow the user to execute the file \nls -l permission-ex.sh        # show the permissions again\n./permission-ex.sh            # execute successfully",
     "crumbs": [
       "Shell and Terminal",
       "File Permissions"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#using-numeric-values",
-    "href": "terminal/file-permissions.html#using-numeric-values",
+    "objectID": "terminal/05 File Permissions.html#using-numeric-values",
+    "href": "terminal/05 File Permissions.html#using-numeric-values",
     "title": "File Permissions",
     "section": "Using Numeric Values",
-    "text": "Using Numeric Values\nThe values for each type of permission are:\nr = 4\nw = 2\nx = 1\nYou can place them adjacent to each other to get combos\nrw  = 4 + 2     = 6\nrwx = 4 + 2 + 1 = 7\nwx  =     2 + 1 = 3\nrx  = 4     + 1 = 5\nWhen referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string drwxr-xr-x we have:\nd    r w x    r - x    r - x\n     4 2 1    4   1    4   1\n\nSum:     7        5        5\nPermission is 755\n\nExamples\n\nchmod 766 filename to give:\n\nrwx permissions to the owner\nrw permissions to the group\n\nrw permissions to the others",
+    "text": "Using Numeric Values\nThe values for each type of permission are:\nr = 4\nw = 2\nx = 1\nYou can place them adjacent to each other to get combos\nrw  = 4 + 2     = 6\nrwx = 4 + 2 + 1 = 7\nwx  =     2 + 1 = 3\nrx  = 4     + 1 = 5\nWhen referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string drwxr-xr-x we have:\nd    r w x    r - x    r - x\n     4 2 1    4   1    4   1\n\nSum:     7        5        5\nPermission is 755\n\nSample\n\nchmod 766 filename to give:\n\nrwx permissions to the owner\nrw permissions to the group\n\nrw permissions to the others\n\n\n\n\nExample\n\nCreate a file to work with.\ncd ~/Desktop/programs/bash-scripts\necho \"echo hello from bash\" &gt; perm-ex-2.sh\nList the permissions.\nls -l perm-ex-2.sh\nAllow the user to execute the file, group to read and execute, others to read and execute\nchmod 755 perm-ex-2.sh\nView the permissions and execute the file.\nls -l \n./perm-ex-2.sh",
     "crumbs": [
       "Shell and Terminal",
       "File Permissions"
     ]
   },
   {
-    "objectID": "terminal/file-permissions.html#changing-ownership",
-    "href": "terminal/file-permissions.html#changing-ownership",
+    "objectID": "terminal/05 File Permissions.html#changing-ownership",
+    "href": "terminal/05 File Permissions.html#changing-ownership",
     "title": "File Permissions",
     "section": "Changing Ownership",
-    "text": "Changing Ownership\n\nuse the command sudo chown [owner][:group] [filename] to change the ownership of a file",
+    "text": "Changing Ownership\nThe command chown will change the ownership of a file\nFormat:\nsudo chown [new_owner] [filename]\nsudo chown :[new_group] [filename]\nsudo chown [new_owner] :[new_group] [filename]\n\nExample:\n\nCreate a new user.\nsudo useradd betty      # create a new user \nSet the password for the new user. Note that you will be prompted for a password after executing the following command.\nsudo passwd betty       # set the password for the new user\nSet the user for the perm-ex-2.sh file.\nsudo chown betty perm-ex-2.sh \nSet the group for the perm-ex-2.sh file.\nsudo chown :betty perm-ex-2.sh",
     "crumbs": [
       "Shell and Terminal",
       "File Permissions"
-    ]
-  },
-  {
-    "objectID": "terminal/grep-and-regex.html",
-    "href": "terminal/grep-and-regex.html",
-    "title": "Grep and Regular Expressions",
-    "section": "",
-    "text": "grep stands for Globally search for a Regular Expression and Print\n\n\n\nCreate some files to work with.\necho \"testing 1 2 3\" &gt; test1.txt\necho \"testing 4 5 6\" &gt; test2.txt\necho \"TESTING 7 8 9\" &gt; test3.txt\nmkdir \"test-folder\"\ncd \"test-folder\"\necho \"folder testing 1 2 3\" &gt; test4.text\necho \"folder testing 4 5 6\" &gt; test4.text\necho \"FOLDER TESTING 7 8 9\" &gt; test4.text\ncd ..\nThe format to search for strings in files is `grep [thing you’re searching for] [filename].\ngrep testing test1.txt  # searching for the word testing in text1.txt\n\n# * can be used as a wild card\ngrep testing test*.txt  # searching for the word testing in any file with the format test*.txt\ngrep testing *          # searching for testing in any file\n\n# applying some flags (more exist)\ngrep -l test *.txt          # -l only shows the file names, not the content\ngrep -i testing test*.txt   # -i ignores case\ngrep -ir testing *          # -r searches recursively",
-    "crumbs": [
-      "Shell and Terminal",
-      "Grep and Regular Expressions"
-    ]
-  },
-  {
-    "objectID": "terminal/grep-and-regex.html#grep",
-    "href": "terminal/grep-and-regex.html#grep",
-    "title": "Grep and Regular Expressions",
-    "section": "",
-    "text": "grep stands for Globally search for a Regular Expression and Print\n\n\n\nCreate some files to work with.\necho \"testing 1 2 3\" &gt; test1.txt\necho \"testing 4 5 6\" &gt; test2.txt\necho \"TESTING 7 8 9\" &gt; test3.txt\nmkdir \"test-folder\"\ncd \"test-folder\"\necho \"folder testing 1 2 3\" &gt; test4.text\necho \"folder testing 4 5 6\" &gt; test4.text\necho \"FOLDER TESTING 7 8 9\" &gt; test4.text\ncd ..\nThe format to search for strings in files is `grep [thing you’re searching for] [filename].\ngrep testing test1.txt  # searching for the word testing in text1.txt\n\n# * can be used as a wild card\ngrep testing test*.txt  # searching for the word testing in any file with the format test*.txt\ngrep testing *          # searching for testing in any file\n\n# applying some flags (more exist)\ngrep -l test *.txt          # -l only shows the file names, not the content\ngrep -i testing test*.txt   # -i ignores case\ngrep -ir testing *          # -r searches recursively",
-    "crumbs": [
-      "Shell and Terminal",
-      "Grep and Regular Expressions"
-    ]
-  },
-  {
-    "objectID": "terminal/grep-and-regex.html#regular-expressions",
-    "href": "terminal/grep-and-regex.html#regular-expressions",
-    "title": "Grep and Regular Expressions",
-    "section": "Regular Expressions",
-    "text": "Regular Expressions\nRegular expressions are used to express patterns within text. Using them in conjunction with grep can result in powerful searches.\nTo follow the following examples, run the commands below.\n# navigate to documents and download the following\nwget https://raw.githubusercontent.com/jcoriell/download/main/regex-sample.txt\nwget https://raw.githubusercontent.com/dwyl/english-words/master/words.txt\n\n# confirm the files are there\nls                      \n\n# peek inside the files\nmore regex-sample.txt   \nmore words.txt          \n\nSearching for a simple strings\nFor exact matching of characters, words, and phrases, you can use the characters.\n# -P flag stands for Perl, can use -E here instead\n# later notations will require -P\ngrep -P \"abc\" regex-sample.txt     \ngrep -P \"coriell\" regex-sample.txt \n\n\nMeta Characters\nSome characters require a slash (escape) in front of them to include them as part of the search because they are meta characters that have special meaning. More on these can be found in the subsections that follow.\nCharacter   Meaning\n.           - any character except new line\n[           - grouping\n{           - quantifying\n()          - grouping \n\\           - escape\n^           - starts with \n$           - ends with \n|           - or\n?           - a quantifier\n*           - another quantifier\n+           - another quantifier\n\nExamples\n# Search for a dot\ngrep -P \"\\.\" regex-sample.txt\n# search for an open parenthesis\ngrep -P \"\\(\" regex-sample.txt\n# search for any character and then the letter c\ngrep -P \".c\" regex-sample.txt\n\n\n\nCharacter Types\nYou can specify different types of characters such as digits or whitespace. These notations require the usage of the -P flag.\nCharacter   Meaning\n.           - any character except new line\n\\d          - digit (0-9)\n\\D          - not a digit (not 0-9)\n\\w          - a Word character (a-z, A-Z, 0-9, _)\n\\W          - not one of the word characters\n\\s          - whitespace (space, tab, newline)\n\\S          - note whitespace\n\nExamples\n# search for three consecutive digits\ngrep -P \"\\d\\d\\d\" regex-sample.txt\n# search for three digits, any, three digits, any, then 4 digits\ngrep -P \"\\d\\d\\d.\\d\\d\\d.\\d\\d\\d\\d\" regex-sample.txt\n# search for consecutive word characters\ngrep -P \"\\w\\w\\w\\w\" regex-sample.txt\n# search for whitespace\ngrep -P \"\\s\" regex-sample.txt\n\n\n\nBoundaries\nCharacter   Meaning\n\\b          - word boundary\n\\B          - not a word boundary\n^           - beginning of a line\n$           - end of a line\n\nExamples\n# find 3 word characters between two boundaries\ngrep -P \"\\b\\w\\w\\w\\b\" regex-sample.txt\n# find h at the beginning of a line\ngrep -P \"^h\" regex-sample.txt\n# find h at the beginning of a word\ngrep -P \"\\bh\" regex-sample.txt\n# find 4 word characters at the end of a line\ngrep -P \"\\w\\w\\w\\w$\" regex-sample.txt\n# find lines that start with a and count them\n# wc is for word count\ngrep -P \"^a\" words.txt | wc -l \n# find lines that start with a, have three characters, then end with b.\n# store then in a file called result.txt\ngrep -P \"^a...b$\" words.txt &gt; result.txt\nmore result.txt # view it\n# starts with a, 5th letter is b. \n# shows individual word count\ngrep -P \"^a...b\" words.txt | wc -w \n\n\n\nGroupings\nGroupings allow us to combine different types of characters or patterns.\nCharacter   Meaning\n[]          matches characters in brackets\n[^ ]        matches characters not in brackets\n|           or\n()          group\n\nExamples\n# find any character from a to z\ngrep -P \"[a-z]\" regex-sample.txt\n# find any character from a to z or A-Z\ngrep -P \"[a-zA-Z]\" regex-sample.txt\n\n```sh\n# find occurrances of a dot followed by a character a-z or A-Z\ngrep -P \"\\.[a-zA-Z]\" regex-sample.txt \n# find a dot folled by three characters in a-z or A-Z\ngrep -P \"\\.[a-zA-Z][a-zA-Z][a-zA-Z]\" regex-sample.txt\n# find a dot followed by edu or com\ngrep -P \"\\.(edu|com)\" regex-sample.txt\n\n\n\nQuanitfiers\nThe quantifiers help us say how many of a type of character or characters we might want in parts of the expression. The quantifiers come after the thing it is quantifying.\nCharacter   Meaning\n*           - 0 or more\n+           - 1 or more\n?           - 0 or one\n{3}         - exact number (exactly 3 here)\n{1,5}       - range {min, max} (minimum of 1, max of 5 in example)\n\nExamples\n# find occurrance of a dot followed by 3 characters in a-z or A-Z\ngrep -P -o \"\\.[a-zA-Z]{3}\" regex-sample.txt # -o shows only non empty parts\n# find occurrances of a dot followed by at least 2 characters in a-z or A-Z\ngrep -P \"\\.[a-zA-Z]{2,}\" regex-sample.txt\n# find \n#   - one or more characters in a-z or A-Z or 0-9\n#   - followed by an @ symbol\n#   - followed by one or more characters in a-z or A-Z\n#   - followed by a dot \n#   - followed by at least two characters in a-z or A-Z\ngrep -P \"[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z]{2,}\" regex-sample.txt",
-    "crumbs": [
-      "Shell and Terminal",
-      "Grep and Regular Expressions"
-    ]
-  },
-  {
-    "objectID": "terminal/grep-and-regex.html#files",
-    "href": "terminal/grep-and-regex.html#files",
-    "title": "Grep and Regular Expressions",
-    "section": "Files",
-    "text": "Files\nMeow Meow Meow",
-    "crumbs": [
-      "Shell and Terminal",
-      "Grep and Regular Expressions"
-    ]
-  },
-  {
-    "objectID": "terminal/01/navigation.html",
-    "href": "terminal/01/navigation.html",
-    "title": "Navigation",
-    "section": "",
-    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it",
-    "crumbs": [
-      "Shell and Terminal",
-      "Navigation"
-    ]
-  },
-  {
-    "objectID": "terminal/01/navigation.html#basic-commands-and-some-options",
-    "href": "terminal/01/navigation.html#basic-commands-and-some-options",
-    "title": "Navigation",
-    "section": "",
-    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it",
-    "crumbs": [
-      "Shell and Terminal",
-      "Navigation"
-    ]
-  },
-  {
-    "objectID": "terminal/01/navigation.html#example-1",
-    "href": "terminal/01/navigation.html#example-1",
-    "title": "Navigation",
-    "section": "Example",
-    "text": "Example\nThe following example uses the above commands to nagivate the file system and create and remove files and directories.\ncd ~                            # navigate to the home directory\ncd                              # also navigate to the home directory\npwd                             # prove it\nls                              # look at the files in the home directory\ncd Desktop                      # navigate to the Desktop \nmkdir programs                  # create a folder called programs\nmkdir csc222                    # create a folder called csc222\ncd programs                     # navigate into the folder called programs using the relative path\ntouch hello.py                  # create a file called hello.py\ntouch .gitignore                # create a hidden file \ntouch .another-hidden-file      # create another hidden file\nls                              # list the files\nls -a                           # list the files, include hidden ones \nls -l                           # list the files with details\nls -alh                         # list the files, include hidden ones, include details, make the size human readable (i.e. Kb, Mb, etc.)\nls -l hello.py                  # only list the info about hello.py\ncd ~/Desktop/csc222             # navigate to the csc222 folder using an absolute path \ncd ..                           # navigate up one folder\ncd programs                     # navigate back into programs            \nrm .another-hidden-file         # remove the file\ncd ..                           # navigate up one directory\nrm -rf programs                 # remove the programs folder and everything in it (recursive, force)",
-    "crumbs": [
-      "Shell and Terminal",
-      "Navigation"
-    ]
-  },
-  {
-    "objectID": "terminal/redirection.html",
-    "href": "terminal/redirection.html",
-    "title": "Redirection",
-    "section": "",
-    "text": "abbreviated as stdout\nrepresented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\necho \"hello world\" &gt; helloworld.txt",
-    "crumbs": [
-      "Shell and Terminal",
-      "Redirection"
-    ]
-  },
-  {
-    "objectID": "terminal/redirection.html#standard-output",
-    "href": "terminal/redirection.html#standard-output",
-    "title": "Redirection",
-    "section": "",
-    "text": "abbreviated as stdout\nrepresented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\necho \"hello world\" &gt; helloworld.txt",
-    "crumbs": [
-      "Shell and Terminal",
-      "Redirection"
-    ]
-  },
-  {
-    "objectID": "terminal/redirection.html#standard-input",
-    "href": "terminal/redirection.html#standard-input",
-    "title": "Redirection",
-    "section": "Standard Input",
-    "text": "Standard Input\n\nabbreviated as stdin\nrepresented with &lt;\ncan be used to provide input into a program",
-    "crumbs": [
-      "Shell and Terminal",
-      "Redirection"
-    ]
-  },
-  {
-    "objectID": "terminal/redirection.html#standard-error",
-    "href": "terminal/redirection.html#standard-error",
-    "title": "Redirection",
-    "section": "Standard Error",
-    "text": "Standard Error\n\nabbreviated as stderr\nrepresented with 2&gt;\ncan append with 2&gt;&gt;\nif an error is produced, you can redirect it elsewhere.\n\n\nExample\nnotarealcommand 2&gt; error-file.txt",
-    "crumbs": [
-      "Shell and Terminal",
-      "Redirection"
-    ]
-  },
-  {
-    "objectID": "terminal/redirection.html#pipe",
-    "href": "terminal/redirection.html#pipe",
-    "title": "Redirection",
-    "section": "Pipe",
-    "text": "Pipe\n\nrepresented with |\ncreates a “pipe” or “pipeline” between two programs\ntakes the output of the one command and uses it as input it into another command\n\n\nExample\nList the contents of /usr/bin, but use more to view them in a paginated way.\nls -al /usr/bin | more",
-    "crumbs": [
-      "Shell and Terminal",
-      "Redirection"
     ]
   },
   {
