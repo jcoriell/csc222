@@ -25,6 +25,7 @@ website:
           - terminal/03 Other Useful Tips.qmd
           - terminal/04 Redirection.qmd
           - terminal/05 File Permissions.qmd
+          - terminal/06 Grep and Regex.qmd
           - section: Old
             contents:
               - terminal/old/basic.qmd

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Redirection – CSC 222 Systems Programming</title>
+<title>Grep and Regex – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,24 +57,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../../terminal/old/basic.html">Old</a></li><li class="breadcrumb-item"><a href="../../terminal/old/redirection.html">Redirection</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../terminal/06 Grep and Regex.html">Grep and Regex</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">CSC 222 Systems Programming</a> 
+      <a href="../">CSC 222 Systems Programming</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -155,19 +155,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../linux/unix-history.html" class="sidebar-item-text sidebar-link">
+  <a href="../linux/unix-history.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unix History</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../linux/vm-install.html" class="sidebar-item-text sidebar-link">
+  <a href="../linux/vm-install.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virtual Machine Install</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
+  <a href="../linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linux Filesystem</span></a>
   </div>
 </li>
@@ -175,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../terminal/" class="sidebar-item-text sidebar-link">
+            <a href="../terminal/" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Shell and Terminal</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -184,88 +184,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/00 Background.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/00 Background.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Background</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/01 Basic Commands.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/01 Basic Commands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Navigation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/02 Working With Files.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/02 Working With Files.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working with Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/03 Other Useful Tips.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/03 Other Useful Tips.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Other Useful Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/04 Redirection.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/04 Redirection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Redirection</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/05 File Permissions.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/05 File Permissions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">File Permissions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/06 Grep and Regex.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/06 Grep and Regex.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Grep and Regex</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Old</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/old/basic.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/old/basic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to the Shell and Terminal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/old/redirection.html" class="sidebar-item-text sidebar-link active">
+  <a href="../terminal/old/redirection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Redirection</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/old/texteditors.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/old/texteditors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Text Editors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/old/file-permissions.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/old/file-permissions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">File Permissions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/old/grep-and-regex.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/old/grep-and-regex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Grep and Regular Expressions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../terminal/old/more-commands.html" class="sidebar-item-text sidebar-link">
+  <a href="../terminal/old/more-commands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">More Commands</span></a>
   </div>
 </li>
@@ -284,79 +284,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hello World</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Types and Format Specifiers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/03-Operators.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/03-Operators.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/04-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/04-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">More on Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sample Applications</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/07-Memory-Allocation.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/07-Memory-Allocation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memory Allocation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Structs and Unions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sample Applications</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/10-Files.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/10-Files.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/11-Fork.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/11-Fork.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fork</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/12-Piping.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/12-Piping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Piping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../c-programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../c-programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exec Functions</span></a>
   </div>
 </li>
@@ -373,43 +373,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../bash-scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../bash-scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../bash-scripting/02-Args.html" class="sidebar-item-text sidebar-link">
+  <a href="../bash-scripting/02-Args.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Args</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../bash-scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
+  <a href="../bash-scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conditionals</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
+  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../bash-scripting/05-Case.html" class="sidebar-item-text sidebar-link">
+  <a href="../bash-scripting/05-Case.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Case</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../bash-scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
+  <a href="../bash-scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hello World</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../bash-scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../bash-scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
@@ -425,18 +425,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#standard-output" id="toc-standard-output" class="nav-link active" data-scroll-target="#standard-output">Standard Output</a>
+  <li><a href="#grep" id="toc-grep" class="nav-link active" data-scroll-target="#grep">Grep</a>
   <ul class="collapse">
+  <li><a href="#common-flags" id="toc-common-flags" class="nav-link" data-scroll-target="#common-flags">Common Flags</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
-  </ul></li>
-  <li><a href="#standard-input" id="toc-standard-input" class="nav-link" data-scroll-target="#standard-input">Standard Input</a></li>
-  <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error">Standard Error</a>
-  <ul class="collapse">
-  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
-  </ul></li>
-  <li><a href="#pipe" id="toc-pipe" class="nav-link" data-scroll-target="#pipe">Pipe</a>
-  <ul class="collapse">
-  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -444,9 +436,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../../terminal/old/basic.html">Old</a></li><li class="breadcrumb-item"><a href="../../terminal/old/redirection.html">Redirection</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../terminal/">Shell and Terminal</a></li><li class="breadcrumb-item"><a href="../terminal/06 Grep and Regex.html">Grep and Regex</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Redirection</h1>
+<h1 class="title">Grep and Regex</h1>
 </div>
 
 
@@ -463,52 +455,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="standard-output" class="level2">
-<h2 class="anchored" data-anchor-id="standard-output">Standard Output</h2>
-<ul>
-<li>abbreviated as stdout</li>
-<li>represented with <code>&gt;</code></li>
-<li>used to redirect the result of a command somewhere else</li>
-<li>the contents of the file are overwritten when using <code>&gt;</code></li>
-<li>can use <code>&gt;&gt;</code> to append to the contents of a file</li>
-</ul>
+<section id="grep" class="level2">
+<h2 class="anchored" data-anchor-id="grep">Grep</h2>
+<p>Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.</p>
+<p>Grep stands for <strong>G</strong>lobally search for a <strong>R</strong>egular <strong>E</strong>xpression and <strong>P</strong>rint</p>
+<p>A typical format for using the grep command is as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="pp">[</span><span class="ss">flags</span><span class="pp">]</span> [search string] [file or files]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="common-flags" class="level3">
+<h3 class="anchored" data-anchor-id="common-flags">Common Flags</h3>
+<p>The following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the <code>man grep</code> command.</p>
+<pre><code>Flag        Meaning
+-i          ignore case for the search string
+-r          search recursively into a directory and the files in that directory
+-c          count the number of lines the search string occurrs on in each file
+-o          show each occurrence on its own line when the result is printed
+-P          allow the use of PCRE (Perl Compatible regular expressions)</code></pre>
+<p>Concerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.</p>
+<p>Any of the above flags can be combined, as will be shown in a few examples that follow.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+grep on macOS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command <code>brew install grep</code>. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)<span target="_blank">https://brew.sh/</span>.</p>
+<p>After installing, use the command <code>ggrep</code> in place of <code>grep</code>.</p>
+<p>You can use the flag <code>--color</code> with <code>ggrep</code> to force text highlighting.</p>
+</div>
+</div>
+</section>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"hello world"</span> <span class="op">&gt;</span> helloworld.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="standard-input" class="level2">
-<h2 class="anchored" data-anchor-id="standard-input">Standard Input</h2>
-<ul>
-<li>abbreviated as stdin</li>
-<li>represented with <code>&lt;</code></li>
-<li>can be used to provide input into a program</li>
-</ul>
-</section>
-<section id="standard-error" class="level2">
-<h2 class="anchored" data-anchor-id="standard-error">Standard Error</h2>
-<ul>
-<li>abbreviated as stderr</li>
-<li>represented with <code>2&gt;</code></li>
-<li>can append with <code>2&gt;&gt;</code></li>
-<li>if an error is produced, you can redirect it elsewhere.</li>
-</ul>
-<section id="example-1" class="level3">
-<h3 class="anchored" data-anchor-id="example-1">Example</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">notarealcommand</span> <span class="dv">2</span><span class="op">&gt;</span> error-file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="pipe" class="level2">
-<h2 class="anchored" data-anchor-id="pipe">Pipe</h2>
-<ul>
-<li>represented with <code>|</code></li>
-<li>creates a “pipe” or “pipeline” between two programs</li>
-<li>takes the output of the one command and uses it as input it into another command</li>
-</ul>
-<section id="example-2" class="level3">
-<h3 class="anchored" data-anchor-id="example-2">Example</h3>
-<p>List the contents of /usr/bin, but use <code>more</code> to view them in a paginated way.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> /usr/bin <span class="kw">|</span> <span class="fu">more</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><p>Download the following zip file and extract it for the remainder of the examples on this page.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://jcoriell.github.io/csc222/files/files-for-cats.zip</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> files-for-cats.zip <span class="at">-d</span> files-for-cats</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> files-for-cats.zip</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> files-for-cats </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Find <code>Cat</code> in main.py</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> Cat main.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Expected result: (coming soon)</p></li>
+<li><p>Find <code>cat</code> in main.py</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> cat main.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Expected result: (coming soon)</p></li>
+<li></li>
+</ol>
 
 
 </section>

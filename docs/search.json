@@ -740,146 +740,157 @@
     ]
   },
   {
-    "objectID": "bash-scripting/05-Case.html",
-    "href": "bash-scripting/05-Case.html",
-    "title": "Case",
+    "objectID": "terminal/03 Other Useful Tips.html",
+    "href": "terminal/03 Other Useful Tips.html",
+    "title": "Other Useful Tips",
     "section": "",
-    "text": "#!/bin/bash\n\necho \"What is your favorite food? \"\n\necho \"1 - Pizza\"\necho \"2 - Pineapples\"\necho \"3 - Pineapple Pizza\"\n\nread food;\n\ncase $food in \n    1) echo \"Pizza is a great choice.\";;\n    2) echo \"Mmm. Great fruit\";;\n    3) echo \"Spicy choice. You must not be Remy.\";;\n    *) echo \"That wasn't an option\"\nesac",
+    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command",
     "crumbs": [
-      "Bash Scripting",
-      "Case"
+      "Shell and Terminal",
+      "Other Useful Tips"
     ]
   },
   {
-    "objectID": "bash-scripting/05-Case.html#example",
-    "href": "bash-scripting/05-Case.html#example",
-    "title": "Case",
+    "objectID": "terminal/03 Other Useful Tips.html#other-useful-basic-commands",
+    "href": "terminal/03 Other Useful Tips.html#other-useful-basic-commands",
+    "title": "Other Useful Tips",
     "section": "",
-    "text": "#!/bin/bash\n\necho \"What is your favorite food? \"\n\necho \"1 - Pizza\"\necho \"2 - Pineapples\"\necho \"3 - Pineapple Pizza\"\n\nread food;\n\ncase $food in \n    1) echo \"Pizza is a great choice.\";;\n    2) echo \"Mmm. Great fruit\";;\n    3) echo \"Spicy choice. You must not be Remy.\";;\n    *) echo \"That wasn't an option\"\nesac",
+    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command",
     "crumbs": [
-      "Bash Scripting",
-      "Case"
+      "Shell and Terminal",
+      "Other Useful Tips"
     ]
   },
   {
-    "objectID": "bash-scripting/04-Exit-Codes.html",
-    "href": "bash-scripting/04-Exit-Codes.html",
-    "title": "Exit Codes",
+    "objectID": "terminal/03 Other Useful Tips.html#other-useful-keyboard-shortcuts",
+    "href": "terminal/03 Other Useful Tips.html#other-useful-keyboard-shortcuts",
+    "title": "Other Useful Tips",
+    "section": "Other Useful Keyboard Shortcuts",
+    "text": "Other Useful Keyboard Shortcuts\nThe following shortcuts can make your life a bit easier while working in the Terminal. This is not an exhaustive list of shortcuts.\nup arrow        - pull up the previous command\ndown arrow      - show the next command (if one exists)\n\ntab             - autocomplete based on what commands or files or directories are available\nctrl + l        - clear\nctrl + c        - cancel the currently running process \nctrl + r        - search through the history \n\nctrl + a (or the home key) - jump to beginning of line\nctrl + e (or the end key)  - jump to the end of a line\n\nalt + left/right arrow key - navigate by word instead of character",
+    "crumbs": [
+      "Shell and Terminal",
+      "Other Useful Tips"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/07-Functions.html",
+    "href": "bash-scripting/07-Functions.html",
+    "title": "Functions",
     "section": "",
-    "text": "#!/bin/bash\n\n# exit code from last command\necho \"This: $?\"\n\n# typically success is 0, failure is typically &gt; 0\nls -abcdefg\necho $?",
+    "text": "#!/bin/bash\n\n# defining functions\nhello () {\n    echo \"Hello from a function\"\n    echo \"Exiting the function\"\n}\n\n# calling the function\nhello   # no parenthesis",
     "crumbs": [
       "Bash Scripting",
-      "Exit Codes"
+      "Functions"
     ]
   },
   {
-    "objectID": "bash-scripting/04-Exit-Codes.html#exit-code",
-    "href": "bash-scripting/04-Exit-Codes.html#exit-code",
-    "title": "Exit Codes",
+    "objectID": "bash-scripting/07-Functions.html#simple-function",
+    "href": "bash-scripting/07-Functions.html#simple-function",
+    "title": "Functions",
     "section": "",
-    "text": "#!/bin/bash\n\n# exit code from last command\necho \"This: $?\"\n\n# typically success is 0, failure is typically &gt; 0\nls -abcdefg\necho $?",
+    "text": "#!/bin/bash\n\n# defining functions\nhello () {\n    echo \"Hello from a function\"\n    echo \"Exiting the function\"\n}\n\n# calling the function\nhello   # no parenthesis",
     "crumbs": [
       "Bash Scripting",
-      "Exit Codes"
+      "Functions"
     ]
   },
   {
-    "objectID": "bash-scripting/04-Exit-Codes.html#use",
-    "href": "bash-scripting/04-Exit-Codes.html#use",
-    "title": "Exit Codes",
-    "section": "Use",
-    "text": "Use\n#!/bin/bash\n\nread -p \"What file would you like to remove? \" filename\n\nif [ ! -f $filename ]\nthen\n    echo \"That file does not exist...exiting\"\n    exit 1  # values less than 255\nfi \n\nrm $filename && echo \"File successfully removed\"",
+    "objectID": "bash-scripting/07-Functions.html#with-args",
+    "href": "bash-scripting/07-Functions.html#with-args",
+    "title": "Functions",
+    "section": "With Args",
+    "text": "With Args\n\n#!/bin/bash\n\n# can use word function without paren\nfunction hello {\n    # this takes one arg\n    # it's just like for a file\n    echo \"first arg $1\"\n}\n\n\n# if not using function use paren\nhelloAgain () {\n    echo \"All args $@\"\n}\n\n\nhello \"this\"\nhelloAgain hi today is thursday",
     "crumbs": [
       "Bash Scripting",
-      "Exit Codes"
+      "Functions"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html",
-    "href": "bash-scripting/06-Loops.html",
-    "title": "Hello World",
+    "objectID": "bash-scripting/07-Functions.html#local-variables",
+    "href": "bash-scripting/07-Functions.html#local-variables",
+    "title": "Functions",
+    "section": "Local Variables",
+    "text": "Local Variables\n#!/bin/bash\n\nglobalvar=\"this is global\"\n\nhelloLocal () {\n    local localvar=\"this is local\"\n\n    local globalvar=\"this is also local\"\n    echo $globalvar\n    echo $localvar\n}\n\nhelloLocal\necho $globalvar",
+    "crumbs": [
+      "Bash Scripting",
+      "Functions"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/07-Functions.html#returns",
+    "href": "bash-scripting/07-Functions.html#returns",
+    "title": "Functions",
+    "section": "Returns",
+    "text": "Returns\n#!/bin/bash\n\nhelloReturn () {\n    # add 25 to the first arg\n    local someresult=$((25 + $1))\n\n    # return requires numeric values\n    return $someresult # use echo for strings\n}\n\nhelloReturn 20\necho $?",
+    "crumbs": [
+      "Bash Scripting",
+      "Functions"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/01-Intro.html",
+    "href": "bash-scripting/01-Intro.html",
+    "title": "Intro",
     "section": "",
-    "text": "#!/bin/bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
+    "text": "#!/bin/bash\n\n# Above is the shebang\n\n# For mac\n# Update bash with homebrew\n# If installed with homebrew the default location is\n# /opt/homebrew/bin/bash\n# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable\n\necho Hello World\necho I am `whoami`\necho Today is `date`\necho Current working directory is $(pwd)",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Intro"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html#while",
-    "href": "bash-scripting/06-Loops.html#while",
-    "title": "Hello World",
+    "objectID": "bash-scripting/01-Intro.html#hello-world",
+    "href": "bash-scripting/01-Intro.html#hello-world",
+    "title": "Intro",
     "section": "",
-    "text": "#!/bin/bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
+    "text": "#!/bin/bash\n\n# Above is the shebang\n\n# For mac\n# Update bash with homebrew\n# If installed with homebrew the default location is\n# /opt/homebrew/bin/bash\n# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable\n\necho Hello World\necho I am `whoami`\necho Today is `date`\necho Current working directory is $(pwd)",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Intro"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html#for",
-    "href": "bash-scripting/06-Loops.html#for",
-    "title": "Hello World",
-    "section": "For",
-    "text": "For\n#!/bin/bash\n\n# traditional for loop\nfor (( i=0 ; i &lt; 5 ; i++ )) # don't forget the spaces\ndo \n    echo \"Counter $i\"\ndone\n\n# for each loops\nfor i in 1 2 3 4 5\ndo\n    echo \"Value: $i\"\ndone \n\n# A range of values\nfor i in {0..5}     # no spaces\ndo \n    echo \"Range: $i\"\ndone \n\n# specify an increment\nfor i in {0..10..2} # count from 0 to 10 by 2 (bash 4+)\ndo \n    echo \"Inc: $i\"\ndone",
+    "objectID": "bash-scripting/01-Intro.html#variables",
+    "href": "bash-scripting/01-Intro.html#variables",
+    "title": "Intro",
+    "section": "Variables",
+    "text": "Variables\n#!/bin/bash\n\n# setting variables (no spaces adjacent to = )\nmyVar=10\nanotherVar=\"the variable is...\"\n\n# accessing the variables ($ right infront of the variable)\necho \"The var is $myVar\"\necho The var is $myVar    # double quotes were not required \n\n# single quotes would not have worked\necho 'This is not my var: $myVar' # single quotes are a literal\n\n# escape special characters\necho \"The banana is \\$$myVar\" \n\n# have characters adjacent to variables with curlies\necho \"The banana is \\$${myVar}s\"",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Intro"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html#loop-over-files",
-    "href": "bash-scripting/06-Loops.html#loop-over-files",
-    "title": "Hello World",
-    "section": "Loop over files",
-    "text": "Loop over files\n#!/bin/bash\n\n# looping over files in this directory\nfor file in *\ndo\n    if [ -f \"$file\" ]\n    then \n        echo $file\n    fi\ndone \n\nparent_dir=\"..\"\nfor directory in $parent_dir/*\ndo\n    if [ -d \"$directory\" ]\n    then \n        echo $directory\n    fi\ndone \n\nabsolute_dir=\"/Users/josh/Desktop\"\nfor directory in $absolute_dir/*\ndo \n    if [ -d \"$directory\" ] \n    then\n        echo $directory\n    fi \ndone",
+    "objectID": "bash-scripting/01-Intro.html#arrays",
+    "href": "bash-scripting/01-Intro.html#arrays",
+    "title": "Intro",
+    "section": "Arrays",
+    "text": "Arrays\n#!/usr/bin/env bash\n\n\n# declare and assign\ngroceries=(\"bread\" \"milk\" \"eggs\")\n\n# access\necho ${groceries[1]}\n\n# declare first, assign later\ndeclare -a numeric_array   # numeric array - index is numeric\ndeclare -A associative_array # Associative array (bash v4+) \n\n# assign\nnumeric_array[0]=\"Hello\"\nnumeric_array[1]=\"Worlds\"\n\n# reading values\necho \"${numeric_array[0]} ${numeric_array[1]}\"\necho \"${numeric_array[@]}\"\n\n# append to the array\nnumeric_array+=(\"Another Thing\")\n\n# quantity of things in the array\necho \"${#numeric_array[@]}\"\n\n# Associative Arrays\nassociative_array[firstname]=\"Josh\"\nassociative_array[lastname]=\"Coriell\"\n\necho \"${associative_array[firstname]} ${associative_array[lastname]}\"",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Intro"
     ]
   },
   {
-    "objectID": "bash-scripting/06-Loops.html#loop-over-args",
-    "href": "bash-scripting/06-Loops.html#loop-over-args",
-    "title": "Hello World",
-    "section": "Loop over args",
-    "text": "Loop over args\n#!/bin/bash\n\n# recall: to access args use $@\n\nfor arg in $@\ndo \n    echo $arg\ndone",
+    "objectID": "bash-scripting/01-Intro.html#prompting",
+    "href": "bash-scripting/01-Intro.html#prompting",
+    "title": "Intro",
+    "section": "Prompting",
+    "text": "Prompting\n#!/bin/bash\n\n\n# use read with -p for prompt\nread -p \"Enter your first and last name: \" first last\n\necho Give me a secret:\nread -s secret\n\necho First is $first \necho Last is $last\necho Secret is $secret",
     "crumbs": [
       "Bash Scripting",
-      "Hello World"
+      "Intro"
     ]
   },
   {
-    "objectID": "bash-scripting/02-Args.html",
-    "href": "bash-scripting/02-Args.html",
-    "title": "Args",
-    "section": "",
-    "text": "#!/bin/bash\n\n# you can get the individual args passed into a file\necho The file name is $0\necho The first arg is $1\necho The second arg is $2\n\n# The length of the args\necho The length of arg1 is ${#1}",
+    "objectID": "bash-scripting/01-Intro.html#math",
+    "href": "bash-scripting/01-Intro.html#math",
+    "title": "Intro",
+    "section": "Math",
+    "text": "Math\n#!/bin/bash\n\n# math\necho $((2.3 + 3))\necho $((3 - 4))\necho $((3 * 4))\necho $((5 / 2)) # integer divsion\necho $((5 % 2))",
     "crumbs": [
       "Bash Scripting",
-      "Args"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/02-Args.html#individual-args",
-    "href": "bash-scripting/02-Args.html#individual-args",
-    "title": "Args",
-    "section": "",
-    "text": "#!/bin/bash\n\n# you can get the individual args passed into a file\necho The file name is $0\necho The first arg is $1\necho The second arg is $2\n\n# The length of the args\necho The length of arg1 is ${#1}",
-    "crumbs": [
-      "Bash Scripting",
-      "Args"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/02-Args.html#all-args",
-    "href": "bash-scripting/02-Args.html#all-args",
-    "title": "Args",
-    "section": "All Args",
-    "text": "All Args\n#!/bin/bash\n\necho \"All the args are $*\" # Access all the args as a string\n\necho \"All the args are $@\"  # Access as an array\n\necho Total number of args is $#\necho ${#@}",
-    "crumbs": [
-      "Bash Scripting",
-      "Args"
+      "Intro"
     ]
   },
   {
@@ -960,157 +971,168 @@
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html",
-    "href": "bash-scripting/01-Intro.html",
-    "title": "Intro",
+    "objectID": "bash-scripting/02-Args.html",
+    "href": "bash-scripting/02-Args.html",
+    "title": "Args",
     "section": "",
-    "text": "#!/bin/bash\n\n# Above is the shebang\n\n# For mac\n# Update bash with homebrew\n# If installed with homebrew the default location is\n# /opt/homebrew/bin/bash\n# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable\n\necho Hello World\necho I am `whoami`\necho Today is `date`\necho Current working directory is $(pwd)",
+    "text": "#!/bin/bash\n\n# you can get the individual args passed into a file\necho The file name is $0\necho The first arg is $1\necho The second arg is $2\n\n# The length of the args\necho The length of arg1 is ${#1}",
     "crumbs": [
       "Bash Scripting",
-      "Intro"
+      "Args"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html#hello-world",
-    "href": "bash-scripting/01-Intro.html#hello-world",
-    "title": "Intro",
+    "objectID": "bash-scripting/02-Args.html#individual-args",
+    "href": "bash-scripting/02-Args.html#individual-args",
+    "title": "Args",
     "section": "",
-    "text": "#!/bin/bash\n\n# Above is the shebang\n\n# For mac\n# Update bash with homebrew\n# If installed with homebrew the default location is\n# /opt/homebrew/bin/bash\n# Can use #!/usr/bin/env bash to use the version most recently added to PATH environment variable\n\necho Hello World\necho I am `whoami`\necho Today is `date`\necho Current working directory is $(pwd)",
+    "text": "#!/bin/bash\n\n# you can get the individual args passed into a file\necho The file name is $0\necho The first arg is $1\necho The second arg is $2\n\n# The length of the args\necho The length of arg1 is ${#1}",
     "crumbs": [
       "Bash Scripting",
-      "Intro"
+      "Args"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html#variables",
-    "href": "bash-scripting/01-Intro.html#variables",
-    "title": "Intro",
-    "section": "Variables",
-    "text": "Variables\n#!/bin/bash\n\n# setting variables (no spaces adjacent to = )\nmyVar=10\nanotherVar=\"the variable is...\"\n\n# accessing the variables ($ right infront of the variable)\necho \"The var is $myVar\"\necho The var is $myVar    # double quotes were not required \n\n# single quotes would not have worked\necho 'This is not my var: $myVar' # single quotes are a literal\n\n# escape special characters\necho \"The banana is \\$$myVar\" \n\n# have characters adjacent to variables with curlies\necho \"The banana is \\$${myVar}s\"",
+    "objectID": "bash-scripting/02-Args.html#all-args",
+    "href": "bash-scripting/02-Args.html#all-args",
+    "title": "Args",
+    "section": "All Args",
+    "text": "All Args\n#!/bin/bash\n\necho \"All the args are $*\" # Access all the args as a string\n\necho \"All the args are $@\"  # Access as an array\n\necho Total number of args is $#\necho ${#@}",
     "crumbs": [
       "Bash Scripting",
-      "Intro"
+      "Args"
     ]
   },
   {
-    "objectID": "bash-scripting/01-Intro.html#arrays",
-    "href": "bash-scripting/01-Intro.html#arrays",
-    "title": "Intro",
-    "section": "Arrays",
-    "text": "Arrays\n#!/usr/bin/env bash\n\n\n# declare and assign\ngroceries=(\"bread\" \"milk\" \"eggs\")\n\n# access\necho ${groceries[1]}\n\n# declare first, assign later\ndeclare -a numeric_array   # numeric array - index is numeric\ndeclare -A associative_array # Associative array (bash v4+) \n\n# assign\nnumeric_array[0]=\"Hello\"\nnumeric_array[1]=\"Worlds\"\n\n# reading values\necho \"${numeric_array[0]} ${numeric_array[1]}\"\necho \"${numeric_array[@]}\"\n\n# append to the array\nnumeric_array+=(\"Another Thing\")\n\n# quantity of things in the array\necho \"${#numeric_array[@]}\"\n\n# Associative Arrays\nassociative_array[firstname]=\"Josh\"\nassociative_array[lastname]=\"Coriell\"\n\necho \"${associative_array[firstname]} ${associative_array[lastname]}\"",
-    "crumbs": [
-      "Bash Scripting",
-      "Intro"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/01-Intro.html#prompting",
-    "href": "bash-scripting/01-Intro.html#prompting",
-    "title": "Intro",
-    "section": "Prompting",
-    "text": "Prompting\n#!/bin/bash\n\n\n# use read with -p for prompt\nread -p \"Enter your first and last name: \" first last\n\necho Give me a secret:\nread -s secret\n\necho First is $first \necho Last is $last\necho Secret is $secret",
-    "crumbs": [
-      "Bash Scripting",
-      "Intro"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/01-Intro.html#math",
-    "href": "bash-scripting/01-Intro.html#math",
-    "title": "Intro",
-    "section": "Math",
-    "text": "Math\n#!/bin/bash\n\n# math\necho $((2.3 + 3))\necho $((3 - 4))\necho $((3 * 4))\necho $((5 / 2)) # integer divsion\necho $((5 % 2))",
-    "crumbs": [
-      "Bash Scripting",
-      "Intro"
-    ]
-  },
-  {
-    "objectID": "bash-scripting/07-Functions.html",
-    "href": "bash-scripting/07-Functions.html",
-    "title": "Functions",
+    "objectID": "bash-scripting/06-Loops.html",
+    "href": "bash-scripting/06-Loops.html",
+    "title": "Hello World",
     "section": "",
-    "text": "#!/bin/bash\n\n# defining functions\nhello () {\n    echo \"Hello from a function\"\n    echo \"Exiting the function\"\n}\n\n# calling the function\nhello   # no parenthesis",
+    "text": "#!/bin/bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
     "crumbs": [
       "Bash Scripting",
-      "Functions"
+      "Hello World"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html#simple-function",
-    "href": "bash-scripting/07-Functions.html#simple-function",
-    "title": "Functions",
+    "objectID": "bash-scripting/06-Loops.html#while",
+    "href": "bash-scripting/06-Loops.html#while",
+    "title": "Hello World",
     "section": "",
-    "text": "#!/bin/bash\n\n# defining functions\nhello () {\n    echo \"Hello from a function\"\n    echo \"Exiting the function\"\n}\n\n# calling the function\nhello   # no parenthesis",
+    "text": "#!/bin/bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
     "crumbs": [
       "Bash Scripting",
-      "Functions"
+      "Hello World"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html#with-args",
-    "href": "bash-scripting/07-Functions.html#with-args",
-    "title": "Functions",
-    "section": "With Args",
-    "text": "With Args\n\n#!/bin/bash\n\n# can use word function without paren\nfunction hello {\n    # this takes one arg\n    # it's just like for a file\n    echo \"first arg $1\"\n}\n\n\n# if not using function use paren\nhelloAgain () {\n    echo \"All args $@\"\n}\n\n\nhello \"this\"\nhelloAgain hi today is thursday",
+    "objectID": "bash-scripting/06-Loops.html#for",
+    "href": "bash-scripting/06-Loops.html#for",
+    "title": "Hello World",
+    "section": "For",
+    "text": "For\n#!/bin/bash\n\n# traditional for loop\nfor (( i=0 ; i &lt; 5 ; i++ )) # don't forget the spaces\ndo \n    echo \"Counter $i\"\ndone\n\n# for each loops\nfor i in 1 2 3 4 5\ndo\n    echo \"Value: $i\"\ndone \n\n# A range of values\nfor i in {0..5}     # no spaces\ndo \n    echo \"Range: $i\"\ndone \n\n# specify an increment\nfor i in {0..10..2} # count from 0 to 10 by 2 (bash 4+)\ndo \n    echo \"Inc: $i\"\ndone",
     "crumbs": [
       "Bash Scripting",
-      "Functions"
+      "Hello World"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html#local-variables",
-    "href": "bash-scripting/07-Functions.html#local-variables",
-    "title": "Functions",
-    "section": "Local Variables",
-    "text": "Local Variables\n#!/bin/bash\n\nglobalvar=\"this is global\"\n\nhelloLocal () {\n    local localvar=\"this is local\"\n\n    local globalvar=\"this is also local\"\n    echo $globalvar\n    echo $localvar\n}\n\nhelloLocal\necho $globalvar",
+    "objectID": "bash-scripting/06-Loops.html#loop-over-files",
+    "href": "bash-scripting/06-Loops.html#loop-over-files",
+    "title": "Hello World",
+    "section": "Loop over files",
+    "text": "Loop over files\n#!/bin/bash\n\n# looping over files in this directory\nfor file in *\ndo\n    if [ -f \"$file\" ]\n    then \n        echo $file\n    fi\ndone \n\nparent_dir=\"..\"\nfor directory in $parent_dir/*\ndo\n    if [ -d \"$directory\" ]\n    then \n        echo $directory\n    fi\ndone \n\nabsolute_dir=\"/Users/josh/Desktop\"\nfor directory in $absolute_dir/*\ndo \n    if [ -d \"$directory\" ] \n    then\n        echo $directory\n    fi \ndone",
     "crumbs": [
       "Bash Scripting",
-      "Functions"
+      "Hello World"
     ]
   },
   {
-    "objectID": "bash-scripting/07-Functions.html#returns",
-    "href": "bash-scripting/07-Functions.html#returns",
-    "title": "Functions",
-    "section": "Returns",
-    "text": "Returns\n#!/bin/bash\n\nhelloReturn () {\n    # add 25 to the first arg\n    local someresult=$((25 + $1))\n\n    # return requires numeric values\n    return $someresult # use echo for strings\n}\n\nhelloReturn 20\necho $?",
+    "objectID": "bash-scripting/06-Loops.html#loop-over-args",
+    "href": "bash-scripting/06-Loops.html#loop-over-args",
+    "title": "Hello World",
+    "section": "Loop over args",
+    "text": "Loop over args\n#!/bin/bash\n\n# recall: to access args use $@\n\nfor arg in $@\ndo \n    echo $arg\ndone",
     "crumbs": [
       "Bash Scripting",
-      "Functions"
+      "Hello World"
     ]
   },
   {
-    "objectID": "terminal/03 Other Useful Tips.html",
-    "href": "terminal/03 Other Useful Tips.html",
-    "title": "Other Useful Tips",
+    "objectID": "bash-scripting/04-Exit-Codes.html",
+    "href": "bash-scripting/04-Exit-Codes.html",
+    "title": "Exit Codes",
     "section": "",
-    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command",
+    "text": "#!/bin/bash\n\n# exit code from last command\necho \"This: $?\"\n\n# typically success is 0, failure is typically &gt; 0\nls -abcdefg\necho $?",
+    "crumbs": [
+      "Bash Scripting",
+      "Exit Codes"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/04-Exit-Codes.html#exit-code",
+    "href": "bash-scripting/04-Exit-Codes.html#exit-code",
+    "title": "Exit Codes",
+    "section": "",
+    "text": "#!/bin/bash\n\n# exit code from last command\necho \"This: $?\"\n\n# typically success is 0, failure is typically &gt; 0\nls -abcdefg\necho $?",
+    "crumbs": [
+      "Bash Scripting",
+      "Exit Codes"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/04-Exit-Codes.html#use",
+    "href": "bash-scripting/04-Exit-Codes.html#use",
+    "title": "Exit Codes",
+    "section": "Use",
+    "text": "Use\n#!/bin/bash\n\nread -p \"What file would you like to remove? \" filename\n\nif [ ! -f $filename ]\nthen\n    echo \"That file does not exist...exiting\"\n    exit 1  # values less than 255\nfi \n\nrm $filename && echo \"File successfully removed\"",
+    "crumbs": [
+      "Bash Scripting",
+      "Exit Codes"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/05-Case.html",
+    "href": "bash-scripting/05-Case.html",
+    "title": "Case",
+    "section": "",
+    "text": "#!/bin/bash\n\necho \"What is your favorite food? \"\n\necho \"1 - Pizza\"\necho \"2 - Pineapples\"\necho \"3 - Pineapple Pizza\"\n\nread food;\n\ncase $food in \n    1) echo \"Pizza is a great choice.\";;\n    2) echo \"Mmm. Great fruit\";;\n    3) echo \"Spicy choice. You must not be Remy.\";;\n    *) echo \"That wasn't an option\"\nesac",
+    "crumbs": [
+      "Bash Scripting",
+      "Case"
+    ]
+  },
+  {
+    "objectID": "bash-scripting/05-Case.html#example",
+    "href": "bash-scripting/05-Case.html#example",
+    "title": "Case",
+    "section": "",
+    "text": "#!/bin/bash\n\necho \"What is your favorite food? \"\n\necho \"1 - Pizza\"\necho \"2 - Pineapples\"\necho \"3 - Pineapple Pizza\"\n\nread food;\n\ncase $food in \n    1) echo \"Pizza is a great choice.\";;\n    2) echo \"Mmm. Great fruit\";;\n    3) echo \"Spicy choice. You must not be Remy.\";;\n    *) echo \"That wasn't an option\"\nesac",
+    "crumbs": [
+      "Bash Scripting",
+      "Case"
+    ]
+  },
+  {
+    "objectID": "terminal/06 Grep and Regex.html",
+    "href": "terminal/06 Grep and Regex.html",
+    "title": "Grep and Regex",
+    "section": "",
+    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\ngrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.\n\n\n\n\n\n\nDownload the following zip file and extract it for the remainder of the examples on this page.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \nFind Cat in main.py\ngrep Cat main.py\nExpected result: (coming soon)\nFind cat in main.py\ngrep cat main.py\nExpected result: (coming soon)",
     "crumbs": [
       "Shell and Terminal",
-      "Other Useful Tips"
+      "Grep and Regex"
     ]
   },
   {
-    "objectID": "terminal/03 Other Useful Tips.html#other-useful-basic-commands",
-    "href": "terminal/03 Other Useful Tips.html#other-useful-basic-commands",
-    "title": "Other Useful Tips",
+    "objectID": "terminal/06 Grep and Regex.html#grep",
+    "href": "terminal/06 Grep and Regex.html#grep",
+    "title": "Grep and Regex",
     "section": "",
-    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command",
+    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\ngrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.\n\n\n\n\n\n\nDownload the following zip file and extract it for the remainder of the examples on this page.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \nFind Cat in main.py\ngrep Cat main.py\nExpected result: (coming soon)\nFind cat in main.py\ngrep cat main.py\nExpected result: (coming soon)",
     "crumbs": [
       "Shell and Terminal",
-      "Other Useful Tips"
-    ]
-  },
-  {
-    "objectID": "terminal/03 Other Useful Tips.html#other-useful-keyboard-shortcuts",
-    "href": "terminal/03 Other Useful Tips.html#other-useful-keyboard-shortcuts",
-    "title": "Other Useful Tips",
-    "section": "Other Useful Keyboard Shortcuts",
-    "text": "Other Useful Keyboard Shortcuts\nThe following shortcuts can make your life a bit easier while working in the Terminal. This is not an exhaustive list of shortcuts.\nup arrow        - pull up the previous command\ndown arrow      - show the next command (if one exists)\n\ntab             - autocomplete based on what commands or files or directories are available\nctrl + l        - clear\nctrl + c        - cancel the currently running process \nctrl + r        - search through the history \n\nctrl + a (or the home key) - jump to beginning of line\nctrl + e (or the end key)  - jump to the end of a line\n\nalt + left/right arrow key - navigate by word instead of character",
-    "crumbs": [
-      "Shell and Terminal",
-      "Other Useful Tips"
+      "Grep and Regex"
     ]
   },
   {
