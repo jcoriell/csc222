@@ -477,8 +477,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example-not-or-and-and" id="toc-example-not-or-and-and" class="nav-link" data-scroll-target="#example-not-or-and-and">Example: NOT, OR, and AND</a></li>
   </ul></li>
   <li><a href="#boolean-algebra" id="toc-boolean-algebra" class="nav-link" data-scroll-target="#boolean-algebra">Boolean Algebra</a></li>
-  <li><a href="#logical-operations-in-c" id="toc-logical-operations-in-c" class="nav-link" data-scroll-target="#logical-operations-in-c">Logical Operations in C</a></li>
-  <li><a href="#bit-shift-operations" id="toc-bit-shift-operations" class="nav-link" data-scroll-target="#bit-shift-operations">Bit Shift Operations:</a></li>
+  <li><a href="#logical-operations-in-c" id="toc-logical-operations-in-c" class="nav-link" data-scroll-target="#logical-operations-in-c">Logical Operations in C</a>
+  <ul class="collapse">
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1:</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2:</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3:</a></li>
+  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4:</a></li>
+  <li><a href="#example-4-1" id="toc-example-4-1" class="nav-link" data-scroll-target="#example-4-1">Example 4:</a></li>
+  </ul></li>
+  <li><a href="#bit-shift-operations" id="toc-bit-shift-operations" class="nav-link" data-scroll-target="#bit-shift-operations">Bit Shift Operations</a>
+  <ul class="collapse">
+  <li><a href="#left-shift" id="toc-left-shift" class="nav-link" data-scroll-target="#left-shift">Left Shift</a></li>
+  <li><a href="#right-shift" id="toc-right-shift" class="nav-link" data-scroll-target="#right-shift">Right Shift</a></li>
+  <li><a href="#example-1-1" id="toc-example-1-1" class="nav-link" data-scroll-target="#example-1-1">Example 1</a></li>
+  <li><a href="#example-2-1" id="toc-example-2-1" class="nav-link" data-scroll-target="#example-2-1">Example 2</a></li>
+  <li><a href="#example-3-1" id="toc-example-3-1" class="nav-link" data-scroll-target="#example-3-1">Example 3</a></li>
+  </ul></li>
+  <li><a href="#unsigned-integers" id="toc-unsigned-integers" class="nav-link" data-scroll-target="#unsigned-integers">Unsigned Integers</a></li>
+  <li><a href="#sign-extension" id="toc-sign-extension" class="nav-link" data-scroll-target="#sign-extension">Sign Extension</a></li>
+  <li><a href="#twos-complement" id="toc-twos-complement" class="nav-link" data-scroll-target="#twos-complement">Twos Complement</a></li>
+  <li><a href="#power-of-2-multiplication-and-division-with-shifting" id="toc-power-of-2-multiplication-and-division-with-shifting" class="nav-link" data-scroll-target="#power-of-2-multiplication-and-division-with-shifting">Power of 2 Multiplication and Division with Shifting</a></li>
+  <li><a href="#ieee-754-floating-point-representation" id="toc-ieee-754-floating-point-representation" class="nav-link" data-scroll-target="#ieee-754-floating-point-representation">IEEE 754 Floating Point Representation</a></li>
   </ul>
 </nav>
     </div>
@@ -769,58 +788,121 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="logical-operations-in-c" class="level2">
 <h2 class="anchored" data-anchor-id="logical-operations-in-c">Logical Operations in C</h2>
-<ul>
-<li><p>Logical Operators: &amp;&amp;, ||, !</p>
-<ul>
-<li>View 0 as False</li>
-<li>Anything else is True</li>
-<li>Always return 0 or 1 Examples (on Char data type)</li>
-</ul></li>
-<li><p>!0x41 -&gt; 0x00</p></li>
-<li><p>!0x00 -&gt; 0x01</p></li>
-<li><p>!!0x41 -&gt; 0x01</p></li>
-<li><p>0x69 &amp;&amp; 0x55 -&gt; 0x01</p></li>
-<li><p>0x69 || 0x55 -&gt; 0x01</p></li>
-</ul>
+<p>The Logical Operators are: - &amp;&amp; for AND, - || for OR - and ! for NOT</p>
+<p>Note the following: - The value 0 is viewed as False - Anything else is True - The operators &amp;&amp;, ||, and ! will always return 0 or 1</p>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example 1:</h3>
+<p>Find <code>!0x41</code> as a hex value.</p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="bn">0x41</span>    <span class="co">// original value is not a zero valued quantity, thus it's boolean value is True</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bn">0x41</span>   <span class="co">// Thus, not True is False.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="bn">0x00</span>    <span class="co">// 0x00 is the numeric representation of False. Final Result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example 2:</h3>
+<p>Find <code>!0x00</code> as a hex value.</p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a> <span class="bn">0x00</span>    <span class="co">// boolean value is False</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bn">0x00</span>   <span class="co">// Thus, not False is True.</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="bn">0x01</span>    <span class="co">// 0x01 is the numeric representation of True. Final Result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-3" class="level3">
+<h3 class="anchored" data-anchor-id="example-3">Example 3:</h3>
+<p>Find <code>!!0x41</code> as a hex value.</p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a> <span class="bn">0x41</span>    <span class="co">// boolean value is True</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bn">0x41</span>   <span class="co">// Thus, not True is False, resulting in 0x00</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a> <span class="bn">0x00</span>   <span class="co">// result from previous application of !</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bn">0x00</span>   <span class="co">// Apply another ! operator. Not False is True.</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a> <span class="bn">0x01</span>    <span class="co">// 0x01 is the numeric representation of True. Final Result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-4" class="level3">
+<h3 class="anchored" data-anchor-id="example-4">Example 4:</h3>
+<p>Find the result of <code>0x69 &amp;&amp; 0x55</code> as a hex value.</p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>        Hex     Boolean Value</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="bn">0x69</span>              True</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;&amp;</span> <span class="bn">0x55</span>     AND      True</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-------</span>     <span class="op">-------------</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="bn">0x01</span>              True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The final result is <code>0x01</code>.</p>
+</section>
+<section id="example-4-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-4-1">Example 4:</h3>
+<p>Find the result of <code>0x69 || 0x55</code> as a hex value.</p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>        Hex     Boolean Value</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="bn">0x69</span>              True</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">||</span> <span class="bn">0x55</span>     OR       True</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-------</span>     <span class="op">-------------</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>       <span class="bn">0x01</span>              True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The final result is <code>0x01</code>.</p>
+</section>
 </section>
 <section id="bit-shift-operations" class="level2">
-<h2 class="anchored" data-anchor-id="bit-shift-operations">Bit Shift Operations:</h2>
+<h2 class="anchored" data-anchor-id="bit-shift-operations">Bit Shift Operations</h2>
+<section id="left-shift" class="level3">
+<h3 class="anchored" data-anchor-id="left-shift">Left Shift</h3>
+<p>A left shift of bits can be performed with the <code>&lt;&lt;</code> operator. Note that the operator points toward the left.</p>
+<p>To shift a bit vector <code>x</code> over by <code>y</code> positions, you would write <code>x &lt;&lt; y</code>.</p>
+<p>The leftmost bits will be thrown away as you shift.</p>
+<p>The right side of the bit array will be filled with 0s.</p>
+</section>
+<section id="right-shift" class="level3">
+<h3 class="anchored" data-anchor-id="right-shift">Right Shift</h3>
+<p>A right shift of bits can be performed with the <code>&gt;&gt;</code> operator. Note that the operator points toward the right.</p>
+<p>To shift a bit vector <code>x</code> over by <code>y</code> positions, you would write <code>x &gt;&gt; y</code>.</p>
+<p>The rightmost bits will be thrown away as you shift.</p>
+<p>In the case of a <code>Logical Shift</code>, the left side of the bit array will be filled with 0s. This happens if <code>x</code> is an unsigned value.</p>
+<p>In the case of an <code>Arithmetic Shift</code>, the left side of the bit array will be filled with 0s or 1s depending on the parity of the value x. That is, if x is a negative signed number, then it will fill with 1s.</p>
+</section>
+<section id="example-1-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-1">Example 1</h3>
+<p>Let <code>x = 0x62</code> be an <strong>unsigned int</strong>. Find the binary representation of <code>x &lt;&lt; 3</code>.</p>
+<p>Solution:</p>
 <ul>
-<li>Left Shift: x &lt;&lt; y
-<ul>
-<li>shift bit-vector x by y positions
-<ul>
-<li>Throw away extra bits on left</li>
-<li>Fill with 0’s on the right</li>
-</ul></li>
-<li>ex: x = 01100010 x &lt;&lt; 3 = 00010(000)</li>
-</ul></li>
-<li>Right Shift: x &gt;&gt; y
-<ul>
-<li>shift bit-vector x by y positions
-<ul>
-<li>Throw away extra bits on the right</li>
-<li>Fill with 0’s on the left (logical shift)</li>
-</ul></li>
-<li>ex: x = 01100010 x &gt;&gt; 3 = (000)01100 Arithmetic Shift:</li>
-<li>Similar to right shift</li>
-<li>Replicate the most significant bit on the left (original sign)</li>
-<li>Useful with two’s complement for integer representation<br>
-</li>
-<li>ex (arithmetic shift for 2’s comp):
-<ul>
-<li>x = 10100010 &gt;&gt; 2</li>
-<li>Arithmetic = (11)101000</li>
-<li>Logical = (00)101000</li>
-</ul></li>
-</ul></li>
+<li><p>0x62 in binary is 1100010</p></li>
+<li><p>However, recall that ints are 4 bytes, or 32-bits.</p></li>
+<li><p>Thus, 0x62 in memory is as follows</p>
+<pre><code>00000000 00000000 00000000 01100010</code></pre>
+<p>Note that we have space separated the bytes for visual purposes.</p></li>
+<li><p>Now if we shift the bits 3 places to the left, we get the following:</p>
+<pre><code>00000000 00000000 00000011 00010000</code></pre></li>
 </ul>
-<p>REVIEW: Logical operations in C</p>
-<ol type="1">
-<li><p>!0x41 = 0x00</p></li>
-<li><p>0x00 &amp;&amp; 0x7D = 0x00</p></li>
-<li><p>!(0x57 || 0x00) = 0x00</p></li>
-</ol>
+</section>
+<section id="example-2-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-1">Example 2</h3>
+<p>Let <code>x = 0x62</code> be an <strong>unsigned char</strong>. Find the binary representation of <code>x &lt;&lt; 3</code>.</p>
+<p>Solution:</p>
+<ul>
+<li><p>0x62 in binary is 1100010</p></li>
+<li><p>However, recall that ints are 1 byte, or 8-bits.</p></li>
+<li><p>Thus, 0x62 in memory is as follows</p>
+<pre><code>01100010</code></pre>
+<p>Note that we only added a leading zero.</p></li>
+<li><p>Now if we shift the bits 3 places to the left, we get the following:</p>
+<pre><code>00010000</code></pre></li>
+<li><p>Notice how we lost several bits in the shift.</p></li>
+</ul>
+</section>
+<section id="example-3-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-3-1">Example 3</h3>
+<p>Let <code>x = -8</code> (base 10) be an <strong>signed char</strong>. Find the binary representation of <code>x &gt;&gt; 2</code>.</p>
+<p>Solution:</p>
+<ul>
+<li><p>-8 in binary, as an unsigned char is 11111000</p></li>
+<li><p>Recall that this uses two’s complement notation.</p></li>
+<li><p>If we shift the bits 2 places to the right as an arithmetic shift, we get the following:</p>
+<pre><code>11111110</code></pre></li>
+<li><p>Notice how the left side was filled with 1s to maintain the sign.</p></li>
+<li><p>The resulting base 10 value is -2.</p></li>
+</ul>
+</section>
+</section>
+<section id="unsigned-integers" class="level2">
+<h2 class="anchored" data-anchor-id="unsigned-integers">Unsigned Integers</h2>
 <p>Unsigned/Signed Integers</p>
 <ul>
 <li><p>X = x(w-1)x(w-2)…x(1)x(0)</p></li>
@@ -877,7 +959,13 @@ Tmin -128 -32768 -2147483648 ~-9 quintillion</p>
 <li>Implicit casting also occurs via assignments and procedural calls tx = ux; uy = ty;</li>
 </ul></li>
 </ul>
+</section>
+<section id="sign-extension" class="level2">
+<h2 class="anchored" data-anchor-id="sign-extension">Sign Extension</h2>
 <p>Sign Extension - Task: - Given w-bit signed int x - Convert it to w + k- bit int with the same value - Rule: - Make k copies of the sign bit: - X = 0111 - X’ = 000000000…00 X</p>
+</section>
+<section id="twos-complement" class="level2">
+<h2 class="anchored" data-anchor-id="twos-complement">Twos Complement</h2>
 <p>2’s Complement and Overflow - given s = TAdd(w)(u, v) - Determine if s = Add(w)(u, v)</p>
 <ul>
 <li>Overflow iff either
@@ -886,6 +974,9 @@ Tmin -128 -32768 -2147483648 ~-9 quintillion</p>
 <li>u, v &gt;= 0, s &lt; 0 (Postive overflow)</li>
 </ul></li>
 </ul>
+</section>
+<section id="power-of-2-multiplication-and-division-with-shifting" class="level2">
+<h2 class="anchored" data-anchor-id="power-of-2-multiplication-and-division-with-shifting">Power of 2 Multiplication and Division with Shifting</h2>
 <p>Power-of-2 Multiplication with Shift - Operation: - u &lt;&lt; k is equivalent u * 2^k - for signed and unsigned</p>
 <ul>
 <li>Left Shift: x &lt;&lt; y
@@ -915,6 +1006,9 @@ Tmin -128 -32768 -2147483648 ~-9 quintillion</p>
 <li>Arithmetic shift: Replicate the sign bit on the left</li>
 </ul></li>
 </ul>
+</section>
+<section id="ieee-754-floating-point-representation" class="level2">
+<h2 class="anchored" data-anchor-id="ieee-754-floating-point-representation">IEEE 754 Floating Point Representation</h2>
 <p>IEEE 754 Floating Point Representation - Similar to representation fom 132 course - Used instead of sign - exponent - mantissa representation as there are many ways to represent one number in this format, unlike IEEE 754. The normalization preformed disallows this. - Implicit normalization is also more accurate than a possible explisit normalization. - Has possible precisions based on number of bits to dictate bias: - 16 bits: half-point precision - has 11 significand bits (includes sign bit), 5 bits for the exponent - bias value = 15 - 32 bits: single-point precision - has 24 significand bits (including sign bit), 8 bits for the exponent - bias value = 127 - 64 bits: double precision - has 53 significant bits (including sign bit) - bias value = 1023 - There is a quadruple and Octuple precision, but it will not be discussed further</p>
 <pre><code>- Extra Notes:
     - in the case of the following for exponent = E, mantissa = m, sign = s:

@@ -239,53 +239,179 @@ Solution:
 
 ## Logical Operations in C
 
-- Logical Operators: &&, ||, !
-    - View 0 as False
+The Logical Operators are: 
+    - && for AND, 
+    - || for OR
+    - and ! for NOT
+
+Note the following:
+    - The value 0 is viewed as False
     - Anything else is True
-    - Always return 0 or 1
-Examples (on Char data type)
- - !0x41 -> 0x00
- - !0x00 -> 0x01
- - !!0x41 -> 0x01
+    - The operators &&, ||, and ! will always return 0 or 1
 
- - 0x69 && 0x55 -> 0x01
- - 0x69 || 0x55 -> 0x01
+### Example 1:
+
+Find `!0x41` as a hex value.
+
+Solution:
+```c
+ 0x41    // original value is not a zero valued quantity, thus it's boolean value is True
+!0x41   // Thus, not True is False.
+ 0x00    // 0x00 is the numeric representation of False. Final Result.
+```
+
+### Example 2:
+
+Find `!0x00` as a hex value.
+
+Solution:
+```c
+ 0x00    // boolean value is False
+!0x00   // Thus, not False is True.
+ 0x01    // 0x01 is the numeric representation of True. Final Result.
+```
+
+### Example 3:
+
+Find `!!0x41` as a hex value.
+
+Solution:
+```c
+ 0x41    // boolean value is True
+
+!0x41   // Thus, not True is False, resulting in 0x00
+ 0x00   // result from previous application of !
+
+!0x00   // Apply another ! operator. Not False is True.
+ 0x01    // 0x01 is the numeric representation of True. Final Result.
+```
 
 
-## Bit Shift Operations:
+### Example 4:
 
-- Left Shift:       x << y
-    - shift bit-vector x by y positions
-        - Throw away extra bits on left
-        - Fill with 0's on the right
-    - ex: x = 01100010
-          x << 3 = 00010(000)
-- Right Shift:      x >> y
-    - shift bit-vector x by y positions
-        - Throw away extra bits on the right
-        - Fill with 0's on the left (logical shift)
-    - ex: x = 01100010
-          x >> 3 = (000)01100
-Arithmetic Shift:
-    - Similar to right shift
-    - Replicate the most significant bit on the left (original sign)
-    - Useful with two's complement for integer representation    
-    - ex (arithmetic shift for 2's comp):
-        - x = 10100010 >> 2
-        - Arithmetic = (11)101000
-        - Logical = (00)101000
+Find the result of `0x69 && 0x55` as a hex value.
+
+Solution:
+```c
+        Hex     Boolean Value
+       0x69              True
+    && 0x55     AND      True
+    -------     -------------
+       0x01              True
+```
+
+The final result is `0x01`.
 
 
+### Example 4:
+
+Find the result of `0x69 || 0x55` as a hex value.
+
+Solution:
+```c
+        Hex     Boolean Value
+       0x69              True
+    || 0x55     OR       True
+    -------     -------------
+       0x01              True
+```
+
+The final result is `0x01`.
 
 
-REVIEW: Logical operations in C
+## Bit Shift Operations
 
-1. !0x41 = 0x00
+### Left Shift
 
-2. 0x00 && 0x7D = 0x00
+A left shift of bits can be performed with the `<<` operator. Note that the operator points toward the left.
 
-3. !(0x57 || 0x00) = 0x00
+To shift a bit vector `x` over by `y` positions, you would write `x << y`.
 
+The leftmost bits will be thrown away as you shift.
+
+The right side of the bit array will be filled with 0s. 
+
+### Right Shift
+
+A right shift of bits can be performed with the `>>` operator. Note that the operator points toward the right.
+
+To shift a bit vector `x` over by `y` positions, you would write `x >> y`.
+
+The rightmost bits will be thrown away as you shift.
+
+In the case of a `Logical Shift`, the left side of the bit array will be filled with 0s. This happens if `x` is an unsigned value.
+
+In the case of an `Arithmetic Shift`, the left side of the bit array will be filled with 0s or 1s depending on the parity of the value x. That is, if x is a negative signed number, then it will fill with 1s.
+
+
+
+### Example 1
+
+Let `x = 0x62` be an **unsigned int**. Find the binary representation of `x << 3`.
+
+Solution:
+
+- 0x62 in binary is 1100010
+
+- However, recall that ints are 4 bytes, or 32-bits.
+
+- Thus, 0x62 in memory is as follows 
+  ```
+  00000000 00000000 00000000 01100010
+  ```
+  Note that we have space separated the bytes for visual purposes.
+
+- Now if we shift the bits 3 places to the left, we get the following:
+  ```
+  00000000 00000000 00000011 00010000
+  ```
+
+### Example 2
+
+Let `x = 0x62` be an **unsigned char**. Find the binary representation of `x << 3`.
+
+Solution:
+
+- 0x62 in binary is 1100010
+
+- However, recall that ints are 1 byte, or 8-bits.
+
+- Thus, 0x62 in memory is as follows 
+  ```
+  01100010
+  ```
+  Note that we only added a leading zero.
+
+- Now if we shift the bits 3 places to the left, we get the following:
+  ```
+  00010000
+  ```
+- Notice how we lost several bits in the shift.
+
+
+### Example 3
+
+Let `x = -8` (base 10) be an **signed char**. Find the binary representation of `x >> 2`.
+
+
+Solution:
+
+- -8 in binary, as an unsigned char is 11111000
+
+- Recall that this uses two's complement notation.
+
+- If we shift the bits 2 places to the right as an arithmetic shift, we get the following:
+  ```
+  11111110
+  ```
+- Notice how the left side was filled with 1s to maintain the sign.
+
+- The resulting base 10 value is -2. 
+
+
+
+
+## Unsigned Integers
 
 Unsigned/Signed Integers 
 
@@ -386,6 +512,8 @@ ex:
         tx = ux;
         uy = ty;
 
+## Sign Extension
+
 Sign Extension
 - Task:
     - Given w-bit signed int x
@@ -395,6 +523,8 @@ Sign Extension
     - X = 0111
     - X' = 000000000...00 X
 
+## Twos Complement 
+
 2's Complement and Overflow
 - given s = TAdd(w)(u, v)
 - Determine if s = Add(w)(u, v)
@@ -403,6 +533,7 @@ Sign Extension
     - u, v < 0, s >= 0 (Negative overflow)
     - u, v >= 0, s < 0 (Postive overflow)
 
+## Power of 2 Multiplication and Division with Shifting
 
 Power-of-2 Multiplication with Shift
 - Operation:
@@ -431,6 +562,8 @@ Power of 2 Divide with shift
     - Logical shift: fill with 0's on the left
     - Arithmetic shift: Replicate the sign bit on the left
 
+
+## IEEE 754 Floating Point Representation
 
 IEEE 754 Floating Point Representation
 - Similar to representation fom 132 course
