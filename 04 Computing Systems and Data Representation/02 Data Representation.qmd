@@ -611,43 +611,107 @@ IEEE 754 Floating Point Representation
 - If E = 0 and M != 0, use the following formula for fractional form:
     - (-1)^S x 0.M x 2^(-126)
      
-Examples:
+### Example 1
 
-- Convert -4.25 to single point precision IEEE 754 floating point number:
-Step 1: convert base number (ignoring sign) to binary:
-    - 4.25 -> 100.01
+Convert -4.25 to single precision IEEE 754 floating point number (i.e. 32-bits).
 
-Step 2: Use implicit normalization to shift the radix point (decimal point)
-        to the right of the most significant bit with a value of 1.
-        This shift is done by multiplying your binary value by 2^k
-        where k is the number of positions you need to shift your radix
-        point.
-    - 100.01 -> 1.0001 x 2^2 (we choose 2^2, as we shift our value by 2 positions)
-    - the value to the right of the radix point is your new mantissa
-        - 0001 in this case. Keep leading 0's 
-    - the number your shift by, or put in as k in 2^k is your temporary
-      exponent. In this case, this is 2.
 
-Step 3: Bias your exponent by adding 127 to your temporary exponent.
-        This will be your "True Exponent". Convert this resulting
-        value to binary.
+1. Convert base number (ignoring sign) to binary
+
+    Whole Part:
+
+    ```
+    Whole part is 4. Divide quotients by 2 repeatedly and read the remainders in reverse order to get the binary value.
+
+        4 / 2 = 2r0
+        2 / 2 = 1r0
+        1 / 2 = 0r1    // stop when quotient is 0
+
+    Reading the remainders in reverse gives 100
+    ```
+
+    Fractional Part:
+
+    ```
+    Fractional Part is 0.25. Multiply the fractional parts by 2 repeatedly and read the whole parts from the top down.
+
+                   Whole part
+                   |
+                   | Fractional Part
+                   | |  
+                   v v
+        0.25 * 2 = 0.5
+        0.5  * 2 = 1.0  // stop when fractional part is 0
+
+    Reading the whole parts from top down gives 01.
+    ```
+
+    Finish this step by combining the whole and fractional binary results into 100.01
+
+2. Implicitly Normalize the Previous Result
+
+   Shift the radix point (decimal point) to the right of the most significant bit with a value of 1. This shift is done by multiplying your binary value by 2^k where k is the number of positions you need to shift your radix point.
+
+   ```
+   100.01 
+   10.001   // shifted left one place
+   1.0001   // shifted left 2 places total. stop here.
+
+   The exponent is 2 since we shifted 2 places to the left.
+   We will refer to this exponent as the TrueExponent.
+
+   The mantissa is 0001 since that is the value to the right of the radix point.
+   Do not discard leading zeros in the mantissa <----- IMPORTANT!!! . 
+   ```
+
+   In other words, $100.01 = 1.0001 * 2^2$,  $trueExponent = 2$,  and $mantissa = 0001$.
+
+   *Do not discard the leading zeros in the mantissa*.
+
+
+3. Bias the Exponent
+
+    Apply a bias to your trueExponent value. Since we are working under single precision (32-bit), our bias is 127.
     
-    - 2 + 127 = 129
-               -128
-               -  1
-               =  0
-    - So our binary representation is 1000 0001
+    $$ biasedExponent = trueExponent + 127 $$
+    $$ biasedExponent = 2 + 127 $$
 
-Step 4: Fill in your Sign, exponent, and mantissa together.
-        Your sign is based on the original value (-4.25)
+    $$ biasedExponent = 129 $$
 
-    S   Exponent       Mantissa
-    1   1000 0001   00010000...000
+4. Convert the biased exponent to binary.
 
-    Note: fill in the mantissa section from the LEFT side, and follow
-          this value by zeros.
+    The exponent is represented using 8 bits in single precision.
 
-Ex 2:
+    Using the subtraction method:
+
+    $129 - 2^7 = 1$
+
+    $1 - 2^0 = 0$
+
+    So our binary representation is 1000 0001.
+
+5. Put it all together
+
+
+    ```
+    Sign was -. Thus sign bit is 1.
+    
+    Exponent was 1000 0001 
+    
+    The mantissa was 0001
+
+    Final Result:
+    S (1 bit)   Exponent (8 bits)     Mantissa (23 bits total)
+    ---         -----------------     ----------------------------
+    1           1000 0001             0001 0000 0000 0000 0000 000
+
+    Note: Fill in the mantissa section from the LEFT side, and follow this value by zeros.
+
+    Also, note that we placed spaces for readability.
+    ```
+
+### Example 2
+
 Convert 55 to floating point:
 Step 1: 55 -> 110111
 Step 2, normalization: 110111 -> 1.10111 x 2^5, note these values

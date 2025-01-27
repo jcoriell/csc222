@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -497,7 +526,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sign-extension" id="toc-sign-extension" class="nav-link" data-scroll-target="#sign-extension">Sign Extension</a></li>
   <li><a href="#twos-complement" id="toc-twos-complement" class="nav-link" data-scroll-target="#twos-complement">Twos Complement</a></li>
   <li><a href="#power-of-2-multiplication-and-division-with-shifting" id="toc-power-of-2-multiplication-and-division-with-shifting" class="nav-link" data-scroll-target="#power-of-2-multiplication-and-division-with-shifting">Power of 2 Multiplication and Division with Shifting</a></li>
-  <li><a href="#ieee-754-floating-point-representation" id="toc-ieee-754-floating-point-representation" class="nav-link" data-scroll-target="#ieee-754-floating-point-representation">IEEE 754 Floating Point Representation</a></li>
+  <li><a href="#ieee-754-floating-point-representation" id="toc-ieee-754-floating-point-representation" class="nav-link" data-scroll-target="#ieee-754-floating-point-representation">IEEE 754 Floating Point Representation</a>
+  <ul class="collapse">
+  <li><a href="#example-1-2" id="toc-example-1-2" class="nav-link" data-scroll-target="#example-1-2">Example 1</a></li>
+  <li><a href="#example-2-2" id="toc-example-2-2" class="nav-link" data-scroll-target="#example-2-2">Example 2</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1038,27 +1071,75 @@ Tmin -128 -32768 -2147483648 ~-9 quintillion</p>
 <li>(-1)^S x 0.M x 2^(-126)</li>
 </ul></li>
 </ul>
-<p>Examples:</p>
-<ul>
-<li>Convert -4.25 to single point precision IEEE 754 floating point number: Step 1: convert base number (ignoring sign) to binary:
-<ul>
-<li>4.25 -&gt; 100.01</li>
-</ul></li>
-</ul>
-<p>Step 2: Use implicit normalization to shift the radix point (decimal point) to the right of the most significant bit with a value of 1. This shift is done by multiplying your binary value by 2^k where k is the number of positions you need to shift your radix point. - 100.01 -&gt; 1.0001 x 2^2 (we choose 2^2, as we shift our value by 2 positions) - the value to the right of the radix point is your new mantissa - 0001 in this case. Keep leading 0’s - the number your shift by, or put in as k in 2^k is your temporary exponent. In this case, this is 2.</p>
-<p>Step 3: Bias your exponent by adding 127 to your temporary exponent. This will be your “True Exponent”. Convert this resulting value to binary.</p>
-<pre><code>- 2 + 127 = 129
-           -128
-           -  1
-           =  0
-- So our binary representation is 1000 0001</code></pre>
-<p>Step 4: Fill in your Sign, exponent, and mantissa together. Your sign is based on the original value (-4.25)</p>
-<pre><code>S   Exponent       Mantissa
-1   1000 0001   00010000...000
+<section id="example-1-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-2">Example 1</h3>
+<p>Convert -4.25 to single precision IEEE 754 floating point number (i.e.&nbsp;32-bits).</p>
+<ol type="1">
+<li><p>Convert base number (ignoring sign) to binary</p>
+<p>Whole Part:</p>
+<pre><code>Whole part is 4. Divide quotients by 2 repeatedly and read the remainders in reverse order to get the binary value.
 
-Note: fill in the mantissa section from the LEFT side, and follow
-      this value by zeros.</code></pre>
-<p>Ex 2: Convert 55 to floating point: Step 1: 55 -&gt; 110111 Step 2, normalization: 110111 -&gt; 1.10111 x 2^5, note these values Step 3, bias exponent: 5+127 = 132 Step 3.1 convert to binary: 132 -&gt; 1000 0100 Step 4, fill in values: S Exponent Mantissa 0 1000 0100 10111000…000</p>
+    4 / 2 = 2r0
+    2 / 2 = 1r0
+    1 / 2 = 0r1    // stop when quotient is 0
+
+Reading the remainders in reverse gives 100</code></pre>
+<p>Fractional Part:</p>
+<pre><code>Fractional Part is 0.25. Multiply the fractional parts by 2 repeatedly and read the whole parts from the top down.
+
+               Whole part
+               |
+               | Fractional Part
+               | |  
+               v v
+    0.25 * 2 = 0.5
+    0.5  * 2 = 1.0  // stop when fractional part is 0
+
+Reading the whole parts from top down gives 01.</code></pre>
+<p>Finish this step by combining the whole and fractional binary results into 100.01</p></li>
+<li><p>Implicitly Normalize the Previous Result</p>
+<p>Shift the radix point (decimal point) to the right of the most significant bit with a value of 1. This shift is done by multiplying your binary value by 2^k where k is the number of positions you need to shift your radix point.</p>
+<pre><code>100.01 
+10.001   // shifted left one place
+1.0001   // shifted left 2 places total. stop here.
+
+The exponent is 2 since we shifted 2 places to the left.
+We will refer to this exponent as the TrueExponent.
+
+The mantissa is 0001 since that is the value to the right of the radix point.
+Do not discard leading zeros in the mantissa &lt;----- IMPORTANT!!! . </code></pre>
+<p>In other words, <span class="math inline">\(100.01 = 1.0001 * 2^2\)</span>, <span class="math inline">\(trueExponent = 2\)</span>, and <span class="math inline">\(mantissa = 0001\)</span>.</p>
+<p><em>Do not discard the leading zeros in the mantissa</em>.</p></li>
+<li><p>Bias the Exponent</p>
+<p>Apply a bias to your trueExponent value. Since we are working under single precision (32-bit), our bias is 127.</p>
+<p><span class="math display">\[ biasedExponent = trueExponent + 127 \]</span> <span class="math display">\[ biasedExponent = 2 + 127 \]</span></p>
+<p><span class="math display">\[ biasedExponent = 129 \]</span></p></li>
+<li><p>Convert the biased exponent to binary.</p>
+<p>The exponent is represented using 8 bits in single precision.</p>
+<p>Using the subtraction method:</p>
+<p><span class="math inline">\(129 - 2^7 = 1\)</span></p>
+<p><span class="math inline">\(1 - 2^0 = 0\)</span></p>
+<p>So our binary representation is 1000 0001.</p></li>
+<li><p>Put it all together</p>
+<pre><code>Sign was -. Thus sign bit is 1.
+
+Exponent was 1000 0001 
+
+The mantissa was 0001
+
+Final Result:
+S (1 bit)   Exponent (8 bits)     Mantissa (23 bits total)
+---         -----------------     ----------------------------
+1           1000 0001             0001 0000 0000 0000 0000 000
+
+Note: Fill in the mantissa section from the LEFT side, and follow this value by zeros.
+
+Also, note that we placed spaces for readability.</code></pre></li>
+</ol>
+</section>
+<section id="example-2-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-2">Example 2</h3>
+<p>Convert 55 to floating point: Step 1: 55 -&gt; 110111 Step 2, normalization: 110111 -&gt; 1.10111 x 2^5, note these values Step 3, bias exponent: 5+127 = 132 Step 3.1 convert to binary: 132 -&gt; 1000 0100 Step 4, fill in values: S Exponent Mantissa 0 1000 0100 10111000…000</p>
 <p>Ex 3: Convert the following from IEEE 754 to Decimal This process is simply to follow the previous steps in the opposite direction</p>
 <p>S Exponent Mantissa 0 1000 0110 11011000…000</p>
 <p>Step 1: Convert E to Decimal, and debias 1000 0110 = 128 + 4 + 2 = 134 debias: 134 - 128 = 6 &lt;- this is the amount we shift</p>
@@ -1068,6 +1149,7 @@ mantissa and debiased exponent - in this case, M = 11011, k = 6 So we have 1.110
 <p>Step 4: Convert value to decimal - 1110110 -&gt; 2+4+16+32+64 = 118</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
