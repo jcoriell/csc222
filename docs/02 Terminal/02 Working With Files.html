@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exit Codes – CSC 222 Systems Programming</title>
+<title>Working with Files – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02 Terminal/">02 Terminal</a></li><li class="breadcrumb-item"><a href="../02 Terminal/02 Working With Files.html">Working with Files</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal/02 Working With Files.html" class="sidebar-item-text sidebar-link">
+  <a href="../02 Terminal/02 Working With Files.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Working with Files</span></a>
   </div>
 </li>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
@@ -459,17 +459,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exit-code" id="toc-exit-code" class="nav-link active" data-scroll-target="#exit-code">Exit Code</a></li>
-  <li><a href="#use" id="toc-use" class="nav-link" data-scroll-target="#use">Use</a></li>
+  <li><a href="#commands" id="toc-commands" class="nav-link active" data-scroll-target="#commands">Commands</a>
+  <ul class="collapse">
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#text-editors" id="toc-text-editors" class="nav-link" data-scroll-target="#text-editors">Text Editors</a>
+  <ul class="collapse">
+  <li><a href="#vim-vi---improved" id="toc-vim-vi---improved" class="nav-link" data-scroll-target="#vim-vi---improved">vim (Vi - Improved)</a></li>
+  <li><a href="#nano" id="toc-nano" class="nav-link" data-scroll-target="#nano">Nano</a></li>
+  </ul></li>
+  <li><a href="#reference-files" id="toc-reference-files" class="nav-link" data-scroll-target="#reference-files">Reference Files</a>
+  <ul class="collapse">
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02 Terminal/">02 Terminal</a></li><li class="breadcrumb-item"><a href="../02 Terminal/02 Working With Files.html">Working with Files</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exit Codes</h1>
+<h1 class="title">Working with Files</h1>
 </div>
 
 
@@ -486,32 +497,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exit-code" class="level2">
-<h2 class="anchored" data-anchor-id="exit-code">Exit Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># exit code from last command</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This: </span><span class="va">$?</span><span class="st">"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># typically success is 0, failure is typically &gt; 0</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-abcdefg</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="commands" class="level2">
+<h2 class="anchored" data-anchor-id="commands">Commands</h2>
+<p>The following commands are commonly used commands for working with files.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>         <span class="co"># show the contents of a file</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span>        <span class="co"># show the contents of a file, forward scrolling/jumping</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span>        <span class="co"># show the contents of a file, forward and backward scrolling</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span>          <span class="co"># copy a file</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span>          <span class="co"># move a file, rename a file</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span>        <span class="co"># download stuff (sudo apt install wget)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">xdg-open</span>    <span class="co"># open a file or url in its default application</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<ol type="1">
+<li><p>Navigate to Desktop and create a books and music directory</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> books music</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Navigate into the newly created books directory and download a book</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> books</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://www.gutenberg.org/cache/epub/98/pg98.txt </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Rename the book</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> pg98.txt a-tale-of-two-cities.txt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> a-tale-of-two-cities.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Download another book</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://jcoriell.github.io/csc222/files/cnbc.txt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> cnbc.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Navigate to the music directory from the books directory and download a song</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> music</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://jcoriell.github.io/csc222/files/mbe.mp3</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xdg-open</span> mbe.mp3    <span class="co"># open it with the default application for the system</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
 </section>
-<section id="use" class="level2">
-<h2 class="anchored" data-anchor-id="use">Use</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"What file would you like to remove? "</span> <span class="va">filename</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="va">$filename</span> <span class="bu">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"That file does not exist...exiting"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1  <span class="co"># values less than 255</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="va">$filename</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"File successfully removed"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="text-editors" class="level2">
+<h2 class="anchored" data-anchor-id="text-editors">Text Editors</h2>
+<section id="vim-vi---improved" class="level3">
+<h3 class="anchored" data-anchor-id="vim-vi---improved">vim (Vi - Improved)</h3>
+<ul>
+<li>steep learning curve, but frequent users love it</li>
+<li>will make you better that everyone else</li>
+<li>can learn using the command <code>vimtutor</code></li>
+</ul>
+<p>Open with the command: vim [filename]</p>
+<section id="vim-modes" class="level4">
+<h4 class="anchored" data-anchor-id="vim-modes">Vim Modes:</h4>
+<pre><code>insert      - i to activate, escape to back out
+
+replace     - r to enter replace mode, use it to write over text instead of inserting text
+            - escape to back out
+
+visual      - v, V, or ctrl+v to activate character, line, or block visual mode 
+            - used to select text and apply commands to that text
+            - ex: copy, cut, replace, indent, search, and more...
+            - escape to back out 
+
+command     - : to activate. Some common commands:
+            - w to save
+            - q to quit
+            - wq or x to save and quit
+            - q! to quit without saving
+            - e [filename] to open a file
+            - saveas [filename] to save the file as a new name
+            - [an integer] to jump to a line</code></pre>
+</section>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example</h4>
+<ol type="1">
+<li><p>Use the following two commands to create a file somewhere on your system.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/programs               <span class="co"># navigate to a folder to complete the example in</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> random_number_generator.py      <span class="co"># open a file (it is ok if the file doesn't exist yet)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>At this point vim should have opened.</p></li>
+<li><p>Type <code>i</code> to enter insert mode and type the following code.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.randint())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Now hit <code>escape</code> to exit insert mode.</p></li>
+<li><p>Move the cursor to the beginning of the word randint</p></li>
+<li><p>Hit <code>v</code> to enter visual mode.</p></li>
+<li><p>Use the <code>e</code> key to go to the END of the word (<code>b</code> goes to the Beginning)</p></li>
+<li><p>Use the <code>c</code> key to CHANGE the selected text to <code>random</code>. (we are replacing randint with <code>random</code>)</p>
+<p>At this point the python code should look like this:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Use <code>escape</code> to exit insert mode.</p></li>
+<li><p>Use <code>:</code> to enter command mode.</p></li>
+<li><p>Type <code>wq</code> and hit enter to save and exit.</p></li>
+<li><p>If you’d like to run the code, use the following command:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> random_number_generator.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is recommended at this point that you run the <code>vimtutor</code> command if you’d like to learn more about using vim.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="nano" class="level3">
+<h3 class="anchored" data-anchor-id="nano">Nano</h3>
+<ul>
+<li>a simple to use terminal based text editor</li>
+<li>little to no learning curve</li>
+</ul>
+<section id="example-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-2">Example</h4>
+<p>In this example, we create a file and add “hello world” to it using nano.</p>
+<ol type="1">
+<li><p>Run the following commands</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/programs       <span class="co"># navigate to a folder to store a file</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> helloworld.py</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> helloworld.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>At this point, the file should be open. Type <code>print("hello world")</code> on the first line.</p></li>
+<li><p>Type <code>ctrl + x</code> to be prompted to save and close.</p></li>
+<li><p>Run <code>cat helloworld.py</code> to see the contents.</p></li>
+<li><p>Run <code>python3 helloworld.py</code> to run the file.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="reference-files" class="level2">
+<h2 class="anchored" data-anchor-id="reference-files">Reference Files</h2>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<p><a href="https://www.gutenberg.org/cache/epub/98/pg98.txt" target="_blank">A Tale of Two Cities</a></p>
+<p><a href="../files/cnbc.txt" target="_blank">Cajun Night Before Christmas</a></p>
+<p><a href="../files/mbe.mp3" target="_blank">Meow</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

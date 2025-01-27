@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exit Codes – CSC 222 Systems Programming</title>
+<title>Virtual Machine Install – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/vm-install.html">Virtual Machine Install</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/vm-install.html" class="sidebar-item-text sidebar-link">
+  <a href="../01 Linux/vm-install.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Virtual Machine Install</span></a>
   </div>
 </li>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
@@ -459,17 +459,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exit-code" id="toc-exit-code" class="nav-link active" data-scroll-target="#exit-code">Exit Code</a></li>
-  <li><a href="#use" id="toc-use" class="nav-link" data-scroll-target="#use">Use</a></li>
+  <li><a href="#virtual-box-download" id="toc-virtual-box-download" class="nav-link active" data-scroll-target="#virtual-box-download">Virtual Box Download</a></li>
+  <li><a href="#vm-download" id="toc-vm-download" class="nav-link" data-scroll-target="#vm-download">VM Download</a></li>
+  <li><a href="#vm-setup" id="toc-vm-setup" class="nav-link" data-scroll-target="#vm-setup">VM Setup</a></li>
+  <li><a href="#installing-and-booting-the-vm" id="toc-installing-and-booting-the-vm" class="nav-link" data-scroll-target="#installing-and-booting-the-vm">Installing and Booting the VM</a></li>
+  <li><a href="#setting-up-the-gui" id="toc-setting-up-the-gui" class="nav-link" data-scroll-target="#setting-up-the-gui">Setting Up the GUI</a></li>
+  <li><a href="#setting-up-your-machine" id="toc-setting-up-your-machine" class="nav-link" data-scroll-target="#setting-up-your-machine">Setting Up Your Machine</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/vm-install.html">Virtual Machine Install</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exit Codes</h1>
+<h1 class="title">Virtual Machine Install</h1>
 </div>
 
 
@@ -486,30 +490,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exit-code" class="level2">
-<h2 class="anchored" data-anchor-id="exit-code">Exit Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># exit code from last command</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This: </span><span class="va">$?</span><span class="st">"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># typically success is 0, failure is typically &gt; 0</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-abcdefg</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This page provides instructions on installing an Ubuntu Virtual Machine regardless of the host system (i.e.&nbsp;whether you have a Windows or Mac x86 machine or an ARM based m-series Mac) using virtual box.</p>
+<section id="virtual-box-download" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-box-download">Virtual Box Download</h2>
+<ol type="1">
+<li><p>Download Virtual Box from Oracle by visiting <a href="!https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html" target="_blank">https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html</a>.</p></li>
+<li><p>Install Virtual Box</p></li>
+</ol>
 </section>
-<section id="use" class="level2">
-<h2 class="anchored" data-anchor-id="use">Use</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"What file would you like to remove? "</span> <span class="va">filename</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="va">$filename</span> <span class="bu">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"That file does not exist...exiting"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1  <span class="co"># values less than 255</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="va">$filename</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"File successfully removed"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="vm-download" class="level2">
+<h2 class="anchored" data-anchor-id="vm-download">VM Download</h2>
+<p>These instructions were written for use with Ubuntu Server 24.04. Do not update when prompted during the install (it will just slow it down).</p>
+<ol type="1">
+<li><p>Download the appropriate image for your host machine:</p>
+<ul>
+<li><p>If you have an <strong>x86/amd64</strong> based machine (most Windows machines and Intel based Macs), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p></li>
+<li><p>If you have an <strong>arm</strong> based machine (m-series Macs and few Windows machines), go here for Ubuntu Server: <a href="https://ubuntu.com/download/server/arm">https://ubuntu.com/download/server/arm</a></p></li>
+<li><p>You are welcome to use any other Linux distro, links not provided.</p></li>
+</ul></li>
+<li><p>Move the image to the folder for this course on your computer so you can easily find it.</p></li>
+</ol>
+</section>
+<section id="vm-setup" class="level2">
+<h2 class="anchored" data-anchor-id="vm-setup">VM Setup</h2>
+<ol type="1">
+<li><p>Create a new VM in virtual box by clicking NEW.</p></li>
+<li><p>Fill out the required information. Here are some notes:</p>
+<ul>
+<li><p>For the ISO, be sure to select the .iso file downloaded.</p></li>
+<li><p>Skip the unattended install by checking the box to skip it.</p></li>
+<li><p>Base Memory: Consider using at least 4 GB of your memory (if you have at least 8 GB of ram). This is only setting the max it can use on your machine.</p></li>
+<li><p>Processors: It is up to you how many you want it to be able to use. I chose 4.</p></li>
+<li><p>Hard Disk: Use 100 GB for storage if you plan on adding a GUI, otherwise 25 is plenty. I highly recommend using a GUI, but you are not required to. If you do not, then you will most likely be using vim or nano to write C and Bash programs. <strong>Do not</strong> pre-allocate the storage.</p></li>
+</ul></li>
+<li><p>Click “Finish” to finish this portion of the setup. This does not install the machine.</p></li>
+</ol>
+</section>
+<section id="installing-and-booting-the-vm" class="level2">
+<h2 class="anchored" data-anchor-id="installing-and-booting-the-vm">Installing and Booting the VM</h2>
+<p>Note: At some point during the install you may be asked to update it. This is not required and could take a long time.</p>
+<ol type="1">
+<li><p>Boot the VM by selecting it in the left navigation and clicking “Start”.</p></li>
+<li><p>When prompted, select “Try to Install Ubuntu”.</p></li>
+<li><p>The install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. For lack of security, and since it is just for class, consider something simple like your name and 123456.</p></li>
+<li><p>Once it is installed it will prompt to reboot. It’ll ask you to login with the username and password once you reboot.</p></li>
+</ol>
+</section>
+<section id="setting-up-the-gui" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-the-gui">Setting Up the GUI</h2>
+<p>If you installed Ubuntu Desktop, or any other distro that came with a GUI, you can skip this step.</p>
+<p>If you don’t want a GUI, you can skip this step, but you’ll be using vim/nano to edit files, which is fine but there is a steep learning curve for vim.</p>
+<p>If you want a GUI (not required, but nice to have), you need to run the following two commands separately:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ubuntu-desktop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once it is done, turn the machine off by closing the window and selecting the option to turn the machine off. Then start the machine and log back in. There should be a GUI at this point.</p>
+</section>
+<section id="setting-up-your-machine" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-your-machine">Setting Up Your Machine</h2>
+<p>Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.</p>
+<p>Open the Terminal (shortcut is <code>ctrl+alt+t</code>) and run the following:</p>
+<ol type="1">
+<li><p>For programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.</p>
+<ul>
+<li>g++ is the GNU compiler for the C++ language</li>
+<li>gcc is the GNU compiler for the C language</li>
+<li>make is used to interpret “makefiles” which are used to control the build process of projects</li>
+<li>libc6-dev is a GNU C library</li>
+<li>dpkg-dev is used to upload, build, and unpack Debian source packages</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>For vim (VI-iMproved):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>For cleanup</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoremove</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt clean</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoclean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>For VS Code (if you enjoy using it), follow the instructions here: <a href="https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/">https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/</a></p></li>
+</ol>
 
 
 </section>

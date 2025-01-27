@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exit Codes – CSC 222 Systems Programming</title>
+<title>Unix History – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -116,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">Unix History</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/unix-history.html" class="sidebar-item-text sidebar-link">
+  <a href="../01 Linux/unix-history.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Unix History</span></a>
   </div>
 </li>
@@ -425,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
@@ -459,17 +425,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exit-code" id="toc-exit-code" class="nav-link active" data-scroll-target="#exit-code">Exit Code</a></li>
-  <li><a href="#use" id="toc-use" class="nav-link" data-scroll-target="#use">Use</a></li>
+  <li><a href="#why-linux" id="toc-why-linux" class="nav-link active" data-scroll-target="#why-linux">Why Linux?</a></li>
+  <li><a href="#history-of-unix-like-systems" id="toc-history-of-unix-like-systems" class="nav-link" data-scroll-target="#history-of-unix-like-systems">History of Unix Like Systems</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">Unix History</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exit Codes</h1>
+<h1 class="title">Unix History</h1>
 </div>
 
 
@@ -486,30 +452,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exit-code" class="level2">
-<h2 class="anchored" data-anchor-id="exit-code">Exit Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># exit code from last command</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This: </span><span class="va">$?</span><span class="st">"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># typically success is 0, failure is typically &gt; 0</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-abcdefg</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="why-linux" class="level2">
+<h2 class="anchored" data-anchor-id="why-linux">Why Linux?</h2>
+<ol type="1">
+<li><p>It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux. Examples include:</p>
+<ul>
+<li>Netflix</li>
+<li>Twitter/X</li>
+<li>Facebook</li>
+<li>Instagram</li>
+<li>Google</li>
+<li>New York Stock Exchange</li>
+</ul>
+<p>Using an android phone? Android is a flavor of Linux.</p></li>
+<li><p>It’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.</p>
+<ul>
+<li><a href="GNU GPL">https://www.gnu.org/licenses/gpl-3.0.en.html</a></li>
+</ul></li>
+<li><p>It’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.</p></li>
+</ol>
 </section>
-<section id="use" class="level2">
-<h2 class="anchored" data-anchor-id="use">Use</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"What file would you like to remove? "</span> <span class="va">filename</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="va">$filename</span> <span class="bu">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"That file does not exist...exiting"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1  <span class="co"># values less than 255</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="va">$filename</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"File successfully removed"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="history-of-unix-like-systems" class="level2">
+<h2 class="anchored" data-anchor-id="history-of-unix-like-systems">History of Unix Like Systems</h2>
+<ul>
+<li><p>1969 The Unix operating system is developed by AT&amp;T/Bell Laboratories.</p>
+<ul>
+<li>First developed with Assembly but moved to primarily C</li>
+<li>Since it was primarily C, it was very portable</li>
+<li>AT&amp;T cannot sell it due to agreements not to enter the computing business</li>
+<li>AT&amp;T opts to distribute it under licenses to Labs and Universities</li>
+</ul></li>
+<li><p>1977 UC Berkly developed BSD (Berkley Software Distribution) as a Unix-like replacement.</p>
+<ul>
+<li>It contained code owned by AT&amp;T</li>
+<li>Will eventually lead to a lawsuit from AT&amp;T</li>
+</ul></li>
+<li><p>1983 GNU Operating System (Pronounced Guh-nu) started by Richard Stallman</p>
+<ul>
+<li>Its purpose was to be a free/open unix-like replacement for UNIX (that didn’t contain any code owned by AT&amp;T).</li>
+<li>GNU stands for GNU is Not Unix</li>
+<li>GNU’s kernel is GNU Hurd (started in 1990, before Linux, doesn’t become stable until 2001)
+<ul>
+<li>Note: The kernel of an OS is the system between the hardware and software of a machine. Main function is process, memory, and other resource management.</li>
+<li>The OS is the system as a whole; interface between user and hardware. An OS contains a kernel, applications, device drivers, utilities, etc.</li>
+</ul></li>
+</ul></li>
+<li><p>1991</p>
+<ul>
+<li>Finnish Grad Student Linus Torvalds emails about the OS he is working on.</li>
+<li>Linux kernel is developed</li>
+</ul></li>
+<li><p>1992</p>
+<ul>
+<li>BSDi gets sued by AT&amp;T, which slowed BSD development.</li>
+<li>The Linux kernel becomes the kernel for GNU.</li>
+<li>GNU/Linux is released as Free software under the GNU General Purpose License.
+<ul>
+<li>Note: When we say “Linux”, we really mean GNU/Linux. Linux is just the kernel.</li>
+</ul></li>
+<li>GNU License gave developers the ability to make custom OSs that felt like UNIX without the fear of being sued.</li>
+</ul></li>
+<li><p>1993 The Debian distrobution is born</p>
+<ul>
+<li>One of the most popular distros/family of distros</li>
+<li>Minimal, stable, good for general purpose pc usage and servers alike.</li>
+<li>Most distros are children of Debian including Ubuntu, Raspberry Pi OS, and SteamOS.</li>
+</ul></li>
+<li><p>1994 The Redhat Distrobution is born</p>
+<ul>
+<li>Primarily used for enterprise</li>
+<li>Distros in the Redhat family include Fedora (Distro of choice for Linus Torvalds) and CentOS</li>
+</ul></li>
+<li><p>2000/2002 Gentoo/Arch are born as more simplistic families of distrobutions</p></li>
+<li><p>In later 2000s we see some independent distros we are more familiar with such as</p>
+<ul>
+<li>FireOS (Amazon FireStick/Fire devices)</li>
+<li>Android (Google)</li>
+</ul></li>
+<li><p>Fun Fact: Linus Torvalds also created git for version control.</p></li>
+</ul>
+<p><a href="https://distrowatch.com/images/other/distro-family-tree.png">Distro Family Tree</a></p>
+<p>Source: A large portion of the information above comes from <a href="https://www.gnu.org/">GNU’s Website</a></p>
 
 
 </section>

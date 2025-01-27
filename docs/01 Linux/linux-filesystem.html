@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exit Codes – CSC 222 Systems Programming</title>
+<title>Linux Filesystem – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -116,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/linux-filesystem.html">Linux Filesystem</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
+  <a href="../01 Linux/linux-filesystem.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Linux Filesystem</span></a>
   </div>
 </li>
@@ -425,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
@@ -459,17 +425,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exit-code" id="toc-exit-code" class="nav-link active" data-scroll-target="#exit-code">Exit Code</a></li>
-  <li><a href="#use" id="toc-use" class="nav-link" data-scroll-target="#use">Use</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#directories" id="toc-directories" class="nav-link" data-scroll-target="#directories">Directories</a>
+  <ul class="collapse">
+  <li><a href="#bin" id="toc-bin" class="nav-link" data-scroll-target="#bin">/bin</a></li>
+  <li><a href="#sbin" id="toc-sbin" class="nav-link" data-scroll-target="#sbin">/sbin</a></li>
+  <li><a href="#home" id="toc-home" class="nav-link" data-scroll-target="#home">/home</a></li>
+  <li><a href="#lib" id="toc-lib" class="nav-link" data-scroll-target="#lib">/lib</a></li>
+  <li><a href="#etc" id="toc-etc" class="nav-link" data-scroll-target="#etc">/etc</a></li>
+  <li><a href="#dev" id="toc-dev" class="nav-link" data-scroll-target="#dev">/dev</a></li>
+  <li><a href="#boot" id="toc-boot" class="nav-link" data-scroll-target="#boot">/boot</a></li>
+  <li><a href="#media" id="toc-media" class="nav-link" data-scroll-target="#media">/media</a></li>
+  <li><a href="#mnt" id="toc-mnt" class="nav-link" data-scroll-target="#mnt">/mnt</a></li>
+  <li><a href="#opt" id="toc-opt" class="nav-link" data-scroll-target="#opt">/opt</a></li>
+  <li><a href="#proc" id="toc-proc" class="nav-link" data-scroll-target="#proc">/proc</a></li>
+  <li><a href="#root" id="toc-root" class="nav-link" data-scroll-target="#root">/root</a></li>
+  <li><a href="#run" id="toc-run" class="nav-link" data-scroll-target="#run">/run</a></li>
+  <li><a href="#usr" id="toc-usr" class="nav-link" data-scroll-target="#usr">/usr</a></li>
+  <li><a href="#tmp" id="toc-tmp" class="nav-link" data-scroll-target="#tmp">/tmp</a></li>
+  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var">/var</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/linux-filesystem.html">Linux Filesystem</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exit Codes</h1>
+<h1 class="title">Linux Filesystem</h1>
 </div>
 
 
@@ -486,32 +470,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exit-code" class="level2">
-<h2 class="anchored" data-anchor-id="exit-code">Exit Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># exit code from last command</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This: </span><span class="va">$?</span><span class="st">"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># typically success is 0, failure is typically &gt; 0</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-abcdefg</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The top level of the filesystem on many linux machines contains most of the following directories. You’ll find a brief description of each below.</p>
 </section>
-<section id="use" class="level2">
-<h2 class="anchored" data-anchor-id="use">Use</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"What file would you like to remove? "</span> <span class="va">filename</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="va">$filename</span> <span class="bu">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"That file does not exist...exiting"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1  <span class="co"># values less than 255</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="va">$filename</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"File successfully removed"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="directories" class="level2">
+<h2 class="anchored" data-anchor-id="directories">Directories</h2>
+<section id="bin" class="level3">
+<h3 class="anchored" data-anchor-id="bin">/bin</h3>
+<ul>
+<li>common binaries (i.e.&nbsp;applications you can run)</li>
+<li>you’ll find many of the commands you can use here, like <code>ls</code></li>
+<li>Note: <code>ls -l /bin</code> shows that it is a link to <code>/usr/bin</code></li>
+</ul>
+</section>
+<section id="sbin" class="level3">
+<h3 class="anchored" data-anchor-id="sbin">/sbin</h3>
+<ul>
+<li>system binaries (applications for system admin, like <code>adduser</code>)</li>
+</ul>
+</section>
+<section id="home" class="level3">
+<h3 class="anchored" data-anchor-id="home">/home</h3>
+<ul>
+<li>the personal files for each user</li>
+<li>Run <code>ls /home</code> to see a directory for yourself.</li>
+</ul>
+</section>
+<section id="lib" class="level3">
+<h3 class="anchored" data-anchor-id="lib">/lib</h3>
+<ul>
+<li>where shared libraries live.</li>
+<li>code that applications can use to interact with the kernel</li>
+<li>note, you will see lib files elsewhere, but this one is for the kernel specifically.</li>
+</ul>
+</section>
+<section id="etc" class="level3">
+<h3 class="anchored" data-anchor-id="etc">/etc</h3>
+<ul>
+<li>Short for et cetera (we say et-see)</li>
+<li>Mainly contains configuration files</li>
+</ul>
+</section>
+<section id="dev" class="level3">
+<h3 class="anchored" data-anchor-id="dev">/dev</h3>
+<ul>
+<li>short for device</li>
+<li>contains files related to devices attached to the machine (like a webcam)</li>
+</ul>
+</section>
+<section id="boot" class="level3">
+<h3 class="anchored" data-anchor-id="boot">/boot</h3>
+<ul>
+<li>contains the files necessary to boot the system.</li>
+</ul>
+</section>
+<section id="media" class="level3">
+<h3 class="anchored" data-anchor-id="media">/media</h3>
+<ul>
+<li>where external storage is auto mounted when you plug it in</li>
+</ul>
+</section>
+<section id="mnt" class="level3">
+<h3 class="anchored" data-anchor-id="mnt">/mnt</h3>
+<ul>
+<li>where external storage is manually mounted</li>
+</ul>
+</section>
+<section id="opt" class="level3">
+<h3 class="anchored" data-anchor-id="opt">/opt</h3>
+<ul>
+<li>frequently where custom built software lands</li>
+</ul>
+</section>
+<section id="proc" class="level3">
+<h3 class="anchored" data-anchor-id="proc">/proc</h3>
+<ul>
+<li>contains info about your computer</li>
+</ul>
+</section>
+<section id="root" class="level3">
+<h3 class="anchored" data-anchor-id="root">/root</h3>
+<ul>
+<li>home directory of the superuser</li>
+<li>its not under /home for a reason (those are not the superuser)</li>
+</ul>
+</section>
+<section id="run" class="level3">
+<h3 class="anchored" data-anchor-id="run">/run</h3>
+<ul>
+<li>stores temporary data for system processes</li>
+</ul>
+</section>
+<section id="usr" class="level3">
+<h3 class="anchored" data-anchor-id="usr">/usr</h3>
+<ul>
+<li>where user’s home directories used to be kept (now under /home)</li>
+<li>contains a collection of stuff that needs to be shared by applications</li>
+</ul>
+</section>
+<section id="tmp" class="level3">
+<h3 class="anchored" data-anchor-id="tmp">/tmp</h3>
+<ul>
+<li>contains temporary files</li>
+</ul>
+</section>
+<section id="var" class="level3">
+<h3 class="anchored" data-anchor-id="var">/var</h3>
+<ul>
+<li>short for variable</li>
+<li>usually contains logs</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

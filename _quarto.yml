@@ -8,47 +8,54 @@ website:
     style: "docked"
     search: true
     contents:
-      - section: "Linux Install"
+      - section: "01 Linux"
         contents:
-          - linux/unix-history.qmd
-          - linux/vm-install.qmd
-          - linux/linux-filesystem.qmd
+          - 01 Linux/unix-history.qmd
+          - 01 Linux/vm-install.qmd
+          - 01 Linux/linux-filesystem.qmd
           # - linux/vm-install-win.qmd
           # - linux/vm-install-mac.qmd
           # - linux/additional-steps.qmd
-      - section: "Shell and Terminal"
-        href: terminal/
+      - section: "02 Terminal"
+        href: 02 Terminal/
         contents:
-          - terminal/00 Background.qmd
-          - terminal/01 Basic Commands.qmd
-          - terminal/02 Working With Files.qmd
-          - terminal/03 Other Useful Tips.qmd
-          - terminal/04 Redirection.qmd
-          - terminal/05 File Permissions.qmd
-          - terminal/06 Grep and Regex.qmd
+          - 02 Terminal/00 Background.qmd
+          - 02 Terminal/01 Basic Commands.qmd
+          - 02 Terminal/02 Working With Files.qmd
+          - 02 Terminal/03 Other Useful Tips.qmd
+          - 02 Terminal/04 Redirection.qmd
+          - 02 Terminal/05 File Permissions.qmd
+          - 02 Terminal/06 Grep and Regex.qmd
           - section: Old
             contents:
-              - terminal/old/basic.qmd
-              - terminal/old/redirection.qmd
-              - terminal/old/texteditors.qmd
-              - terminal/old/file-permissions.qmd
-              - terminal/old/grep-and-regex.qmd
-              - terminal/old/more-commands.qmd
-      - section: "C Programming"
+              - 02 Terminal/old/basic.qmd
+              - 02 Terminal/old/redirection.qmd
+              - 02 Terminal/old/texteditors.qmd
+              - 02 Terminal/old/file-permissions.qmd
+              - 02 Terminal/old/grep-and-regex.qmd
+              - 02 Terminal/old/more-commands.qmd
+      - section: "03 C Basics"
         contents:
-          - c-programming/01-HelloWorld.qmd
-          - c-programming/02-DataTypes.qmd
-          - c-programming/03-Operators.qmd
-          - c-programming/04-Functions.qmd
-          - c-programming/05-More-on-Data.qmd
-          - c-programming/06-Sample-Applications.qmd
-          - c-programming/07-Memory-Allocation.qmd
-          - c-programming/08-Structs-and-Unions.qmd
-          - c-programming/09-Sample-Applications.qmd
-          - c-programming/10-Files.qmd
-          - c-programming/11-Fork.qmd
-          - c-programming/12-Piping.qmd
-          - c-programming/13-Exec-Functions.qmd
+          - 03 C Basics/01-HelloWorld.qmd
+          - 03 C Basics/02-DataTypes.qmd
+          - 03 C Basics/03-Operators.qmd
+          - 03 C Basics/04-Functions.qmd
+          - 03 C Basics/05-More-on-Data.qmd
+          - 03 C Basics/06-Sample-Applications.qmd
+
+      - section: "04 Computing Systems and Data Representation"
+        contents: 
+          - 04 Computing Systems and Data Representation/01 Intro.qmd
+          - 04 Computing Systems and Data Representation/02 Data Representation.qmd
+      - section: "05 More on C"
+        contents:
+          - 05 More on C/07-Memory-Allocation.qmd
+          - 05 More on C/08-Structs-and-Unions.qmd
+          - 05 More on C/09-Sample-Applications.qmd
+          - 05 More on C/10-Files.qmd
+          - 05 More on C/11-Fork.qmd
+          - 05 More on C/12-Piping.qmd
+          - 05 More on C/13-Exec-Functions.qmd
       - section: "Bash Scripting"
         contents:
           - bash-scripting/01-Intro.qmd

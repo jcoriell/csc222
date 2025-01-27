@@ -1,0 +1,500 @@
+---
+title: Representing and Manipulating Information
+---
+
+## Overview of Binary Representations
+
+A binary value can be interpreted in various ways. In this section we look at various encodings of binary values including unsigned binary, two's complement, and IEEE 754 floating point notation. Additionally, we look at how binary values can be represented using hexadecimal. 
+
+Assume we have the 32-bits `11000001 00001100 00000000 00000000`
+
+As an unsigned integer value, or regular unsiged binary, this could be interpreted as the base 10 value of  3238789120.
+
+If we were using a two's complement encoding, the same 32-bit value could also be interpreted as the base 10 value -1056178176, as is done in C when the data type of a variable is an int.
+
+Under a IEEE 754 standards for floating point notation, the same set of 32-bits could be interpreted as the base 10 value -8.75, as is done in C when the data type is a float.
+
+## Bytes and Hex
+
+Recall that one byte is 8 bits. Thus one byte can hold the binary values from `00000000` through `11111111`, or as integers in base 10, 0 through 255. 
+
+As we add more bytes, writing binary values can become lengthy, thus using hexadecimal reduces the number of digits we have, making it easier to look at and communicate to others. 
+
+The values 00000000 through 11111111 can be represented in hexadecimal as 00 through FF. Recall that hexadecimal uses the characters 0 through 9 and A - F to represent the base 10 quantities of 0 through 15.
+
+In C, we can represent our hexadecimal values by putting a `0x` in front of them. We will use this notation moving foward to represent hex values.
+
+```c
+Example:
+// the hex value FA1D37B in c
+int num = 0xFA1D37B
+```
+
+Notice that each character in hex represents 4-bits or half a byte. Thus every 2 hex digits represents 1 full byte.
+
+## Word
+
+Machine have what we refer to as **word size**. Unlike the term **byte** where a **byte** always represents 8 bits, the **word-size** of one machine is not necessarily the same number of bits from one machine to another.
+
+The word size of a machine is the nominal size of integer-valued data. On a 64-bit machine, ints are typically 8 bytes (i.e. 64 bits), thus the word size is 64-bits. On 32-bit machines, ints are typically 4 bytes (i.e. 32-bits), thus the word size is 32-bits.
+
+Note that the integer size of the machine may or may not be the size of an int for a specific language. In c, when we declare ints, they are 4 bytes, even on most 64-bit machines.
+
+Most current machines are 64-bit (8 bytes)
+    - potentially address 1.8 * 10^19 bytes
+- Older machines are 32-bits (4 bytes)
+    - limits addresses to 4GB
+    - too small for memory intensive applications
+- Machines support multiple data formats
+    - Fractions or multiples of word size
+    - Always integral number of bytes
+
+Word-Oriented Memory Organization
+- Addresses specifiy Byte Locations
+    - Address of the first byte in word
+    - Addresses of successive words differ by 4 (32-bit) or 8 (64-bit)
+
+## Data Representation in C
+
+-Sizes of C data Types (in bytes)
+
+    C Data Types    Typical 64-bit      Typical 32-bit
+        int                     4                   4
+        long int                8                   4
+        char                    1                   1
+        short                   2                   2
+        float                   4                   4
+        double                  8                   8
+        char *                  8                   4
+
+## Byte Ordering Conventions
+
+The **Big Endian** convention places the least significant byte at the highest address. 
+
+The **Little Endian** convention places the least significant byte has lowest address space.       
+
+### Example: 
+
+Assume, in c, we have a variable `x` such that `x = 0x01234567`
+If we call on `&x` to get the address, we would receive 0x100, since it is the lowest memory address that contains any of the value. 
+
+The table below shows how the value is actually stored depending on if the machine is using the big endian or little endian convention.
+
+|Memory Address  | 0x099 | 0x100 | 0x101 | 0x102 | 0x103 | 0x104 | 0x105 |
+|----------------|-------|-------|-------|-------|-------|-------|-------|
+|Big Endian      |       |   01  |   23  |   45  |   67  |       |       |
+|Little Endian   |       |   67  |   45  |   23  |   01  |       |       | 
+
+
+## Bitwise Operators in C
+
+The bitwise operators in c for and, or, not and exclusive are  `&`, `|`, `~`, and `^` respectively. That is, if we apply these to any primitive data type, the bit-level representation of the two operands will be operated on.
+
+### Example: NOT
+
+Assume we have the variables `x=0x41` and `y=0xBE`. Note that each is 1 byte in size (2 hex digits). Since they are only 1 byte, let's say they represent a char.
+
+Performing `~x`: 
+
+```c
+// Given
+~x             
+
+// Represent the value as it was given in hex.
+~0x41        
+
+// Note that the hex value 4 is 0100 in binary and the hex value of 1 is 0001 in binary.
+// We can represent them together as the following:
+// Note that the space is only included for visual purposes here.
+~0100 0001    
+
+// Now we apply the negation and flip every bit.           
+ 1011 1110
+
+// Representing this back in it's hex form gives the following.
+// The bits 1011 are the hex value B and the bits 1110 are the hex value E.
+ 0xBE   // The final result after negation and as a hex value.
+```
+
+### Example: AND
+```
+        Binary     Hex
+
+      01101001    0x69     Value 1
+    & 01010101    0x55     Value 2
+    ----------   -----
+      01000001    0x41     Result
+```
+
+### Example: OR
+
+```
+        Binary     Hex
+
+      01101001    0x69     Value 1
+    | 01010101    0x55     Value 2
+    ----------   -----
+      01111101    0x7D     Result   
+``` 
+
+## Boolean Algebra
+
+- Developed by George Boole in 19th Century
+- Encode True as 1 and False as 0
+
+- Primitive/Basic gates:
+    - And: A&B = 1 when both A = 1 and B = 1
+    - Or:  A|B = 1 when either A = 1 or B = 1
+    - Not: ~A = 1 when A = 0
+
+- We can use the primitive gate to get exclusive or (XOR):
+    - A ^ B = (~A & B) | (A & ~B)
+    - A ^ B = 1 When A = 1 or B = 1, but not both
+
+#### Properties of AND and XOR
+| Property                  | Expression     |
+|---------------------------|----------------|
+| Commutative sum           | A ^ B = B ^ A
+| Commutative product       | A & B = B & A
+| Associative sum           | (A ^ B) ^ C = A ^ (B ^ C)
+| Associative product       | (A & B) & C = A &(B & C)
+| Product over sum          | A & (B ^ C) = (A ^ B) & (A ^ C)
+| 0 is sum identity         | A ^ 0 = A
+| 1 is product identity     | A & 1 = A
+| 0 is product annihilator  | A & 0 = 0
+| Additive inverse          | A ^ A = 0
+
+
+## Logical Operations in C
+
+- Logical Operators: &&, ||, !
+    - View 0 as False
+    - Anything else is True
+    - Always return 0 or 1
+Examples (on Char data type)
+ - !0x41 -> 0x00
+ - !0x00 -> 0x01
+ - !!0x41 -> 0x01
+
+ - 0x69 && 0x55 -> 0x01
+ - 0x69 || 0x55 -> 0x01
+
+
+Shift Operations:
+- Left Shift:       x << y
+    - shift bit-vector x by y positions
+        - Throw away extra bits on left
+        - Fill with 0's on the right
+    - ex: x = 01100010
+          x << 3 = 00010(000)
+- Right Shift:      x >> y
+    - shift bit-vector x by y positions
+        - Throw away extra bits on the right
+        - Fill with 0's on the left (logical shift)
+    - ex: x = 01100010
+          x >> 3 = (000)01100
+Arithmetic Shift:
+    - Similar to right shift
+    - Replicate the most significant bit on the left (original sign)
+    - Useful with two's complement for integer representation    
+    - ex (arithmetic shift for 2's comp):
+        - x = 10100010 >> 2
+        - Arithmetic = (11)101000
+        - Logical = (00)101000
+
+
+REVIEW: Bit level operations in C
+
+1. 0xb4 | 0x87
+    10110100
+   |10000111
+    10110111
+    = 0xB7
+
+2. ~(0xb4 & 0x87)
+    10110100
+   &10000111
+   ~10000100 
+    01111011
+   =  0x7B
+
+3. 0xA7 | ~(0x8 & 0x5)
+    1000
+   &0101
+   ~0000
+    1111
+
+    10100111
+   |00001111 
+    10101111
+    =0xAF
+
+
+REVIEW: Logical operations in C
+
+1. !0x41 = 0x00
+
+2. 0x00 && 0x7D = 0x00
+
+3. !(0x57 || 0x00) = 0x00
+
+
+Unsigned/Signed Integers 
+
+- X = x(w-1)x(w-2)...x(1)x(0)
+
+- w is number of bits
+- Unsigned: B2U(X) = sum from i = 0 to i = w-1 of x(i)*2^i
+- Two's Complement = B2T(X) = -x(w-1)*2^w-1 + sum from i = 0 to i = w-2 of x(i)*2^i
+                                sign bit
+
+- sign bit: 0 is positive
+            1 is negative
+
+Example:
+char x = 123: 01111011
+char y = -123: 10000101
+
+weight      123         -123
+    1        1            1
+    2        1            0             
+    4        0            1  
+    8        1            0  
+   16        1            0  
+   32        1            0  
+   64        1            0  
+ -128        0            1  
+  SUM      123          -123
+
+Numeric Ranges:
+- Unsigned values
+    - for w = 8, UnsignedMin = 00000000
+    - UnsignedMax = 11111111
+    - for unknown w, UnsignedMax = (2w)-1
+
+- Two's Complement
+    - for unknown w, TMin = -2^w-1
+    - for Tmax: (2^(w-1)) - 1
+
+Example w = 4
+- Umin = 0
+- Umax = 15
+- Tmin = -8
+- Tmax = 7 
+
+W = 16
+        Decimal     Hex         Binary
+Umax     65535     FF FF    11111111 11111111
+Tmax     32767     7F FF    01111111 11111111
+Tmin    -32768     80 00    10000000 00000000
+-1         -1      FF FF    11111111 11111111
+0           0      00 00    00000000 00000000 
+
+Value for different word sizes
+
+                        Words
+        8      16          32              64
+Umax   255   65635    4294967295      ~18 quintillion
+Tmax   127   32767    2147483647      ~9 quintillion  
+Tmin  -128  -32768   -2147483648      ~-9 quintillion  
+
+Observations:
+- |Tmin| = Tmax + 1
+- Umax = 2*Tmax + 1
+
+C programming:
+ - #include <limits.h>
+ - Declares Constants
+    - UCHAR_MAX (=255)
+    - CHAR_MAX (= 127)
+    - CHAR_MIN (-128)
+    - INT_MIN
+    - INT_MAX
+    - UINT_MAX
+
+- C allows conversions from signed to Unsigned
+ex: 
+    char x = 123;
+    unsigned char ux = (unsigned char) x;
+
+    char y = -123;
+    unsigned char uy = (unsigned char) y;
+
+- resulting values:
+    - No change in bit representation
+    - Nonnegative values don't change:
+        - ux = 123
+    - Negative values are changed to positive values:
+        - uy = 133
+
+- By default constants are signed integers
+- Casting
+    - Explistic casting between signed & unsigned
+        int tx, ty; 
+        unsigned ux, uy;
+        tx = (int) ux;
+        uy = (unsigned) ty;
+    - Implicit casting also occurs via assignments and procedural calls
+        tx = ux;
+        uy = ty;
+
+Sign Extension
+- Task:
+    - Given w-bit signed int x
+    - Convert it to w + k- bit int with the same value
+- Rule:
+    - Make k copies of the sign bit:
+    - X = 0111
+    - X' = 000000000...00 X
+
+2's Complement and Overflow
+- given s = TAdd(w)(u, v)
+- Determine if s = Add(w)(u, v)
+
+- Overflow iff either
+    - u, v < 0, s >= 0 (Negative overflow)
+    - u, v >= 0, s < 0 (Postive overflow)
+
+
+Power-of-2 Multiplication with Shift
+- Operation:
+    - u << k is equivalent u * 2^k
+    - for signed and unsigned 
+
+- Left Shift: x << y
+    - shift bit vector x left by y positions
+        - throw away extra bits on left
+        - Fill with 0's on the right
+
+- Ex: 
+    - u << 3 = u*8
+
+Power of 2 Divide with shift
+- Quotient of Unsigned by Power of 2:
+    - u >> k give u / 2^k
+    - Uses logical shift
+
+- Quotient of signed by power of 2
+    - u >> k gives u / 2^k
+    - uses the arithmetic shift
+
+- Right shift: x >> y
+    - Shift bit vector x by y positions
+    - Logical shift: fill with 0's on the left
+    - Arithmetic shift: Replicate the sign bit on the left
+
+
+IEEE 754 Floating Point Representation
+- Similar to representation fom 132 course
+- Used instead of sign - exponent - mantissa representation
+  as there are many ways to represent one number in this format,
+  unlike IEEE 754. The normalization preformed disallows this.
+- Implicit normalization is also more accurate than a possible 
+  explisit normalization.
+- Has possible precisions based on number of bits to dictate bias:
+    - 16 bits: half-point precision
+        - has 11 significand bits (includes sign bit), 
+          5 bits for the exponent
+        - bias value = 15
+    - 32 bits: single-point precision
+        - has 24 significand bits (including sign bit),
+          8 bits for the exponent
+        - bias value = 127
+    - 64 bits: double precision
+        - has 53 significant bits (including sign bit)
+        - bias value = 1023
+    - There is a quadruple and Octuple precision, 
+      but it will not be discussed further
+
+    - Extra Notes:
+        - in the case of the following for exponent = E, mantissa = m, sign = s:
+            - E = 0000 0000, M = 00000...000, S = 0 or 1
+                - This represents +0 or -0 (same value, 0)
+            - E = 1111 1111, M = 00000...000, S = 0
+                - This represents positive infinity
+            - E = 1111 1111, M = 00000...000, S = 1
+                - This represents negative infinity
+            - 1 <= E <= 254, M = xxxxx...xxx, S = 0 or 1
+                - This is where we use Implicit Normalized Form
+                - Conversion completed in class (example later)
+            - S = 0 or 1, E = 0, M != 0
+                - This represents Fractional form
+                - This case has no integer part, so we use a different formula
+            - S = 0 or 1, E = 255, M != 0
+                - This results in NAN, or Not a number
+            
+- Decoding Floating point numbers uses the following formula:
+    - (-1)^S x 1.M x 2^(E-127)
+    - M in this case is the implicit normalized form of the mantissa
+
+- If E = 0 and M != 0, use the following formula for fractional form:
+    - (-1)^S x 0.M x 2^(-126)
+     
+Examples:
+
+- Convert -4.25 to single point precision IEEE 754 floating point number:
+Step 1: convert base number (ignoring sign) to binary:
+    - 4.25 -> 100.01
+
+Step 2: Use implicit normalization to shift the radix point (decimal point)
+        to the right of the most significant bit with a value of 1.
+        This shift is done by multiplying your binary value by 2^k
+        where k is the number of positions you need to shift your radix
+        point.
+    - 100.01 -> 1.0001 x 2^2 (we choose 2^2, as we shift our value by 2 positions)
+    - the value to the right of the radix point is your new mantissa
+        - 0001 in this case. Keep leading 0's 
+    - the number your shift by, or put in as k in 2^k is your temporary
+      exponent. In this case, this is 2.
+
+Step 3: Bias your exponent by adding 127 to your temporary exponent.
+        This will be your "True Exponent". Convert this resulting
+        value to binary.
+    
+    - 2 + 127 = 129
+               -128
+               -  1
+               =  0
+    - So our binary representation is 1000 0001
+
+Step 4: Fill in your Sign, exponent, and mantissa together.
+        Your sign is based on the original value (-4.25)
+
+    S   Exponent       Mantissa
+    1   1000 0001   00010000...000
+
+    Note: fill in the mantissa section from the LEFT side, and follow
+          this value by zeros.
+
+Ex 2:
+Convert 55 to floating point:
+Step 1: 55 -> 110111
+Step 2, normalization: 110111 -> 1.10111 x 2^5, note these values
+Step 3, bias exponent: 5+127 = 132
+Step 3.1 convert to binary: 132 -> 1000 0100
+Step 4, fill in values:
+    S   Exponent       Mantissa
+    0   1000 0100   10111000...000
+
+Ex 3:
+Convert the following from IEEE 754 to Decimal
+This process is simply to follow the previous steps in the opposite direction
+
+S   Exponent       Mantissa
+0   1000 0110   11011000...000
+
+Step 1: Convert E to Decimal, and debias
+    1000 0110 = 128 + 4 + 2 = 134
+    debias: 134 - 128 = 6 <- this is the amount we shift
+
+Step 2: Build our denormalized form of the value.
+        - do this by starting with 1.x...x * 2^k, and fill it in with  
+          mantissa and debiased exponent
+        - in this case, M = 11011, k = 6
+    So we have 1.11011 x 2^6
+
+Step 3: Shift values by moving the decimal right k spaces:
+    - 1.11011 x 2^6 -> 1110110
+
+Step 4: Convert value to decimal
+    - 1110110 -> 2+4+16+32+64 = 118

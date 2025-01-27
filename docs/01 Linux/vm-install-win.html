@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exit Codes – CSC 222 Systems Programming</title>
+<title>VM Install On Windows – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -116,7 +82,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      CSC 222 Systems Programming
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -425,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
@@ -459,17 +427,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exit-code" id="toc-exit-code" class="nav-link active" data-scroll-target="#exit-code">Exit Code</a></li>
-  <li><a href="#use" id="toc-use" class="nav-link" data-scroll-target="#use">Use</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#downloads" id="toc-downloads" class="nav-link" data-scroll-target="#downloads">Downloads</a></li>
+  <li><a href="#creating-the-virtual-machine" id="toc-creating-the-virtual-machine" class="nav-link" data-scroll-target="#creating-the-virtual-machine">Creating the Virtual Machine</a></li>
+  <li><a href="#editing-the-vm" id="toc-editing-the-vm" class="nav-link" data-scroll-target="#editing-the-vm">Editing the VM</a></li>
+  <li><a href="#starting-the-vm" id="toc-starting-the-vm" class="nav-link" data-scroll-target="#starting-the-vm">Starting the VM</a></li>
+  <li><a href="#partitioning-the-drive" id="toc-partitioning-the-drive" class="nav-link" data-scroll-target="#partitioning-the-drive">Partitioning the Drive</a></li>
+  <li><a href="#final-setup" id="toc-final-setup" class="nav-link" data-scroll-target="#final-setup">Final Setup</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exit Codes</h1>
+<h1 class="title">VM Install On Windows</h1>
 </div>
 
 
@@ -486,30 +459,160 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exit-code" class="level2">
-<h2 class="anchored" data-anchor-id="exit-code">Exit Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># exit code from last command</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This: </span><span class="va">$?</span><span class="st">"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># typically success is 0, failure is typically &gt; 0</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-abcdefg</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>In this course you will use a Unix environment. Specifically, you should use the latest LTS release of Ubuntu to ensure you are running the same system as the instructor. If you are using Windows, follow the instructions provided below to install Virtual Box and an Ubuntu virtual machine.</p>
 </section>
-<section id="use" class="level2">
-<h2 class="anchored" data-anchor-id="use">Use</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"What file would you like to remove? "</span> <span class="va">filename</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="va">$filename</span> <span class="bu">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"That file does not exist...exiting"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1  <span class="co"># values less than 255</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="va">$filename</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"File successfully removed"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="downloads" class="level3">
+<h3 class="anchored" data-anchor-id="downloads">Downloads</h3>
+<ol type="1">
+<li><p>Download and Install Oracle VM Virtual Box for your machine from <a href="https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html">the virtual box download page</a>.</p></li>
+<li><p>Download the Linux Ubuntu ISO (drive image) from <a href="https://www.ubuntu.com/download/desktop">https://www.ubuntu.com/download/desktop</a></p></li>
+</ol>
+</section>
+<section id="creating-the-virtual-machine" class="level3">
+<h3 class="anchored" data-anchor-id="creating-the-virtual-machine">Creating the Virtual Machine</h3>
+<ol type="1">
+<li><p>Open VirtualBox</p></li>
+<li><p>Create a new VM with the following parameters and then click next.</p></li>
+</ol>
+<pre><code>    Name: CSC222
+    Type: Linux
+    Version: Ubuntu (64-bit) 
+    # If you can’t find 64-bit in the list of options, enable hardware virtualization.</code></pre>
+<p><img src="images/image3.png" class="img-fluid"></p>
+<p><img src="images/image4.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Base Memory: Give the VM about 25% of your system’s RAM. For example, if your computer has 4 GB of RAM, then give the virtual maching 1024 MB (1 GB). If your computer has 8 GB of RAM, then go with 2096 MB (2GB) for the virtual machine. For 16 GB on your computer, set 4192 MB (4 GB) of RAM to the VM. After setting the RAM, click next.</li>
+</ol>
+<p><img src="images/image5.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li>Virtual Hard Drive (VDI): If you have 100 GB to spare on your computer, give it 100 GB. Do not pre-allocate the full size. Leave it as dynamically allocated so that it only uses up as much space as it needs. Then click next and Finish.</li>
+</ol>
+<p><img src="images/image6.png" class="img-fluid"></p>
+</section>
+<section id="editing-the-vm" class="level3">
+<h3 class="anchored" data-anchor-id="editing-the-vm">Editing the VM</h3>
+<ol type="1">
+<li>Select the VM and click settings.</li>
+</ol>
+<p><img src="images/image7.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>Navigate to <code>General &gt; Advanced</code> and set Shared Clipboard to Bidirectional.</li>
+</ol>
+<p><img src="images/image8.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li><p>Navigate to <code>Storage</code> on the left hand side and select <code>💿 Empty</code> under <code>Storage Devices &gt; Controller : IDE</code></p></li>
+<li><p>On the right hand side of the window, click the disk icon <code>💿</code> to choose a virtual CD/DVD disk file. Find the Linux Ubunut ISO that you downloaded earlier.</p></li>
+</ol>
+<p><img src="images/image9.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li>Navigate to <code>Network &gt; Adapter 1</code>. Set <code>Attached To</code> to <code>Bridged Adapter</code> and select the proper network adapter to “connect” the virtual adapter.</li>
+</ol>
+<p><img src="images/image10.png" class="img-fluid"></p>
+<ol start="6" type="1">
+<li>Now click <code>Ok</code>.</li>
+</ol>
+</section>
+<section id="starting-the-vm" class="level3">
+<h3 class="anchored" data-anchor-id="starting-the-vm">Starting the VM</h3>
+<ol type="1">
+<li>Start the VM and select <code>Try or Install Ubuntu</code>.</li>
+</ol>
+<p><img src="images/image11.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>Once the Ubuntu ISO has booted, click the <code>Install Ubuntu</code> icon.</li>
+</ol>
+<p><img src="images/image12.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>When prompted for the <code>Installation Type</code>, select <code>Something Else</code> and then continue.</li>
+</ol>
+<p><img src="images/image13.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li>Your hard drive should be referred to as something like /dev/sda. Select <code>New Partition Table</code>. A line with <code>free space</code> should appear.</li>
+</ol>
+<p><img src="images/image14.png" class="img-fluid"></p>
+</section>
+<section id="partitioning-the-drive" class="level2">
+<h2 class="anchored" data-anchor-id="partitioning-the-drive">Partitioning the Drive</h2>
+<ol type="1">
+<li>Now we will add 4 partitions for <code>/boot</code>, <code>swap</code>, <code>/</code>, and <code>/home</code> to the free space. This setup will result in wiping <code>/boot</code>, <code>/</code>, and swap when updating the OS but <code>/home</code> will not be touched resulting in faster updates (~30 minutes).</li>
+</ol>
+<p><img src="images/image15.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li><p>The partition for <code>/boot</code> stores the Linux kernel images. Set the following parameters.</p>
+<pre><code>        size    2048 MB
+        type    primary
+    location    beginning
+      use as    ext2
+ mount point    /boot</code></pre></li>
+</ol>
+<p><img src="images/image16.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li><p>The partition for the <code>swap</code> area is for memory swap space and hibernation.</p>
+<pre><code>        size    if RAM size &gt;= 4 GB, size = RAM size.
+                otherwise, size = 2x RAM size but no more than 8 GB.
+                Ex: 
+                    2 GB RAM: 4 GB swap
+                    4 GB RAM: 4 GB swap
+
+        type    primary
+    location    end
+      use as    swap area</code></pre></li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The values in the following image may not match your values</p>
+</div>
+</div>
+<p><img src="images/image17.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li><p>The partition for <code>/</code> stores the OS, OS configuration files, and applications.</p>
+<pre><code>       size    ~35% of space left
+       type    primary
+   location    beginning
+     use as    ext4
+mount point    /</code></pre></li>
+</ol>
+<p><img src="images/image18.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li><p>The partition for <code>/home</code> stores your files (application configuration, settings, pictures, etc)</p>
+<pre><code>       size    ~65% (the last portion of free space)
+       type    primary
+   location    beginning
+     use as    ext4
+mount point    /home</code></pre></li>
+</ol>
+<p><img src="images/image19.png" class="img-fluid"></p>
+<ol start="6" type="1">
+<li>Click <code>Install Now</code> after creating the partitions.</li>
+</ol>
+</section>
+<section id="final-setup" class="level2">
+<h2 class="anchored" data-anchor-id="final-setup">Final Setup</h2>
+<ol type="1">
+<li><p>Set the timezone to the Chicago timezone (for Central).</p></li>
+<li><p>Set the user.</p>
+<pre><code>Example:
+    name: zak
+    computer name: zak-csc222
+    username: zak
+    password: something fairly strong that you will remember
+
+    require my password to log in
+    don't encrypt my home folder</code></pre></li>
+<li><p>After this it will start installing/copying files.</p></li>
+<li><p>Reboot into Linux!</p></li>
+<li><p>Go to the <a href="additional-steps.html">Additional Steps</a>.</p></li>
+</ol>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exit Codes – CSC 222 Systems Programming</title>
+<title>File Permissions – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02 Terminal/">02 Terminal</a></li><li class="breadcrumb-item"><a href="../02 Terminal/05 File Permissions.html">File Permissions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal/05 File Permissions.html" class="sidebar-item-text sidebar-link">
+  <a href="../02 Terminal/05 File Permissions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">File Permissions</span></a>
   </div>
 </li>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
@@ -459,17 +459,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exit-code" id="toc-exit-code" class="nav-link active" data-scroll-target="#exit-code">Exit Code</a></li>
-  <li><a href="#use" id="toc-use" class="nav-link" data-scroll-target="#use">Use</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#file-permission-breakdown" id="toc-file-permission-breakdown" class="nav-link" data-scroll-target="#file-permission-breakdown">File Permission Breakdown</a></li>
+  <li><a href="#changing-file-permissions" id="toc-changing-file-permissions" class="nav-link" data-scroll-target="#changing-file-permissions">Changing File Permissions</a></li>
+  <li><a href="#using-the-characters-that-represent-the-permissions" id="toc-using-the-characters-that-represent-the-permissions" class="nav-link" data-scroll-target="#using-the-characters-that-represent-the-permissions">Using the characters that represent the permissions</a>
+  <ul class="collapse">
+  <li><a href="#samples" id="toc-samples" class="nav-link" data-scroll-target="#samples">Samples</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#using-numeric-values" id="toc-using-numeric-values" class="nav-link" data-scroll-target="#using-numeric-values">Using Numeric Values</a>
+  <ul class="collapse">
+  <li><a href="#sample" id="toc-sample" class="nav-link" data-scroll-target="#sample">Sample</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  </ul></li>
+  <li><a href="#changing-ownership" id="toc-changing-ownership" class="nav-link" data-scroll-target="#changing-ownership">Changing Ownership</a>
+  <ul class="collapse">
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example:</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02 Terminal/">02 Terminal</a></li><li class="breadcrumb-item"><a href="../02 Terminal/05 File Permissions.html">File Permissions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exit Codes</h1>
+<h1 class="title">File Permissions</h1>
 </div>
 
 
@@ -486,32 +501,156 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exit-code" class="level2">
-<h2 class="anchored" data-anchor-id="exit-code">Exit Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># exit code from last command</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This: </span><span class="va">$?</span><span class="st">"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># typically success is 0, failure is typically &gt; 0</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-abcdefg</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>File permissions are expressed with a 10 character string.</p>
+<p>To see the file permissions for files in a directory run <code>ls -l</code>.</p>
+<p>The output will resemble the following:</p>
+<pre><code>drwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop
+drwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents
+drwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads</code></pre>
+<p>The first set of characters such as <code>drwxr-xr-x</code> denotes the file permissions.</p>
+<p>The second column represents the number of links to that file (2, 3, and 2 respectively.)</p>
+<p>The third and fouth columns denote the user and group assigned to the file.</p>
+<p>The fifth column represents the size for that file (4096 bytes for each of the above.)</p>
+<p>The sixth column is the last date the file was modified.</p>
+<p>The final column is the name of the file (directories in this case).</p>
 </section>
-<section id="use" class="level2">
-<h2 class="anchored" data-anchor-id="use">Use</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"What file would you like to remove? "</span> <span class="va">filename</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="va">$filename</span> <span class="bu">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"That file does not exist...exiting"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1  <span class="co"># values less than 255</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="va">$filename</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"File successfully removed"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="file-permission-breakdown" class="level2">
+<h2 class="anchored" data-anchor-id="file-permission-breakdown">File Permission Breakdown</h2>
+<p>Let’s break down the permission string <code>drwxr-xr-x</code>.</p>
+<ol type="1">
+<li><p>The 1st character is the type of file. The most common characters you will see here are:</p>
+<pre><code>- for file.
+d for directory.
+l for link.</code></pre>
+<p>In the permissions <code>drwxr-xr-x</code>, the first character is <code>d</code>, so we have a directory.</p></li>
+<li><p>The next 9 characters are for 3 different permission classes</p>
+<ol type="a">
+<li><p>The owner of the file is the first set of 3 characters.</p>
+<p>In the string <code>drwxr-xr-x</code>, we have <code>rwx</code> which means the owner can read, write, and execute the file.</p></li>
+<li><p>The group for the file is the second set of 3.</p>
+<p>In the string <code>drwxr-xr-x</code>, we have <code>r-x</code> which means anyone in the group for the file (users belong to groups) can read and execute the file.</p></li>
+<li><p>The third set of 3 are for all other users (those not in the same user group, and not the owner)</p>
+<p>In the string <code>drwxr-xr-x</code>, we have <code>r-x</code> which means all others can read and execute the file, but cannot modify it.</p></li>
+</ol></li>
+</ol>
+</section>
+<section id="changing-file-permissions" class="level2">
+<h2 class="anchored" data-anchor-id="changing-file-permissions">Changing File Permissions</h2>
+<p>We use the command <code>chmod</code> to change the file permissions. You can use either of the following methods to change the permissions.</p>
+</section>
+<section id="using-the-characters-that-represent-the-permissions" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-characters-that-represent-the-permissions">Using the characters that represent the permissions</h2>
+<p>The characters for each type of user are:</p>
+<ul>
+<li><code>u</code> for owner</li>
+<li><code>g</code> for group</li>
+<li><code>o</code> for others</li>
+<li><code>a</code> for all</li>
+</ul>
+<p>The characters for permissions are:</p>
+<ul>
+<li><code>r</code> for read</li>
+<li><code>w</code> for write</li>
+<li><code>x</code> for execute</li>
+</ul>
+<p>To add permissions, combine a usertype character with <code>+</code> and one or more of the permission characters.</p>
+<p>To remove permissions, combine a usertype character with <code>-</code> and one or more of the permission characters.</p>
+<section id="samples" class="level3">
+<h3 class="anchored" data-anchor-id="samples">Samples</h3>
+<ol type="1">
+<li><p><code>chmod u+rwx filename</code> to give read write and execute permissions to the owner.</p></li>
+<li><p><code>chmod g-x filename</code> to remove execute permissions from the group.</p></li>
+</ol>
+</section>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<ol type="1">
+<li><p>Navigate to a directory to work with. You may need to create one.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/programs/bash-scripts   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Create a bash script we can work with.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"echo hello permissions"</span> <span class="op">&gt;</span> permission-ex.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>View the permissions for all the files in this directory, or just the bash file.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span>                    <span class="co"># all the files</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> permission-ex.sh   <span class="co"># just permissions for that one file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notice it was not executable by the user.</p></li>
+<li><p>Try executing it just to see the error.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./permission-ex.sh</span>            <span class="co"># attempt to execute the file, get an error </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Add execution permission and try to execute it again.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x                     <span class="co"># allow the user to execute the file </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> permission-ex.sh        <span class="co"># show the permissions again</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./permission-ex.sh</span>            <span class="co"># execute successfully</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+</section>
+<section id="using-numeric-values" class="level2">
+<h2 class="anchored" data-anchor-id="using-numeric-values">Using Numeric Values</h2>
+<p>The values for each type of permission are:</p>
+<pre><code>r = 4
+w = 2
+x = 1</code></pre>
+<p>You can place them adjacent to each other to get combos</p>
+<pre><code>rw  = 4 + 2     = 6
+rwx = 4 + 2 + 1 = 7
+wx  =     2 + 1 = 3
+rx  = 4     + 1 = 5</code></pre>
+<p>When referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string <code>drwxr-xr-x</code> we have:</p>
+<pre><code>d    r w x    r - x    r - x
+     4 2 1    4   1    4   1
+
+Sum:     7        5        5
+Permission is 755</code></pre>
+<section id="sample" class="level3">
+<h3 class="anchored" data-anchor-id="sample">Sample</h3>
+<ol type="1">
+<li><p><code>chmod 766 filename</code> to give:</p>
+<ul>
+<li><code>rwx</code> permissions to the owner</li>
+<li><code>rw</code> permissions to the group<br>
+</li>
+<li><code>rw</code> permissions to the others</li>
+</ul></li>
+</ol>
+</section>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<ol type="1">
+<li><p>Create a file to work with.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/programs/bash-scripts</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"echo hello from bash"</span> <span class="op">&gt;</span> perm-ex-2.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>List the permissions.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> perm-ex-2.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Allow the user to execute the file, group to read and execute, others to read and execute</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 perm-ex-2.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>View the permissions and execute the file.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./perm-ex-2.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+</section>
+<section id="changing-ownership" class="level2">
+<h2 class="anchored" data-anchor-id="changing-ownership">Changing Ownership</h2>
+<p>The command chown will change the ownership of a file</p>
+<p>Format:</p>
+<pre><code>sudo chown [new_owner] [filename]
+sudo chown :[new_group] [filename]
+sudo chown [new_owner] :[new_group] [filename]</code></pre>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example:</h3>
+<ol type="1">
+<li><p>Create a new user.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> useradd betty      <span class="co"># create a new user </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Set the password for the new user. Note that you will be prompted for a password after executing the following command.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> passwd betty       <span class="co"># set the password for the new user</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Set the user for the <code>perm-ex-2.sh</code> file.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown betty perm-ex-2.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Set the group for the <code>perm-ex-2.sh</code> file.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown :betty perm-ex-2.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

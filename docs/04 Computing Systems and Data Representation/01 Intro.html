@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exit Codes – CSC 222 Systems Programming</title>
+<title>Representing Programs – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04 Computing Systems and Data Representation/01 Intro.html">04 Computing Systems and Data Representation</a></li><li class="breadcrumb-item"><a href="../04 Computing Systems and Data Representation/01 Intro.html">Representing Programs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04 Computing Systems and Data Representation/01 Intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../04 Computing Systems and Data Representation/01 Intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Representing Programs</span></a>
   </div>
 </li>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bash-scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
@@ -459,17 +459,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exit-code" id="toc-exit-code" class="nav-link active" data-scroll-target="#exit-code">Exit Code</a></li>
-  <li><a href="#use" id="toc-use" class="nav-link" data-scroll-target="#use">Use</a></li>
+  <li><a href="#representing-a-program-as-bits" id="toc-representing-a-program-as-bits" class="nav-link active" data-scroll-target="#representing-a-program-as-bits">Representing a Program as Bits</a></li>
+  <li><a href="#the-compilation-process" id="toc-the-compilation-process" class="nav-link" data-scroll-target="#the-compilation-process">The Compilation Process</a>
+  <ul class="collapse">
+  <li><a href="#phase-1-preprocessing" id="toc-phase-1-preprocessing" class="nav-link" data-scroll-target="#phase-1-preprocessing">Phase 1: Preprocessing</a></li>
+  <li><a href="#phase-2-compilation" id="toc-phase-2-compilation" class="nav-link" data-scroll-target="#phase-2-compilation">Phase 2: Compilation</a></li>
+  <li><a href="#phase-3-assembling" id="toc-phase-3-assembling" class="nav-link" data-scroll-target="#phase-3-assembling">Phase 3: Assembling</a></li>
+  <li><a href="#linking-phase" id="toc-linking-phase" class="nav-link" data-scroll-target="#linking-phase">Linking phase:</a></li>
+  </ul></li>
+  <li><a href="#hardware-interactions" id="toc-hardware-interactions" class="nav-link" data-scroll-target="#hardware-interactions">Hardware Interactions</a>
+  <ul class="collapse">
+  <li><a href="#buses" id="toc-buses" class="nav-link" data-scroll-target="#buses">Buses</a></li>
+  <li><a href="#io-devices" id="toc-io-devices" class="nav-link" data-scroll-target="#io-devices">I/O Devices</a></li>
+  <li><a href="#main-memory-ram" id="toc-main-memory-ram" class="nav-link" data-scroll-target="#main-memory-ram">Main Memory (RAM)</a></li>
+  <li><a href="#processor" id="toc-processor" class="nav-link" data-scroll-target="#processor">Processor</a></li>
+  </ul></li>
+  <li><a href="#the-role-of-the-os" id="toc-the-role-of-the-os" class="nav-link" data-scroll-target="#the-role-of-the-os">The Role of the OS</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bash-scripting/01-Intro.html">Bash Scripting</a></li><li class="breadcrumb-item"><a href="../bash-scripting/04-Exit-Codes.html">Exit Codes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04 Computing Systems and Data Representation/01 Intro.html">04 Computing Systems and Data Representation</a></li><li class="breadcrumb-item"><a href="../04 Computing Systems and Data Representation/01 Intro.html">Representing Programs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exit Codes</h1>
+<h1 class="title">Representing Programs</h1>
 </div>
 
 
@@ -486,30 +500,132 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exit-code" class="level2">
-<h2 class="anchored" data-anchor-id="exit-code">Exit Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<section id="representing-a-program-as-bits" class="level2">
+<h2 class="anchored" data-anchor-id="representing-a-program-as-bits">Representing a Program as Bits</h2>
+<p>Computing Layer:</p>
+<p>A computer system consists of hardware and system software that work together to run application programs for a user. A computer system consists of the following: - users - applications - the operating system - system utilities - hardware abstraction - hardware</p>
+<p>Consider the following code, we will reference it as <code>hello.c</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># exit code from last command</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This: </span><span class="va">$?</span><span class="st">"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># typically success is 0, failure is typically &gt; 0</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-abcdefg</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"Hello World</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The program begins as a ‘source file’ that is created and modified by a programmer and saved as a text file (<code>hello.c</code>). The source file (or program) is a sequence of bits, each with values of 0 or 1. These are usually organized in 8-bit chunks called bytes. Each byte represents some text character in the program. Most modern systems represent text characters using the ASCII standard that represents each character with a unique byte-sized integer. This holds true for our hello.c program.</p>
+<p>Each byte has an integer value that corresponds to some character</p>
+<pre class="text"><code>(#   i   n   c   l   u   d   e  )
+(35  105 110 99  108 117 100 101)</code></pre>
+<p>Files such as our hello.c program file that contain exclusively ascii characters are known as <code>text files</code>, all others are known as <code>binary files</code>.</p>
+<p>All information information in a system including disk files, programs stored in memory is represented in a bit format. The bits are translated for us to represent characters, unsigned/positive integers, floating point numbers, negative integers, and so on.</p>
 </section>
-<section id="use" class="level2">
-<h2 class="anchored" data-anchor-id="use">Use</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"What file would you like to remove? "</span> <span class="va">filename</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="va">$filename</span> <span class="bu">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"That file does not exist...exiting"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1  <span class="co"># values less than 255</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="va">$filename</span> <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"File successfully removed"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="the-compilation-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-compilation-process">The Compilation Process</h2>
+<p>Writing the program in a language such as C makes it easier for humans to read and understand. However, for the system it must translate the individual C statements into a sequence of low-level machine instructions.</p>
+<p>This translation process consists of four phases, known as the ‘compilation system’</p>
+<section id="phase-1-preprocessing" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-preprocessing">Phase 1: Preprocessing</h3>
+<ul>
+<li><p>You can find the preprocessor on your machine by running the command <code>which cpp</code>.</p></li>
+<li><p>The preprocessor modifies the original C program according to directives included in the program. These are the statements at the top that begin with the # character. For example, the <code>#include &lt;stdio.h&gt;</code> command in line 1 of <code>hello.c</code> tells the preprocessor to read the contents of the system header file <code>stdio.h</code> and insert it directly into the program text.</p></li>
+<li><p>Preprocessor Input: hello.c</p></li>
+<li><p>Preprocessor Output: hello.i</p></li>
+<li><p>You can read more about the preprocessor by running the command <code>man cpp</code>.</p></li>
+<li><p>To stop the compilation process at this step, use the <code>-E</code> flag when compiling your program. Ex: <code>gcc hello.c -E -o hello.i</code>. Doing so will allow you to see what c code is inserted into your program from the directives.</p></li>
+</ul>
+</section>
+<section id="phase-2-compilation" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-compilation">Phase 2: Compilation</h3>
+<ul>
+<li><p>You can find the compiler on your machine by running the command <code>which cc</code>.</p></li>
+<li><p>The compiler translates the text file <code>hello.i</code> into the text file <code>hello.s</code>, which contains ‘assembly-language’ program instructions. Each statement in an assembly-language program describes one low-level ‘machine-language’ instruction in a standard text form.</p></li>
+<li><p>Compiler Input: hello.i</p></li>
+<li><p>Compiler Output: hello.s</p></li>
+<li><p>To stop the compilation process at this step, use the <code>-S</code> flag when compiling your program. Ex: <code>gcc hello.c -S -o hello.s</code>. Doing so will allow you to view the assembly code produced from your program.</p></li>
+</ul>
+</section>
+<section id="phase-3-assembling" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3-assembling">Phase 3: Assembling</h3>
+<ul>
+<li><p>The command <code>which as</code> will show you where the assembler is on your machine.</p></li>
+<li><p>The assembler translates <code>hello.s</code> into machine language instructions, packages them in a form known as a ‘relocatable object program’, and stores the result in the object file hello.o. The hello.o file is a binary file whose bytes encode machine language instructions rather than characters. If we were to view hello.o with a text editor, it would appear to be gibberish.</p></li>
+<li><p>Assembler input: hello.s</p></li>
+<li><p>Assembler output: hello.o</p></li>
+<li><p>To stop the compilation process at this step, use the <code>-c</code> flag when compiling your program. Ex: <code>gcc hello.c -S -o hello.o</code>. Doing so will allow you to make an attempt to look at the gibberish produced.</p></li>
+</ul>
+</section>
+<section id="linking-phase" class="level3">
+<h3 class="anchored" data-anchor-id="linking-phase">Linking phase:</h3>
+<ul>
+<li><p>The command <code>which ld</code> will show you where the assembler is on your machine.</p></li>
+<li><p>Notice that our hello program calls the <code>printf</code> function, which is part of the standard C library provided by every C compiler. The <code>printf</code> function resides in a separate precompiled object file called <code>printf.o</code>, which must somehow be merged with our <code>hello.o</code> program. The linker (ld) handles this merging. The result is the hello file, which is an ‘executable object file’ (or an executable) that is ready to be loaded into memory and executed by the system.</p></li>
+<li><p>Linker input: hello.o</p></li>
+<li><p>Linker output: hello (executable file)</p></li>
+<li><p>To stop the compilation process after this step, just compile like you have previously. Ex: <code>gcc hello.c -o hello</code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="hardware-interactions" class="level2">
+<h2 class="anchored" data-anchor-id="hardware-interactions">Hardware Interactions</h2>
+<ul>
+<li><p>At this point, our hello.c source program has been translated by the ‘compilation system’ into an executable object file called hello, that is stored on the disk.</p></li>
+<li><p>To run the executable file on a Unix system, we type its name into an application known as a shell:</p></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>To understand what happens to our hello program when we run it, we need to understand the hardware organization of a typical system.</li>
+</ul>
+<section id="buses" class="level3">
+<h3 class="anchored" data-anchor-id="buses">Buses</h3>
+<ul>
+<li>Running throughout the system is a collection of electical conduits called Buses that carry bytes of information back and forth between components.</li>
+<li>Busses are typically designed to transfer fixed-sized chunks of data- most machines now have either 4-byte (32 bit) or 8-byte (64 bit) sized buses.</li>
+</ul>
+</section>
+<section id="io-devices" class="level3">
+<h3 class="anchored" data-anchor-id="io-devices">I/O Devices</h3>
+<ul>
+<li>Input/Output (I/O) devices are the system’s connection to the external world.</li>
+<li>Our example system has 4 I/O devices: Keyboard, mouse, display, and disk.</li>
+<li>Initially, the executable hello program resides on the disk.</li>
+</ul>
+</section>
+<section id="main-memory-ram" class="level3">
+<h3 class="anchored" data-anchor-id="main-memory-ram">Main Memory (RAM)</h3>
+<ul>
+<li>The main memory is a temporary storage device that holds both a program and the data it manipulates while the processor is executing the program.</li>
+</ul>
+</section>
+<section id="processor" class="level3">
+<h3 class="anchored" data-anchor-id="processor">Processor</h3>
+<ul>
+<li>The central processing unit (CPU), or just processor, is the engine, or brain that executes instructions stored in main memory.</li>
+<li>At its core is a register called the ‘program counter’ (PC). At any point in time, the PC points at (contains the address of) some machine language instruction in main memory.</li>
+<li>From the time that power is applied to the system until power is shut off, a processor repeatedly executes the instruction pointed at by the PC, and the PC updates to the PC that points to the next instruction.</li>
+<li>The processor ‘reads’ the instruction, from memory pointed at by the PC, ‘interprets’ the bits in the instruction, ‘performs’ some simple operation dictated by the instruction, and then ‘updates’ the PC to point to the next instruction.</li>
+</ul>
+</section>
+</section>
+<section id="the-role-of-the-os" class="level2">
+<h2 class="anchored" data-anchor-id="the-role-of-the-os">The Role of the OS</h2>
+<ul>
+<li><p>When the shell loaded and ran the hello program, and when the hello program printed its message, neither program accessed the keyboard, display, disk, or main memory directly. Rather, they relied on the services provided by the operating system.</p></li>
+<li><p>We can think of the operating system as a layer of software interposed between the application program and the hardware. All attempts by an application program to manipulate the hardware must go through the operating system.</p></li>
+<li><p>The operating system has two primary purposes:</p>
+<ol type="1">
+<li>To protect the hardware from misuse by runaway applications;</li>
+<li>To provide applications with simple uniform mechanisms for manipulating complicated and often wildly different low-level hardware devices.</li>
+</ol></li>
+<li><p>The operating system achieves both goals via the fundamental abstractions:</p>
+<ul>
+<li>processes</li>
+<li>virtual memory</li>
+<li>files</li>
+</ul></li>
+</ul>
+<p>Processes - a process is the operating systems abstraction for a running program - multiple processes can run concurrently on the same system, and each process appears to have exclusive use of the hardware</p>
+<p>Virtual Memory - Virtual memory is an abstraction that provides each process with the illusion that is has exclusive use of the main memory</p>
+<p>Files - A file is a sequence of bytes, nothing more, nothing less. - Every I/O device (disks, keyboards, displays) is modeled as a file - All input and output in the system is performed by reading and writing files, using a small set of ‘system calls’ known as Unix I/O</p>
+<p>Summary: - A computer system consists of hardware and system software to cooperate to run application programs - Information inside the computer is represented as a group of bits that can be interpreted in different ways depending on context. - Programs are translated by other programs into different forms (compilation), beginning as ASCII text and then translated into binary executable files. - Processors read and interpret binary instructions that are stored in main memory. - The operating system serves as an intermediary between the applications and the hardware - Operating Systems provide three fundamental abstractions 1. Files that are abstractions for I/O devices 2. Virtual Memory is an abstraction for both main memory and disks 3. Processes are abstractions for the processor, main memory, and I/O devices</p>
 
 
 </section>
