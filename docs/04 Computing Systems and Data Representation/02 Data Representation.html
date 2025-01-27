@@ -471,10 +471,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#example-not" id="toc-example-not" class="nav-link" data-scroll-target="#example-not">Example: NOT</a></li>
   <li><a href="#example-and" id="toc-example-and" class="nav-link" data-scroll-target="#example-and">Example: AND</a></li>
+  <li><a href="#example-and-and-not" id="toc-example-and-and-not" class="nav-link" data-scroll-target="#example-and-and-not">Example: AND and NOT</a></li>
   <li><a href="#example-or" id="toc-example-or" class="nav-link" data-scroll-target="#example-or">Example: OR</a></li>
+  <li><a href="#example-or-1" id="toc-example-or-1" class="nav-link" data-scroll-target="#example-or-1">Example: OR</a></li>
+  <li><a href="#example-not-or-and-and" id="toc-example-not-or-and-and" class="nav-link" data-scroll-target="#example-not-or-and-and">Example: NOT, OR, and AND</a></li>
   </ul></li>
   <li><a href="#boolean-algebra" id="toc-boolean-algebra" class="nav-link" data-scroll-target="#boolean-algebra">Boolean Algebra</a></li>
   <li><a href="#logical-operations-in-c" id="toc-logical-operations-in-c" class="nav-link" data-scroll-target="#logical-operations-in-c">Logical Operations in C</a></li>
+  <li><a href="#bit-shift-operations" id="toc-bit-shift-operations" class="nav-link" data-scroll-target="#bit-shift-operations">Bit Shift Operations:</a></li>
   </ul>
 </nav>
     </div>
@@ -622,21 +626,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-and" class="level3">
 <h3 class="anchored" data-anchor-id="example-and">Example: AND</h3>
-<pre><code>        Binary     Hex
-
-      01101001    0x69     Value 1
-    &amp; 01010101    0x55     Value 2
-    ----------   -----
-      01000001    0x41     Result</code></pre>
+<p>Find the result (in hex) of simplifying the expression <code>x &amp; y</code> when <code>x = 0x69</code> and <code>y = 0x55</code></p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>        Binary     Hex</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="bn">01101001</span>    <span class="bn">0x69</span>     <span class="co">// Value 1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span> <span class="bn">01010101</span>    <span class="bn">0x55</span>     <span class="co">// Value 2</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">----------</span>   <span class="op">-----</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="bn">01000001</span>    <span class="bn">0x41</span>     <span class="co">// Result</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-and-and-not" class="level3">
+<h3 class="anchored" data-anchor-id="example-and-and-not">Example: AND and NOT</h3>
+<p>Find the result (in hex) of simplifying the expression <code>~(x &amp; y)</code> when <code>x = 0xb4</code> and <code>y = 0x87</code></p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        Binary     Hex</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10110100</span>    <span class="bn">0xb4</span>      <span class="co">// x</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>   <span class="op">&amp;</span>  <span class="dv">10000111</span>    <span class="bn">0x87</span>      <span class="co">// y</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">-----------</span>   <span class="op">-----</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10000100</span>    <span class="bn">0x84</span>      <span class="co">// Intermediate result (x &amp; y)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>     <span class="op">~</span><span class="dv">10000100</span>    <span class="bn">0x84</span>      <span class="co">// Apply ~</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>   <span class="op">-----------</span>   <span class="op">-----</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="bn">01111011</span>    <span class="bn">0x7B</span>      <span class="co">// Final result ~(x &amp; y)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-or" class="level3">
 <h3 class="anchored" data-anchor-id="example-or">Example: OR</h3>
-<pre><code>        Binary     Hex
-
-      01101001    0x69     Value 1
-    | 01010101    0x55     Value 2
-    ----------   -----
-      01111101    0x7D     Result   </code></pre>
+<p>Find the result (in hex) of simplifying the expression <code>x | y</code> when <code>x = 0x69</code> and <code>y = 0x55</code>.</p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>        Binary     Hex</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      <span class="bn">01101001</span>    <span class="bn">0x69</span>     <span class="co">// Value 1</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="bn">01010101</span>    <span class="bn">0x55</span>     <span class="co">// Value 2</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">----------</span>   <span class="op">-----</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="bn">01111101</span>    <span class="bn">0x7D</span>     <span class="co">// Result   </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-or-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-or-1">Example: OR</h3>
+<p>Find the result (in hex) of simplifying the expression <code>x | y</code> when <code>x = 0xb4</code> and <code>y = 0x87</code>.</p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>        Binary     Hex</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10110100</span>    <span class="bn">0xb4</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="dv">10000111</span>    <span class="bn">0x87</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">----------</span>   <span class="op">-----</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10110111</span>    <span class="bn">0xB7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-not-or-and-and" class="level3">
+<h3 class="anchored" data-anchor-id="example-not-or-and-and">Example: NOT, OR, and AND</h3>
+<p>Find the result (in hex) of simplifying the expression <code>x | ~(y &amp; z)</code> when <code>x = 0xA7</code>, <code>y = 0x8</code>, and <code>z = 0x5</code>.</p>
+<p>Solution:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>        Binary     Hex</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Get the intermediate result (y &amp; z)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        Binary     Hex</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1000</span>     <span class="bn">0x8</span>   <span class="co">// y</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span>     <span class="bn">0101</span>     <span class="bn">0x5</span>   <span class="co">// z</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">----------</span>   <span class="op">-----</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>          <span class="bn">0000</span>     <span class="bn">0x0</span>   <span class="co">// (y &amp; z)</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Get the intermediate result ~(y &amp; z)</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        Binary     Hex</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">~</span>     <span class="bn">0000</span>     <span class="bn">0x0</span>   <span class="co">// (y &amp; z)</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">----------</span>   <span class="op">-----</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1111</span>     <span class="bn">0xF</span>   <span class="co">// ~(y &amp; z)</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Get the final result</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        Binary     Hex</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10100111</span>    <span class="bn">0xA7</span>   <span class="co">// x</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="bn">00001111</span>    <span class="bn">0x0F</span>   <span class="co">// ~(y &amp; z)</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">----------</span>   <span class="op">-----</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10101111</span>    <span class="bn">0xAF</span>   <span class="co">// Final Result x | ~(y &amp; z)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="boolean-algebra" class="level2">
@@ -721,15 +782,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>0x69 &amp;&amp; 0x55 -&gt; 0x01</p></li>
 <li><p>0x69 || 0x55 -&gt; 0x01</p></li>
 </ul>
-<p>Shift Operations: - Left Shift: x &lt;&lt; y - shift bit-vector x by y positions - Throw away extra bits on left - Fill with 0’s on the right - ex: x = 01100010 x &lt;&lt; 3 = 00010(000) - Right Shift: x &gt;&gt; y - shift bit-vector x by y positions - Throw away extra bits on the right - Fill with 0’s on the left (logical shift) - ex: x = 01100010 x &gt;&gt; 3 = (000)01100 Arithmetic Shift: - Similar to right shift - Replicate the most significant bit on the left (original sign) - Useful with two’s complement for integer representation<br>
-- ex (arithmetic shift for 2’s comp): - x = 10100010 &gt;&gt; 2 - Arithmetic = (11)101000 - Logical = (00)101000</p>
-<p>REVIEW: Bit level operations in C</p>
-<ol type="1">
-<li><p>0xb4 | 0x87 10110100 |10000111 10110111 = 0xB7</p></li>
-<li><p>~(0xb4 &amp; 0x87) 10110100 &amp;10000111 ~10000100 01111011 = 0x7B</p></li>
-<li><p>0xA7 | ~(0x8 &amp; 0x5) 1000 &amp;0101 ~0000 1111</p>
-<p>10100111 |00001111 10101111 =0xAF</p></li>
-</ol>
+</section>
+<section id="bit-shift-operations" class="level2">
+<h2 class="anchored" data-anchor-id="bit-shift-operations">Bit Shift Operations:</h2>
+<ul>
+<li>Left Shift: x &lt;&lt; y
+<ul>
+<li>shift bit-vector x by y positions
+<ul>
+<li>Throw away extra bits on left</li>
+<li>Fill with 0’s on the right</li>
+</ul></li>
+<li>ex: x = 01100010 x &lt;&lt; 3 = 00010(000)</li>
+</ul></li>
+<li>Right Shift: x &gt;&gt; y
+<ul>
+<li>shift bit-vector x by y positions
+<ul>
+<li>Throw away extra bits on the right</li>
+<li>Fill with 0’s on the left (logical shift)</li>
+</ul></li>
+<li>ex: x = 01100010 x &gt;&gt; 3 = (000)01100 Arithmetic Shift:</li>
+<li>Similar to right shift</li>
+<li>Replicate the most significant bit on the left (original sign)</li>
+<li>Useful with two’s complement for integer representation<br>
+</li>
+<li>ex (arithmetic shift for 2’s comp):
+<ul>
+<li>x = 10100010 &gt;&gt; 2</li>
+<li>Arithmetic = (11)101000</li>
+<li>Logical = (00)101000</li>
+</ul></li>
+</ul></li>
+</ul>
 <p>REVIEW: Logical operations in C</p>
 <ol type="1">
 <li><p>!0x41 = 0x00</p></li>

@@ -117,25 +117,95 @@ Performing `~x`:
 ```
 
 ### Example: AND
-```
+
+Find the result (in hex) of simplifying the expression `x & y` when `x = 0x69` and `y = 0x55`
+
+Solution:
+```c
         Binary     Hex
 
-      01101001    0x69     Value 1
-    & 01010101    0x55     Value 2
+      01101001    0x69     // Value 1
+    & 01010101    0x55     // Value 2
     ----------   -----
-      01000001    0x41     Result
+      01000001    0x41     // Result
+```
+
+### Example: AND and NOT
+
+Find the result (in hex) of simplifying the expression `~(x & y)` when `x = 0xb4` and `y = 0x87`
+
+Solution:
+```c
+
+        Binary     Hex
+      10110100    0xb4      // x
+   &  10000111    0x87      // y
+   -----------   -----
+      10000100    0x84      // Intermediate result (x & y)
+
+     ~10000100    0x84      // Apply ~
+   -----------   -----
+      01111011    0x7B      // Final result ~(x & y)
 ```
 
 ### Example: OR
 
-```
+Find the result (in hex) of simplifying the expression `x | y` when `x = 0x69` and `y = 0x55`.
+
+Solution:
+```c
         Binary     Hex
 
-      01101001    0x69     Value 1
-    | 01010101    0x55     Value 2
+      01101001    0x69     // Value 1
+    | 01010101    0x55     // Value 2
     ----------   -----
-      01111101    0x7D     Result   
+      01111101    0x7D     // Result   
 ``` 
+
+
+### Example: OR 
+
+Find the result (in hex) of simplifying the expression `x | y` when `x = 0xb4` and `y = 0x87`.
+
+Solution:
+```c
+        Binary     Hex
+
+      10110100    0xb4
+    | 10000111    0x87
+    ----------   -----
+      10110111    0xB7
+```
+
+### Example: NOT, OR, and AND
+
+Find the result (in hex) of simplifying the expression `x | ~(y & z)` when `x = 0xA7`, `y = 0x8`, and `z = 0x5`.
+
+Solution:
+```c
+        Binary     Hex
+
+    // Get the intermediate result (y & z)
+        Binary     Hex
+          1000     0x8   // y
+    &     0101     0x5   // z
+    ----------   -----
+          0000     0x0   // (y & z)
+
+
+    // Get the intermediate result ~(y & z)
+        Binary     Hex
+    ~     0000     0x0   // (y & z)
+    ----------   -----
+          1111     0xF   // ~(y & z)
+
+    // Get the final result
+        Binary     Hex
+      10100111    0xA7   // x
+    | 00001111    0x0F   // ~(y & z)
+    ----------   -----
+      10101111    0xAF   // Final Result x | ~(y & z)
+```
 
 ## Boolean Algebra
 
@@ -150,6 +220,8 @@ Performing `~x`:
 - We can use the primitive gate to get exclusive or (XOR):
     - A ^ B = (~A & B) | (A & ~B)
     - A ^ B = 1 When A = 1 or B = 1, but not both
+
+
 
 #### Properties of AND and XOR
 | Property                  | Expression     |
@@ -180,7 +252,8 @@ Examples (on Char data type)
  - 0x69 || 0x55 -> 0x01
 
 
-Shift Operations:
+## Bit Shift Operations:
+
 - Left Shift:       x << y
     - shift bit-vector x by y positions
         - Throw away extra bits on left
@@ -203,31 +276,6 @@ Arithmetic Shift:
         - Logical = (00)101000
 
 
-REVIEW: Bit level operations in C
-
-1. 0xb4 | 0x87
-    10110100
-   |10000111
-    10110111
-    = 0xB7
-
-2. ~(0xb4 & 0x87)
-    10110100
-   &10000111
-   ~10000100 
-    01111011
-   =  0x7B
-
-3. 0xA7 | ~(0x8 & 0x5)
-    1000
-   &0101
-   ~0000
-    1111
-
-    10100111
-   |00001111 
-    10101111
-    =0xAF
 
 
 REVIEW: Logical operations in C
