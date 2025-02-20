@@ -6,7 +6,7 @@ title: Hello World
 ## While
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 counter=0
 while [ $counter -le 10 ]
@@ -20,10 +20,35 @@ do
 done 
 ```
 
+
+## Until
+
+```bash
+#!/usr/bin/env bash
+
+# The until loop, runs until a condition becomes true
+# Structure:
+# until [ condition ]
+# do
+    # contents
+# done
+
+# Example:
+
+until [ -f "hello.txt" ]
+do
+    echo "Let's make a file named, hello.txt"
+    read -p "What would you like to call the file? " filename
+    touch "$filename"  # use the quotes to prevent word splitting in the variable
+done
+
+echo "Good Job. You may want to delete any other files you created"
+```
+
 ## For 
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 # traditional for loop
 for (( i=0 ; i < 5 ; i++ )) # don't forget the spaces
@@ -54,7 +79,7 @@ done
 ## Loop over files
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 # looping over files in this directory
 for file in *
@@ -88,7 +113,7 @@ done
 ## Loop over args
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 # recall: to access args use $@
 

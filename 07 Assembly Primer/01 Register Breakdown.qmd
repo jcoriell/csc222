@@ -1,0 +1,189 @@
+---
+title: Register Breakdown
+---
+
+The following is a list of register names for x86-64 assembly
+
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        caption {
+            caption-side: top;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Base Label</th>
+                <th colspan="4">Labels for Lower n-bits of a Register</th>
+                <th>Additional Info</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>8-bit</th>
+                <th>16-bit</th>
+                <th>32-bit</th>
+                <th>64-bit</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>a</td>
+                <td>al</td>
+                <td>ax</td>
+                <td>eax</td>
+                <td>rax</td>
+                <td>a for accumulator</td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td>bl</td>
+                <td>bx</td>
+                <td>ebx</td>
+                <td>rbx</td>
+                <td>b for base</td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td>cl</td>
+                <td>cx</td>
+                <td>ecx</td>
+                <td>rcx</td>
+                <td>c for counter</td>
+            </tr>
+            <tr>
+                <td>d</td>
+                <td>dl</td>
+                <td>dx</td>
+                <td>edx</td>
+                <td>rdx</td>
+                <td>d for data</td>
+            </tr>
+            <tr>
+                <td>si</td>
+                <td>sil</td>
+                <td>si</td>
+                <td>esi</td>
+                <td>rsi</td>
+                <td>source index</td>
+            </tr>
+            <tr>
+                <td>di</td>
+                <td>dil</td>
+                <td>di</td>
+                <td>edi</td>
+                <td>rdi</td>
+                <td>destination index</td>
+            </tr>
+            <tr>
+                <td>bp</td>
+                <td>bpl</td>
+                <td>bp</td>
+                <td>ebp</td>
+                <td>rbp</td>
+                <td>stack base pointer</td>
+            </tr>
+            <tr>
+                <td>sp</td>
+                <td>spl</td>
+                <td>sp</td>
+                <td>esp</td>
+                <td>rsp</td>
+                <td>stack pointer (end position of runtime stack)</td>
+            </tr>
+            <tr>
+                <td>r8</td>
+                <td>r8b</td>
+                <td>r8w</td>
+                <td>r8d</td>
+                <td>r8</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>r9</td>
+                <td>r9b</td>
+                <td>r9w</td>
+                <td>r9d</td>
+                <td>r9</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>r10</td>
+                <td>r10b</td>
+                <td>r10w</td>
+                <td>r10d</td>
+                <td>r10</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>r11</td>
+                <td>r11b</td>
+                <td>r11w</td>
+                <td>r11d</td>
+                <td>r11</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>r12</td>
+                <td>r12b</td>
+                <td>r12w</td>
+                <td>r12d</td>
+                <td>r12</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>r13</td>
+                <td>r13b</td>
+                <td>r13w</td>
+                <td>r13d</td>
+                <td>r13</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>r14</td>
+                <td>r14b</td>
+                <td>r14w</td>
+                <td>r14d</td>
+                <td>r14</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>r15</td>
+                <td>r15b</td>
+                <td>r15w</td>
+                <td>r15d</td>
+                <td>r15</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+
+### Additional Notes:
+
+In the 8-bit column for the first 8 register, `l` stands for low or lower. You can actually address the upper 8-bits of the lower 16-bits with `h`.
+
+In the 4 central columns for registers r8 through r15, the letter `b` stands for byte (8-bits being addressed), `w` for word (there was a time where most machines had a word size of 16 bits, that is, this is a legacy holdover from that time), and `d` for double word (32-bits is twice 16-bits). 
+
+There are some additional registers outside of the 16 mentioned above, that is the `ip`, or instruction pointer register, and then the status flags.

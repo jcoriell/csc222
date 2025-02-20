@@ -1,0 +1,87 @@
+---
+title: Exit Codes
+---
+
+## Exit Code 
+
+```bash
+#!/usr/bin/env bash
+
+# The    $?    variable holds the exit code from the last command
+
+# Typically we use 0 for a success.
+# Values 1 - 255 are used for other errors.
+# There are some commonly used error codes such as:
+#   127 for command not found
+#   128 for invalid exit argument
+
+# The man command may tell you the meanings of various exit codes depending on the command.
+# Otherwise, you may use internet to search for them.
+
+# Example:
+# Here it should print 0 as the last exit code since nothing comes before this in the script.
+echo Holds the last exit code: $?
+
+# Example:
+echo "Example 1: ls -a ."
+ls -a .
+echo Exit code from ls $?
+echo
+
+# Example:
+echo "Example 2: not a real command"
+notacommand -abcdefg .     # causes code 127
+echo $? # exit code 127 command not found
+echo
+
+# Example: 
+# One form of handling errors is with the exit code
+echo "Example 3: Handling Errors with Exit Codes"
+ls notrealdir   # an intentionally fake directory, exit code 1
+if [ $? -gt 0 ] # you can get more specific for specific errors 
+then
+    echo "Handled Error"
+else
+    echo "ls executed successfully"
+fi
+
+```
+
+
+## Forcing an Exit
+
+```bash
+#!/usr/bin/env bash
+
+# The command exit can be used to force your program to exit at a desired time.
+read -p "What file would you like to remove? " filename
+
+if [ ! -f $filename ]
+then
+    echo "That file does not exist.. exiting."
+    exit 1
+fi 
+
+rm $filename && echo "File successfully removed"
+```
+
+## Using the Exit Flag
+
+```bash
+#!/usr/bin/env bash
+
+# Another option for exiting a program when something fails is to use the 
+# -e flag.
+# -e will cause the script to exit if any command fails
+
+
+set -e
+
+echo "This should print"
+
+# This file/directory doesn't exist, thus it will cause an error.
+# The script will exit
+ls fakefile
+
+echo "This won't print"
+```

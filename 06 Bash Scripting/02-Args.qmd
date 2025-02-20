@@ -1,0 +1,39 @@
+---
+title: Args
+---
+
+
+## Individual Args
+
+```bash
+#!/usr/bin/env bash
+
+# you can get individual args passed into a file 
+# with $ and a number
+
+echo The file name is $0 
+echo The first arg is $1 
+echo The second arg is $2
+
+
+# The length of args can be found with a #symbol
+echo The length of the first arg is ${#1}
+
+# run this file with "./01 Individual Args.sh" arg1 arg2
+```
+
+## All Args
+
+```bash
+#!/usr/bin/env bash
+
+
+# You can get all the args as a string with $*
+echo "All the args are $*" # note that $* is a string
+
+# Or, as an array with $@
+echo "All the args are $@" # note that $@ is an array
+
+# The total number of args is gotten with $#
+echo Total num of args is $#
+```

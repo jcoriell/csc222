@@ -1,0 +1,70 @@
+---
+title: Case
+---
+
+## Example with Numeric Options
+
+```bash
+#!/usr/bin/env bash
+
+# The case construct is like a switch case
+# Begin with case and then list out the options
+# End with esac (case backwards)
+
+# Example: 
+
+# Provide a prompt with options
+echo "What is your favorite food? "
+
+echo "1 - Pizza"
+echo "2 - Chicken"
+echo "3 - Burgers"
+
+# Read in the response (a 1, 2, or 3)
+read food;
+
+case $food in 
+   1) echo "Pizza is a great choice";;    # The ;; marks the end of a case block
+   2) echo "You chose chicken"            # You can have multiple commands per case
+      echo "Mmm. Canes, Popeyes, yes."
+      ;;
+   3) echo "Burgers are great!";;
+   *) echo "That wasn't an option";;  # use * for default
+esac
+```
+
+## Non-numeric Example
+
+```bash
+#!/usr/bin/env bash
+
+# The options do not have to be numbers, it can be any pattern.
+
+# Example: 
+
+# Provide a prompt with options
+printf "What do you drive? "
+
+# Read in the response
+read vehicle;
+
+
+case $vehicle in 
+   car) 
+      echo "You drive a car."        
+      echo "Is there a car directory in this folder?"
+      if [[ -d "car" ]]
+      then
+         echo "There is"
+      else
+         echo "There is not"
+      fi
+      ;;
+   truck) 
+      echo "You drive a truck";;
+   van) 
+      echo "You drive a van";;
+   *) 
+      echo "That wasn't an option";;
+esac
+```

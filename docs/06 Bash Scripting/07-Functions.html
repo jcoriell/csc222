@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unix History – CSC 222 Systems Programming</title>
+<title>Functions – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">Unix History</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../06 Bash Scripting/01-Intro.html">06 Bash Scripting</a></li><li class="breadcrumb-item"><a href="../06 Bash Scripting/07-Functions.html">Functions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/unix-history.html" class="sidebar-item-text sidebar-link active">
+  <a href="../01 Linux/unix-history.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Unix History</span></a>
   </div>
 </li>
@@ -409,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06 Bash Scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../06 Bash Scripting/07-Functions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
@@ -442,17 +476,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-linux" id="toc-why-linux" class="nav-link active" data-scroll-target="#why-linux">Why Linux?</a></li>
-  <li><a href="#history-of-unix-like-systems" id="toc-history-of-unix-like-systems" class="nav-link" data-scroll-target="#history-of-unix-like-systems">History of Unix Like Systems</a></li>
+  <li><a href="#simple-function" id="toc-simple-function" class="nav-link active" data-scroll-target="#simple-function">Simple function</a></li>
+  <li><a href="#with-args" id="toc-with-args" class="nav-link" data-scroll-target="#with-args">With Args</a></li>
+  <li><a href="#local-variables" id="toc-local-variables" class="nav-link" data-scroll-target="#local-variables">Local Variables</a></li>
+  <li><a href="#returning-values" id="toc-returning-values" class="nav-link" data-scroll-target="#returning-values">Returning Values</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">Unix History</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../06 Bash Scripting/01-Intro.html">06 Bash Scripting</a></li><li class="breadcrumb-item"><a href="../06 Bash Scripting/07-Functions.html">Functions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Unix History</h1>
+<h1 class="title">Functions</h1>
 </div>
 
 
@@ -469,87 +505,113 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="why-linux" class="level2">
-<h2 class="anchored" data-anchor-id="why-linux">Why Linux?</h2>
-<ol type="1">
-<li><p>It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux. Examples include:</p>
-<ul>
-<li>Netflix</li>
-<li>Twitter/X</li>
-<li>Facebook</li>
-<li>Instagram</li>
-<li>Google</li>
-<li>New York Stock Exchange</li>
-</ul>
-<p>Using an android phone? Android is a flavor of Linux.</p></li>
-<li><p>It’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.</p>
-<ul>
-<li><a href="GNU GPL">https://www.gnu.org/licenses/gpl-3.0.en.html</a></li>
-</ul></li>
-<li><p>It’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.</p></li>
-</ol>
+<section id="simple-function" class="level2">
+<h2 class="anchored" data-anchor-id="simple-function">Simple function</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining Functions:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the Function Keyword</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The `function` keyword doesn't exist in every bash-like shell.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> hello_one</span> <span class="kw">{</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a simple function </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"hello"</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"done with hello_one"</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># More Portable Way (`function` keyword is not POSIX compliant (i.e. might not work in other shells that are))</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># POSIX - Portable Operating System Interface standard; insures compatibility between Unix-like systems.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">hello_two()</span> <span class="kw">{</span> </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a simple function </span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"hello again."</span> </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"done with hello_two"</span> </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># call it</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ex">hello_one</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ex">hello_two</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="history-of-unix-like-systems" class="level2">
-<h2 class="anchored" data-anchor-id="history-of-unix-like-systems">History of Unix Like Systems</h2>
-<ul>
-<li><p>1969 The Unix operating system is developed by AT&amp;T/Bell Laboratories.</p>
-<ul>
-<li>First developed with Assembly but moved to primarily C</li>
-<li>Since it was primarily C, it was very portable</li>
-<li>AT&amp;T cannot sell it due to agreements not to enter the computing business</li>
-<li>AT&amp;T opts to distribute it under licenses to Labs and Universities</li>
-</ul></li>
-<li><p>1977 UC Berkly developed BSD (Berkley Software Distribution) as a Unix-like replacement.</p>
-<ul>
-<li>It contained code owned by AT&amp;T</li>
-<li>Will eventually lead to a lawsuit from AT&amp;T</li>
-</ul></li>
-<li><p>1983 GNU Operating System (Pronounced Guh-nu) started by Richard Stallman</p>
-<ul>
-<li>Its purpose was to be a free/open unix-like replacement for UNIX (that didn’t contain any code owned by AT&amp;T).</li>
-<li>GNU stands for GNU is Not Unix</li>
-<li>GNU’s kernel is GNU Hurd (started in 1990, before Linux, doesn’t become stable until 2001)
-<ul>
-<li>Note: The kernel of an OS is the system between the hardware and software of a machine. Main function is process, memory, and other resource management.</li>
-<li>The OS is the system as a whole; interface between user and hardware. An OS contains a kernel, applications, device drivers, utilities, etc.</li>
-</ul></li>
-</ul></li>
-<li><p>1991</p>
-<ul>
-<li>Finnish Grad Student Linus Torvalds emails about the OS he is working on.</li>
-<li>Linux kernel is developed</li>
-</ul></li>
-<li><p>1992</p>
-<ul>
-<li>BSDi gets sued by AT&amp;T, which slowed BSD development.</li>
-<li>The Linux kernel becomes the kernel for GNU.</li>
-<li>GNU/Linux is released as Free software under the GNU General Purpose License.
-<ul>
-<li>Note: When we say “Linux”, we really mean GNU/Linux. Linux is just the kernel.</li>
-</ul></li>
-<li>GNU License gave developers the ability to make custom OSs that felt like UNIX without the fear of being sued.</li>
-</ul></li>
-<li><p>1993 The Debian distrobution is born</p>
-<ul>
-<li>One of the most popular distros/family of distros</li>
-<li>Minimal, stable, good for general purpose pc usage and servers alike.</li>
-<li>Most distros are children of Debian including Ubuntu, Raspberry Pi OS, and SteamOS.</li>
-</ul></li>
-<li><p>1994 The Redhat Distrobution is born</p>
-<ul>
-<li>Primarily used for enterprise</li>
-<li>Distros in the Redhat family include Fedora (Distro of choice for Linus Torvalds) and CentOS</li>
-</ul></li>
-<li><p>2000/2002 Gentoo/Arch are born as more simplistic families of distrobutions</p></li>
-<li><p>In later 2000s we see some independent distros we are more familiar with such as</p>
-<ul>
-<li>FireOS (Amazon FireStick/Fire devices)</li>
-<li>Android (Google)</li>
-</ul></li>
-<li><p>Fun Fact: Linus Torvalds also created git for version control.</p></li>
-</ul>
-<p><a href="https://distrowatch.com/images/other/distro-family-tree.png">Distro Family Tree</a></p>
-<p>Source: A large portion of the information above comes from <a href="https://www.gnu.org/">GNU’s Website</a></p>
+<section id="with-args" class="level2">
+<h2 class="anchored" data-anchor-id="with-args">With Args</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hello()</span> <span class="kw">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this one has an argument</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># args work the same as when you pass them to a file</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"hi </span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">add()</span><span class="kw">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">printf</span> <span class="st">"The sum of </span><span class="va">$1</span><span class="st"> and </span><span class="va">$2</span><span class="st"> is "</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$((</span> <span class="va">$1</span> <span class="op">+</span> <span class="va">$2</span> <span class="va">))</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">helloAgain()</span><span class="kw">{</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"All args: </span><span class="va">$@</span><span class="st">"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span> <span class="st">"Josh"</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ex">add</span> 5 10</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ex">helloAgain</span> Hi today is a great day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="local-variables" class="level2">
+<h2 class="anchored" data-anchor-id="local-variables">Local Variables</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">globalvar</span><span class="op">=</span><span class="st">"this is global"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">helloLocal ()</span><span class="kw">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">localvar</span><span class="op">=</span><span class="st">"this is local"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># shadowing</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">globalvar</span><span class="op">=</span><span class="st">"this is also local"</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$globalvar</span> <span class="co"># prints the local version</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$localvar</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">helloLocal</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$globalvar</span> <span class="co"># prints the actual global</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="returning-values" class="level2">
+<h2 class="anchored" data-anchor-id="returning-values">Returning Values</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the return keyword is used to set the exit status</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># you should use echo to return a value or use global variables</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_one()</span> <span class="kw">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="va">$1</span> <span class="bu">]</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">then</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span>   <span class="co"># 1 for failure</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="va">$((</span> <span class="va">$1</span> <span class="op">+</span> <span class="dv">1</span> <span class="va">))</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span>   <span class="co"># 0 for success</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Example 1"</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="va">result</span><span class="op">=</span><span class="va">$(</span><span class="ex">add_one</span> 20<span class="va">)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="va">exit_status</span><span class="op">=</span><span class="va">$?</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">((</span> <span class="va">exit_status</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">))</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"an error occurred"</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"The result was </span><span class="va">$result</span><span class="st">"</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Example 2"</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="va">result</span><span class="op">=</span><span class="va">$(</span><span class="ex">add_one</span> <span class="va">)</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="va">exit_status</span><span class="op">=</span><span class="va">$?</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">((</span> <span class="va">exit_status</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">))</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"an error occurred"</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"The result was </span><span class="va">$result</span><span class="st">"</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

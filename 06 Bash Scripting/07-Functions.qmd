@@ -1,0 +1,123 @@
+---
+title: Functions
+---
+
+
+## Simple function
+
+```bash
+#!/usr/bin/env bash
+
+# Defining Functions:
+
+# Using the Function Keyword
+# The `function` keyword doesn't exist in every bash-like shell.
+function hello_one { 
+    # This is a simple function 
+    echo "hello" 
+    echo "done with hello_one" 
+}
+
+# More Portable Way (`function` keyword is not POSIX compliant (i.e. might not work in other shells that are))
+# POSIX - Portable Operating System Interface standard; insures compatibility between Unix-like systems.
+hello_two() { 
+    # This is a simple function 
+    echo "hello again." 
+    echo "done with hello_two" 
+}
+
+# call it
+hello_one
+hello_two
+```
+
+## With Args
+
+```bash
+#!/usr/bin/env bash
+
+hello() {
+    # this one has an argument
+    # args work the same as when you pass them to a file
+    echo "hi $1"
+}
+
+add(){
+    printf "The sum of $1 and $2 is "
+    echo $(( $1 + $2 ))
+}
+
+helloAgain(){
+    echo "All args: $@"
+}
+
+hello "Josh"
+add 5 10
+helloAgain Hi today is a great day
+
+```
+
+## Local Variables
+
+```bash
+#!/usr/bin/env bash
+
+globalvar="this is global"
+
+helloLocal (){
+    
+    local localvar="this is local"
+    
+    # shadowing
+    local globalvar="this is also local" 
+    
+    echo $globalvar # prints the local version
+    echo $localvar
+}
+
+helloLocal
+echo $globalvar # prints the actual global
+
+```
+
+## Returning Values
+
+```bash
+#!/usr/bin/env bash
+
+# the return keyword is used to set the exit status
+# you should use echo to return a value or use global variables
+add_one() {
+    if [ -z $1 ]
+    then
+        return 1   # 1 for failure
+    else 
+        echo $(( $1 + 1 ))
+        return 0   # 0 for success
+    fi
+}
+
+echo "Example 1"
+result=$(add_one 20)
+exit_status=$?
+
+if (( exit_status > 0 ))
+then
+    echo "an error occurred"
+else
+    echo "The result was $result"
+fi
+
+
+
+echo "Example 2"
+result=$(add_one )
+exit_status=$?
+if (( exit_status > 0 ))
+then
+    echo "an error occurred"
+else
+    echo "The result was $result"
+fi
+
+```

@@ -1,0 +1,196 @@
+---
+title: Intro
+---
+
+
+## Hello World
+
+```bash
+#!/bin/bash
+
+# the above line is an absolute path to the bash interpreter of your chosing
+# known as the shebang
+# typically it is just #!/bin/bash
+
+# To use the most recently installed version of the bash interpreter on your machine, use this shebang:
+#!/usr/bin/env bash
+
+# To check your version of bash, type bash --version in your terminal
+
+# macOS users 
+# zsh is the default shell
+# use #!/bin/zsh as the shebang for zsh
+
+# If mac users want to use bash, default macOS bash is old
+# They can install an updated bash using homebrew
+# Formula: brew install bash
+# Homebrew bash shebang is #!/opt/homebrew/bin/bash
+
+# Note that installing bash via homebrew will make it the most recent version of bash on your mac
+# thus you can just use #!/usr/bin/env shebang
+
+# Printing a simple statement
+echo Hello World
+
+# Printing a statement with a command 
+echo I am `whoami`
+echo Today is `date`
+echo current working directory is `pwd`
+
+# Can also use printf, no newline character, must use quotes for more than one word
+printf hi
+printf " Same line as previous"
+printf "\nDifferent line\n"
+printf "Today: `date`\n"
+
+
+
+# To execute the script, use chmod +x on it
+# chmod +x "01 Hello World.sh"
+
+# Then run with "./01 Hello World.sh"
+
+```
+
+## Variables
+
+```bash
+#!/usr/bin/env bash
+
+# Setting Variables 
+# To set a variable use = 
+# Do not put space around the = sign
+my_var=10
+another_var="the variable is..."
+
+# Accessing variables
+# The $ is used to access variable values
+echo $another_var $my_var
+echo The var is $my_var
+echo
+
+# Accessing with quotes
+# single quotes will not allow you to access the variables
+echo 'This does not show the variable value: $my_var'
+# double quotes will
+echo "This does show the variable: $my_var"
+echo
+
+# Escape Character
+# escape special characters with \
+echo "The banana is \$$my_var "
+
+# can use -e for many escape characters
+echo -e "Line 1 \nLine 2" 
+
+# can also use printf (behaves more like you'd expect)
+printf "hi again\nwith printf\n"
+
+
+```
+
+## Arrays
+
+```bash
+#!/usr/bin/env bash
+
+# Declaring and assigning values in an array
+# Use parentheses and space separation for each item
+groceries=("bread" "milk" "eggs")
+costs=(1 10 23.99)
+
+# access the values as if they are a variable
+echo $groceries         # only gets the zeroth item
+echo ${groceries[1]}    # gets the item at index 1, curly brackets since [] is in there
+echo $groceries[1]      # example without
+echo "${groceries[@]}"  # @ accesses ALL the values
+echo 
+
+echo ${costs[0]} ${costs[1]} ${costs[2]}
+echo "${costs[@]}"
+echo
+
+# with printf
+printf "Food item: ${groceries[1]}\t\tPrice: ${costs[1]}\n"
+
+# also with printf
+printf "Food Item: %s\t\tPrice: %d\n" "${groceries[1]}" "${costs[1]}"
+echo
+
+
+
+# Just declaring, then assigning values later
+# note that this works in bash but not zsh
+
+## Numeric array - index is in numeric form
+declare -a numeric_array 
+
+numeric_array[0]="Hello"         # set a value
+numeric_array[1]="World"         
+numeric_array+=("Another Thing") # append to the array
+echo ${numeric_array[@]}  
+
+## Associative array - The index is in a named form (like a key in a dictionary)
+## only available in bash v4+
+## No order to these
+declare -A associative_array    
+
+associative_array[first]="Josh"          # set a value, note the key
+associative_array[last]="Coriell"
+
+echo "${associative_array[first]} ${associative_array[last]}"
+echo "Values: ${associative_array[@]}"
+echo "Keys: ${!associative_array[@]}"
+```
+
+## Prompting
+
+```bash
+#!/usr/bin/env bash
+
+# use read with -p (p for prompt)
+# input gets placed in the variables provided at the end
+# in this case, `first` and `last` are both variables
+read -p "Enter your first and last name: " first last
+
+
+
+# you can always print out a statement first, then call read
+# use the -s flag to prevent visible input (ex: in the case of passwords, prevents shoulder surfing)
+echo Now a secret:
+read -s secret
+
+# Print out the variables
+echo First is $first
+echo Last is $last
+echo Secret is $secret
+
+```
+
+## Math
+
+```bash
+#!/usr/bin/env bash
+
+# Operations with integers can be performed using the notation $(())
+# integers only
+echo $((2+3))
+echo $((3-4))
+echo $((3 * 4))
+echo $((5 / 2)) # integer div
+echo $((5 % 2))
+echo
+
+# with variables
+num1=2
+num2=3
+result=$((num1 + num2))
+echo "The result of num1 + num2 is $result"
+echo
+
+
+# non-integers can be piped into bc (basic calculator)
+echo "2.3 + 1.2" | bc
+echo "scale=5; 10/3" | bc           # scale sets the number of decimal points
+echo "sqrt(12)" | bc -l             # use -l flag to load the math library
+```

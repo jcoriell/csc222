@@ -16,6 +16,7 @@ website:
           # - linux/vm-install-win.qmd
           # - linux/vm-install-mac.qmd
           # - linux/additional-steps.qmd
+
       - section: "02 Terminal"
         href: 02 Terminal/
         contents:
@@ -34,6 +35,7 @@ website:
               - 02 Terminal/old/file-permissions.qmd
               - 02 Terminal/old/grep-and-regex.qmd
               - 02 Terminal/old/more-commands.qmd
+
       - section: "03 C Basics"
         contents:
           - 03 C Basics/01-HelloWorld.qmd
@@ -47,6 +49,7 @@ website:
         contents: 
           - 04 Computing Systems and Data Representation/01 Intro.qmd
           - 04 Computing Systems and Data Representation/02 Data Representation.qmd
+
       - section: "05 More on C"
         contents:
           - 05 More on C/07-Memory-Allocation.qmd
@@ -56,15 +59,20 @@ website:
           - 05 More on C/11-Fork.qmd
           - 05 More on C/12-Piping.qmd
           - 05 More on C/13-Exec-Functions.qmd
-      - section: "Bash Scripting"
+
+      - section: "06 Bash Scripting"
         contents:
-          - bash-scripting/01-Intro.qmd
-          - bash-scripting/02-Args.qmd
-          - bash-scripting/03-Conditionals.qmd
-          - bash-scripting/04-Exit-Codes.qmd
-          - bash-scripting/05-Case.qmd
-          - bash-scripting/06-Loops.qmd
-          - bash-scripting/07-Functions.qmd
+          - 06 Bash Scripting/01-Intro.qmd
+          - 06 Bash Scripting/02-Args.qmd
+          - 06 Bash Scripting/03-Conditionals.qmd
+          - 06 Bash Scripting/04-Exit-Codes.qmd
+          - 06 Bash Scripting/05-Case.qmd
+          - 06 Bash Scripting/06-Loops.qmd
+          - 06 Bash Scripting/07-Functions.qmd
+
+      - section: "07 Assembly Primer"
+        contents:
+          - 07 Assembly Primer/01 Register Breakdown.qmd
 
 
 

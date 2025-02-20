@@ -1,0 +1,24 @@
+---
+title: Setup for C on Windows
+---
+
+To run C programs in Windows (64 bit):
+
+1. Go to this address and select the second tdm-gcc compiler (tdm64-gcc-10.3.0-2.exe): https://jmeubank.github.io/tdm-gcc/download/
+2. Run the installer and select "Create"
+3. Click through the install with the next button until complete
+
+You should now be able to use gcc in command prompt as in Linux
+
+To ensure Windows Defender does not delete compiled executables:
+
+1. Create a folder in which you work on C programs (For me it is in a CSC222 folder on my desktop)
+2. Open Windows Security in the search bar
+3. Select Virus and Threat Protection
+4. Under "Virus & threat protection updates" select Manage Settings
+5. Scroll down to Exclusions, and select Add or remove exclusions
+6. Select Add an exclusion
+7. Select Folder
+8. Navigate to and select the folder where your C programs will be stored
+
+You should now be able to compile and run C programs as long as they are in this folder.

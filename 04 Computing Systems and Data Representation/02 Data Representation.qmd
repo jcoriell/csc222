@@ -413,12 +413,38 @@ Solution:
 
 ## Unsigned Integers
 
-Unsigned/Signed Integers 
+The mapping of an unsigned binary value $\vec{x}$ to non-negative base 10 integers can be described by
 
-- X = x(w-1)x(w-2)...x(1)x(0)
+$$B2U_w(\vec{x}) = \sum_{i=0}^{w-1} x_i 2^i$$
 
-- w is number of bits
-- Unsigned: B2U(X) = sum from i = 0 to i = w-1 of x(i)*2^i
+where $w$ is the number of bits and $\vec{x} = \left[x_{w-1} x_{w-2}...x_1x_0\right]$. Note that each $x_i$ is simply a digit in the binary value.
+
+### Example
+
+Using $B2U$, convert $\vec{x} = 0101$ to base 10.
+
+Solution:
+
+First note that $w = |x| = 4$. That is, there are 4 bits in $\vec{x}$.
+
+Thus, we have the following:
+
+$$
+\begin{aligned}
+    B2U_w(\vec{x}) &= \sum_{i=0}^{w-1} x_i 2^i \\
+    &= \sum_{i=0}^{4-1} x_i 2^i = \sum_{i=0}^{3} x_i 2^i \\
+    &= x_0 2^0 + x_1 2^1 + x_2 2^2 + x_3 2^3 \\
+    &= 1 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2 + 0 \cdot 2^3 \\
+    &= 1 + 0 + 4 + 0 \\
+    &= 5
+\end{aligned}
+$$  
+
+
+
+
+## Two's Complement
+
 - Two's Complement = B2T(X) = -x(w-1)*2^w-1 + sum from i = 0 to i = w-2 of x(i)*2^i
                                 sign bit
 
@@ -545,7 +571,7 @@ Power-of-2 Multiplication with Shift
         - throw away extra bits on left
         - Fill with 0's on the right
 
-- Ex: 
+### Example: 
     - u << 3 = u*8
 
 Power of 2 Divide with shift

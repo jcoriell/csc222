@@ -5,7 +5,7 @@ title: Conditionals
 ## If with test
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 # with test
 if test $1 -gt 5
@@ -95,24 +95,43 @@ avar=""
 ## File Testing
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
-filename="hello.txt"
+## Three file names to test
+## Be sure each exists in the directory here
+## Comment/Uncomment each to test the conditionals that follow
 
-[[ -e $filename ]] # returns true if any file/directory with the name exists
-                    # use double brackets to avoid word splitting 
+# filename="hello world.txt" 
+# filename="04 File Testing.sh"
+filename="test directory"
 
-[[ -f $filename ]] # returns true if a regular file exists
+# -e checks if a file or directory exists with the given name
+# note that we are using double brackets with the variable to prevent word splitting 
+# The filename hello world.txt would cause word splitting because there is a space in it
+printf "File/Directory Existence: "
+[[ -e $filename ]] && echo "True" || echo "False"  
 
-[[ -r $filename ]] # check for a readable file
+# -f checks if the string matches a regular file (i.e. actual file, not directory or device)
+printf "File Only Existence: "
+[[ -f $filename ]] && echo "True" || echo "False"   
 
-[ -d $filename ] # check for a directory
+# -r checks if the string matches a readable file
+printf "Readable File: "                   
+[[ -r $filename ]] && echo "True" || echo "False"   
 
-[ -L $filename ] # check for a symbolic link
+# -d checks if the string matches a directory
+printf "Directory: "
+[[ -d $filename ]] && echo "True" || echo "False"    
 
-# there are many more flags
-# man test give more info
+# -L checks if the string matches a symbolic link
+printf "Is it a symbolic link: "
+[[ -L $filename ]] && echo "True" || echo "False"    
 
+# -x checks if the string matches an executable
+printf "Is it executable: "
+[[ -x $filename ]] && echo "True" || echo "False"    
+
+# there are many more of these... use `man test` to look them up (or the internet)
 ```
 
 ## Logical Operators
