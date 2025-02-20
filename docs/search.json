@@ -1859,67 +1859,67 @@
   {
     "objectID": "06 Bash Scripting/06-Loops.html",
     "href": "06 Bash Scripting/06-Loops.html",
-    "title": "Hello World",
+    "title": "Loops",
     "section": "",
     "text": "#!/usr/bin/env bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
     "crumbs": [
       "06 Bash Scripting",
-      "Hello World"
+      "Loops"
     ]
   },
   {
     "objectID": "06 Bash Scripting/06-Loops.html#while",
     "href": "06 Bash Scripting/06-Loops.html#while",
-    "title": "Hello World",
+    "title": "Loops",
     "section": "",
     "text": "#!/usr/bin/env bash\n\ncounter=0\nwhile [ $counter -le 10 ]\ndo \n    echo $counter\n    # counter=$((counter+1))\n    # ((counter++)) # returns the value of counter before \n    # ((++counter)) # returns the value of counter after\n    ((counter+=1))\n    sleep 0.5\ndone",
     "crumbs": [
       "06 Bash Scripting",
-      "Hello World"
+      "Loops"
     ]
   },
   {
     "objectID": "06 Bash Scripting/06-Loops.html#until",
     "href": "06 Bash Scripting/06-Loops.html#until",
-    "title": "Hello World",
+    "title": "Loops",
     "section": "Until",
     "text": "Until\n#!/usr/bin/env bash\n\n# The until loop, runs until a condition becomes true\n# Structure:\n# until [ condition ]\n# do\n    # contents\n# done\n\n# Example:\n\nuntil [ -f \"hello.txt\" ]\ndo\n    echo \"Let's make a file named, hello.txt\"\n    read -p \"What would you like to call the file? \" filename\n    touch \"$filename\"  # use the quotes to prevent word splitting in the variable\ndone\n\necho \"Good Job. You may want to delete any other files you created\"",
     "crumbs": [
       "06 Bash Scripting",
-      "Hello World"
+      "Loops"
     ]
   },
   {
     "objectID": "06 Bash Scripting/06-Loops.html#for",
     "href": "06 Bash Scripting/06-Loops.html#for",
-    "title": "Hello World",
+    "title": "Loops",
     "section": "For",
     "text": "For\n#!/usr/bin/env bash\n\n# traditional for loop\nfor (( i=0 ; i &lt; 5 ; i++ )) # don't forget the spaces\ndo \n    echo \"Counter $i\"\ndone\n\n# for each loops\nfor i in 1 2 3 4 5\ndo\n    echo \"Value: $i\"\ndone \n\n# A range of values\nfor i in {0..5}     # no spaces\ndo \n    echo \"Range: $i\"\ndone \n\n# specify an increment\nfor i in {0..10..2} # count from 0 to 10 by 2 (bash 4+)\ndo \n    echo \"Inc: $i\"\ndone",
     "crumbs": [
       "06 Bash Scripting",
-      "Hello World"
+      "Loops"
     ]
   },
   {
     "objectID": "06 Bash Scripting/06-Loops.html#loop-over-files",
     "href": "06 Bash Scripting/06-Loops.html#loop-over-files",
-    "title": "Hello World",
+    "title": "Loops",
     "section": "Loop over files",
     "text": "Loop over files\n#!/usr/bin/env bash\n\n# looping over files in this directory\nfor file in *\ndo\n    if [ -f \"$file\" ]\n    then \n        echo $file\n    fi\ndone \n\nparent_dir=\"..\"\nfor directory in $parent_dir/*\ndo\n    if [ -d \"$directory\" ]\n    then \n        echo $directory\n    fi\ndone \n\nabsolute_dir=\"/Users/josh/Desktop\"\nfor directory in $absolute_dir/*\ndo \n    if [ -d \"$directory\" ] \n    then\n        echo $directory\n    fi \ndone",
     "crumbs": [
       "06 Bash Scripting",
-      "Hello World"
+      "Loops"
     ]
   },
   {
     "objectID": "06 Bash Scripting/06-Loops.html#loop-over-args",
     "href": "06 Bash Scripting/06-Loops.html#loop-over-args",
-    "title": "Hello World",
+    "title": "Loops",
     "section": "Loop over args",
     "text": "Loop over args\n#!/usr/bin/env bash\n\n# recall: to access args use $@\n\nfor arg in $@\ndo \n    echo $arg\ndone",
     "crumbs": [
       "06 Bash Scripting",
-      "Hello World"
+      "Loops"
     ]
   },
   {
