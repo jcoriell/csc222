@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Register Breakdown – CSC 222 Systems Programming</title>
+<title>Register Usage Conventions – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Breakdown.html">07 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Breakdown.html">Register Breakdown</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">07 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/02 Register Conventions.html">Register Usage Conventions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -426,8 +426,62 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/01 Register Breakdown.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Register Breakdown</span></a>
+  <a href="../07 Assembly Primer/01 Register Names.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Register Names</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/02 Register Conventions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Register Usage Conventions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/03 Interpreting Operands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interpreting Operands</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/04 Accessing Values with Operands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Example:</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/05 The Move Instruction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 The Move Instruction.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/06 The Load Effective Address Instruction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06 The Load Effective Address Instruction.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/07 Status Flags.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07 Status Flags.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/08 Arithmetic Instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08 Arithmetic Instructions.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/09 Comparing and Jumps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09 Comparing and Jumps.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/10 Reverse Engineering with C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10 Reverse Engineering with C.html</span></a>
   </div>
 </li>
       </ul>
@@ -442,16 +496,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#additional-notes" id="toc-additional-notes" class="nav-link active" data-scroll-target="#additional-notes">Additional Notes:</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Breakdown.html">07 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Breakdown.html">Register Breakdown</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">07 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/02 Register Conventions.html">Register Usage Conventions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Register Breakdown</h1>
+<h1 class="title">Register Usage Conventions</h1>
 </div>
 
 
@@ -468,384 +522,105 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The following is a list of register names for x86-64 assembly</p>
-
-<meta charset="UTF-8">
-<style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
-            text-align: left;
-        }
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-        caption {
-            caption-side: top;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
-
-
-<table>
+<p>Assume Function A calls Function B. Then A is the caller and B is the callee.</p>
+<table class="caption-top table">
 <thead>
-<tr>
-<th>
-Base Label
-</th>
-<th colspan="4">
-Labels for Lower n-bits of a Register
-</th>
-<th>
-Additional Info
-</th>
-</tr>
-<tr>
-<th>
-</th>
-<th>
-8-bit
-</th>
-<th>
-16-bit
-</th>
-<th>
-32-bit
-</th>
-<th>
-64-bit
-</th>
-<th>
-</th>
+<tr class="header">
+<th>Register</th>
+<th>Convention</th>
+<th>Callee or Caller Owned?</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
-a
-</td>
-<td>
-al
-</td>
-<td>
-ax
-</td>
-<td>
-eax
-</td>
-<td>
-rax
-</td>
-<td>
-a for accumulator
-</td>
+<tr class="odd">
+<td>a</td>
+<td>return value</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-b
-</td>
-<td>
-bl
-</td>
-<td>
-bx
-</td>
-<td>
-ebx
-</td>
-<td>
-rbx
-</td>
-<td>
-b for base
-</td>
+<tr class="even">
+<td>b</td>
+<td>local variable</td>
+<td>caller owned</td>
 </tr>
-<tr>
-<td>
-c
-</td>
-<td>
-cl
-</td>
-<td>
-cx
-</td>
-<td>
-ecx
-</td>
-<td>
-rcx
-</td>
-<td>
-c for counter
-</td>
+<tr class="odd">
+<td>c</td>
+<td>4th argument</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-d
-</td>
-<td>
-dl
-</td>
-<td>
-dx
-</td>
-<td>
-edx
-</td>
-<td>
-rdx
-</td>
-<td>
-d for data
-</td>
+<tr class="even">
+<td>d</td>
+<td>3rd argument</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-si
-</td>
-<td>
-sil
-</td>
-<td>
-si
-</td>
-<td>
-esi
-</td>
-<td>
-rsi
-</td>
-<td>
-source index
-</td>
+<tr class="odd">
+<td>si</td>
+<td>2nd argument</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-di
-</td>
-<td>
-dil
-</td>
-<td>
-di
-</td>
-<td>
-edi
-</td>
-<td>
-rdi
-</td>
-<td>
-destination index
-</td>
+<tr class="even">
+<td>di</td>
+<td>1st argument</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-bp
-</td>
-<td>
-bpl
-</td>
-<td>
-bp
-</td>
-<td>
-ebp
-</td>
-<td>
-rbp
-</td>
-<td>
-stack base pointer
-</td>
+<tr class="odd">
+<td>bp</td>
+<td>local var</td>
+<td>caller owned</td>
 </tr>
-<tr>
-<td>
-sp
-</td>
-<td>
-spl
-</td>
-<td>
-sp
-</td>
-<td>
-esp
-</td>
-<td>
-rsp
-</td>
-<td>
-stack pointer (end position of runtime stack)
-</td>
+<tr class="even">
+<td>sp</td>
+<td>stack pointer</td>
+<td>caller owned</td>
 </tr>
-<tr>
-<td>
-r8
-</td>
-<td>
-r8b
-</td>
-<td>
-r8w
-</td>
-<td>
-r8d
-</td>
-<td>
-r8
-</td>
-<td>
-</td>
+<tr class="odd">
+<td>r8</td>
+<td>5th argument</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-r9
-</td>
-<td>
-r9b
-</td>
-<td>
-r9w
-</td>
-<td>
-r9d
-</td>
-<td>
-r9
-</td>
-<td>
-</td>
+<tr class="even">
+<td>r9</td>
+<td>6th argument</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-r10
-</td>
-<td>
-r10b
-</td>
-<td>
-r10w
-</td>
-<td>
-r10d
-</td>
-<td>
-r10
-</td>
-<td>
-</td>
+<tr class="odd">
+<td>r10</td>
+<td>scratch/temp</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-r11
-</td>
-<td>
-r11b
-</td>
-<td>
-r11w
-</td>
-<td>
-r11d
-</td>
-<td>
-r11
-</td>
-<td>
-</td>
+<tr class="even">
+<td>r11</td>
+<td>scratch/temp</td>
+<td>callee owned</td>
 </tr>
-<tr>
-<td>
-r12
-</td>
-<td>
-r12b
-</td>
-<td>
-r12w
-</td>
-<td>
-r12d
-</td>
-<td>
-r12
-</td>
-<td>
-</td>
+<tr class="odd">
+<td>r12</td>
+<td>local var</td>
+<td>caller owned</td>
 </tr>
-<tr>
-<td>
-r13
-</td>
-<td>
-r13b
-</td>
-<td>
-r13w
-</td>
-<td>
-r13d
-</td>
-<td>
-r13
-</td>
-<td>
-</td>
+<tr class="even">
+<td>r13</td>
+<td>local var</td>
+<td>caller owned</td>
 </tr>
-<tr>
-<td>
-r14
-</td>
-<td>
-r14b
-</td>
-<td>
-r14w
-</td>
-<td>
-r14d
-</td>
-<td>
-r14
-</td>
-<td>
-</td>
+<tr class="odd">
+<td>r14</td>
+<td>local var</td>
+<td>caller owned</td>
 </tr>
-<tr>
-<td>
-r15
-</td>
-<td>
-r15b
-</td>
-<td>
-r15w
-</td>
-<td>
-r15d
-</td>
-<td>
-r15
-</td>
-<td>
-</td>
+<tr class="even">
+<td>r15</td>
+<td>local var</td>
+<td>caller owned</td>
 </tr>
 </tbody>
 </table>
-
-
-<section id="additional-notes" class="level3">
-<h3 class="anchored" data-anchor-id="additional-notes">Additional Notes:</h3>
-<p>In the 8-bit column for the first 8 register, <code>l</code> stands for low or lower. You can actually address the upper 8-bits of the lower 16-bits with <code>h</code>.</p>
-<p>In the 4 central columns for registers r8 through r15, the letter <code>b</code> stands for byte (8-bits being addressed), <code>w</code> for word (there was a time where most machines had a word size of 16 bits, that is, this is a legacy holdover from that time), and <code>d</code> for double word (32-bits is twice 16-bits).</p>
-<p>There are some additional registers outside of the 16 mentioned above, that is the <code>ip</code>, or instruction pointer register, and then the status flags.</p>
+<hr>
+<section id="notes" class="level3">
+<h3 class="anchored" data-anchor-id="notes">Notes</h3>
+<ul>
+<li><strong>Callee Owned / Caller Saved / Call Clobbered</strong> – used for temporary quantities.</li>
+<li><strong>Caller Owned / Caller Saved / Call Preserved</strong> – used for values needed across calls.</li>
+</ul>
 
 
 </section>

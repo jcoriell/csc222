@@ -1,0 +1,85 @@
+### Example:
+
+Assume the following tables depict memory and register values:
+
+#### Memory
+
+| Address | Value |
+|---------|-------|
+| 0x100   | 0xFF  |
+| 0x104   | 0xAB  |
+| 0x108   | 0x13  |
+| 0x10C   | 0x11  |
+
+#### Registers
+
+| Register | Value  |
+|----------|--------|
+| %rax     | 0x100  |
+| %rcx     | 0x1    |
+| %rdx     | 0x3    |
+
+---
+
+### Determine the value accessed from the following operands:
+
+1. `%rax`  
+
+    Since there are now parenthesis around %rax, we are simply accessing the value stored at rax, which is 0x100.
+
+    Solution: 0x100
+
+2. `0x104`  
+
+    Since this is a hex value, and there is not a `$` symbol in front of it, then this represents a memory address. We access the value stored at the memory address 0x104 which is 0xAB.
+
+    Solution: 0xAB
+
+3. `$0x108`  
+
+    Since this value has a `$` in front of it, this represents an immediate value. That is, it represents itself, 0x108.
+
+    Solution: 0x108
+
+4. `(%rax)`
+
+    rax holds the value 0x100. The parentheses tell us that we are going to need to visit memory and get the value at 0x100. The value stored at 0x100 is 0xFF.
+    
+    Solution: 0xFF
+
+5. `4(%rax)`
+
+    rax holds the value 0x100. The parentheses tell us that we need to visit memory. Specifically, since there is a 4 out front, we need to visit the memory addresss that is 4 over from the address stored in rax. We then get the value from there.
+
+    Thus, `%rax` holds `0x100`, and 4 memory locations over from `0x100` is memory location `0x104`.
+
+    The value at `0x104` is 0xAB
+
+    Solution: 0xAB
+
+6. `9(%rax, %rdx)`
+
+    `%rax` holds `0x100.
+    `%rdx` holds `0x3`.
+
+    We need to add these two values together to get a resulting address. Note that in the following calculation we padded the hex value with 0s to match in digit length
+    
+    ```
+      0x100
+    + 0x003
+    -------
+      0x103
+    ```
+
+    Now, we move 9 memory locations over from 0x103.
+
+    ```
+      0x103
+    + 0x009    <- 9 in hex
+    -------
+      0x10C    <- 3 + 9 = 12, 12 is C in hex
+    ```
+
+    Now we get the value at 0x10C which is 0x11.
+
+

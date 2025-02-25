@@ -1,5 +1,5 @@
 ---
-title: Register Breakdown
+title: Register Names
 ---
 
 The following is a list of register names for x86-64 assembly

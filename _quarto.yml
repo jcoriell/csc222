@@ -72,7 +72,16 @@ website:
 
       - section: "07 Assembly Primer"
         contents:
-          - 07 Assembly Primer/01 Register Breakdown.qmd
+          - 07 Assembly Primer/01 Register Names.qmd
+          - 07 Assembly Primer/02 Register Conventions.qmd
+          - 07 Assembly Primer/03 Interpreting Operands.qmd
+          - 07 Assembly Primer/04 Accessing Values with Operands.qmd
+          - 07 Assembly Primer/05 The Move Instruction.qmd
+          - 07 Assembly Primer/06 The Load Effective Address Instruction.qmd
+          - 07 Assembly Primer/07 Status Flags.qmd
+          - 07 Assembly Primer/08 Arithmetic Instructions.qmd
+          - 07 Assembly Primer/09 Comparing and Jumps.qmd
+          - 07 Assembly Primer/10 Reverse Engineering with C.qmd
 
 
 

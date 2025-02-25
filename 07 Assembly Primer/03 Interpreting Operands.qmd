@@ -1,0 +1,79 @@
+---
+title: "Interpreting Operands"
+---
+
+
+With ATT syntax, we address the registers, memory, and immediate values using the following symbols:
+
+- `$` is used in front of immediate values.
+- `%` is used in front of registers.
+- `()` are used to dereference a memory address typically (i.e., get the value from memory).
+
+---
+
+### Examples
+
+- `$-17` represents the integer -17.  
+- `$0xC` represents the integer 12 (that is, C in base 16 is 12 in base 10).  
+- `0x108` is a memory address.  
+- `%rax` accesses the value stored at the register addressed with`rax`.  
+- `(%rax)` accesses the value stored in memory (where `rax` is holding a memory address, opcode dependent).
+
+---
+
+### Scaling, Shifting, and Indexing
+
+An operand can be given in the format of `A ( B, I, S )` where 
+
+- `B` is a base value that can be indexed, scaled, and shifted with I, S, and A.
+- `I` represents an index. We add the value of I to the base value B.  
+- `S` is the scale for the index. We scale the value of I by S. The value of S must be 1, 2, 4, or 8.    
+- `A` is a shift, similar to I. We add A to the result of applying I and S to B.
+
+### Examples
+
+The following are semi-abstract, descriptive examples that describe the memory address that gets accessed (assuming the instruction we are using would dereference it).
+
+1. `9(%rax)`  
+
+    a. Assume rax is storing a memory address.
+    b. We shift 9 memory addresses over from the address stored at rax.
+    c. We access the value stored at that resulting address.
+
+
+2. `(%rbx, %rdi)`  
+
+    a. Assume rbx is storing a memory address.
+    b. rdi stores a value that we will add to rbx to get a new memory address.
+    c. The parenthesis will tell us to access the value at that final memory address.
+
+
+3. `-12(%rbx, %rdi)`  
+
+    a. Assume rbx is storing a memory address. 
+    b. rdi stores a value we need to add to that memory address to get a resulting memory address
+    c. -12 tells us to subtract 12 from the previous memory address to get a new memory address
+    d. Access the value at that final memory address.
+
+4. `(,%rdi,4)`  
+
+    a. rdi is storing a value that gets multiplied by 4
+    b. Assume the resulting value is a memory address that we can visit.
+    c. We get the value at that memory address.
+
+5. `10(,%rdi,4)`  
+
+    a. rdi is storing a value that gets multiplied by 4
+    b. Assume the resulting value is a memory address that we can visit.
+    c. Shift 10 memory addresses over from the previously resulting memory address.
+    d. Access that value.
+
+
+6. `10(%rbx, %rdi, 4)`  
+
+    a. Assume rbx stores a memory location
+    b. Multiply the value stored at rdi by 4 and then add the result to the memory location stored in rbx for a new resulting memory address.
+    c. Now shift 10 memory addresses over from the previous result.
+    d. Access the value at that address.
+
+

@@ -1,0 +1,31 @@
+---
+title: "Register Usage Conventions"
+---
+
+Assume Function A calls Function B. Then A is the caller and B is the callee.
+
+| Register | Convention       | Callee or Caller Owned? |
+|------|-------------------|-------------------------|
+| a    | return value      | callee owned            |
+| b    | local variable    | caller owned            |
+| c    | 4th argument      | callee owned            |
+| d    | 3rd argument      | callee owned            |
+| si   | 2nd argument      | callee owned            |
+| di   | 1st argument      | callee owned            |
+| bp   | local var         | caller owned            |
+| sp   | stack pointer     | caller owned            |
+| r8   | 5th argument      | callee owned            |
+| r9   | 6th argument      | callee owned            |
+| r10  | scratch/temp      | callee owned            |
+| r11  | scratch/temp      | callee owned            |
+| r12  | local var         | caller owned            |
+| r13  | local var         | caller owned            |
+| r14  | local var         | caller owned            |
+| r15  | local var         | caller owned            |
+
+---
+
+### Notes
+
+- **Callee Owned / Caller Saved / Call Clobbered** – used for temporary quantities.
+- **Caller Owned / Caller Saved / Call Preserved** – used for values needed across calls.
