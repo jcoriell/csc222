@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>comparing-and-jumps – CSC 222 Systems Programming</title>
+<title>Compare and Jump – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">07 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/09 Comparing and Jumps.html">09 Comparing and Jumps.html</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">07 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/09 Comparing and Jumps.html">Compare and Jump</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -475,7 +475,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../07 Assembly Primer/09 Comparing and Jumps.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">09 Comparing and Jumps.html</span></a>
+ <span class="menu-text">Compare and Jump</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -491,17 +491,93 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#compare" id="toc-compare" class="nav-link active" data-scroll-target="#compare">Compare</a></li>
+  <li><a href="#jumps" id="toc-jumps" class="nav-link" data-scroll-target="#jumps">Jumps</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">07 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/09 Comparing and Jumps.html">Compare and Jump</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Compare and Jump</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="compare" class="level3">
+<h3 class="anchored" data-anchor-id="compare">Compare</h3>
+<p>Compare Command</p>
+<pre><code>Format: cmp op2, op1   // result = op1 - op2
+Description: 
+    - result = op1 - op2
+    - The result will potentially cause the ZF, SF, OF, and CF flags to be set to at high state.
+    - The state of the flags can then be used with a conditional jump to go to another part of the code.</code></pre>
+</section>
+<section id="jumps" class="level3">
+<h3 class="anchored" data-anchor-id="jumps">Jumps</h3>
+<p>Unconditional Jump</p>
+<pre><code>Format: `jmp [target]`
+Description:
+    - An unconditional jump to target.</code></pre>
+<p>Jump if Equal To:</p>
+<pre><code>Format: `je [target]`
+Description:
+    - If ZF == 1, jump to target.
+    - If `previous_result = op1 - op2 == 0`)
+    - Jump if op2 == op1.
+    - Don't jump if op2 != op1.</code></pre>
+<p>Jump if Not Equal To:</p>
+<pre><code>Format: `jne [target]` 
+Description: 
+    - If `ZF == 0`, jump to target.
+    - Jump if `op1 != op2`.
+    - Don't jump if `op1 == op2`</code></pre>
+<p>Jump if Greater Than:</p>
+<pre><code>Format: `jg [target]`
+Description:
+- If ZF == 0 and SF == OF, jump.
+- Jump if op1 &gt; op2.
+- Don't jump if op1 &lt;= op2.</code></pre>
+<p>Jump if Greater Than or Equal:</p>
+<pre><code>- Format: `jge [target]`
+- Description: 
+    - If SF == OF, jump.
+    - Jump if op1 &gt;= op2.
+    - Don't jump if op1 &lt; op2.</code></pre>
+<p>Jump if Less Than:</p>
+<pre><code>- Format: `jl [target]`
+- Description: 
+    - If SF != OF, jump.
+    - Jump if op1 &lt; op2.
+    - Don't jump if op1 &gt;= op2.</code></pre>
+<p>Jump if Less or equal:</p>
+<pre><code>- Format: `jle [target]`
+- Description: 
+    - If ZF == 1 or SF != OF, jump.
+    - Jump if op1 &lt;= op2. 
+    - Don't jump if op1 &gt; op2.</code></pre>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

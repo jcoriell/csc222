@@ -1,0 +1,76 @@
+---
+title: Compare and Jump
+---
+
+
+### Compare
+
+Compare Command
+    
+    Format: cmp op2, op1   // result = op1 - op2
+    Description: 
+        - result = op1 - op2
+        - The result will potentially cause the ZF, SF, OF, and CF flags to be set to at high state.
+        - The state of the flags can then be used with a conditional jump to go to another part of the code.
+
+### Jumps
+
+Unconditional Jump
+
+    Format: `jmp [target]`
+    Description:
+        - An unconditional jump to target.
+
+Jump if Equal To:
+
+    Format: `je [target]`
+    Description:
+        - If ZF == 1, jump to target.
+	    - If `previous_result = op1 - op2 == 0`)
+	    - Jump if op2 == op1.
+        - Don't jump if op2 != op1.
+
+Jump if Not Equal To:
+
+    Format: `jne [target]` 
+    Description: 
+        - If `ZF == 0`, jump to target.
+        - Jump if `op1 != op2`.
+        - Don't jump if `op1 == op2`
+
+Jump if Greater Than:
+
+    Format: `jg [target]`
+    Description:
+    - If ZF == 0 and SF == OF, jump.
+    - Jump if op1 > op2.
+    - Don't jump if op1 <= op2.
+
+
+Jump if Greater Than or Equal:
+    
+    - Format: `jge [target]`
+    - Description: 
+        - If SF == OF, jump.
+        - Jump if op1 >= op2.
+        - Don't jump if op1 < op2.
+
+
+Jump if Less Than:
+
+    - Format: `jl [target]`
+    - Description: 
+        - If SF != OF, jump.
+        - Jump if op1 < op2.
+        - Don't jump if op1 >= op2.
+
+Jump if Less or equal:
+
+    - Format: `jle [target]`
+    - Description: 
+        - If ZF == 1 or SF != OF, jump.
+        - Jump if op1 <= op2. 
+        - Don't jump if op1 > op2.
+
+
+

@@ -2033,6 +2033,17 @@
     ]
   },
   {
+    "objectID": "07 Assembly Primer/09 Comparing and Jumps.html",
+    "href": "07 Assembly Primer/09 Comparing and Jumps.html",
+    "title": "Compare and Jump",
+    "section": "",
+    "text": "Compare\nCompare Command\nFormat: cmp op2, op1   // result = op1 - op2\nDescription: \n    - result = op1 - op2\n    - The result will potentially cause the ZF, SF, OF, and CF flags to be set to at high state.\n    - The state of the flags can then be used with a conditional jump to go to another part of the code.\n\n\nJumps\nUnconditional Jump\nFormat: `jmp [target]`\nDescription:\n    - An unconditional jump to target.\nJump if Equal To:\nFormat: `je [target]`\nDescription:\n    - If ZF == 1, jump to target.\n    - If `previous_result = op1 - op2 == 0`)\n    - Jump if op2 == op1.\n    - Don't jump if op2 != op1.\nJump if Not Equal To:\nFormat: `jne [target]` \nDescription: \n    - If `ZF == 0`, jump to target.\n    - Jump if `op1 != op2`.\n    - Don't jump if `op1 == op2`\nJump if Greater Than:\nFormat: `jg [target]`\nDescription:\n- If ZF == 0 and SF == OF, jump.\n- Jump if op1 &gt; op2.\n- Don't jump if op1 &lt;= op2.\nJump if Greater Than or Equal:\n- Format: `jge [target]`\n- Description: \n    - If SF == OF, jump.\n    - Jump if op1 &gt;= op2.\n    - Don't jump if op1 &lt; op2.\nJump if Less Than:\n- Format: `jl [target]`\n- Description: \n    - If SF != OF, jump.\n    - Jump if op1 &lt; op2.\n    - Don't jump if op1 &gt;= op2.\nJump if Less or equal:\n- Format: `jle [target]`\n- Description: \n    - If ZF == 1 or SF != OF, jump.\n    - Jump if op1 &lt;= op2. \n    - Don't jump if op1 &gt; op2.",
+    "crumbs": [
+      "07 Assembly Primer",
+      "Compare and Jump"
+    ]
+  },
+  {
     "objectID": "07 Assembly Primer/10 Reverse Engineering with C.html",
     "href": "07 Assembly Primer/10 Reverse Engineering with C.html",
     "title": "Reverse Engineering",
