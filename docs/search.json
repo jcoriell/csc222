@@ -2031,5 +2031,27 @@
       "07 Assembly Primer",
       "Interpreting Operands"
     ]
+  },
+  {
+    "objectID": "07 Assembly Primer/10 Reverse Engineering with C.html",
+    "href": "07 Assembly Primer/10 Reverse Engineering with C.html",
+    "title": "Reverse Engineering",
+    "section": "",
+    "text": "Reverse engineer the ASM to fill in the blanks for the C code.\n\n\nexample:                            NOTES:\n    movq    %rdi, %rax              rax = rdi\n    addq    %rsi, %rax              rax = rax + rsi\n    cmpq    $3, %rax                Jump to L2 if rax &gt;= 3. Don't jump if rax &lt; 3\n    jge     L2  \n\nL2:\n    movq    %rsi, %rax              rax = rsi\n    ret\n\n\n\nlong example(long x, long y) {  \n    // First argument x is stored in rdi\n    // Second argument y is stored in rsi\n\n    long result = __________;       // solution: x + y\n\n    if (__________) {               // solution: result &lt; 3\n        return result;\n    }\n\n    result = __________;            // solution: y\n\n    return result;\n}",
+    "crumbs": [
+      "07 Assembly Primer",
+      "Reverse Engineering"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/10 Reverse Engineering with C.html#example",
+    "href": "07 Assembly Primer/10 Reverse Engineering with C.html#example",
+    "title": "Reverse Engineering",
+    "section": "",
+    "text": "Reverse engineer the ASM to fill in the blanks for the C code.\n\n\nexample:                            NOTES:\n    movq    %rdi, %rax              rax = rdi\n    addq    %rsi, %rax              rax = rax + rsi\n    cmpq    $3, %rax                Jump to L2 if rax &gt;= 3. Don't jump if rax &lt; 3\n    jge     L2  \n\nL2:\n    movq    %rsi, %rax              rax = rsi\n    ret\n\n\n\nlong example(long x, long y) {  \n    // First argument x is stored in rdi\n    // Second argument y is stored in rsi\n\n    long result = __________;       // solution: x + y\n\n    if (__________) {               // solution: result &lt; 3\n        return result;\n    }\n\n    result = __________;            // solution: y\n\n    return result;\n}",
+    "crumbs": [
+      "07 Assembly Primer",
+      "Reverse Engineering"
+    ]
   }
 ]

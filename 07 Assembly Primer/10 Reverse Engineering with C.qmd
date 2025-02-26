@@ -1,0 +1,40 @@
+---
+title: Reverse Engineering
+---
+
+## Example: 
+
+Reverse engineer the ASM to fill in the blanks for the C code.
+
+#### ASM
+
+```
+example:                            NOTES:
+    movq    %rdi, %rax              rax = rdi
+    addq    %rsi, %rax              rax = rax + rsi
+    cmpq    $3, %rax                Jump to L2 if rax >= 3. Don't jump if rax < 3
+    jge     L2  
+
+L2:
+    movq    %rsi, %rax              rax = rsi
+    ret
+```
+
+#### C Code
+
+```c
+long example(long x, long y) {  
+    // First argument x is stored in rdi
+    // Second argument y is stored in rsi
+
+    long result = __________;       // solution: x + y
+
+    if (__________) {               // solution: result < 3
+        return result;
+    }
+
+    result = __________;            // solution: y
+
+    return result;
+}
+```
