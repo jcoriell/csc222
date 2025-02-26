@@ -8,15 +8,15 @@ Reverse engineer the ASM to fill in the blanks for the C code.
 
 #### ASM
 
-```
-example:                            NOTES:
-    movq    %rdi, %rax              rax = rdi
-    addq    %rsi, %rax              rax = rax + rsi
-    cmpq    $3, %rax                Jump to L2 if rax >= 3. Don't jump if rax < 3
+```asm
+example:                           # NOTES:
+    movq    %rdi, %rax             # rax = rdi
+    addq    %rsi, %rax             # rax = rax + rsi
+    cmpq    $3, %rax               # Jump to L2 if rax >= 3. Don't jump if rax < 3
     jge     L2  
 
 L2:
-    movq    %rsi, %rax              rax = rsi
+    movq    %rsi, %rax             # rax = rsi
     ret
 ```
 
@@ -36,5 +36,54 @@ long example(long x, long y) {
     result = __________;            // solution: y
 
     return result;
+}
+```
+
+
+## Example:
+
+
+#### ASM
+
+```asm
+example:
+    leaq (%rdi, %rsi), %rax      # rax = rdi + rsi
+    leaq (%rsi, %rdx), %r10      # r10 = rsi + rdx
+    cmpq %r10, %rax              # compare rax and r10
+    jge  L2                      # jump if rax >= r10, don't jump if rax < r10
+    addq %r10, %rax              # rax = rax + r10
+    ret
+
+L2:
+    cmpq $0, %rax                # compare rax and 0
+    jle  L3                      # jump if rax <= 0, don't jump if rax > 0
+    imulq %rsi, %rax             # rax = rax * rsi
+
+L3:
+    movq %rdx, %rax              # rax = rdx
+    ret
+```
+
+#### C
+
+```c
+long example(long x, long y, long z) {
+    // x (first arg) is stored in rdi, 
+    // y (second arg) is stored in rsi, 
+    // z (third arg) is stored in rdx
+
+                                // Solutions:
+    long val1 = __________;     // x + y
+    long val2 = __________;     // y + z
+
+    if (__________) {           // val1 < val2
+        val1 = __________;      // val1 + val2
+        return val1;
+    } else if (__________) {    // val1 > 0
+        val1 = __________;      // val1 * y
+        return val1
+    }
+    val1 = ___________;         // z
+    return val1;
 }
 ```

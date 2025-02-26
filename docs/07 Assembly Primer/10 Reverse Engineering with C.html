@@ -531,6 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example:</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example:</a></li>
   </ul>
 </nav>
     </div>
@@ -561,15 +562,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Reverse engineer the ASM to fill in the blanks for the C code.</p>
 <section id="asm" class="level4">
 <h4 class="anchored" data-anchor-id="asm">ASM</h4>
-<pre><code>example:                            NOTES:
-    movq    %rdi, %rax              rax = rdi
-    addq    %rsi, %rax              rax = rax + rsi
-    cmpq    $3, %rax                Jump to L2 if rax &gt;= 3. Don't jump if rax &lt; 3
-    jge     L2  
-
-L2:
-    movq    %rsi, %rax              rax = rsi
-    ret</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode asm code-with-copy"><code class="sourceCode fasm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">example:</span>                           # NOTES<span class="op">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">movq</span>    <span class="op">%</span><span class="kw">rdi</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>             <span class="op">#</span> <span class="kw">rax</span> <span class="op">=</span> <span class="kw">rdi</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    addq    <span class="op">%</span><span class="kw">rsi</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>             <span class="op">#</span> <span class="kw">rax</span> <span class="op">=</span> <span class="kw">rax</span> <span class="op">+</span> <span class="kw">rsi</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    cmpq    <span class="op">$</span><span class="bn">3</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>               <span class="op">#</span> Jump to L2 if <span class="kw">rax</span> <span class="op">&gt;=</span> <span class="fl">3.</span> Don<span class="st">'t jump if rax &lt; 3</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">jge</span>     L2  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">L2:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">movq</span>    <span class="op">%</span><span class="kw">rsi</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>             <span class="op">#</span> <span class="kw">rax</span> <span class="op">=</span> <span class="kw">rsi</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">ret</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="c-code" class="level4">
 <h4 class="anchored" data-anchor-id="c-code">C Code</h4>
@@ -587,6 +588,50 @@ L2:
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result<span class="op">;</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="example-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-1">Example:</h2>
+<section id="asm-1" class="level4">
+<h4 class="anchored" data-anchor-id="asm-1">ASM</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode asm code-with-copy"><code class="sourceCode fasm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">example:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    leaq <span class="op">(%</span><span class="kw">rdi</span><span class="op">,</span> <span class="op">%</span><span class="kw">rsi</span><span class="op">),</span> <span class="op">%</span><span class="kw">rax</span>      <span class="op">#</span> <span class="kw">rax</span> <span class="op">=</span> <span class="kw">rdi</span> <span class="op">+</span> <span class="kw">rsi</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    leaq <span class="op">(%</span><span class="kw">rsi</span><span class="op">,</span> <span class="op">%</span><span class="kw">rdx</span><span class="op">),</span> <span class="op">%</span><span class="kw">r10</span>      <span class="op">#</span> <span class="kw">r10</span> <span class="op">=</span> <span class="kw">rsi</span> <span class="op">+</span> <span class="kw">rdx</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    cmpq <span class="op">%</span><span class="kw">r10</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>              <span class="op">#</span> compare <span class="kw">rax</span> <span class="op">and</span> <span class="kw">r10</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">jge</span>  L2                      <span class="op">#</span> jump if <span class="kw">rax</span> <span class="op">&gt;=</span> <span class="kw">r10</span><span class="op">,</span> don<span class="st">'t jump if rax &lt; r10</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    addq <span class="op">%</span><span class="kw">r10</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>              <span class="op">#</span> <span class="kw">rax</span> <span class="op">=</span> <span class="kw">rax</span> <span class="op">+</span> <span class="kw">r10</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">ret</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">L2:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    cmpq <span class="op">$</span><span class="bn">0</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>                <span class="op">#</span> compare <span class="kw">rax</span> <span class="op">and</span> <span class="dv">0</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">jle</span>  L3                      <span class="op">#</span> jump if <span class="kw">rax</span> <span class="op">&lt;=</span> <span class="dv">0</span><span class="op">,</span> don<span class="st">'t jump if rax &gt; 0</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    imulq <span class="op">%</span><span class="kw">rsi</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>             <span class="op">#</span> <span class="kw">rax</span> <span class="op">=</span> <span class="kw">rax</span> <span class="op">*</span> <span class="kw">rsi</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">L3:</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">movq</span> <span class="op">%</span><span class="kw">rdx</span><span class="op">,</span> <span class="op">%</span><span class="kw">rax</span>              <span class="op">#</span> <span class="kw">rax</span> <span class="op">=</span> <span class="kw">rdx</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">ret</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="c" class="level4">
+<h4 class="anchored" data-anchor-id="c">C</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> example<span class="op">(</span><span class="dt">long</span> x<span class="op">,</span> <span class="dt">long</span> y<span class="op">,</span> <span class="dt">long</span> z<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// x (first arg) is stored in rdi, </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// y (second arg) is stored in rsi, </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// z (third arg) is stored in rdx</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                <span class="co">// Solutions:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">long</span> val1 <span class="op">=</span> __________<span class="op">;</span>     <span class="co">// x + y</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">long</span> val2 <span class="op">=</span> __________<span class="op">;</span>     <span class="co">// y + z</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>__________<span class="op">)</span> <span class="op">{</span>           <span class="co">// val1 &lt; val2</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        val1 <span class="op">=</span> __________<span class="op">;</span>      <span class="co">// val1 + val2</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> val1<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>__________<span class="op">)</span> <span class="op">{</span>    <span class="co">// val1 &gt; 0</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        val1 <span class="op">=</span> __________<span class="op">;</span>      <span class="co">// val1 * y</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> val1</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    val1 <span class="op">=</span> ___________<span class="op">;</span>         <span class="co">// z</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> val1<span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
