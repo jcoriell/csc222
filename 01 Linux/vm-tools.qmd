@@ -1,0 +1,38 @@
+---
+title: Virtual Machine Tools
+---
+
+## Setting Up Your Machine
+
+Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access. 
+
+Open the Terminal (shortcut is `ctrl+alt+t`) and run the following:
+
+
+1. For programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.
+
+    - g++ is the GNU compiler for the C++ language
+    - gcc is the GNU compiler for the C language
+    - make is used to interpret "makefiles" which are used to control the build process of projects
+    - libc6-dev is a GNU C library
+    - dpkg-dev is used to upload, build, and unpack Debian source packages
+
+    ```bash
+    sudo apt install build-essential
+    ```
+    
+2. For vim (VI-iMproved):
+
+    ```Bash
+    sudo apt install vim
+    ```
+
+3. For cleanup
+
+    ```sh
+    sudo apt autoremove
+    sudo apt clean
+    sudo apt autoclean
+    ```
+
+4. For VS Code (if you enjoy using it), follow the instructions here: [https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/](https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/)

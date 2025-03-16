@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Virtual Machine Install – CSC 222 Systems Programming</title>
+<title>Virtual Machine Tools – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/vm-install.html">Virtual Machine Install</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      CSC 222 Systems Programming
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/vm-install.html" class="sidebar-item-text sidebar-link active">
+  <a href="../01 Linux/vm-install.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virtual Machine Install</span></a>
   </div>
 </li>
@@ -530,32 +532,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#flavors-of-linux" id="toc-flavors-of-linux" class="nav-link active" data-scroll-target="#flavors-of-linux">Flavors of Linux</a></li>
-  <li><a href="#virtualization-software" id="toc-virtualization-software" class="nav-link" data-scroll-target="#virtualization-software">Virtualization Software</a>
-  <ul class="collapse">
-  <li><a href="#download-and-install-for-any-system" id="toc-download-and-install-for-any-system" class="nav-link" data-scroll-target="#download-and-install-for-any-system">Download and install for any system</a></li>
-  <li><a href="#quick-download-and-install-for-mac" id="toc-quick-download-and-install-for-mac" class="nav-link" data-scroll-target="#quick-download-and-install-for-mac">Quick download and install for mac</a></li>
-  <li><a href="#quick-download-and-install-for-linux" id="toc-quick-download-and-install-for-linux" class="nav-link" data-scroll-target="#quick-download-and-install-for-linux">Quick download and install for Linux</a></li>
-  </ul></li>
-  <li><a href="#downloading-an-iso" id="toc-downloading-an-iso" class="nav-link" data-scroll-target="#downloading-an-iso">Downloading an ISO</a></li>
-  <li><a href="#installing-the-os-on-virtual-box" id="toc-installing-the-os-on-virtual-box" class="nav-link" data-scroll-target="#installing-the-os-on-virtual-box">Installing the OS on Virtual Box</a></li>
-  <li><a href="#modify-virtualbox-settings" id="toc-modify-virtualbox-settings" class="nav-link" data-scroll-target="#modify-virtualbox-settings">Modify VirtualBox Settings</a></li>
-  <li><a href="#installing-and-booting-the-vm" id="toc-installing-and-booting-the-vm" class="nav-link" data-scroll-target="#installing-and-booting-the-vm">Installing and Booting the VM</a>
-  <ul class="collapse">
-  <li><a href="#for-mint" id="toc-for-mint" class="nav-link" data-scroll-target="#for-mint">For Mint</a></li>
-  <li><a href="#for-ubuntu-desktop" id="toc-for-ubuntu-desktop" class="nav-link" data-scroll-target="#for-ubuntu-desktop">For Ubuntu Desktop</a></li>
-  <li><a href="#for-ubuntu-server" id="toc-for-ubuntu-server" class="nav-link" data-scroll-target="#for-ubuntu-server">For Ubuntu Server</a></li>
-  <li><a href="#partition-details" id="toc-partition-details" class="nav-link" data-scroll-target="#partition-details">Partition Details</a></li>
-  </ul></li>
+  <li><a href="#setting-up-your-machine" id="toc-setting-up-your-machine" class="nav-link active" data-scroll-target="#setting-up-your-machine">Setting Up Your Machine</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01 Linux/unix-history.html">01 Linux</a></li><li class="breadcrumb-item"><a href="../01 Linux/vm-install.html">Virtual Machine Install</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Virtual Machine Install</h1>
+<h1 class="title">Virtual Machine Tools</h1>
 </div>
 
 
@@ -572,201 +558,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page provides instructions on installing a Linux VM.</p>
-<section id="flavors-of-linux" class="level2">
-<h2 class="anchored" data-anchor-id="flavors-of-linux">Flavors of Linux</h2>
-<p>For this course it is recommended that you use Mint or Ubuntu, although there are many more flavors of Linux available. Below is a very short list of the distros that most of you will either use or be familiar with.</p>
+<section id="setting-up-your-machine" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-your-machine">Setting Up Your Machine</h2>
+<p>Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.</p>
+<p>Open the Terminal (shortcut is <code>ctrl+alt+t</code>) and run the following:</p>
 <ol type="1">
-<li><p>Ubuntu is designed with beginners in mind. It is a general purpose distro with both server and desktop environments. It is also the most popular distribution.</p></li>
-<li><p>Linux mint is based on Ubuntu and is good for beginners who are switching from windows. This is because it is designed to be familiar for windows users.</p></li>
-<li><p>Debian is one of the oldest distros and is typically used where stability is paramount. It is used by experienced users and is popular for servers and mission critical environments.</p></li>
-<li><p>Arch linux is used by advanced users for whom customization and minimalist systems are important. Users of this system typically want to be involved in manually setting up everything on the computer.</p></li>
-<li><p>Kali linux is based on debian and is used by cyber security professionals. This is because it comes with multiple tools for penetration testing, forensics and security research</p></li>
-<li><p>Raspbian is a version of linux designed to work on raspberry pis. The focus of this distro is being light weight (i.e.&nbsp;not taking up a lot of space), and yet work fast with the limited hardware resources one might find on a microcomputer like a raspberry pi</p></li>
-</ol>
-</section>
-<section id="virtualization-software" class="level2">
-<h2 class="anchored" data-anchor-id="virtualization-software">Virtualization Software</h2>
-<p>In order to use a completely different OS on your computer without significantly affecting it, we are going to use virtualization. Virtualization allows us to install and use multiple versions of different computers independent of the physical computer we actually have. It allows us to test out different software with the security of knowing we cannot affect our host computer and can even revert to an older version of the software we are trying. The cost of virtualization is that you typically have to be comfortable with running the computer with reduced resources i.e.&nbsp;it doesn’t have access to all your memory or processors.</p>
-<section id="download-and-install-for-any-system" class="level3">
-<h3 class="anchored" data-anchor-id="download-and-install-for-any-system">Download and install for any system</h3>
-<ol type="1">
-<li><p>Download Virtual Box from Oracle by visiting <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">https://www.virtualbox.org/wiki/Downloads</a> . Click the appropriate download link for your system.</p></li>
-<li><p>Install Virtual Box.</p>
-<p>Note that when installing on windows, you might get an error concerning needing to install Visual c++ 2019. You can resolve this error by visiting <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170</a> and downloading the latest X64 version of Microsoft Visual C++. Alternatively, here is a direct download link for convenience <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">https://aka.ms/vs/17/release/vc_redist.x64.exe</a>. Also, if you received this error, once VirtualBox has been installed, restart your computer.</p></li>
-</ol>
-</section>
-<section id="quick-download-and-install-for-mac" class="level3">
-<h3 class="anchored" data-anchor-id="quick-download-and-install-for-mac">Quick download and install for mac</h3>
-<p>If you have a mac with homebrew, you can run the following command to both download and install:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> virtualbox</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="quick-download-and-install-for-linux" class="level3">
-<h3 class="anchored" data-anchor-id="quick-download-and-install-for-linux">Quick download and install for Linux</h3>
-<p>If you are a Linux user, you can download and install virtual box using the following commands.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install virtualbox virtualbox-qt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="downloading-an-iso" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-an-iso">Downloading an ISO</h2>
-<ol type="1">
-<li><p>Download the appropriate image for your host machine:</p>
+<li><p>For programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.</p>
 <ul>
-<li>If you have an <strong>x86-64/amd64</strong> based machine (most Windows machines and Intel based macs):
-<ul>
-<li><a href="https://www.linuxmint.com/download.php">Linux Mint</a>
-<ul>
-<li>note that the <code>xfce</code> edition is recommended for virtual machines</li>
-</ul></li>
-<li><a href="https://ubuntu.com/download/server">Ubuntu Desktop</a></li>
-</ul></li>
-<li>If you have an <strong>arm</strong> based machine (m-series Macs and very few Windows machines):
-<ul>
-<li><a href="https://ubuntu.com/download/server/arm">Ubuntu Server</a></li>
-</ul></li>
-<li>You are welcome to use any other Linux distro, links not provided.</li>
-</ul></li>
-<li><p>Once you have downloaded the <code>.iso</code> file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later.</p></li>
-</ol>
-</section>
-<section id="installing-the-os-on-virtual-box" class="level2">
-<h2 class="anchored" data-anchor-id="installing-the-os-on-virtual-box">Installing the OS on Virtual Box</h2>
-<p>This section of the instructions apply regardless of the flavor of Linux you chose.</p>
-<ol type="1">
-<li><p>Create a new VM in Virtual Box by clicking NEW.</p></li>
-<li><p>Give it a name of your choosing. You might do something like the name of this class. This is just how VirtualBox will label it for your own referencing purposes.</p></li>
-<li><p>For the <code>Folder</code> option, you can leave the default selected folder. It is most likely something along the lines of <code>.../VirtualBox VMs</code>.</p></li>
-<li><p>For the<code>ISO Image</code> option, select the .iso file you downloaded in the previous section of these instructions. You may need to click “other” in the dropdown to browse for it.</p></li>
-<li><p>Skip the unattended install by checking the box to skip it.</p></li>
-<li><p>When prompted for <code>base memory</code>, it is recommended that you allow the machine to use up to 25% of your host machine’s resources.</p>
-<ul>
-<li>If you have at least 8 GB of ram, consider allowing 2 GB for the virtual machine.</li>
-<li>If you have 16 GB of ram, consider allowing 4 GB for the virtual machine.</li>
+<li>g++ is the GNU compiler for the C++ language</li>
+<li>gcc is the GNU compiler for the C language</li>
+<li>make is used to interpret “makefiles” which are used to control the build process of projects</li>
+<li>libc6-dev is a GNU C library</li>
+<li>dpkg-dev is used to upload, build, and unpack Debian source packages</li>
 </ul>
-<p>This is only setting the max it can use on your machine, so feel free to give it more than 25%, but you may start slowing down the host.</p></li>
-<li><p>When prompted about the <code>processors</code>, it is recommended you give it at least 2. For my 2021 mac with 10 cores, I chose 4 and have had no performance issues.</p></li>
-<li><p>When prompted about the <code>Hard Disk</code>, make it sufficient in size, say 100 GB for storage. <strong>Do not</strong> pre-allocate the storage.</p></li>
-<li><p>Click “Finish” to finish this portion of the setup. This does not setup the machine. Just prepares it for setup.</p></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>For vim (VI-iMproved):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install vim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>For cleanup</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoremove</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt clean</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt autoclean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>For VS Code (if you enjoy using it), follow the instructions here: <a href="https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/">https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/</a></p></li>
 </ol>
-</section>
-<section id="modify-virtualbox-settings" class="level2">
-<h2 class="anchored" data-anchor-id="modify-virtualbox-settings">Modify VirtualBox Settings</h2>
-<p>Now that the machine exists inside virtual box, it is recommended you complete the following.</p>
-<ol type="1">
-<li><p>Bidirectional Clipboard and Drag and Drop Support</p>
-<ol type="a">
-<li>Select the machine on the left hand side of the window.</li>
-<li>Select <code>Settings</code> near the top of the window.</li>
-<li>Go to <code>General</code>.</li>
-<li>Go to <code>Advanced</code>.</li>
-<li>Set <code>shared clipboard</code> to <code>bidirectional</code>.</li>
-<li>Set <code>drag'n'drop</code> to <code>bidirectional</code>.</li>
-<li>Click <code>OK</code> to save.</li>
-</ol>
-<p>Note: I’ve had mixed results with the clipboard and drag and drop actually working.</p></li>
-<li><p>Network Connectivity</p>
-<ol type="a">
-<li>Select the machine on the left hand side of the window.</li>
-<li>Select <code>Settings</code> near the top of the window.</li>
-<li>Go to <code>Network</code>.</li>
-<li>Under the <code>Attached To:</code> option, choose <code>Bridged Adapter</code> instead of <code>NAT</code>.</li>
-<li>Under the <code>Name:</code> option, choose the normal connection you use, probably your Wi-fi connection
-<ul>
-<li>On windows, you might only have one option (your Wi-Fi)</li>
-<li>On macs, it is most likely en0: Wi-Fi</li>
-</ul></li>
-</ol>
-<p>Note: NAT stands for Network Address Translation. If this is the setting, then virtual machine and host machine will share an IP address when communicating with the outside world. The Bridged Adapter allows the virtual machine to receive it’s own ip address when communicating with the outside world.</p></li>
-</ol>
-</section>
-<section id="installing-and-booting-the-vm" class="level2">
-<h2 class="anchored" data-anchor-id="installing-and-booting-the-vm">Installing and Booting the VM</h2>
-<p>Boot the VM by selecting it in the left navigation and clicking “Start”.</p>
-<p>For this step, the instructions will be different depending on the flavor of Linux you chose, be sure to scroll to the appropriate section for your VM’s operating system.</p>
-<section id="for-mint" class="level3">
-<h3 class="anchored" data-anchor-id="for-mint">For Mint</h3>
-<p>For Mint, you will be presented with a GUI that should be simple to step through. You’ll see a disk in the top left corner labeled “Install Linux Mint”. Double click it to start. Some notes for your install follow:</p>
-<ol type="1">
-<li><p>Language: Choose English</p></li>
-<li><p>Multimedia Codecs: No (these will not be necessary)</p></li>
-<li><p>Now you’ll be presented with the options to <code>Erase Disk and Install Linux Mint</code> or <code>Something Else</code>.</p>
-<p>Choosing <code>Erase Disk and Install Linux Mint</code> is the simplest option. This will not erase anything on your host machine since we are doing this inside of virtualization software.</p>
-<p>If you wanted to be a bit more specific about the partitions that get created, you can choose <code>Something Else</code>. Scroll down to the <code>Partition Details</code> section of this document for more about this.</p>
-<p>Once you’ve made your selection, click “Install Now”</p></li>
-<li><p>Time zone: Chicago</p></li>
-<li><p>If you chose <code>Something Else</code> for the Erase Disk and Install Linux Mint option, you’ll need to jump to the Partition Details section of this document and then come back here when you’re done. If you chose <code>Yes</code>, move to step 6.</p></li>
-<li><p>Now you’ll be asked for some information such as username, computer name, and password. Make a username and password that you’ll remember. You do not need to encrypt your home folder, but could if you wanted to.</p></li>
-</ol>
-</section>
-<section id="for-ubuntu-desktop" class="level3">
-<h3 class="anchored" data-anchor-id="for-ubuntu-desktop">For Ubuntu Desktop</h3>
-<p>Should be fairly intuitive, but instructions coming soon.</p>
-</section>
-<section id="for-ubuntu-server" class="level3">
-<h3 class="anchored" data-anchor-id="for-ubuntu-server">For Ubuntu Server</h3>
-<p>This could take some time, so it is not recommended that you update when prompted during the install if you are short on time.</p>
-<ol type="1">
-<li><p>When prompted, select “Try to Install Ubuntu”.</p></li>
-<li><p>The install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it. Choose a secure password.</p></li>
-<li><p>Once it is installed it will prompt to reboot.</p></li>
-<li><p>After rebooting it’ll ask you to login with the username and password once you reboot.</p></li>
-<li><p>Setting Up the GUI.</p>
-<ol type="a">
-<li>Run the following two commands separately</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ubuntu-desktop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="a">
-<li><p>Once it is done, turn the machine off by closing the window and selecting the option to turn the machine off.</p></li>
-<li><p>Start the machine and log back in. There should be a GUI at this point.</p></li>
-</ol></li>
-</ol>
-</section>
-<section id="partition-details" class="level3">
-<h3 class="anchored" data-anchor-id="partition-details">Partition Details</h3>
-<p>If you chose to do a custom partition, here are some tips. Partitioning gives the user the opportunity to specify how much space is reserved for certain functions of the computer. This in turn allows us to easily update or overwrite our operating system later on without losing the files we were using.</p>
-<p>Partitioning is arguably not as used these days with how cheap computers and memory are and the prevalence of all sorts of backup tools. However, it is still a good experience to have as a computer science student because you won’t always be using the latest and greatest computers.</p>
-<p>Your hard drive will probably have a name like <code>/dev/sda</code> that is the size of all the space you have available for your VM. For each new partition that we create, select the unused space and click the <code>+</code> sign to add a partition to it.</p>
-<ol type="1">
-<li><p>1st partition:</p>
-<ul>
-<li>1024 MB</li>
-<li>type = primary</li>
-<li>location = beginning</li>
-<li>use as = ext 2</li>
-<li>mount point = /boot</li>
-</ul></li>
-<li><p>2nd partition:</p>
-<ul>
-<li>4096 MB3</li>
-<li>type = primary</li>
-<li>location = end</li>
-<li>use as = swap area</li>
-</ul></li>
-<li><p>3rd partition:</p>
-<ul>
-<li>35% of space left</li>
-<li>type = primary</li>
-<li>location = beginning</li>
-<li>use as ext 4</li>
-<li>mount point = /</li>
-</ul></li>
-<li><p>4th partition</p>
-<ul>
-<li>all that is left</li>
-<li>type = primary</li>
-<li>location = beginning</li>
-<li>use as = ext 4</li>
-<li>mount point = /home.</li>
-</ul></li>
-</ol>
-<p>Click install now.</p>
-<p>If you get some error messages with suggested partitions, feel free to delete the 4th partition, create the suggested partitions with the suggested sizes and uses, and then recreate the 4th partition with whatever space is left over.</p>
-<p>Return to the install instructions that brought you to the Partition Details</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
