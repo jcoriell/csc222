@@ -1,0 +1,85 @@
+---
+title: A Brief History
+---
+
+## Why Linux?
+
+1. It's everywhere. Browsing the internet? Doom scrolling? Streaming a movie? 
+Most servers (~96%) run on some form of linux. 
+
+    Examples include: 
+
+    - Netflix
+    - Twitter/X
+    - Facebook
+    - Instagram
+    - Google
+    - New York Stock Exchange
+
+    Many devices use a Linux distribution. Examples include:
+
+    - Android phones
+    - Chromebooks
+    - Steam Machine
+
+
+2. It's versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.
+
+    -  [https://www.gnu.org/licenses/gpl-3.0.en.html](GNU GPL)
+
+3. It's a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.
+
+
+## UNIX Systems
+
+UNIX operating system is developed at AT&T Bell Laboratories in 1969. It was developed by Ken Thompson, Dennis Ritchie, Brian Kernighan, and others. Unix was first developed on a [PDP-7](https://en.wikipedia.org/wiki/PDP-7) in an assembly language, but around 1973 it was rewritten in C, leading to the ability to port it to other machines (a huge innovation at the time!). The first actual port to another platform was made in 1977. 
+
+While AT&T distributed the UNIX operating system under licenses to government labs, universities, and industry, other flavors of UNIX were developed. UC Berkeley developed BSD (Berkeley Software Distribution) as a Unix-like replacement, although it used some of AT&T's code. Other flavors of UNIX were developed in the 1980s such as SunOS, AIX, HP-UX, Xenix, and AT&Ts System V as closed and mixed source projects. For a bigger picture of Unix based and Unix-like Operating Systems, see the family tree pictured below.
+
+[![Unix Family Tree - Source: https://www.levenez.com/unix/](images/unix-family-tree.svg)](images/unix-family-tree.svg)
+
+For more about UNIX, check out *Unix: History and Memoir* by Brian Kernighan, a Unix developer (approx 45 min of the story, then Q&A).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nS-0Vrmok6Y?si=yn4lNB__GVv_EN_K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+## The GNU Project and Linux
+
+[The GNU Project](https://www.gnu.org/home.en.html) (Pronounced Guh-nu) was started by Richard Stallman in the 1983. Its purpose was to be a free/open Unix-like operating system. GNU stands for **GNU is Not Unix**. The GNU Project lead to the development of the GNU General Public License (GNU GPL), an open-source software license that gaurantees users the freedoms to use, study, modify, and share software. 
+
+In 1991, Linux Torvalds developed an OS kernel that was later named Linux and released it under the GNU GPL in 1992. At the time, the GNU Operating System had many utilities but lacked a stable kernel. Linux and GNU OS developers combined the two projects which resulted in the release of the first Linux based operating system, GNU/Linux.
+
+
+::: {.callout-note}
+## Kernels
+A kernel is the core part of an operating system (OS) that manages essential resources such as memory, processes, devices, and other resources [The Linux Information Project - Kernel Definition](https://www.linfo.org/kernel.html). 
+:::
+
+
+::: {.callout-note}
+## GNU/Linux
+Although we tend to use the term **Linux** to refer to an operating system, it is more appropriate to say **GNU/Linux** as Linux is just the kernel. For more on this, visit [https://www.gnu.org/gnu/gnu-linux-faq.html](https://www.gnu.org/gnu/gnu-linux-faq.html).
+:::
+
+Since the development of the original GNU/Linux os, many different operating systems based on the Linux kernel have come about. Some common ones are as follows:
+
+- Ubuntu - used in this class
+- Mint - used in CSC 442/CYEN 301
+- Debian - Ubuntu's parent, and the base for many other flavors 
+- Raspberry Pi OS - Has Debian as a parent
+- Arch - A bare bones OS for full customization
+- Fedora - The prefered distro of Linus Torvalds
+- Redhat - Fedora's parent. Frequently used for enterprise applications
+
+For more on different Linux distributions, see the [Distro Family Tree ](https://distrowatch.com/images/other/distro-family-tree.png) from distrowatch.com.
+
+For more on GNU/Linux, watch *The Making of GNU: The World's First Open-Source Software* and *The Making of Linux: The World's First Open-Source Operating System* by ForrestKnight.
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sQDvkd2wtxU?si=YyUbPas_YWG0WHpW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E0Q9KnYSVLc?si=HKCU6lZeug_575If" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+

@@ -1,0 +1,53 @@
+---
+title: Installing Virtualization Software
+---
+
+
+In order to use a completely different OS on your computer as a piece of software built into your own machine, you are going to use virtualization. Virtualization allows us to install and use multiple versions of different computers independent of the physical computer we actually have. It allows us to test out different software with the security of knowing we cannot affect our host computer and can even revert to an older version of the software we are trying. The cost of virtualization is that you typically have to be comfortable with running the computer with reduced resources i.e. it doesn’t have access to all your memory or processors.
+
+To install Virtual Box virtualization software on your machine, follow the set of instructions below that are most appropriate for you.
+
+
+## Virtual Box Download and Install for Mac
+
+If you have a Mac and have [Homebrew](https://brew.sh/) installed, you can run the following command to both download and install Virtual Box. If you don't have [Homebrew](https://brew.sh/) installed, it is recommended that you do install it. The instructions are found on the [Homebrew](https://brew.sh/) homepage.
+
+```sh
+brew install --cask virtualbox
+```
+
+
+
+## Virtual Box Download and Install for Linux
+
+If you are a Linux user, you can download and install virtual box using the following commands.
+
+```sh
+sudo apt update
+sudo apt install virtualbox virtualbox-qt
+```
+
+For Linux users, it is required to install a virtual machine for this class to be sure you are capable of doing so, but you might end up doing most of your programming on your host machine.
+
+
+
+## Download and Install for Windows/Mac/Linux
+
+If you have Windows or one of the previous install methods did not work on your Mac or Linux machine, complete the following steps to install Virtual Box.
+
+1. Download Virtual Box from Oracle by visiting [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads){target="_blank"}. Click the appropriate download link for your system.
+
+2. Install Virtual Box 
+
+::: {.callout-tip}
+# Troubleshooting Tip - Visual C++ 2019
+
+When installing on windows, you might get an error concerning the need to install Visual C++ 2019. 
+
+You can resolve this error by visiting [https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) and downloading the latest X64 version of Microsoft Visual C++. 
+
+Alternatively, here is a direct download link for convenience [https://aka.ms/vs/17/release/vc_redist.x64.exe](https://aka.ms/vs/17/release/vc_redist.x64.exe). 
+
+**If you received this error, restart your computer after VirtualBox has been installed or you may continue to receive errors.**
+:::
+

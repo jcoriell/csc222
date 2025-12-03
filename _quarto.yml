@@ -5,19 +5,33 @@ project:
 website:
   title: "CSC 222 Systems Programming"
   sidebar:
-    style: "docked"
+    style: "floating"
     search: true
+    collapse-level: 1
     contents:
-      - section: "01 Linux"
+      - section: "0 - Housekeeping"
+        contents: 
+          - 00 Housekeeping/01 Syllabus.qmd
+
+
+      - section: "1 - Linux"
         contents:
-          - 01 Linux/unix-history.qmd
-          - 01 Linux/vm-install.qmd
+          - 01 Linux/01 A Brief History.qmd
+          - section: "VM Install"
+            contents: 
+              - 01 Linux/02 VM Install/01 Overview.qmd
+              - 01 Linux/02 VM Install/02 Virtualization Software Install.qmd
+              - 01 Linux/02 VM Install/03 Downloading an Image.qmd
+              - 01 Linux/02 VM Install/04 Creating the VM.qmd
+              - 01 Linux/02 VM Install/05 Installing the VM.qmd
+              - 01 Linux/02 VM Install/06 Creating a Shared Folder.qmd
           - 01 Linux/linux-filesystem.qmd
           # - linux/vm-install-win.qmd
           # - linux/vm-install-mac.qmd
           # - linux/additional-steps.qmd
 
-      - section: "02 Terminal"
+
+      - section: "2 - Terminal"
         href: 02 Terminal/
         contents:
           - 02 Terminal/00 Background.qmd
@@ -27,40 +41,38 @@ website:
           - 02 Terminal/04 Redirection.qmd
           - 02 Terminal/05 File Permissions.qmd
           - 02 Terminal/06 Grep and Regex.qmd
-          - section: Old
-            contents:
-              - 02 Terminal/old/basic.qmd
-              - 02 Terminal/old/redirection.qmd
-              - 02 Terminal/old/texteditors.qmd
-              - 02 Terminal/old/file-permissions.qmd
-              - 02 Terminal/old/grep-and-regex.qmd
-              - 02 Terminal/old/more-commands.qmd
 
-      - section: "03 C Basics"
+
+      - section: "3 - C Programming"
         contents:
-          - 03 C Basics/01-HelloWorld.qmd
-          - 03 C Basics/02-DataTypes.qmd
-          - 03 C Basics/03-Operators.qmd
-          - 03 C Basics/04-Functions.qmd
-          - 03 C Basics/05-More-on-Data.qmd
-          - 03 C Basics/06-Sample-Applications.qmd
+          - 03 C Programming/01-HelloWorld.qmd
+          - 03 C Programming/02-DataTypes.qmd
+          - 03 C Programming/03-Operators.qmd
+          - 03 C Programming/04-Functions.qmd
+          - 03 C Programming/05-More-on-Data.qmd
+          - 03 C Programming/06-Sample-Applications.qmd
+          - 03 C Programming/07-Memory-Allocation.qm4
+          - 03 C Programming/08-Structs-and-Unions.qmd
+          - 03 C Programming/09-Sample-Applications.qmd
+          - 03 C Programming/10-Files.qmd
+          - 03 C Programming/11-Fork.qmd
+          - 03 C Programming/12-Piping.qmd
+          - 03 C Programming/13-Exec-Functions.qmd
 
-      - section: "04 Computing Systems and Data Representation"
+      - section: "4 - Computing Systems and Data Representation"
         contents: 
-          - 04 Computing Systems and Data Representation/01 Intro.qmd
-          - 04 Computing Systems and Data Representation/02 Data Representation.qmd
+          - 04 Computing Systems and Data Representation/01 Computing Systems.qmd
+          - 04 Computing Systems and Data Representation/02 The Compilation Process.qmd
+          - 04 Computing Systems and Data Representation/03 Representing Programs.qmd
+          - 04 Computing Systems and Data Representation/04 Representing Numeric Data.qmd
+          - 04 Computing Systems and Data Representation/05 Byte Ordering Conventions.qmd
 
-      - section: "05 More on C"
+
+      - section: "5 - System Calls"
         contents:
-          - 05 More on C/07-Memory-Allocation.qmd
-          - 05 More on C/08-Structs-and-Unions.qmd
-          - 05 More on C/09-Sample-Applications.qmd
-          - 05 More on C/10-Files.qmd
-          - 05 More on C/11-Fork.qmd
-          - 05 More on C/12-Piping.qmd
-          - 05 More on C/13-Exec-Functions.qmd
+          - ""
 
-      - section: "06 Bash Scripting"
+      - section: "6 - Bash Scripting"
         contents:
           - 06 Bash Scripting/01-Intro.qmd
           - 06 Bash Scripting/02-Args.qmd
@@ -70,7 +82,7 @@ website:
           - 06 Bash Scripting/06-Loops.qmd
           - 06 Bash Scripting/07-Functions.qmd
 
-      - section: "07 Assembly Primer"
+      - section: "7 Assembly Primer"
         contents:
           - 07 Assembly Primer/01 Register Names.qmd
           - 07 Assembly Primer/02 Register Conventions.qmd

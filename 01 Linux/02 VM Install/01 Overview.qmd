@@ -1,0 +1,23 @@
+---
+title: Overview
+---
+
+Over the course of the next few pages, you will complete the setup of a virtual machine on your own computer (the host machine). Be sure to follow all the instructions in the order presented. 
+
+You may need to complete additional steps, including troublshooting steps, that are not listed here, in which case the internet, your classmates, and your instructor may be able to help out.
+
+
+Complete each of the following:
+
+- [Installing the Virtualization Software (Virtual Box)](02 Virtualization Software Install.html)
+
+- [Downloading the Virtual Machine Image](03 Downloading An Image.html)
+
+- [Creating the Virtual Machine](04 Installing the VM.html)
+
+- [Setting Up the Virtual Machine]()
+
+- [Installing Needed Software on the Virtual Machine]()
+
+- [Setting Up a Shared Folder on the Virtual Machine]()
+

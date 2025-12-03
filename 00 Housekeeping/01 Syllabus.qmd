@@ -1,0 +1,125 @@
+---
+title: Syllabus
+---
+
+## Course Description
+
+An introduction to systems programming within the context of C/C++ and Linux; topics include Floating-point number representation, C programming, linking, writing scripts, performing system calls, managing memory, and assembly level code.
+
+## Course Outcomes
+
+Upon successful completion of this course, students should be able to:
+
+-	represent/manipulate Information (bit-level);
+
+-	work effectively in a UNIX-style environment;
+
+-	explain the basic operations that are performed from the time a computer is turned on until a user is able to execute programs;
+
+-	write and explain medium to large C/C++ programs for a range of applications;
+
+-	use systems tools for C/C++ programming;
+
+-	write and explain C/C++ programs that use the UNIX system call interface;
+
+-	write and explain small to medium assembly programs; and
+
+-	write and explain small to medium size scripts, in various scripting languages, for a range of applications.
+
+
+## Topics Covered
+
+- Information Representation 
+- Linux and the Linux Terminal
+- Linux System Tools
+- C/C++ Programming
+- Assembly programming
+- Pointers and Memory Management
+- Compilation, Linking, and Loading
+- Processes and Process Control
+- Using System Calls in Programs
+- Bash Scripting
+
+
+
+## Grading Policy
+
+There will be homework, quizzes, labs, and two exams (a midterm and final exam). If you have a question on grading of an assignment or an exam, please contact the instructor within one week of the time the grade is received. 
+
+### Grade Weight Breakdown
+
+| ACTIVITY  | GRADE (%) |
+|-----------|-----------|
+| Labs      | 10        |
+| Homeworks | 10        |
+| Project   | 10        |
+| Midterm   | 25        |
+| Quizzes   | 10        |
+| Final     | 35        |
+| TOTAL     | 100       |
+
+
+### Grade Breakdown
+
+|SCORE      | GRADE     |
+|-----------|-----------|
+| 90-100%   | A         |
+| 80-89%    | B         |
+| 70-79%    | C         |
+| 50-69%    | D         |
+| < 50%     | F         |
+
+
+
+## Attendance Policy 
+
+Class attendance is governed by university regulations, [University Policy 2206 – Class Attendance](https://www.latech.edu/administration/policies/p-2206.php). All missed homework, notes, and material is the responsibility of the student.
+
+## Late Policy
+
+Any assignments or assessments turned in the following day (or 24 hours) after the assigned due date will be graded at 50% of the original grade. Anything past this 24-hour period will result in the grade being a zero.
+
+
+## Academic Honor Code
+
+In accordance with the Academic Honor Code, students pledge the following: 
+
+```text
+Being a student of higher standards, I pledge to embody the principles of academic integrity.
+```
+
+University policy allows for sanctions for violations of academic integrity ranging from zero credit for an assignment to expulsion (without expectation of readmission) from the University. Any student who is found to have violated the University's Academic Honor Code in this course, no matter how minor the violation, will receive an F grade in the course. Serious violations will result in pursual of sanctions/expulsion from the university.
+
+More information on the honor code and student handbook can be found here: [Student Conduct and Academic Integrity](https://www.latech.edu/current-students/student-advancement-affairs/student-conduct-integrity/)
+
+
+## Emergency Notification System
+
+All Louisiana Tech students are strongly encouraged to enroll and update their contact information in the Emergency Notification System. It takes just a few seconds to ensure you’re able to receive important text and voice alerts in the event of a campus emergency. For more information visit [https://www.latech.edu/student-life/student-support-and-resources/university-police/emergency-notification-system.php](https://www.latech.edu/student-life/student-support-and-resources/university-police/emergency-notification-system.php)
+
+## Accommodations for Students with Disabilities
+
+Students needing testing or classroom accommodations based on a disability are encouraged to discuss those needs with your instructor as soon as possible. If you need more information on accommodations or documentation paperwork, please contact the Office of Disability Services for assistance. Visit [https://www.latech.edu/student-life/student-support-and-resources/disability-services/index.php](https://www.latech.edu/student-life/student-support-and-resources/disability-services/index.php) for more information.
+
+## Counseling Services
+
+Louisiana Tech offers free counseling services for all students. Information, contact numbers, and sites for Louisiana Tech Counseling Services are located at [https://www.latech.edu/student-life/student-support-and-resources/counseling-services/index.php](https://www.latech.edu/student-life/student-support-and-resources/counseling-services/index.php) 
+
+## Health and Wellness
+
+Students are encouraged to take personal responsibility for their behavior concerning health and hygiene matters, which includes washing hands regularly, wearing masks as appropriate, maintaining physical distancing, using proper sneeze and cough practices, helping maintain clean academic and office areas, and monitoring for symptoms of any illness. More infomation on health and wellness services can be found at [https://www.latech.edu/admissions/student-life.php](https://www.latech.edu/admissions/student-life.php)
+
+
+## Use of Generative Models
+
+Students are allowed to use advanced automated tools (artificial intelligence or machine learning tools such as ChatGPT, Gemini, or Claude) to further their understanding and help understand assignment criteria. Unless given permission to use those tools to complete assignments, each student is expected to complete each assignment without substantive assistance from others, including automated tools. If allowed to use these tools it should be properly documented and credited. For example, text or code generated using ChatGPT should include a citation such as `Chat-GPT. (YYYY, Month DD of query). “Text of your query.” Generated using OpenAI. https://chat.openai.com/”`.
+
+You may not submit any work generated by an AI program as your own. If you include material generated by an AI program, it should be cited like any other reference material (with due consideration for the quality of the reference, which may be poor). If found submitting work that is not properly cited it could result in a 0 for the assignment, an F grade in the course, and/or expulsion from the University.
+
+# Hazing
+
+Louisiana Tech University is committed to maintaining a supportive, educational environment that fosters respect for the dignity and rights of all its community members.  This commitment reflects the University’s adherence to its mission, to its various policies supporting its mission, and to relevant state and federal laws.  As such, acts of hazing are considered irresponsible, intolerable and inconsistent with the University’s mission. Student organizations and/or individual members found to have engaged in hazing shall be in violation of the University’s Policy (“Policy”) and may be in violation of state law (R.S. 14:40.8). For more information on this, visit [https://www.latech.edu/administration/policies/p-6304.php](https://www.latech.edu/administration/policies/p-6304.php)
+
+## Syllabus Changes
+
+The contents of this syllabus are not expected to change. However, the instructor retains the right to interpretation and/or alteration of the policies contained herein. In the case of alteration, ample advance notice will be provided.

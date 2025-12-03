@@ -1,0 +1,78 @@
+---
+title: Create a Shared Folder
+---
+
+In this section, you create a folder that is shared between your host machine and your virtual machine. Anything you create or place in this shared folder will be accessible on both host and virtual machines. 
+
+
+1. Create a folder somewhere on your host machine that you want to contain the shared documents.
+
+2. Open Virtual Box.
+
+3. Ensure the machine is not in a running state or saved state (i.e. it should be shut down).
+
+4. Click the settings icon and complete the following:
+
+    i. Navigate to Shared Folders in the settings menu.
+
+    ii. Find the plus (+) icon to add a folder.
+
+    iii. For the **Folder Path** option, browse the host and select the folder you want to be the shared folder.
+
+    iv. For the **Folder Name** option, you can name it what you want. This name will be the name it has on the virtual machine. For the purposes of this tutorial, we will name it `SHARED`.
+
+    v. Check the *Auto Mount* option.
+
+    vi. Check the *Make Permanent* option.
+
+    vii. Click OK to confirm the folder options. 
+
+    viii. Click OK to confirm the new settings. **If you get an error at this point, it may be that your machine is in a running or saved state. If so, cancel any changes and shutdown the machine.**
+
+5. Boot the virtual machine.
+
+6. Open a terminal.
+
+7. Install guest additions with the following commands.
+
+    ```sh  
+    sudo apt update
+    ```
+
+    ```sh
+    sudo apt install -y build-essential dkms linux-headers-$(uname -r)
+    ```
+
+8. On the host machine, find the Virtual Box menu named `Devices`. This is in the same menu bar as *File, Edit, ...* at the top of the window on Windows or at the top of screen on a Mac. 
+
+9. Open the `Devices` menu and select `Insert Guest Additions CD image...`. After clicking it, you should see a CD Rom icon appear as a device on the VM (in the dock on Ubuntu, or on the left in the file browser application).
+
+9. On the Virtual Machine, run the following commands to finish the setup. Be sure to run the appropriate command based on the architecture of your machine
+
+    ```sh 
+    sudo mount /dev/cdrom /mnt
+    ```
+
+    ```sh 
+    # On ARM machines
+    sudo /mnt/VBoxLinuxAdditions-arm64.run
+
+    # On x86 machines
+    sudo /mnt/VBoxLinuxAdditions.run
+    ```
+
+10. Restart the virtual machine. You can just choose to reboot from within the machine, or restart with virtual box.
+
+11. Log back in and add the current user to the `vboxsf` group by running the following command.
+
+    ```sh 
+    sudo usermod -aG vboxsf $USER 
+    ```
+
+12. Reboot one last time so that the group permissions are applied.
+
+13. The shared folder should be located at /media/sf_SHARED where SHARED is the name given to the folder previously.
+
+14. If you open a folder, with the file browser app (the app with the folder icon) you should see the shared folder in the navigation on the left hand side.
+
+15. Test the shared folder by adding files to it on your host machine and viewing the files from the virtual machine. Also, try the reverse. 

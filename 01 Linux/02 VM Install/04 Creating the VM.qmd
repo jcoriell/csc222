@@ -1,0 +1,84 @@
+---
+title: Creating The Virtual Machine
+---
+
+In this section, you create the VM inside of Virtual Box. This does not mean the VM is installed. You will need to run the machine and follow the setup instructions inside the machine.
+
+Complete the following in Virtual Box.
+
+1. Create a new VM in Virtual Box by clicking **NEW**.
+
+2. Give it a name of your choosing. You might name it something that reflects this course and the os, for example `CSC 222 - Ubuntu 24`. This name is used as a label for your own referencing purposes.
+
+3. For the `Folder` option, you can leave the default selected folder. It is most likely something along the lines of `.../VirtualBox VMs`.
+
+4. For the` ISO Image` option, find and select the .iso file you downloaded in the previous section of these instructions. You may need to click "other" in the dropdown to browse for it.
+
+6. Look for the `Skip Unattended Install` option and check the box to skip it.
+
+7. When prompted for `base memory`, it is recommended that you allow the machine to use up to 25% of your host machine's resources.
+
+    - If you have at least 8 GB of ram, consider allowing 2 GB for the virtual machine. 
+    - If you have 16 GB of ram, consider allowing 4 GB for the virtual machine.
+    
+   This is only setting the max it can use on your machine, so feel free to give it more than 25%, but you may start slowing down the host while using the Virtual Machine. 
+
+8. When prompted about the `processors`, it is recommended you give it at least 2. For my 2021 Mac with 10 cores, I chose 4 and have had no performance issues.
+
+9. When prompted about the `Hard Disk`, make it sufficient in size, say 75 GB for storage. **Do not** pre-allocate the storage. 
+
+10. Click `Finish` and move to the instructions below to setup copy/paste and the network.
+
+
+## Modify VirtualBox Settings
+
+Now that a place for the machine exists inside Virtual Box, complete the following.
+
+### Bidirectional Clipboard and Drag and Drop Support
+
+1. Select the machine on the left hand side of the window.
+
+2. Select `Settings` near the top of the window.
+
+3. Go to `General`.
+
+4. Go to `Advanced`.
+
+5. Set `shared clipboard` to `bidirectional`.
+
+6. Set `drag'n'drop` to `bidirectional`.
+
+7. Click `OK` to save.
+
+
+
+::: {.callout-note}
+# Clipboard on Mac
+
+I've seen mixed results with the clipboard and drag and drop actually working on a mac, so do not be surprised if it doesn't work for you.
+:::
+
+
+### Network Connectivity
+
+It will benefitial to us if the VM receives its own IP address on the network. To do this, we will modify the network settings. 
+
+If the network adapter is attached to `NAT` (network address translation), then virtual machine and host machine will share an IP address when communicating with the outside world. 
+
+If the network adapter is attached to `Bridged Adapter`, then the virtual machine receives its own ip address when communicating with the outside world, which is what we want in this course.
+
+Complete the following instructions to set the adapter to `Bridged Adapter`.
+
+1. Select the machine on the left hand side of the window.
+
+2. Select `Settings` near the top of the window.
+
+3. Go to `Network`.
+
+4. Under the `Attached To:` option, choose `Bridged Adapter` instead of `NAT`.
+
+5. Under the `Name:` option, choose the normal connection you use, probably your Wi-fi connection
+
+    - On windows, you might only have one option (your Wi-Fi)
+    
+    - On macs, it is most likely en0: Wi-Fi

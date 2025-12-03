@@ -2,6 +2,25 @@
 title: "CSC 222 Systems Programming"
 ---
 
-The notes found here are for the Winter quarter of 2025. These notes will be changing periodically during this time period (from December 2024 through February 2025).
+## Course Description
 
-For an unchanging version of these notes see the previous iteration at [https://jcoriell.github.io/csc222-winter-2024/](https://jcoriell.github.io/csc222-winter-2024/){target="_blank"}.
+An introduction to systems programming within the context of C/C++ and Linux; topics include Floating-point number representation, C programming, linking, writing scripts, performing system calls, managing memory, and assembly level code.
+
+
+## Contents
+
+[00 Housekeeping](/00%20Housekeeping/)
+
+[01 Linux](/01%20Linux/)
+
+[02 Terminal](/02%20Terminal/)
+
+[03 Bash Scripting](/03%20Bash%20Scripting/)
+
+[04 C Programming](/04%20C%20Programming/)
+
+[05 Computing Systems and Data Representation](/05%20Computing%20Systems%20and%20Data%20Representation/)
+
+[06 System Calls](/06%20System%20Calls/)
+
+[07 Assembly Primer](/07%20Assembly%20Primer/)

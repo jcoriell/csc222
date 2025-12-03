@@ -1,0 +1,110 @@
+---
+title: Computing Systems
+---
+
+A computer system consists of hardware and system software that work together to run application programs
+for a user. A computer system consists of the following:
+
+- users
+- applications
+- the operating system
+- system utilities
+- hardware abstraction
+- hardware
+
+Consider the following code, we will reference it as `hello.c`:
+
+```c
+#include <stdio.h>
+
+int main(){
+    printf("Hello World!\n");
+    return 0;
+}
+```
+
+The program begins as a 'source file' that is created and modified by a programmer and saved as a text file (in our case `hello.c`). The source file (or program) is a sequence of bits, each with values of 0 or 1. These are usually organized in 8-bit chunks called bytes. More on how this program is represented in the system is found in section [03 Representing Programs](03%20Representing%20Programs.qmd).
+
+All information in a system, including disk files and programs stored in memory, is represented in a bit format. The bits are translated for us and represent characters, unsigned integers (0, 1, 2, 3, etc.), floating point numbers (such as 3.25 or -1.34), negative integers (-1, -2, -3), and so on. Through out this section will will see various encodings for an array of binary digits such as Two's Complement and ASCII.
+
+
+## Hardware Interactions
+
+To run our `hello.c` program, we first have to **compile** it into an executable object file that is then stored on the disk. We've already seen that we can use the gcc compiler to compile the program with the command `gcc hello.c -o hello`. We will continue to refer to this compiled file as `hello`. After it is compiled, we can run the executable file on a Unix system by typing its name in the shell as follows:
+
+```sh
+$ ./hello
+```
+
+To understand what happens to our hello program when we run it, we need to understand 
+the hardware organization of a typical system.
+
+[include an image of a system's hardware here]
+
+### Buses
+
+Running throughout the system is a collection of electical conduits called Buses that carry bytes of information back and forth between components. Busses are typically designed to transfer fixed-sized chunks of data. Most machines now have either 4-byte (32 bit) or 8-byte (64 bit) sized buses. Some examples of bus standards you might be familiar with are the Peripheral Component Interconnect Express bus standard, or PCIe, and the Universal Serial Bus standard, or USB.
+
+
+### I/O Devices
+
+Input/Output (I/O) devices are the system's connection to the external world. The example system pictured above has 4 I/O devices: Keyboard, mouse, display, and disk.
+
+Initially, the executable `hello` program resides on the disk.
+
+
+### Main Memory (RAM)
+
+The main memory, typiclly Random Access Memory, is a temporary storage device that holds both a program and the data it manipulates while the processor is executing the program.
+
+
+::: {.callout-tip}
+# Random Access Memory
+
+Why is RAM referred to as random? The word random here means the computer can access any memory location, at random, directly and in the same amount of time, regardless of where that data is stored. That is in contrast to early computer systems that had memory like magnetic tapes that had to be read sequentially.
+:::
+
+
+
+### Processor
+
+The central processing unit (CPU), or just processor, is the engine, or brain that executes instructions stored in main memory. At its core is a register called the 'program counter' (PC). At any point in time, the PC points at (contains the address of) some machine language instruction in main memory.
+
+From the time electrical power is applied to the system until power is shut off, a processor repeatedly executes the instruction pointed at by the program counter. The processor 'reads' the instruction, pointed at by the PC, 'interprets' the bits in the instruction, 'performs' some simple operation dictated by the instruction, and then 'updates' the PC to point to the next instruction. This is known as the instruction cycle.
+
+
+
+## The Role of the OS
+
+When the shell loads and runs the `hello` program, a message of `Hello, World!` prints to the terminal. However, the executable `hello` program didn't access the hardware such as the display, disk, or main memory directly. Rather, it relied on the services provided by the operating system to get the message to appear in the terminal.
+
+[insert diagram of os acting as intermediary layer]
+
+We can think of the operating system as a layer of software interposed between the application program and the hardware. All attempts by an application to manipulate the hardware must go through the operating system.
+
+The operating system has two primary purposes:
+
+1. To protect the hardware from misuse by runaway applications;
+
+2. To provide applications with simple uniform mechanisms for manipulating complicated and often wildly different low-level hardware devices.
+
+The operating system achieves both goals via the fundamental abstractions:
+
+- processes
+- virtual memory
+- files
+
+### Processes
+
+A **process** is the operating systems abstraction for a running program. Multiple processes can run concurrently on the same system, and each process assumes it has exclusive use of the hardware.
+
+
+### Virtual Memory
+
+Virtual memory is the abstraction that provides each process with the illusion that is has exclusive use of the main memory. A mapping exists from a process's virtual memory to the physical memory. A 64-bit machine has a theoretical limit of 2^64 = 18,446,744,073,709,551,616 memory addresses (or 16 exabytes of virtual memory space), however, they do not use this in practice.
+
+
+### Files
+
+A file is a sequence of bytes, nothing more, nothing less. Every I/O device (disks, keyboards, displays) is modeled as a file. All input and output in the system is performed by reading and writing files, using a 
+small set of 'system calls' known as Unix I/O. 

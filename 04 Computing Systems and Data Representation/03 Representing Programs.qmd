@@ -1,0 +1,35 @@
+---
+title: Representing Programs
+---
+
+
+Each byte represents some text character in the program. Most modern systems represent text characters using the ASCII standard that represents each character with a unique byte-sized integer. This holds true for our `hello.c` program. Each byte has an integer value that corresponds to some character.
+
+```text
+Text:            #   i   n   c   l   u   d   e 
+ASCII Value:     35  105 110 99  108 117 100 101
+Hex Value:       23  69  6e  63  6c  75  64  65
+```
+
+
+
+Files such as our `hello.c` program file that contain exclusively ASCII characters are known as `text files`, all other files are known as `binary files`. 
+
+::: {.callout-tip}
+# View the Hex
+
+To view the bytes of a program (as hex) you can use the command `hexdump [filename]`. For example, to view the bytes of `hello.c`, type `hexdump hello.c` in the terminal. To see the corresponding ASCII characters, you can use the `-C` flag. Here is the full output of `hexdump -C hello.c`. Keep in mind 2 hex digits is 8 binary digits (that is 1 byte). Note that hex is much easier for us as humans to look at than binary.
+
+```text
+Offset    Bytes as Hex                                      Bytes as ASCII
+--------  ------------------------------------------------  ------------------
+00000000  23 69 6e 63 6c 75 64 65  20 3c 73 74 64 69 6f 2e  #include <stdio.
+00000010  68 3e 0a 0a 69 6e 74 20  6d 61 69 6e 28 29 7b 0a  h>..int main(){.
+00000020  20 20 20 20 70 72 69 6e  74 66 28 22 48 65 6c 6c      printf("Hell
+00000030  6f 20 57 6f 72 6c 64 5c  6e 22 29 3b 0a 20 20 20  o World\n");.   
+00000040  20 72 65 74 75 72 6e 20  30 3b 0a 7d 0a            return 0;.}.
+0000004d
+```
+
+A special characters worth pointing out in the hexdump shown is the hex value `0x0a`. In the ASCII it appears as a `.` however it is representing a newline.
+:::

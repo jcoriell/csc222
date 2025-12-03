@@ -1,0 +1,100 @@
+---
+title: The Compilation Process
+---
+
+For the notes included on here, we look back at our program, `hello.c`.
+
+```c
+#include <stdio.h>
+
+int main(){
+    printf("Hello World!\n");
+    return 0;
+}
+```
+
+Writing a program such as `hello.c` in a language such as C makes it easier for humans to read and understand than writing a programing in assembly. However, for the system it must translate the individual C statements into a sequence of low-level machine instructions.
+
+This translation process consists of four phases, known as the 'compilation system'.
+
+[Insert compilation process image]
+
+## Phase 1 - Preprocessing
+
+In preprocessing, a program (the preprocessor) modifies the original C program according to directives included in the program. The directives are the statements at the top that begin with the # character. For example, the `#include <stdio.h>` command in line 1 of `hello.c` tells the preprocessor to read the contents of the system header file `stdio.h`
+and insert it directly into the program text.
+
+For our example, the input to the preprocessor is the file `hello.c`. The output of the preprocessor is still just a text file that contains valid c. We typically give it the file extension of .i to distinguish it from the original source.
+
+::: {.callout-important}
+# Try It Yourself!
+
+Pass the `hello.c` program through the preprocessor. You can use the `-E` flag to stop the compiler after this phase. For example, run this: 
+
+`gcc hello.c -E -o hello.i`
+
+Open `hello.i` in a text editor to see the full contents of the of the program you wrote. 
+:::
+
+
+::: {.callout-tip}
+# Identify the Preprocessor 
+
+You can find the executable binary file for the preprocessor on your machine by running the command `which cpp`. 
+
+You can read more about the preprocessor by running the command `man cpp`.
+:::
+
+
+
+## Phase 2 - Compilation 
+
+
+The compiler translates the text file `hello.i` into a text file containing assembly language, where each statement describes one low-level 'machine-language' instruction in a standard text form. We typically use the `.s` extension when storing this file as output. For example, we might name it `hello.s` for our example with `hello.c`.
+
+
+
+::: {.callout-important}
+# Try It Yourself!
+
+Take the output from the preprocessor `hello.i` and pass it through the compiler. We can do this by using the `-S` flag when compiling your program. For eample, run the following command:
+
+`gcc hello.i -S -o hello.s`
+
+Once you've done that, open the hello.s file in a text editor.
+:::
+
+
+::: {.callout-tip}
+# Identify the Compiler 
+
+You can find the executable binary file for the compiler on your machine by running the command `which cc`. 
+
+You can read more about the preprocessor by running the command `man cpp`.
+:::
+
+## Phase 3: Assembling
+
+- The command `which as` will show you where the assembler is on your machine.
+
+- The assembler translates `hello.s` into machine language instructions, packages them in a form known as a 'relocatable object program', and stores the result in the object file hello.o. The hello.o file is a binary file whose bytes encode machine language instructions rather than characters. If we were to view hello.o with a text editor, it would appear to be gibberish.
+
+- Assembler input: hello.s
+
+- Assembler output: hello.o
+
+- To stop the compilation process at this step, use the `-c` flag when compiling your program. Ex: `gcc hello.c -S -o hello.o`. Doing so will allow you to make an attempt to look at the gibberish produced.
+
+## Phase 4: Linking
+
+- The command `which ld` will show you where the assembler is on your machine.
+
+- Notice that our hello program calls the `printf` function, which is part of the standard C library provided by every C compiler. The `printf` function resides in a separate precompiled object file called `printf.o`, which must somehow be merged with our `hello.o` program. The linker (ld) handles this merging. The result is the hello file, which is an 'executable object file' (or an executable) that is ready to be loaded into memory and executed by the system.
+
+- Linker input: hello.o
+
+- Linker output: hello (executable file)
+
+- To stop the compilation process after this step, just compile like you have previously. Ex: `gcc hello.c -o hello`.
+
+

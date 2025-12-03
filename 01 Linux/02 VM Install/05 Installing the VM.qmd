@@ -1,0 +1,114 @@
+---
+title: Setting Up The Virtual Machine
+---
+
+For this step, the instructions will be different depending on the Linux distribution you chose, be sure to scroll to the appropriate section for your VM's operating system after doing the following step:
+
+1. Boot the VM by selecting it in the left navigation and clicking "Start". 
+
+
+
+## For Ubuntu Desktop
+
+Select "Try to Install Ubuntu" and follow the on screen instructions. 
+
+
+## For Ubuntu Server
+
+This could take some time, so it is not recommended that you update when prompted during the install if you are short on time.
+
+1. When prompted, select "Try to Install Ubuntu".
+
+3. The install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it.
+
+4. Once it is installed it will prompt to reboot. 
+
+5. After rebooting it'll ask you to login with the username and password you created.
+
+6. Setting Up the GUI. 
+
+    a. Run the following two commands separately
+
+
+    ```bash
+    sudo apt update
+    ```
+
+    ```bash
+    sudo apt install ubuntu-desktop
+    ```
+
+    b. Once it is done, turn the machine off by closing the window and selecting the option to turn the machine off. 
+    
+    c. Start the machine and log back in. There should be a GUI at this point.
+
+## For Mint
+
+For Mint, you will be presented with a GUI that should be simple to step through. You'll see a disk in the top left corner labeled "Install Linux Mint". Double click it to start. Some notes for your install follow:
+
+1. Language: Choose English
+
+2. Multimedia Codecs: No (these will not be necessary)
+
+3. Now you'll be presented with the options to `Erase Disk and Install Linux Mint` or `Something Else`. 
+
+    Choosing `Erase Disk and Install Linux Mint` is the simplest option. This will not erase anything on your host machine since we are doing this inside of virtualization software. 
+    
+    If you wanted to be a bit more specific about the partitions that get created, you can choose `Something Else`. Scroll down to the `Partition Details` section of this document for more about this.
+
+    Once you've made your selection, click "Install Now"
+
+4. Time zone: Chicago
+
+5. If you chose `Something Else` for the Erase Disk and Install Linux Mint option, you'll need to jump to the Partition Details section of this document and then come back here when you're done. If you chose `Yes`, move to step 6.
+
+6. Now you'll be asked for some information such as username, computer name, and password. Make a username and password that you'll remember. You do not need to encrypt your home folder, but could if you wanted to.
+
+
+
+## Partition Details
+
+If you chose to do a custom partition, here are some tips. Partitioning gives the user the opportunity to specify how much space is reserved for certain functions of the computer. This in turn allows us to easily update or overwrite our operating system later on without losing the files we were using.
+
+Partitioning is arguably not as used these days with how cheap computers and memory are and the prevalence of all sorts of backup tools. However, it is still a good experience to have as a computer science student because you won’t always be using the latest and greatest computers.
+
+Your hard drive will probably have a name like `/dev/sda` that is the size of all the space you have available for your VM. For each new partition that we create, select the unused space and click the `+` sign to add a partition to it.
+
+1. 1st partition: 
+
+    - 1024 MB
+    - type = primary
+    - location = beginning
+    - use as = ext 2
+    - mount point = /boot
+
+2. 2nd partition: 
+
+    - 4096 MB3
+    - type = primary
+    - location = end
+    - use as = swap area
+
+3. 3rd partition: 
+
+    - 35% of space left
+    - type = primary
+    - location = beginning
+    - use as ext 4
+    - mount point = /
+
+4. 4th partition
+
+    - all that is left
+    - type = primary
+    - location = beginning
+    - use as = ext 4
+    - mount point = /home.
+
+Click install now.
+
+If you get some error messages with suggested partitions, feel free to delete the 4th partition, create the suggested partitions with the suggested sizes and uses, and then recreate the 4th partition with whatever space is left over.
+
+Return to the install instructions that brought you to the Partition Details
+
+
