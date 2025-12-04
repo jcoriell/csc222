@@ -21,7 +21,7 @@ website:
             contents: 
               - 01 Linux/02 VM Install/01 Overview.qmd
               - 01 Linux/02 VM Install/02 Virtualization Software Install.qmd
-              - 01 Linux/02 VM Install/03 Downloading an Image.qmd
+              - 01 Linux/02 VM Install/03 Downloading An Image.qmd
               - 01 Linux/02 VM Install/04 Creating the VM.qmd
               - 01 Linux/02 VM Install/05 Installing the VM.qmd
               - 01 Linux/02 VM Install/06 Creating a Shared Folder.qmd
