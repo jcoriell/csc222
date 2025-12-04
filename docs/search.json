@@ -187,156 +187,84 @@
     ]
   },
   {
-    "objectID": "01 Linux/vm-tools.html",
-    "href": "01 Linux/vm-tools.html",
-    "title": "Virtual Machine Tools",
+    "objectID": "01 Linux/vm-install-mac.html",
+    "href": "01 Linux/vm-install-mac.html",
+    "title": "VM Install On Mac",
     "section": "",
-    "text": "Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.\nOpen the Terminal (shortcut is ctrl+alt+t) and run the following:\n\nFor programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.\n\ng++ is the GNU compiler for the C++ language\ngcc is the GNU compiler for the C language\nmake is used to interpret “makefiles” which are used to control the build process of projects\nlibc6-dev is a GNU C library\ndpkg-dev is used to upload, build, and unpack Debian source packages\n\nsudo apt install build-essential\nFor vim (VI-iMproved):\nsudo apt install vim\nFor cleanup\nsudo apt autoremove\nsudo apt clean\nsudo apt autoclean\nFor VS Code (if you enjoy using it), follow the instructions here: https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/"
+    "text": "Introduction\nFollow the steps below to set up an Ubuntu LTS Machine on your m series chip Mac (m1, m2, etc.)\n\n\n\n\n\n\nNot sure on chip type?\n\n\n\nClick the  icon on the menubar and select About this mac.... It should be indicated under the “Chip” category if it is an m series chip.\n\n\n\n\n\n\n\n\nIf you don’t have an m series chip…\n\n\n\nIf your mac is not an m series mac, then follow the windows install.\n\n\n\n\nPrequisites\nm series mac with macOS\n\n\nSteps\n\nIf you do not already have Homebrew, install it by opening a terminal and running the following command. Otherwise skip this step.\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nInstall multipass with the following command.\nbrew install multipass\nRun the one of the following multipass command to create an instance with the name csc222 (or whatever you want to name it).\n# for a minimal machine with default specs (1 cpu, 5G disk space, 1G memory, )\nmultipass launch 22.04 --name csc222\n# for a more powerful machine that can have space for a gui\nmultipass launch 22.04 --name csc222 --cpus 2 --memory 4G --disk 50G\nOnce the machine is finished setting up. You can access it with the following command. If you named it something other than csc222, use that in place of csc222.\nmultipass shell csc222\nOnce access to the machine is granted, create a user in the machine for yourself. The example below adds a user named josh.\nsudo adduser josh\nTo add yourself to the group of users that can use the command sudo, run the following, but use your username, not josh.\nsudo usermod -aG sudo josh\n\n\n\n(Optional) Add a GUI to your machine\n\nIn the shell on your VM, run the following commands. Note that this may take a few minutes.\nsudo apt update\nsudo apt install ubuntu-desktop xrdp\nWhile the second command is processing, download Microsoft Remote Desktop on your mac by going to the app store.\nMicrosoft Remote Desktop\nOpen another Terminal on your mac and and type multipass list to get the IP address of the machine. It should be something like 10.49.93.209 or 192.168.64.6 (not that exactly, but similar).\nOpen Microsoft RDP and add the connection."
   },
   {
-    "objectID": "01 Linux/vm-tools.html#setting-up-your-machine",
-    "href": "01 Linux/vm-tools.html#setting-up-your-machine",
-    "title": "Virtual Machine Tools",
+    "objectID": "01 Linux/c-on-windows.html",
+    "href": "01 Linux/c-on-windows.html",
+    "title": "Setup for C on Windows",
     "section": "",
-    "text": "Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.\nOpen the Terminal (shortcut is ctrl+alt+t) and run the following:\n\nFor programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.\n\ng++ is the GNU compiler for the C++ language\ngcc is the GNU compiler for the C language\nmake is used to interpret “makefiles” which are used to control the build process of projects\nlibc6-dev is a GNU C library\ndpkg-dev is used to upload, build, and unpack Debian source packages\n\nsudo apt install build-essential\nFor vim (VI-iMproved):\nsudo apt install vim\nFor cleanup\nsudo apt autoremove\nsudo apt clean\nsudo apt autoclean\nFor VS Code (if you enjoy using it), follow the instructions here: https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/"
+    "text": "To run C programs in Windows (64 bit):\n\nGo to this address and select the second tdm-gcc compiler (tdm64-gcc-10.3.0-2.exe): https://jmeubank.github.io/tdm-gcc/download/\nRun the installer and select “Create”\nClick through the install with the next button until complete\n\nYou should now be able to use gcc in command prompt as in Linux\nTo ensure Windows Defender does not delete compiled executables:\n\nCreate a folder in which you work on C programs (For me it is in a CSC222 folder on my desktop)\nOpen Windows Security in the search bar\nSelect Virus and Threat Protection\nUnder “Virus & threat protection updates” select Manage Settings\nScroll down to Exclusions, and select Add or remove exclusions\nSelect Add an exclusion\nSelect Folder\nNavigate to and select the folder where your C programs will be stored\n\nYou should now be able to compile and run C programs as long as they are in this folder."
   },
   {
-    "objectID": "01 Linux/vm-install-win.html",
-    "href": "01 Linux/vm-install-win.html",
-    "title": "VM Install On Windows",
+    "objectID": "01 Linux/additional-steps.html",
+    "href": "01 Linux/additional-steps.html",
+    "title": "Additional Steps",
     "section": "",
-    "text": "In this course you will use a Unix environment. Specifically, you should use the latest LTS release of Ubuntu to ensure you are running the same system as the instructor. If you are using Windows, follow the instructions provided below to install Virtual Box and an Ubuntu virtual machine."
+    "text": "Open the terminal by clicking on the monitor icon at the bottom-left of the desktop. Or you can click on the “start button” (the LM logo at the bottom-left of the desktop) then, click on System and scroll to Terminal Emulator.\nUpdate the Linux Ubuntu system by running the following three commands.\nsudo apt-get update\nsudo apt-get upgrade\nsudo apt-get dist-upgrade\nInstall essential build tools (for programming)\nsudo apt-get install build-essential\nInstall Vim (the ubiquitous text editor)\nsudo apt-get install vim\nCleanup the system\nsudo apt-get autoremove\nsudo apt-get clean\nsudo apt-get autoclean\nSet the autorun script when opening up a terminal.\n\nWe’ll first copy the default provided by the OS.\nsudo cp /etc/bash.bashrc ~/.bashrc\nThen, we ensure that we own it (more on this later).\nsudo chown $USER:$USER ~/.bashrc\nFinally, we’ll load it into the current terminal\nsource ~/.bashrc\n\nAdd the following useful aliases to the the ./bashrc file.\n\nOpen ~/.bashrc in one of the following text editors:\n\nVim - opens in the terminal, there is a learning curve with this one\nvim ~/.bashrc\nNano - opens in the terminal, not a strong learning curve. The ^ symbol means ctrl. So ^x means to type ctrl + x\nnano ~/.bashrc\ngedit - a GUI based text editor\ngedit ~/.bashrc\n\nThe following helpful aliases can be added to the end of the file:\nalias c='clear'\nalias h='history'\nalias j='jobs'\nalias ls='ls -CF --group-directories-first --color=auto $*'\nalias lss='ls -Alh $*'\nalias m='more'\nalias p='ps -ef'\nalias ~='cd ~'\n\nFinally, load them into the current terminal via: source ~/.bashrc"
   },
   {
-    "objectID": "01 Linux/vm-install-win.html#partitioning-the-drive",
-    "href": "01 Linux/vm-install-win.html#partitioning-the-drive",
-    "title": "VM Install On Windows",
-    "section": "Partitioning the Drive",
-    "text": "Partitioning the Drive\n\nNow we will add 4 partitions for /boot, swap, /, and /home to the free space. This setup will result in wiping /boot, /, and swap when updating the OS but /home will not be touched resulting in faster updates (~30 minutes).\n\n\n\nThe partition for /boot stores the Linux kernel images. Set the following parameters.\n        size    2048 MB\n        type    primary\n    location    beginning\n      use as    ext2\n mount point    /boot\n\n\n\nThe partition for the swap area is for memory swap space and hibernation.\n        size    if RAM size &gt;= 4 GB, size = RAM size.\n                otherwise, size = 2x RAM size but no more than 8 GB.\n                Ex: \n                    2 GB RAM: 4 GB swap\n                    4 GB RAM: 4 GB swap\n\n        type    primary\n    location    end\n      use as    swap area\n\n\n\n\n\n\n\nWarning\n\n\n\nThe values in the following image may not match your values\n\n\n\n\nThe partition for / stores the OS, OS configuration files, and applications.\n       size    ~35% of space left\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /\n\n\n\nThe partition for /home stores your files (application configuration, settings, pictures, etc)\n       size    ~65% (the last portion of free space)\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /home\n\n\n\nClick Install Now after creating the partitions."
-  },
-  {
-    "objectID": "01 Linux/vm-install-win.html#final-setup",
-    "href": "01 Linux/vm-install-win.html#final-setup",
-    "title": "VM Install On Windows",
-    "section": "Final Setup",
-    "text": "Final Setup\n\nSet the timezone to the Chicago timezone (for Central).\nSet the user.\nExample:\n    name: zak\n    computer name: zak-csc222\n    username: zak\n    password: something fairly strong that you will remember\n\n    require my password to log in\n    don't encrypt my home folder\nAfter this it will start installing/copying files.\nReboot into Linux!\nGo to the Additional Steps."
-  },
-  {
-    "objectID": "01 Linux/index.html",
-    "href": "01 Linux/index.html",
-    "title": "Linux",
+    "objectID": "01 Linux/02 VM Install/02 Virtualization Software Install.html",
+    "href": "01 Linux/02 VM Install/02 Virtualization Software Install.html",
+    "title": "Installing Virtualization Software",
     "section": "",
-    "text": "01 A Brief History\n02 VM Install Instructions"
-  },
-  {
-    "objectID": "01 Linux/index.html#contents",
-    "href": "01 Linux/index.html#contents",
-    "title": "Linux",
-    "section": "",
-    "text": "01 A Brief History\n02 VM Install Instructions"
-  },
-  {
-    "objectID": "01 Linux/01 A Brief History.html",
-    "href": "01 Linux/01 A Brief History.html",
-    "title": "A Brief History",
-    "section": "",
-    "text": "It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux.\nExamples include:\n\nNetflix\nTwitter/X\nFacebook\nInstagram\nGoogle\nNew York Stock Exchange\n\nMany devices use a Linux distribution. Examples include:\n\nAndroid phones\nChromebooks\nSteam Machine\n\nIt’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.\n\nhttps://www.gnu.org/licenses/gpl-3.0.en.html\n\nIt’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.",
-    "crumbs": [
-      "1 - Linux",
-      "A Brief History"
-    ]
-  },
-  {
-    "objectID": "01 Linux/01 A Brief History.html#why-linux",
-    "href": "01 Linux/01 A Brief History.html#why-linux",
-    "title": "A Brief History",
-    "section": "",
-    "text": "It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux.\nExamples include:\n\nNetflix\nTwitter/X\nFacebook\nInstagram\nGoogle\nNew York Stock Exchange\n\nMany devices use a Linux distribution. Examples include:\n\nAndroid phones\nChromebooks\nSteam Machine\n\nIt’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.\n\nhttps://www.gnu.org/licenses/gpl-3.0.en.html\n\nIt’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.",
-    "crumbs": [
-      "1 - Linux",
-      "A Brief History"
-    ]
-  },
-  {
-    "objectID": "01 Linux/01 A Brief History.html#unix-systems",
-    "href": "01 Linux/01 A Brief History.html#unix-systems",
-    "title": "A Brief History",
-    "section": "UNIX Systems",
-    "text": "UNIX Systems\nUNIX operating system is developed at AT&T Bell Laboratories in 1969. It was developed by Ken Thompson, Dennis Ritchie, Brian Kernighan, and others. Unix was first developed on a PDP-7 in an assembly language, but around 1973 it was rewritten in C, leading to the ability to port it to other machines (a huge innovation at the time!). The first actual port to another platform was made in 1977.\nWhile AT&T distributed the UNIX operating system under licenses to government labs, universities, and industry, other flavors of UNIX were developed. UC Berkeley developed BSD (Berkeley Software Distribution) as a Unix-like replacement, although it used some of AT&T’s code. Other flavors of UNIX were developed in the 1980s such as SunOS, AIX, HP-UX, Xenix, and AT&Ts System V as closed and mixed source projects. For a bigger picture of Unix based and Unix-like Operating Systems, see the family tree pictured below.\n\n\n\nUnix Family Tree - Source: https://www.levenez.com/unix/\n\n\nFor more about UNIX, check out Unix: History and Memoir by Brian Kernighan, a Unix developer (approx 45 min of the story, then Q&A).",
-    "crumbs": [
-      "1 - Linux",
-      "A Brief History"
-    ]
-  },
-  {
-    "objectID": "01 Linux/01 A Brief History.html#the-gnu-project-and-linux",
-    "href": "01 Linux/01 A Brief History.html#the-gnu-project-and-linux",
-    "title": "A Brief History",
-    "section": "The GNU Project and Linux",
-    "text": "The GNU Project and Linux\nThe GNU Project (Pronounced Guh-nu) was started by Richard Stallman in the 1983. Its purpose was to be a free/open Unix-like operating system. GNU stands for GNU is Not Unix. The GNU Project lead to the development of the GNU General Public License (GNU GPL), an open-source software license that gaurantees users the freedoms to use, study, modify, and share software.\nIn 1991, Linux Torvalds developed an OS kernel that was later named Linux and released it under the GNU GPL in 1992. At the time, the GNU Operating System had many utilities but lacked a stable kernel. Linux and GNU OS developers combined the two projects which resulted in the release of the first Linux based operating system, GNU/Linux.\n\n\n\n\n\n\nKernels\n\n\n\nA kernel is the core part of an operating system (OS) that manages essential resources such as memory, processes, devices, and other resources The Linux Information Project - Kernel Definition.\n\n\n\n\n\n\n\n\nGNU/Linux\n\n\n\nAlthough we tend to use the term Linux to refer to an operating system, it is more appropriate to say GNU/Linux as Linux is just the kernel. For more on this, visit https://www.gnu.org/gnu/gnu-linux-faq.html.\n\n\nSince the development of the original GNU/Linux os, many different operating systems based on the Linux kernel have come about. Some common ones are as follows:\n\nUbuntu - used in this class\nMint - used in CSC 442/CYEN 301\nDebian - Ubuntu’s parent, and the base for many other flavors\nRaspberry Pi OS - Has Debian as a parent\nArch - A bare bones OS for full customization\nFedora - The prefered distro of Linus Torvalds\nRedhat - Fedora’s parent. Frequently used for enterprise applications\n\nFor more on different Linux distributions, see the Distro Family Tree from distrowatch.com.\nFor more on GNU/Linux, watch The Making of GNU: The World’s First Open-Source Software and The Making of Linux: The World’s First Open-Source Operating System by ForrestKnight.",
-    "crumbs": [
-      "1 - Linux",
-      "A Brief History"
-    ]
-  },
-  {
-    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html",
-    "href": "01 Linux/02 VM Install/05 Installing the VM.html",
-    "title": "Setting Up The Virtual Machine",
-    "section": "",
-    "text": "For this step, the instructions will be different depending on the Linux distribution you chose, be sure to scroll to the appropriate section for your VM’s operating system after doing the following step:",
+    "text": "In order to use a completely different OS on your computer as a piece of software built into your own machine, you are going to use virtualization. Virtualization allows us to install and use multiple versions of different computers independent of the physical computer we actually have. It allows us to test out different software with the security of knowing we cannot affect our host computer and can even revert to an older version of the software we are trying. The cost of virtualization is that you typically have to be comfortable with running the computer with reduced resources i.e. it doesn’t have access to all your memory or processors.\nTo install Virtual Box virtualization software on your machine, follow the set of instructions below that are most appropriate for you.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing Virtualization Software"
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-desktop",
-    "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-desktop",
-    "title": "Setting Up The Virtual Machine",
-    "section": "For Ubuntu Desktop",
-    "text": "For Ubuntu Desktop\nSelect “Try to Install Ubuntu” and follow the on screen instructions.",
+    "objectID": "01 Linux/02 VM Install/02 Virtualization Software Install.html#virtual-box-download-and-install-for-mac",
+    "href": "01 Linux/02 VM Install/02 Virtualization Software Install.html#virtual-box-download-and-install-for-mac",
+    "title": "Installing Virtualization Software",
+    "section": "Virtual Box Download and Install for Mac",
+    "text": "Virtual Box Download and Install for Mac\nIf you have a Mac and have Homebrew installed, you can run the following command to both download and install Virtual Box. If you don’t have Homebrew installed, it is recommended that you do install it. The instructions are found on the Homebrew homepage.\nbrew install --cask virtualbox",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing Virtualization Software"
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-server",
-    "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-server",
-    "title": "Setting Up The Virtual Machine",
-    "section": "For Ubuntu Server",
-    "text": "For Ubuntu Server\nThis could take some time, so it is not recommended that you update when prompted during the install if you are short on time.\n\nWhen prompted, select “Try to Install Ubuntu”.\nThe install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it.\nOnce it is installed it will prompt to reboot.\nAfter rebooting it’ll ask you to login with the username and password you created.\nSetting Up the GUI.\n\nRun the following two commands separately\n\nsudo apt update\nsudo apt install ubuntu-desktop\n\nOnce it is done, turn the machine off by closing the window and selecting the option to turn the machine off.\nStart the machine and log back in. There should be a GUI at this point.",
+    "objectID": "01 Linux/02 VM Install/02 Virtualization Software Install.html#virtual-box-download-and-install-for-linux",
+    "href": "01 Linux/02 VM Install/02 Virtualization Software Install.html#virtual-box-download-and-install-for-linux",
+    "title": "Installing Virtualization Software",
+    "section": "Virtual Box Download and Install for Linux",
+    "text": "Virtual Box Download and Install for Linux\nIf you are a Linux user, you can download and install virtual box using the following commands.\nsudo apt update\nsudo apt install virtualbox virtualbox-qt\nFor Linux users, it is required to install a virtual machine for this class to be sure you are capable of doing so, but you might end up doing most of your programming on your host machine.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing Virtualization Software"
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-mint",
-    "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-mint",
-    "title": "Setting Up The Virtual Machine",
-    "section": "For Mint",
-    "text": "For Mint\nFor Mint, you will be presented with a GUI that should be simple to step through. You’ll see a disk in the top left corner labeled “Install Linux Mint”. Double click it to start. Some notes for your install follow:\n\nLanguage: Choose English\nMultimedia Codecs: No (these will not be necessary)\nNow you’ll be presented with the options to Erase Disk and Install Linux Mint or Something Else.\nChoosing Erase Disk and Install Linux Mint is the simplest option. This will not erase anything on your host machine since we are doing this inside of virtualization software.\nIf you wanted to be a bit more specific about the partitions that get created, you can choose Something Else. Scroll down to the Partition Details section of this document for more about this.\nOnce you’ve made your selection, click “Install Now”\nTime zone: Chicago\nIf you chose Something Else for the Erase Disk and Install Linux Mint option, you’ll need to jump to the Partition Details section of this document and then come back here when you’re done. If you chose Yes, move to step 6.\nNow you’ll be asked for some information such as username, computer name, and password. Make a username and password that you’ll remember. You do not need to encrypt your home folder, but could if you wanted to.",
+    "objectID": "01 Linux/02 VM Install/02 Virtualization Software Install.html#download-and-install-for-windowsmaclinux",
+    "href": "01 Linux/02 VM Install/02 Virtualization Software Install.html#download-and-install-for-windowsmaclinux",
+    "title": "Installing Virtualization Software",
+    "section": "Download and Install for Windows/Mac/Linux",
+    "text": "Download and Install for Windows/Mac/Linux\nIf you have Windows or one of the previous install methods did not work on your Mac or Linux machine, complete the following steps to install Virtual Box.\n\nDownload Virtual Box from Oracle by visiting https://www.virtualbox.org/wiki/Downloads. Click the appropriate download link for your system.\nInstall Virtual Box\n\n\n\n\n\n\n\nTroubleshooting Tip - Visual C++ 2019\n\n\n\nWhen installing on windows, you might get an error concerning the need to install Visual C++ 2019.\nYou can resolve this error by visiting https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170 and downloading the latest X64 version of Microsoft Visual C++.\nAlternatively, here is a direct download link for convenience https://aka.ms/vs/17/release/vc_redist.x64.exe.\nIf you received this error, restart your computer after VirtualBox has been installed or you may continue to receive errors.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing Virtualization Software"
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#partition-details",
-    "href": "01 Linux/02 VM Install/05 Installing the VM.html#partition-details",
-    "title": "Setting Up The Virtual Machine",
-    "section": "Partition Details",
-    "text": "Partition Details\nIf you chose to do a custom partition, here are some tips. Partitioning gives the user the opportunity to specify how much space is reserved for certain functions of the computer. This in turn allows us to easily update or overwrite our operating system later on without losing the files we were using.\nPartitioning is arguably not as used these days with how cheap computers and memory are and the prevalence of all sorts of backup tools. However, it is still a good experience to have as a computer science student because you won’t always be using the latest and greatest computers.\nYour hard drive will probably have a name like /dev/sda that is the size of all the space you have available for your VM. For each new partition that we create, select the unused space and click the + sign to add a partition to it.\n\n1st partition:\n\n1024 MB\ntype = primary\nlocation = beginning\nuse as = ext 2\nmount point = /boot\n\n2nd partition:\n\n4096 MB3\ntype = primary\nlocation = end\nuse as = swap area\n\n3rd partition:\n\n35% of space left\ntype = primary\nlocation = beginning\nuse as ext 4\nmount point = /\n\n4th partition\n\nall that is left\ntype = primary\nlocation = beginning\nuse as = ext 4\nmount point = /home.\n\n\nClick install now.\nIf you get some error messages with suggested partitions, feel free to delete the 4th partition, create the suggested partitions with the suggested sizes and uses, and then recreate the 4th partition with whatever space is left over.\nReturn to the install instructions that brought you to the Partition Details",
+    "objectID": "01 Linux/02 VM Install/01 Overview.html",
+    "href": "01 Linux/02 VM Install/01 Overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "Over the course of the next few pages, you will complete the setup of a virtual machine on your own computer (the host machine). Be sure to follow all the instructions in the order presented.\nYou may need to complete additional steps, including troublshooting steps, that are not listed here, in which case the internet, your classmates, and your instructor may be able to help out.\nComplete each of the following:\n\nInstalling the Virtualization Software (Virtual Box)\nDownloading the Virtual Machine Image\nCreating the Virtual Machine\nSetting Up the Virtual Machine\nCreating a Shared Folder\nInstalling Tools on VM",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Overview"
     ]
   },
   {
@@ -1598,85 +1526,167 @@
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/01 Overview.html",
-    "href": "01 Linux/02 VM Install/01 Overview.html",
-    "title": "Overview",
+    "objectID": "01 Linux/02 VM Install/07 Installing Tools on VM.html",
+    "href": "01 Linux/02 VM Install/07 Installing Tools on VM.html",
+    "title": "Virtual Machine Tools",
     "section": "",
-    "text": "Over the course of the next few pages, you will complete the setup of a virtual machine on your own computer (the host machine). Be sure to follow all the instructions in the order presented.\nYou may need to complete additional steps, including troublshooting steps, that are not listed here, in which case the internet, your classmates, and your instructor may be able to help out.\nComplete each of the following:\n\nInstalling the Virtualization Software (Virtual Box)\nDownloading the Virtual Machine Image\nCreating the Virtual Machine\nSetting Up the Virtual Machine\nInstalling Needed Software on the Virtual Machine\nSetting Up a Shared Folder on the Virtual Machine",
+    "text": "Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.\nOpen the Terminal (shortcut is ctrl+alt+t) and run the following:\n\nFor programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.\n\ng++ is the GNU compiler for the C++ language\ngcc is the GNU compiler for the C language\nmake is used to interpret “makefiles” which are used to control the build process of projects\nlibc6-dev is a GNU C library\ndpkg-dev is used to upload, build, and unpack Debian source packages\n\nsudo apt install build-essential\nFor vim (VI-iMproved):\nsudo apt install vim\nFor cleanup\nsudo apt autoremove\nsudo apt clean\nsudo apt autoclean\nFor VS Code (if you enjoy using it), follow the instructions here: https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Overview"
+      "Virtual Machine Tools"
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/02 Virtualization Software Install.html",
-    "href": "01 Linux/02 VM Install/02 Virtualization Software Install.html",
-    "title": "Installing Virtualization Software",
+    "objectID": "01 Linux/02 VM Install/07 Installing Tools on VM.html#setting-up-your-machine",
+    "href": "01 Linux/02 VM Install/07 Installing Tools on VM.html#setting-up-your-machine",
+    "title": "Virtual Machine Tools",
     "section": "",
-    "text": "In order to use a completely different OS on your computer as a piece of software built into your own machine, you are going to use virtualization. Virtualization allows us to install and use multiple versions of different computers independent of the physical computer we actually have. It allows us to test out different software with the security of knowing we cannot affect our host computer and can even revert to an older version of the software we are trying. The cost of virtualization is that you typically have to be comfortable with running the computer with reduced resources i.e. it doesn’t have access to all your memory or processors.\nTo install Virtual Box virtualization software on your machine, follow the set of instructions below that are most appropriate for you.",
+    "text": "Click the Ubuntu icon in the bottom left corner and find the Terminal application. You can drag and drop the icon to the dock on the left hand side if you want easier access.\nOpen the Terminal (shortcut is ctrl+alt+t) and run the following:\n\nFor programming tools install the build-essential package. This meta-package contains five packages: g++, gcc, make, libc6-dev, and dpkg-dev.\n\ng++ is the GNU compiler for the C++ language\ngcc is the GNU compiler for the C language\nmake is used to interpret “makefiles” which are used to control the build process of projects\nlibc6-dev is a GNU C library\ndpkg-dev is used to upload, build, and unpack Debian source packages\n\nsudo apt install build-essential\nFor vim (VI-iMproved):\nsudo apt install vim\nFor cleanup\nsudo apt autoremove\nsudo apt clean\nsudo apt autoclean\nFor VS Code (if you enjoy using it), follow the instructions here: https://linuxiac.com/how-to-install-vs-code-on-ubuntu-24-04-lts/",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Installing Virtualization Software"
+      "Virtual Machine Tools"
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/02 Virtualization Software Install.html#virtual-box-download-and-install-for-mac",
-    "href": "01 Linux/02 VM Install/02 Virtualization Software Install.html#virtual-box-download-and-install-for-mac",
-    "title": "Installing Virtualization Software",
-    "section": "Virtual Box Download and Install for Mac",
-    "text": "Virtual Box Download and Install for Mac\nIf you have a Mac and have Homebrew installed, you can run the following command to both download and install Virtual Box. If you don’t have Homebrew installed, it is recommended that you do install it. The instructions are found on the Homebrew homepage.\nbrew install --cask virtualbox",
+    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html",
+    "href": "01 Linux/02 VM Install/05 Installing the VM.html",
+    "title": "Setting Up The Virtual Machine",
+    "section": "",
+    "text": "For this step, the instructions will be different depending on the Linux distribution you chose, be sure to scroll to the appropriate section for your VM’s operating system after doing the following step:",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Installing Virtualization Software"
+      "Setting Up The Virtual Machine"
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/02 Virtualization Software Install.html#virtual-box-download-and-install-for-linux",
-    "href": "01 Linux/02 VM Install/02 Virtualization Software Install.html#virtual-box-download-and-install-for-linux",
-    "title": "Installing Virtualization Software",
-    "section": "Virtual Box Download and Install for Linux",
-    "text": "Virtual Box Download and Install for Linux\nIf you are a Linux user, you can download and install virtual box using the following commands.\nsudo apt update\nsudo apt install virtualbox virtualbox-qt\nFor Linux users, it is required to install a virtual machine for this class to be sure you are capable of doing so, but you might end up doing most of your programming on your host machine.",
+    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-desktop",
+    "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-desktop",
+    "title": "Setting Up The Virtual Machine",
+    "section": "For Ubuntu Desktop",
+    "text": "For Ubuntu Desktop\nSelect “Try to Install Ubuntu” and follow the on screen instructions.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Installing Virtualization Software"
+      "Setting Up The Virtual Machine"
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/02 Virtualization Software Install.html#download-and-install-for-windowsmaclinux",
-    "href": "01 Linux/02 VM Install/02 Virtualization Software Install.html#download-and-install-for-windowsmaclinux",
-    "title": "Installing Virtualization Software",
-    "section": "Download and Install for Windows/Mac/Linux",
-    "text": "Download and Install for Windows/Mac/Linux\nIf you have Windows or one of the previous install methods did not work on your Mac or Linux machine, complete the following steps to install Virtual Box.\n\nDownload Virtual Box from Oracle by visiting https://www.virtualbox.org/wiki/Downloads. Click the appropriate download link for your system.\nInstall Virtual Box\n\n\n\n\n\n\n\nTroubleshooting Tip - Visual C++ 2019\n\n\n\nWhen installing on windows, you might get an error concerning the need to install Visual C++ 2019.\nYou can resolve this error by visiting https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170 and downloading the latest X64 version of Microsoft Visual C++.\nAlternatively, here is a direct download link for convenience https://aka.ms/vs/17/release/vc_redist.x64.exe.\nIf you received this error, restart your computer after VirtualBox has been installed or you may continue to receive errors.",
+    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-server",
+    "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-server",
+    "title": "Setting Up The Virtual Machine",
+    "section": "For Ubuntu Server",
+    "text": "For Ubuntu Server\nThis could take some time, so it is not recommended that you update when prompted during the install if you are short on time.\n\nWhen prompted, select “Try to Install Ubuntu”.\nThe install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it.\nOnce it is installed it will prompt to reboot.\nAfter rebooting it’ll ask you to login with the username and password you created.\nSetting Up the GUI.\n\nRun the following two commands separately\n\nsudo apt update\nsudo apt install ubuntu-desktop\n\nOnce it is done, turn the machine off by closing the window and selecting the option to turn the machine off.\nStart the machine and log back in. There should be a GUI at this point.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Installing Virtualization Software"
+      "Setting Up The Virtual Machine"
     ]
   },
   {
-    "objectID": "01 Linux/additional-steps.html",
-    "href": "01 Linux/additional-steps.html",
-    "title": "Additional Steps",
-    "section": "",
-    "text": "Open the terminal by clicking on the monitor icon at the bottom-left of the desktop. Or you can click on the “start button” (the LM logo at the bottom-left of the desktop) then, click on System and scroll to Terminal Emulator.\nUpdate the Linux Ubuntu system by running the following three commands.\nsudo apt-get update\nsudo apt-get upgrade\nsudo apt-get dist-upgrade\nInstall essential build tools (for programming)\nsudo apt-get install build-essential\nInstall Vim (the ubiquitous text editor)\nsudo apt-get install vim\nCleanup the system\nsudo apt-get autoremove\nsudo apt-get clean\nsudo apt-get autoclean\nSet the autorun script when opening up a terminal.\n\nWe’ll first copy the default provided by the OS.\nsudo cp /etc/bash.bashrc ~/.bashrc\nThen, we ensure that we own it (more on this later).\nsudo chown $USER:$USER ~/.bashrc\nFinally, we’ll load it into the current terminal\nsource ~/.bashrc\n\nAdd the following useful aliases to the the ./bashrc file.\n\nOpen ~/.bashrc in one of the following text editors:\n\nVim - opens in the terminal, there is a learning curve with this one\nvim ~/.bashrc\nNano - opens in the terminal, not a strong learning curve. The ^ symbol means ctrl. So ^x means to type ctrl + x\nnano ~/.bashrc\ngedit - a GUI based text editor\ngedit ~/.bashrc\n\nThe following helpful aliases can be added to the end of the file:\nalias c='clear'\nalias h='history'\nalias j='jobs'\nalias ls='ls -CF --group-directories-first --color=auto $*'\nalias lss='ls -Alh $*'\nalias m='more'\nalias p='ps -ef'\nalias ~='cd ~'\n\nFinally, load them into the current terminal via: source ~/.bashrc"
+    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-mint",
+    "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-mint",
+    "title": "Setting Up The Virtual Machine",
+    "section": "For Mint",
+    "text": "For Mint\nFor Mint, you will be presented with a GUI that should be simple to step through. You’ll see a disk in the top left corner labeled “Install Linux Mint”. Double click it to start. Some notes for your install follow:\n\nLanguage: Choose English\nMultimedia Codecs: No (these will not be necessary)\nNow you’ll be presented with the options to Erase Disk and Install Linux Mint or Something Else.\nChoosing Erase Disk and Install Linux Mint is the simplest option. This will not erase anything on your host machine since we are doing this inside of virtualization software.\nIf you wanted to be a bit more specific about the partitions that get created, you can choose Something Else. Scroll down to the Partition Details section of this document for more about this.\nOnce you’ve made your selection, click “Install Now”\nTime zone: Chicago\nIf you chose Something Else for the Erase Disk and Install Linux Mint option, you’ll need to jump to the Partition Details section of this document and then come back here when you’re done. If you chose Yes, move to step 6.\nNow you’ll be asked for some information such as username, computer name, and password. Make a username and password that you’ll remember. You do not need to encrypt your home folder, but could if you wanted to.",
+    "crumbs": [
+      "1 - Linux",
+      "VM Install",
+      "Setting Up The Virtual Machine"
+    ]
   },
   {
-    "objectID": "01 Linux/c-on-windows.html",
-    "href": "01 Linux/c-on-windows.html",
-    "title": "Setup for C on Windows",
-    "section": "",
-    "text": "To run C programs in Windows (64 bit):\n\nGo to this address and select the second tdm-gcc compiler (tdm64-gcc-10.3.0-2.exe): https://jmeubank.github.io/tdm-gcc/download/\nRun the installer and select “Create”\nClick through the install with the next button until complete\n\nYou should now be able to use gcc in command prompt as in Linux\nTo ensure Windows Defender does not delete compiled executables:\n\nCreate a folder in which you work on C programs (For me it is in a CSC222 folder on my desktop)\nOpen Windows Security in the search bar\nSelect Virus and Threat Protection\nUnder “Virus & threat protection updates” select Manage Settings\nScroll down to Exclusions, and select Add or remove exclusions\nSelect Add an exclusion\nSelect Folder\nNavigate to and select the folder where your C programs will be stored\n\nYou should now be able to compile and run C programs as long as they are in this folder."
+    "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#partition-details",
+    "href": "01 Linux/02 VM Install/05 Installing the VM.html#partition-details",
+    "title": "Setting Up The Virtual Machine",
+    "section": "Partition Details",
+    "text": "Partition Details\nIf you chose to do a custom partition, here are some tips. Partitioning gives the user the opportunity to specify how much space is reserved for certain functions of the computer. This in turn allows us to easily update or overwrite our operating system later on without losing the files we were using.\nPartitioning is arguably not as used these days with how cheap computers and memory are and the prevalence of all sorts of backup tools. However, it is still a good experience to have as a computer science student because you won’t always be using the latest and greatest computers.\nYour hard drive will probably have a name like /dev/sda that is the size of all the space you have available for your VM. For each new partition that we create, select the unused space and click the + sign to add a partition to it.\n\n1st partition:\n\n1024 MB\ntype = primary\nlocation = beginning\nuse as = ext 2\nmount point = /boot\n\n2nd partition:\n\n4096 MB3\ntype = primary\nlocation = end\nuse as = swap area\n\n3rd partition:\n\n35% of space left\ntype = primary\nlocation = beginning\nuse as ext 4\nmount point = /\n\n4th partition\n\nall that is left\ntype = primary\nlocation = beginning\nuse as = ext 4\nmount point = /home.\n\n\nClick install now.\nIf you get some error messages with suggested partitions, feel free to delete the 4th partition, create the suggested partitions with the suggested sizes and uses, and then recreate the 4th partition with whatever space is left over.\nReturn to the install instructions that brought you to the Partition Details",
+    "crumbs": [
+      "1 - Linux",
+      "VM Install",
+      "Setting Up The Virtual Machine"
+    ]
   },
   {
-    "objectID": "01 Linux/vm-install-mac.html",
-    "href": "01 Linux/vm-install-mac.html",
-    "title": "VM Install On Mac",
+    "objectID": "01 Linux/01 A Brief History.html",
+    "href": "01 Linux/01 A Brief History.html",
+    "title": "A Brief History",
     "section": "",
-    "text": "Introduction\nFollow the steps below to set up an Ubuntu LTS Machine on your m series chip Mac (m1, m2, etc.)\n\n\n\n\n\n\nNot sure on chip type?\n\n\n\nClick the  icon on the menubar and select About this mac.... It should be indicated under the “Chip” category if it is an m series chip.\n\n\n\n\n\n\n\n\nIf you don’t have an m series chip…\n\n\n\nIf your mac is not an m series mac, then follow the windows install.\n\n\n\n\nPrequisites\nm series mac with macOS\n\n\nSteps\n\nIf you do not already have Homebrew, install it by opening a terminal and running the following command. Otherwise skip this step.\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nInstall multipass with the following command.\nbrew install multipass\nRun the one of the following multipass command to create an instance with the name csc222 (or whatever you want to name it).\n# for a minimal machine with default specs (1 cpu, 5G disk space, 1G memory, )\nmultipass launch 22.04 --name csc222\n# for a more powerful machine that can have space for a gui\nmultipass launch 22.04 --name csc222 --cpus 2 --memory 4G --disk 50G\nOnce the machine is finished setting up. You can access it with the following command. If you named it something other than csc222, use that in place of csc222.\nmultipass shell csc222\nOnce access to the machine is granted, create a user in the machine for yourself. The example below adds a user named josh.\nsudo adduser josh\nTo add yourself to the group of users that can use the command sudo, run the following, but use your username, not josh.\nsudo usermod -aG sudo josh\n\n\n\n(Optional) Add a GUI to your machine\n\nIn the shell on your VM, run the following commands. Note that this may take a few minutes.\nsudo apt update\nsudo apt install ubuntu-desktop xrdp\nWhile the second command is processing, download Microsoft Remote Desktop on your mac by going to the app store.\nMicrosoft Remote Desktop\nOpen another Terminal on your mac and and type multipass list to get the IP address of the machine. It should be something like 10.49.93.209 or 192.168.64.6 (not that exactly, but similar).\nOpen Microsoft RDP and add the connection."
+    "text": "It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux.\nExamples include:\n\nNetflix\nTwitter/X\nFacebook\nInstagram\nGoogle\nNew York Stock Exchange\n\nMany devices use a Linux distribution. Examples include:\n\nAndroid phones\nChromebooks\nSteam Machine\n\nIt’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.\n\nhttps://www.gnu.org/licenses/gpl-3.0.en.html\n\nIt’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.",
+    "crumbs": [
+      "1 - Linux",
+      "A Brief History"
+    ]
+  },
+  {
+    "objectID": "01 Linux/01 A Brief History.html#why-linux",
+    "href": "01 Linux/01 A Brief History.html#why-linux",
+    "title": "A Brief History",
+    "section": "",
+    "text": "It’s everywhere. Browsing the internet? Doom scrolling? Streaming a movie? Most servers (~96%) run on some form of linux.\nExamples include:\n\nNetflix\nTwitter/X\nFacebook\nInstagram\nGoogle\nNew York Stock Exchange\n\nMany devices use a Linux distribution. Examples include:\n\nAndroid phones\nChromebooks\nSteam Machine\n\nIt’s versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.\n\nhttps://www.gnu.org/licenses/gpl-3.0.en.html\n\nIt’s a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.",
+    "crumbs": [
+      "1 - Linux",
+      "A Brief History"
+    ]
+  },
+  {
+    "objectID": "01 Linux/01 A Brief History.html#unix-systems",
+    "href": "01 Linux/01 A Brief History.html#unix-systems",
+    "title": "A Brief History",
+    "section": "UNIX Systems",
+    "text": "UNIX Systems\nUNIX operating system is developed at AT&T Bell Laboratories in 1969. It was developed by Ken Thompson, Dennis Ritchie, Brian Kernighan, and others. Unix was first developed on a PDP-7 in an assembly language, but around 1973 it was rewritten in C, leading to the ability to port it to other machines (a huge innovation at the time!). The first actual port to another platform was made in 1977.\nWhile AT&T distributed the UNIX operating system under licenses to government labs, universities, and industry, other flavors of UNIX were developed. UC Berkeley developed BSD (Berkeley Software Distribution) as a Unix-like replacement, although it used some of AT&T’s code. Other flavors of UNIX were developed in the 1980s such as SunOS, AIX, HP-UX, Xenix, and AT&Ts System V as closed and mixed source projects. For a bigger picture of Unix based and Unix-like Operating Systems, see the family tree pictured below.\n\n\n\nUnix Family Tree - Source: https://www.levenez.com/unix/\n\n\nFor more about UNIX, check out Unix: History and Memoir by Brian Kernighan, a Unix developer (approx 45 min of the story, then Q&A).",
+    "crumbs": [
+      "1 - Linux",
+      "A Brief History"
+    ]
+  },
+  {
+    "objectID": "01 Linux/01 A Brief History.html#the-gnu-project-and-linux",
+    "href": "01 Linux/01 A Brief History.html#the-gnu-project-and-linux",
+    "title": "A Brief History",
+    "section": "The GNU Project and Linux",
+    "text": "The GNU Project and Linux\nThe GNU Project (Pronounced Guh-nu) was started by Richard Stallman in the 1983. Its purpose was to be a free/open Unix-like operating system. GNU stands for GNU is Not Unix. The GNU Project lead to the development of the GNU General Public License (GNU GPL), an open-source software license that gaurantees users the freedoms to use, study, modify, and share software.\nIn 1991, Linux Torvalds developed an OS kernel that was later named Linux and released it under the GNU GPL in 1992. At the time, the GNU Operating System had many utilities but lacked a stable kernel. Linux and GNU OS developers combined the two projects which resulted in the release of the first Linux based operating system, GNU/Linux.\n\n\n\n\n\n\nKernels\n\n\n\nA kernel is the core part of an operating system (OS) that manages essential resources such as memory, processes, devices, and other resources The Linux Information Project - Kernel Definition.\n\n\n\n\n\n\n\n\nGNU/Linux\n\n\n\nAlthough we tend to use the term Linux to refer to an operating system, it is more appropriate to say GNU/Linux as Linux is just the kernel. For more on this, visit https://www.gnu.org/gnu/gnu-linux-faq.html.\n\n\nSince the development of the original GNU/Linux os, many different operating systems based on the Linux kernel have come about. Some common ones are as follows:\n\nUbuntu - used in this class\nMint - used in CSC 442/CYEN 301\nDebian - Ubuntu’s parent, and the base for many other flavors\nRaspberry Pi OS - Has Debian as a parent\nArch - A bare bones OS for full customization\nFedora - The prefered distro of Linus Torvalds\nRedhat - Fedora’s parent. Frequently used for enterprise applications\n\nFor more on different Linux distributions, see the Distro Family Tree from distrowatch.com.\nFor more on GNU/Linux, watch The Making of GNU: The World’s First Open-Source Software and The Making of Linux: The World’s First Open-Source Operating System by ForrestKnight.",
+    "crumbs": [
+      "1 - Linux",
+      "A Brief History"
+    ]
+  },
+  {
+    "objectID": "01 Linux/index.html",
+    "href": "01 Linux/index.html",
+    "title": "Linux",
+    "section": "",
+    "text": "01 A Brief History\n02 VM Install Instructions"
+  },
+  {
+    "objectID": "01 Linux/index.html#contents",
+    "href": "01 Linux/index.html#contents",
+    "title": "Linux",
+    "section": "",
+    "text": "01 A Brief History\n02 VM Install Instructions"
+  },
+  {
+    "objectID": "01 Linux/vm-install-win.html",
+    "href": "01 Linux/vm-install-win.html",
+    "title": "VM Install On Windows",
+    "section": "",
+    "text": "In this course you will use a Unix environment. Specifically, you should use the latest LTS release of Ubuntu to ensure you are running the same system as the instructor. If you are using Windows, follow the instructions provided below to install Virtual Box and an Ubuntu virtual machine."
+  },
+  {
+    "objectID": "01 Linux/vm-install-win.html#partitioning-the-drive",
+    "href": "01 Linux/vm-install-win.html#partitioning-the-drive",
+    "title": "VM Install On Windows",
+    "section": "Partitioning the Drive",
+    "text": "Partitioning the Drive\n\nNow we will add 4 partitions for /boot, swap, /, and /home to the free space. This setup will result in wiping /boot, /, and swap when updating the OS but /home will not be touched resulting in faster updates (~30 minutes).\n\n\n\nThe partition for /boot stores the Linux kernel images. Set the following parameters.\n        size    2048 MB\n        type    primary\n    location    beginning\n      use as    ext2\n mount point    /boot\n\n\n\nThe partition for the swap area is for memory swap space and hibernation.\n        size    if RAM size &gt;= 4 GB, size = RAM size.\n                otherwise, size = 2x RAM size but no more than 8 GB.\n                Ex: \n                    2 GB RAM: 4 GB swap\n                    4 GB RAM: 4 GB swap\n\n        type    primary\n    location    end\n      use as    swap area\n\n\n\n\n\n\n\nWarning\n\n\n\nThe values in the following image may not match your values\n\n\n\n\nThe partition for / stores the OS, OS configuration files, and applications.\n       size    ~35% of space left\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /\n\n\n\nThe partition for /home stores your files (application configuration, settings, pictures, etc)\n       size    ~65% (the last portion of free space)\n       type    primary\n   location    beginning\n     use as    ext4\nmount point    /home\n\n\n\nClick Install Now after creating the partitions."
+  },
+  {
+    "objectID": "01 Linux/vm-install-win.html#final-setup",
+    "href": "01 Linux/vm-install-win.html#final-setup",
+    "title": "VM Install On Windows",
+    "section": "Final Setup",
+    "text": "Final Setup\n\nSet the timezone to the Chicago timezone (for Central).\nSet the user.\nExample:\n    name: zak\n    computer name: zak-csc222\n    username: zak\n    password: something fairly strong that you will remember\n\n    require my password to log in\n    don't encrypt my home folder\nAfter this it will start installing/copying files.\nReboot into Linux!\nGo to the Additional Steps."
   },
   {
     "objectID": "01 Linux/linux-filesystem.html",

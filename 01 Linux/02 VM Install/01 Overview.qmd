@@ -15,9 +15,9 @@ Complete each of the following:
 
 - [Creating the Virtual Machine](04 Installing the VM.html)
 
-- [Setting Up the Virtual Machine]()
+- [Setting Up the Virtual Machine](05 Installing the VM.html)
 
-- [Installing Needed Software on the Virtual Machine]()
+- [Creating a Shared Folder](06 Creating a Shared Folder.html)
 
-- [Setting Up a Shared Folder on the Virtual Machine]()
+- [Installing Tools on VM](07 Installing Tools on VM.html)
 

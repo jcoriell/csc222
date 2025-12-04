@@ -25,6 +25,7 @@ website:
               - 01 Linux/02 VM Install/04 Creating the VM.qmd
               - 01 Linux/02 VM Install/05 Installing the VM.qmd
               - 01 Linux/02 VM Install/06 Creating a Shared Folder.qmd
+              - 01 Linux/02 VM Install/07 Installing Tools on VM.qmd
           - 01 Linux/linux-filesystem.qmd
           # - linux/vm-install-win.qmd
           # - linux/vm-install-mac.qmd
