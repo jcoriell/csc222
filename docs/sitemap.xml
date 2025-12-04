@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/05 The Move Instruction.html</loc>
+    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/08 Arithmetic Instructions.html</loc>
+    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/02 Register Conventions.html</loc>
+    <lastmod>2025-02-25T18:35:56.167Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/07 Status Flags.html</loc>
+    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/06 The Load Effective Address Instruction.html</loc>
+    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/06 Bash Scripting/05-Case.html</loc>
+    <lastmod>2025-02-20T16:41:51.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/06 Bash Scripting/04-Exit-Codes.html</loc>
+    <lastmod>2025-02-20T16:41:03.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/06 Bash Scripting/06-Loops.html</loc>
+    <lastmod>2025-02-20T21:27:28.260Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/06 Bash Scripting/02-Args.html</loc>
+    <lastmod>2025-02-20T16:38:13.547Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/vm-install-mac.html</loc>
+    <lastmod>2023-11-29T15:04:24.323Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/c-on-windows.html</loc>
+    <lastmod>2025-01-30T15:29:00.374Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/additional-steps.html</loc>
+    <lastmod>2023-11-29T17:45:09.413Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/02 VM Install/02 Virtualization Software Install.html</loc>
+    <lastmod>2025-11-24T20:45:18.045Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/02 VM Install/01 Overview.html</loc>
+    <lastmod>2025-12-04T16:55:37.857Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/02 VM Install/06 Creating a Shared Folder.html</loc>
+    <lastmod>2025-11-24T21:29:18.256Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/02 VM Install/03 Downloading An Image.html</loc>
+    <lastmod>2025-12-04T17:16:19.957Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/00 Housekeeping/01 Syllabus.html</loc>
+    <lastmod>2025-11-18T16:20:12.695Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/index.html</loc>
+    <lastmod>2025-11-24T19:56:58.899Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/05 Byte Ordering Conventions.html</loc>
+    <lastmod>2025-11-18T23:26:19.284Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/02 The Compilation Process.html</loc>
+    <lastmod>2025-11-20T22:05:33.974Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/01-HelloWorld.html</loc>
+    <lastmod>2024-12-05T14:14:30.629Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/04-Functions.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/10-Files.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/11-Fork.html</loc>
+    <lastmod>2024-12-05T14:14:30.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/09-Sample-Applications.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/03-Operators.html</loc>
+    <lastmod>2024-12-05T14:14:30.629Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/08-Structs-and-Unions.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/04 Redirection.html</loc>
+    <lastmod>2024-12-19T16:00:43.471Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/01 Basic Commands.html</loc>
+    <lastmod>2024-12-18T19:32:03.882Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/06 Grep and Regex.html</loc>
+    <lastmod>2024-12-20T13:58:36.504Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/03 Other Useful Tips.html</loc>
+    <lastmod>2024-12-19T15:54:00.013Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/02 Working With Files.html</loc>
+    <lastmod>2024-12-19T15:21:03.421Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/00 Background.html</loc>
+    <lastmod>2025-05-22T18:39:25.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/05 File Permissions.html</loc>
+    <lastmod>2024-12-19T16:15:27.624Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/05-More-on-Data.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/07-Memory-Allocation.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/06-Sample-Applications.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/02-DataTypes.html</loc>
+    <lastmod>2024-12-05T14:14:30.629Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/13-Exec-Functions.html</loc>
+    <lastmod>2024-12-05T14:14:30.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/12-Piping.html</loc>
+    <lastmod>2024-12-05T14:14:30.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/04 Representing Numeric Data.html</loc>
+    <lastmod>2025-01-28T15:52:57.221Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/01 Computing Systems.html</loc>
+    <lastmod>2025-11-20T20:05:42.604Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/03 Representing Programs.html</loc>
+    <lastmod>2025-11-20T19:23:42.083Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/about.html</loc>
+    <lastmod>2023-11-20T21:48:25.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/00 Housekeeping/index.html</loc>
+    <lastmod>2025-11-24T20:00:55.575Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/02 VM Install/04 Creating the VM.html</loc>
+    <lastmod>2025-12-04T16:57:46.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/02 VM Install/07 Installing Tools on VM.html</loc>
+    <lastmod>2025-12-04T16:46:49.008Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/02 VM Install/05 Installing the VM.html</loc>
+    <lastmod>2025-12-04T16:56:14.822Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/01 A Brief History.html</loc>
+    <lastmod>2025-11-24T20:05:05.389Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/index.html</loc>
+    <lastmod>2025-11-24T20:35:59.320Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/vm-install-win.html</loc>
+    <lastmod>2023-11-29T17:44:02.760Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/01 Linux/linux-filesystem.html</loc>
+    <lastmod>2023-12-05T22:54:18.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/06 Bash Scripting/03-Conditionals.html</loc>
+    <lastmod>2025-02-20T16:39:25.343Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/06 Bash Scripting/01-Intro.html</loc>
+    <lastmod>2025-02-20T16:36:43.558Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/06 Bash Scripting/07-Functions.html</loc>
+    <lastmod>2025-02-20T16:30:15.769Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/04 Accessing Values with Operands.html</loc>
+    <lastmod>2025-02-25T19:30:21.596Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/01 Register Names.html</loc>
+    <lastmod>2025-02-25T18:26:54.794Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/03 Interpreting Operands.html</loc>
+    <lastmod>2025-02-25T19:30:19.225Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/09 Comparing and Jumps.html</loc>
+    <lastmod>2025-02-26T22:32:45.246Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/10 Reverse Engineering with C.html</loc>
+    <lastmod>2025-02-26T21:57:13.110Z</lastmod>
+  </url>
+</urlset>

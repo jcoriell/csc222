@@ -4,6 +4,7 @@ project:
 
 website:
   title: "CSC 222 Systems Programming"
+  site-url: https://csc222.jcor.dev
   sidebar:
     style: "floating"
     search: true

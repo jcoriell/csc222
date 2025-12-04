@@ -1,5 +1,5 @@
 ---
-title: Downloading A Virtual Machine Image
+title: Downloading An Image
 ---
 
 

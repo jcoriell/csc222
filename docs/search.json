@@ -282,37 +282,37 @@
   {
     "objectID": "01 Linux/02 VM Install/03 Downloading An Image.html",
     "href": "01 Linux/02 VM Install/03 Downloading An Image.html",
-    "title": "Downloading A Virtual Machine Image",
+    "title": "Downloading An Image",
     "section": "",
     "text": "For this course it is recommended that you use Mint or Ubuntu, although there are many more flavors of Linux available. Below is a very short list of the distros that most of you will either use or become familiar with eventually.\n\nUbuntu is designed with beginners in mind. It is a general purpose distro with both server and desktop environments. It is also the most popular distribution.\nLinux mint is based on Ubuntu and is good for beginners who are switching from windows. This is because it is designed to be familiar for windows users.\nDebian is one of the oldest distros and is typically used where stability is paramount. It is used by experienced users and is popular for servers and mission critical environments.\nArch linux is used by advanced users for whom customization and minimalist systems are important. Users of this system typically want to be involved in manually setting up everything on the computer.\nKali linux is based on debian and is used by cyber security professionals. This is because it comes with multiple tools for penetration testing, forensics and security research\nRaspbian is a version of linux designed to work on raspberry pis. The focus of this distro is being light weight (i.e. not taking up a lot of space), and yet work fast with the limited hardware resources one might find on a microcomputer like a raspberry pi",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Downloading A Virtual Machine Image"
+      "Downloading An Image"
     ]
   },
   {
     "objectID": "01 Linux/02 VM Install/03 Downloading An Image.html#flavors-of-linux",
     "href": "01 Linux/02 VM Install/03 Downloading An Image.html#flavors-of-linux",
-    "title": "Downloading A Virtual Machine Image",
+    "title": "Downloading An Image",
     "section": "",
     "text": "For this course it is recommended that you use Mint or Ubuntu, although there are many more flavors of Linux available. Below is a very short list of the distros that most of you will either use or become familiar with eventually.\n\nUbuntu is designed with beginners in mind. It is a general purpose distro with both server and desktop environments. It is also the most popular distribution.\nLinux mint is based on Ubuntu and is good for beginners who are switching from windows. This is because it is designed to be familiar for windows users.\nDebian is one of the oldest distros and is typically used where stability is paramount. It is used by experienced users and is popular for servers and mission critical environments.\nArch linux is used by advanced users for whom customization and minimalist systems are important. Users of this system typically want to be involved in manually setting up everything on the computer.\nKali linux is based on debian and is used by cyber security professionals. This is because it comes with multiple tools for penetration testing, forensics and security research\nRaspbian is a version of linux designed to work on raspberry pis. The focus of this distro is being light weight (i.e. not taking up a lot of space), and yet work fast with the limited hardware resources one might find on a microcomputer like a raspberry pi",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Downloading A Virtual Machine Image"
+      "Downloading An Image"
     ]
   },
   {
     "objectID": "01 Linux/02 VM Install/03 Downloading An Image.html#downloading-an-iso",
     "href": "01 Linux/02 VM Install/03 Downloading An Image.html#downloading-an-iso",
-    "title": "Downloading A Virtual Machine Image",
+    "title": "Downloading An Image",
     "section": "Downloading an ISO",
     "text": "Downloading an ISO\nIn order to install a guest operating system with Virtual Box, you’ll want a .iso file that contains the image of the guest OS. Follow the .iso download instructions that are most appropriate for your machine.\n\nFor Mac Users\nIf you have an Apple Silicon based Mac, download Ubuntu 24 Server for Arm. Note that Ubuntu Server does not come with a GUI based desktop environment, but it does allow you to install one, which is recomended for this course.\nIf you have an Intel based Mac, download Ubuntu 24 LTS.\nOnce you have downloaded the .iso file, move the downloaded file to the folder you have created for this course on your computer so you can easily find it when you need it later.\n\n\n\n\n\n\nApple Silicon or Intel?\n\n\n\nNot sure what type of Mac you have? Click the Apple icon in the top left corner of your screen and select “About This Mac”. If the chip is one of the m-series chips (m1, m2, etc.), then you have an Apple Silicon based machine.\n\n\n\n\nFor Linux Users\nIf you have an x86-64/amd64 based machine, choose between either of the following. If you use Ubuntu regularly, try Mint, if you use Mint, try Ubuntu. If you’re a Linux user and you want to try Arch or a non GNU/Linux based distro, go for it, just know that support for this course will be limited to Ubuntu and Mint.\n\nUbuntu 24 LTS\nLinux Mint\n\nOnce you have downloaded the .iso file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later.\n\n\n\n\n\n\nI already use Linux, so why?\n\n\n\nYou might be wondering, “I already use a GNU/Linux environment? Why do I need to install a VM?”\nWe just need to make sure this is a skill you have and understand. Most of the work/programs for this course can be completed on any Unix-Like environemnt.\nAlso, perhaps there is software we will install that you don’t necessarily want on your host, this will create an environment for you to modify that wont affect your host.\n\n\n\n\nFor Windows Users\nIf you have an x86-64/amd64 based machine, choose between either of the following:\n\nUbuntu 24 LTS\nLinux Mint\n\nOnce you have downloaded the .iso file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Downloading A Virtual Machine Image"
+      "Downloading An Image"
     ]
   },
   {
