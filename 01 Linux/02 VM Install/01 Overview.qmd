@@ -13,9 +13,9 @@ Complete each of the following:
 
 - [Downloading the Virtual Machine Image](03 Downloading An Image.html)
 
-- [Creating the Virtual Machine](04 Installing the VM.html)
+- [Creating the Virtual Machine](04 Creating the VM.html)
 
-- [Setting Up the Virtual Machine](05 Installing the VM.html)
+- [Installing the Virtual Machine](05 Installing the VM.html)
 
 - [Creating a Shared Folder](06 Creating a Shared Folder.html)
 

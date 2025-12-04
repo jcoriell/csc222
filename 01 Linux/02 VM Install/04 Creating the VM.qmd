@@ -14,7 +14,7 @@ Complete the following in Virtual Box.
 
 4. For the` ISO Image` option, find and select the .iso file you downloaded in the previous section of these instructions. You may need to click "other" in the dropdown to browse for it.
 
-6. Look for the `Skip Unattended Install` option and check the box to skip it.
+6. Look for options about an `Unattended Install` option. You want to **skip** the Unattended Install.
 
 7. When prompted for `base memory`, it is recommended that you allow the machine to use up to 25% of your host machine's resources.
 

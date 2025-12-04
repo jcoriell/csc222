@@ -1,5 +1,5 @@
 ---
-title: Setting Up The Virtual Machine
+title: Installing The Virtual Machine
 ---
 
 For this step, the instructions will be different depending on the Linux distribution you chose, be sure to scroll to the appropriate section for your VM's operating system after doing the following step:
@@ -44,7 +44,7 @@ This could take some time, so it is not recommended that you update when prompte
 
 ## For Mint
 
-For Mint, you will be presented with a GUI that should be simple to step through. You'll see a disk in the top left corner labeled "Install Linux Mint". Double click it to start. Some notes for your install follow:
+For Mint, you will be presented with a GUI that should be simple to step through. **You'll see a disk in the top left corner labeled "Install Linux Mint". Double click it to start.** Some notes for your install follow:
 
 1. Language: Choose English
 

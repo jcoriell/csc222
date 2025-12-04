@@ -260,7 +260,7 @@
     "href": "01 Linux/02 VM Install/01 Overview.html",
     "title": "Overview",
     "section": "",
-    "text": "Over the course of the next few pages, you will complete the setup of a virtual machine on your own computer (the host machine). Be sure to follow all the instructions in the order presented.\nYou may need to complete additional steps, including troublshooting steps, that are not listed here, in which case the internet, your classmates, and your instructor may be able to help out.\nComplete each of the following:\n\nInstalling the Virtualization Software (Virtual Box)\nDownloading the Virtual Machine Image\nCreating the Virtual Machine\nSetting Up the Virtual Machine\nCreating a Shared Folder\nInstalling Tools on VM",
+    "text": "Over the course of the next few pages, you will complete the setup of a virtual machine on your own computer (the host machine). Be sure to follow all the instructions in the order presented.\nYou may need to complete additional steps, including troublshooting steps, that are not listed here, in which case the internet, your classmates, and your instructor may be able to help out.\nComplete each of the following:\n\nInstalling the Virtualization Software (Virtual Box)\nDownloading the Virtual Machine Image\nCreating the Virtual Machine\nInstalling the Virtual Machine\nCreating a Shared Folder\nInstalling Tools on VM",
     "crumbs": [
       "1 - Linux",
       "VM Install",
@@ -280,40 +280,25 @@
     ]
   },
   {
-    "objectID": "01 Linux/02 VM Install/03 Downloading an Image.html",
-    "href": "01 Linux/02 VM Install/03 Downloading an Image.html",
+    "objectID": "01 Linux/02 VM Install/03 Downloading An Image.html",
+    "href": "01 Linux/02 VM Install/03 Downloading An Image.html",
     "title": "Downloading A Virtual Machine Image",
     "section": "",
-    "text": "For this course it is recommended that you use Mint or Ubuntu, although there are many more flavors of Linux available. Below is a very short list of the distros that most of you will either use or become familiar with eventually.\n\nUbuntu is designed with beginners in mind. It is a general purpose distro with both server and desktop environments. It is also the most popular distribution.\nLinux mint is based on Ubuntu and is good for beginners who are switching from windows. This is because it is designed to be familiar for windows users.\nDebian is one of the oldest distros and is typically used where stability is paramount. It is used by experienced users and is popular for servers and mission critical environments.\nArch linux is used by advanced users for whom customization and minimalist systems are important. Users of this system typically want to be involved in manually setting up everything on the computer.\nKali linux is based on debian and is used by cyber security professionals. This is because it comes with multiple tools for penetration testing, forensics and security research\nRaspbian is a version of linux designed to work on raspberry pis. The focus of this distro is being light weight (i.e. not taking up a lot of space), and yet work fast with the limited hardware resources one might find on a microcomputer like a raspberry pi",
-    "crumbs": [
-      "1 - Linux",
-      "VM Install",
-      "Downloading A Virtual Machine Image"
-    ]
+    "text": "For this course it is recommended that you use Mint or Ubuntu, although there are many more flavors of Linux available. Below is a very short list of the distros that most of you will either use or become familiar with eventually.\n\nUbuntu is designed with beginners in mind. It is a general purpose distro with both server and desktop environments. It is also the most popular distribution.\nLinux mint is based on Ubuntu and is good for beginners who are switching from windows. This is because it is designed to be familiar for windows users.\nDebian is one of the oldest distros and is typically used where stability is paramount. It is used by experienced users and is popular for servers and mission critical environments.\nArch linux is used by advanced users for whom customization and minimalist systems are important. Users of this system typically want to be involved in manually setting up everything on the computer.\nKali linux is based on debian and is used by cyber security professionals. This is because it comes with multiple tools for penetration testing, forensics and security research\nRaspbian is a version of linux designed to work on raspberry pis. The focus of this distro is being light weight (i.e. not taking up a lot of space), and yet work fast with the limited hardware resources one might find on a microcomputer like a raspberry pi"
   },
   {
-    "objectID": "01 Linux/02 VM Install/03 Downloading an Image.html#flavors-of-linux",
-    "href": "01 Linux/02 VM Install/03 Downloading an Image.html#flavors-of-linux",
+    "objectID": "01 Linux/02 VM Install/03 Downloading An Image.html#flavors-of-linux",
+    "href": "01 Linux/02 VM Install/03 Downloading An Image.html#flavors-of-linux",
     "title": "Downloading A Virtual Machine Image",
     "section": "",
-    "text": "For this course it is recommended that you use Mint or Ubuntu, although there are many more flavors of Linux available. Below is a very short list of the distros that most of you will either use or become familiar with eventually.\n\nUbuntu is designed with beginners in mind. It is a general purpose distro with both server and desktop environments. It is also the most popular distribution.\nLinux mint is based on Ubuntu and is good for beginners who are switching from windows. This is because it is designed to be familiar for windows users.\nDebian is one of the oldest distros and is typically used where stability is paramount. It is used by experienced users and is popular for servers and mission critical environments.\nArch linux is used by advanced users for whom customization and minimalist systems are important. Users of this system typically want to be involved in manually setting up everything on the computer.\nKali linux is based on debian and is used by cyber security professionals. This is because it comes with multiple tools for penetration testing, forensics and security research\nRaspbian is a version of linux designed to work on raspberry pis. The focus of this distro is being light weight (i.e. not taking up a lot of space), and yet work fast with the limited hardware resources one might find on a microcomputer like a raspberry pi",
-    "crumbs": [
-      "1 - Linux",
-      "VM Install",
-      "Downloading A Virtual Machine Image"
-    ]
+    "text": "For this course it is recommended that you use Mint or Ubuntu, although there are many more flavors of Linux available. Below is a very short list of the distros that most of you will either use or become familiar with eventually.\n\nUbuntu is designed with beginners in mind. It is a general purpose distro with both server and desktop environments. It is also the most popular distribution.\nLinux mint is based on Ubuntu and is good for beginners who are switching from windows. This is because it is designed to be familiar for windows users.\nDebian is one of the oldest distros and is typically used where stability is paramount. It is used by experienced users and is popular for servers and mission critical environments.\nArch linux is used by advanced users for whom customization and minimalist systems are important. Users of this system typically want to be involved in manually setting up everything on the computer.\nKali linux is based on debian and is used by cyber security professionals. This is because it comes with multiple tools for penetration testing, forensics and security research\nRaspbian is a version of linux designed to work on raspberry pis. The focus of this distro is being light weight (i.e. not taking up a lot of space), and yet work fast with the limited hardware resources one might find on a microcomputer like a raspberry pi"
   },
   {
-    "objectID": "01 Linux/02 VM Install/03 Downloading an Image.html#downloading-an-iso",
-    "href": "01 Linux/02 VM Install/03 Downloading an Image.html#downloading-an-iso",
+    "objectID": "01 Linux/02 VM Install/03 Downloading An Image.html#downloading-an-iso",
+    "href": "01 Linux/02 VM Install/03 Downloading An Image.html#downloading-an-iso",
     "title": "Downloading A Virtual Machine Image",
     "section": "Downloading an ISO",
-    "text": "Downloading an ISO\nIn order to install a guest operating system with Virtual Box, you’ll want a .iso file that contains the image of the guest OS. Follow the .iso download instructions that are most appropriate for your machine.\n\nFor Mac Users\nIf you have an Apple Silicon based Mac, download Ubuntu 24 Server for Arm. Note that Ubuntu Server does not come with a GUI based desktop environment, but it does allow you to install one, which is recomended for this course.\nIf you have an Intel based Mac, download Ubuntu 24 LTS.\nOnce you have downloaded the .iso file, move the downloaded file to the folder you have created for this course on your computer so you can easily find it when you need it later.\n\n\n\n\n\n\nApple Silicon or Intel?\n\n\n\nNot sure what type of Mac you have? Click the Apple icon in the top left corner of your screen and select “About This Mac”. If the chip is one of the m-series chips (m1, m2, etc.), then you have an Apple Silicon based machine.\n\n\n\n\nFor Linux Users\nIf you have an x86-64/amd64 based machine, choose between either of the following. If you use Ubuntu regularly, try Mint, if you use Mint, try Ubuntu. If you’re a Linux user and you want to try Arch or a non GNU/Linux based distro, go for it, just know that support for this course will be limited to Ubuntu and Mint.\n\nUbuntu 24 LTS\nLinux Mint\n\nOnce you have downloaded the .iso file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later.\n\n\n\n\n\n\nI already use Linux, so why?\n\n\n\nYou might be wondering, “I already use a GNU/Linux environment? Why do I need to install a VM?”\nWe just need to make sure this is a skill you have and understand. Most of the work/programs for this course can be completed on any Unix-Like environemnt.\nAlso, perhaps there is software we will install that you don’t necessarily want on your host, this will create an environment for you to modify that wont affect your host.\n\n\n\n\nFor Windows Users\nIf you have an x86-64/amd64 based machine, choose between either of the following:\n\nUbuntu 24 LTS\nLinux Mint\n\nOnce you have downloaded the .iso file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later.",
-    "crumbs": [
-      "1 - Linux",
-      "VM Install",
-      "Downloading A Virtual Machine Image"
-    ]
+    "text": "Downloading an ISO\nIn order to install a guest operating system with Virtual Box, you’ll want a .iso file that contains the image of the guest OS. Follow the .iso download instructions that are most appropriate for your machine.\n\nFor Mac Users\nIf you have an Apple Silicon based Mac, download Ubuntu 24 Server for Arm. Note that Ubuntu Server does not come with a GUI based desktop environment, but it does allow you to install one, which is recomended for this course.\nIf you have an Intel based Mac, download Ubuntu 24 LTS.\nOnce you have downloaded the .iso file, move the downloaded file to the folder you have created for this course on your computer so you can easily find it when you need it later.\n\n\n\n\n\n\nApple Silicon or Intel?\n\n\n\nNot sure what type of Mac you have? Click the Apple icon in the top left corner of your screen and select “About This Mac”. If the chip is one of the m-series chips (m1, m2, etc.), then you have an Apple Silicon based machine.\n\n\n\n\nFor Linux Users\nIf you have an x86-64/amd64 based machine, choose between either of the following. If you use Ubuntu regularly, try Mint, if you use Mint, try Ubuntu. If you’re a Linux user and you want to try Arch or a non GNU/Linux based distro, go for it, just know that support for this course will be limited to Ubuntu and Mint.\n\nUbuntu 24 LTS\nLinux Mint\n\nOnce you have downloaded the .iso file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later.\n\n\n\n\n\n\nI already use Linux, so why?\n\n\n\nYou might be wondering, “I already use a GNU/Linux environment? Why do I need to install a VM?”\nWe just need to make sure this is a skill you have and understand. Most of the work/programs for this course can be completed on any Unix-Like environemnt.\nAlso, perhaps there is software we will install that you don’t necessarily want on your host, this will create an environment for you to modify that wont affect your host.\n\n\n\n\nFor Windows Users\nIf you have an x86-64/amd64 based machine, choose between either of the following:\n\nUbuntu 24 LTS\nLinux Mint\n\nOnce you have downloaded the .iso file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later."
   },
   {
     "objectID": "00 Housekeeping/01 Syllabus.html",
@@ -1552,61 +1537,61 @@
   {
     "objectID": "01 Linux/02 VM Install/05 Installing the VM.html",
     "href": "01 Linux/02 VM Install/05 Installing the VM.html",
-    "title": "Setting Up The Virtual Machine",
+    "title": "Installing The Virtual Machine",
     "section": "",
     "text": "For this step, the instructions will be different depending on the Linux distribution you chose, be sure to scroll to the appropriate section for your VM’s operating system after doing the following step:",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing The Virtual Machine"
     ]
   },
   {
     "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-desktop",
     "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-desktop",
-    "title": "Setting Up The Virtual Machine",
+    "title": "Installing The Virtual Machine",
     "section": "For Ubuntu Desktop",
     "text": "For Ubuntu Desktop\nSelect “Try to Install Ubuntu” and follow the on screen instructions.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing The Virtual Machine"
     ]
   },
   {
     "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-server",
     "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-ubuntu-server",
-    "title": "Setting Up The Virtual Machine",
+    "title": "Installing The Virtual Machine",
     "section": "For Ubuntu Server",
     "text": "For Ubuntu Server\nThis could take some time, so it is not recommended that you update when prompted during the install if you are short on time.\n\nWhen prompted, select “Try to Install Ubuntu”.\nThe install will present lots of options that you can choose to customize. At some point it will ask for a username and password, be sure you remember it.\nOnce it is installed it will prompt to reboot.\nAfter rebooting it’ll ask you to login with the username and password you created.\nSetting Up the GUI.\n\nRun the following two commands separately\n\nsudo apt update\nsudo apt install ubuntu-desktop\n\nOnce it is done, turn the machine off by closing the window and selecting the option to turn the machine off.\nStart the machine and log back in. There should be a GUI at this point.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing The Virtual Machine"
     ]
   },
   {
     "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#for-mint",
     "href": "01 Linux/02 VM Install/05 Installing the VM.html#for-mint",
-    "title": "Setting Up The Virtual Machine",
+    "title": "Installing The Virtual Machine",
     "section": "For Mint",
     "text": "For Mint\nFor Mint, you will be presented with a GUI that should be simple to step through. You’ll see a disk in the top left corner labeled “Install Linux Mint”. Double click it to start. Some notes for your install follow:\n\nLanguage: Choose English\nMultimedia Codecs: No (these will not be necessary)\nNow you’ll be presented with the options to Erase Disk and Install Linux Mint or Something Else.\nChoosing Erase Disk and Install Linux Mint is the simplest option. This will not erase anything on your host machine since we are doing this inside of virtualization software.\nIf you wanted to be a bit more specific about the partitions that get created, you can choose Something Else. Scroll down to the Partition Details section of this document for more about this.\nOnce you’ve made your selection, click “Install Now”\nTime zone: Chicago\nIf you chose Something Else for the Erase Disk and Install Linux Mint option, you’ll need to jump to the Partition Details section of this document and then come back here when you’re done. If you chose Yes, move to step 6.\nNow you’ll be asked for some information such as username, computer name, and password. Make a username and password that you’ll remember. You do not need to encrypt your home folder, but could if you wanted to.",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing The Virtual Machine"
     ]
   },
   {
     "objectID": "01 Linux/02 VM Install/05 Installing the VM.html#partition-details",
     "href": "01 Linux/02 VM Install/05 Installing the VM.html#partition-details",
-    "title": "Setting Up The Virtual Machine",
+    "title": "Installing The Virtual Machine",
     "section": "Partition Details",
     "text": "Partition Details\nIf you chose to do a custom partition, here are some tips. Partitioning gives the user the opportunity to specify how much space is reserved for certain functions of the computer. This in turn allows us to easily update or overwrite our operating system later on without losing the files we were using.\nPartitioning is arguably not as used these days with how cheap computers and memory are and the prevalence of all sorts of backup tools. However, it is still a good experience to have as a computer science student because you won’t always be using the latest and greatest computers.\nYour hard drive will probably have a name like /dev/sda that is the size of all the space you have available for your VM. For each new partition that we create, select the unused space and click the + sign to add a partition to it.\n\n1st partition:\n\n1024 MB\ntype = primary\nlocation = beginning\nuse as = ext 2\nmount point = /boot\n\n2nd partition:\n\n4096 MB3\ntype = primary\nlocation = end\nuse as = swap area\n\n3rd partition:\n\n35% of space left\ntype = primary\nlocation = beginning\nuse as ext 4\nmount point = /\n\n4th partition\n\nall that is left\ntype = primary\nlocation = beginning\nuse as = ext 4\nmount point = /home.\n\n\nClick install now.\nIf you get some error messages with suggested partitions, feel free to delete the 4th partition, create the suggested partitions with the suggested sizes and uses, and then recreate the 4th partition with whatever space is left over.\nReturn to the install instructions that brought you to the Partition Details",
     "crumbs": [
       "1 - Linux",
       "VM Install",
-      "Setting Up The Virtual Machine"
+      "Installing The Virtual Machine"
     ]
   },
   {
