@@ -104,9 +104,9 @@ website:
 
 format:
   html:
-    theme: 
-      dark: darkly
-      light: cosmo
+    # theme: 
+    #   dark: darkly
+    #   light: cosmo
     css: styles.css
     toc: true
     googlefonts: false
