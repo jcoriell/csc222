@@ -16,7 +16,6 @@ website:
         contents: 
           - 00 Housekeeping/01 Syllabus.qmd
 
-
       - section: "1 - Linux"
         contents:
           - 01 Linux/01 A Brief History.qmd
@@ -24,7 +23,7 @@ website:
             contents: 
               - 01 Linux/02 VM Install/01 Overview.qmd
               - 01 Linux/02 VM Install/02 Virtualization Software Install.qmd
-              - 01 Linux/02 VM Install/03 Downloading An Image.qmd
+              - 01 Linux/02 VM Install/easy.qmd
               - 01 Linux/02 VM Install/04 Creating the VM.qmd
               - 01 Linux/02 VM Install/05 Installing the VM.qmd
               - 01 Linux/02 VM Install/06 Creating a Shared Folder.qmd
@@ -110,6 +109,7 @@ format:
       light: cosmo
     css: styles.css
     toc: true
+    googlefonts: false
 
 
 

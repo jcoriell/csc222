@@ -11,7 +11,7 @@ Complete each of the following:
 
 - [Installing the Virtualization Software (Virtual Box)](02 Virtualization Software Install.html)
 
-- [Downloading the Virtual Machine Image](03 Downloading An Image.html)
+- [Downloading the Virtual Machine Image](easy.html)
 
 - [Creating the Virtual Machine](04 Creating the VM.html)
 

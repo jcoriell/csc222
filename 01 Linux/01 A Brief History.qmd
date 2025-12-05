@@ -25,7 +25,7 @@ Most servers (~96%) run on some form of linux.
 
 2. It's versatile. Its available under the GNU General Public License, designed to encourage freedom of usage.
 
-    -  [https://www.gnu.org/licenses/gpl-3.0.en.html](GNU GPL)
+    - <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="noopener">https://www.gnu.org/licenses/gpl-3.0.en.html</a>
 
 3. It's a community. Development is community based. People are constantly working on ways to improve and further develop linux to work on a variety of devices and platforms.
 
