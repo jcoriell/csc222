@@ -70,7 +70,7 @@
   </url>
   <url>
     <loc>https://csc222.jcor.dev/index.html</loc>
-    <lastmod>2025-11-24T19:56:58.899Z</lastmod>
+    <lastmod>2025-12-08T21:54:14.648Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/05 Byte Ordering Conventions.html</loc>
@@ -117,12 +117,16 @@
     <lastmod>2024-12-18T19:32:03.882Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/06 Grep and Regex.html</loc>
-    <lastmod>2025-12-08T21:23:58.366Z</lastmod>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/index.html</loc>
+    <lastmod>2025-12-08T21:46:41.418Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/02 Terminal and Shell/03 Other Useful Tips.html</loc>
     <lastmod>2024-12-19T15:54:00.013Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/06 Grep and Regex.html</loc>
+    <lastmod>2025-12-08T21:58:32.263Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/02 Terminal and Shell/02 Working With Files.html</loc>

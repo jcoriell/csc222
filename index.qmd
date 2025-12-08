@@ -13,7 +13,7 @@ An introduction to systems programming within the context of C/C++ and Linux; to
 
 [01 Linux](/01%20Linux/)
 
-[02 Terminal](/02%20Terminal/)
+[02 Terminal and Shell](/02 Terminal and Shell/)
 
 [03 Bash Scripting](/03%20Bash%20Scripting/)
 

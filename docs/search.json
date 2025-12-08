@@ -488,7 +488,7 @@
     "href": "index.html#contents",
     "title": "CSC 222 Systems Programming",
     "section": "Contents",
-    "text": "Contents\n00 Housekeeping\n01 Linux\n02 Terminal\n03 Bash Scripting\n04 C Programming\n05 Computing Systems and Data Representation\n06 System Calls\n07 Assembly Primer"
+    "text": "Contents\n00 Housekeeping\n01 Linux\n02 Terminal and Shell\n03 Bash Scripting\n04 C Programming\n05 Computing Systems and Data Representation\n06 System Calls\n07 Assembly Primer"
   },
   {
     "objectID": "04 Computing Systems and Data Representation/02 The Compilation Process.html",
@@ -920,37 +920,18 @@
     ]
   },
   {
-    "objectID": "02 Terminal and Shell/06 Grep and Regex.html",
-    "href": "02 Terminal and Shell/06 Grep and Regex.html",
-    "title": "Grep and Regex",
+    "objectID": "02 Terminal and Shell/index.html",
+    "href": "02 Terminal and Shell/index.html",
+    "title": "Terminal and Shell",
     "section": "",
-    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.\n\n\n\n\n\n\nDownload the following zip file and extract it for the remainder of the examples on this page.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \nFind Cat in main.py\ngrep Cat main.py\nExpected result: (coming soon)\nFind cat in main.py\ngrep cat main.py\nExpected result: (coming soon)",
-    "crumbs": [
-      "2 - Terminal and Shell",
-      "Grep and Regex"
-    ]
+    "text": "00 Background\n01 Basic Commands\n02 Working With Files\n03 Other Useful Tips\n04 Redirection\n05 File Permissions\n06 Grep and Regex"
   },
   {
-    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#grep",
-    "href": "02 Terminal and Shell/06 Grep and Regex.html#grep",
-    "title": "Grep and Regex",
+    "objectID": "02 Terminal and Shell/index.html#contents",
+    "href": "02 Terminal and Shell/index.html#contents",
+    "title": "Terminal and Shell",
     "section": "",
-    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.\n\n\n\n\n\n\nDownload the following zip file and extract it for the remainder of the examples on this page.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \nFind Cat in main.py\ngrep Cat main.py\nExpected result: (coming soon)\nFind cat in main.py\ngrep cat main.py\nExpected result: (coming soon)",
-    "crumbs": [
-      "2 - Terminal and Shell",
-      "Grep and Regex"
-    ]
-  },
-  {
-    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#files",
-    "href": "02 Terminal and Shell/06 Grep and Regex.html#files",
-    "title": "Grep and Regex",
-    "section": "Files",
-    "text": "Files\nfiles-for-cats.zip",
-    "crumbs": [
-      "2 - Terminal and Shell",
-      "Grep and Regex"
-    ]
+    "text": "00 Background\n01 Basic Commands\n02 Working With Files\n03 Other Useful Tips\n04 Redirection\n05 File Permissions\n06 Grep and Regex"
   },
   {
     "objectID": "02 Terminal and Shell/03 Other Useful Tips.html",
@@ -983,6 +964,50 @@
     "crumbs": [
       "2 - Terminal and Shell",
       "Other Useful Tips"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html",
+    "title": "Grep and Regex",
+    "section": "",
+    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#grep",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html#grep",
+    "title": "Grep and Regex",
+    "section": "",
+    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#examples",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html#examples",
+    "title": "Grep and Regex",
+    "section": "Examples",
+    "text": "Examples\nFor each of these examples, download the files at https://csc222.jcor.dev/files/files-for-cats.zip, unzip them, and navigate into the top level directory in a terminal.\n# Downloading and extracting the files for the examples.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \n\nExample 1\n\nFind Cat in main.py\ngrep Cat main.py\nExpected result:\nprint('Hello, Cats of the Internet!')\nFind cat in main.py\ngrep cat main.py\nExpected result:\n# nothing appears because it is case sensitive\nIgnore case with the -i flag.\ngrep -i cat main.py\nExpected result: txt  print('Hello, Cats of the Internet!')\n\n\n\nExample 2\n\nNavigate into the docs directory of files-for-cats\nFind more instances of cat in guide.txt and notes.txt\ngrep cat guide.txt notes.txt \nExpected Output: txt  guide.txt:1. The cat owns you, not the other way around.  guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.  notes.txt:- Cats sleep 16 hours a day. Be like a cat.  notes.txt:- Main.py is where you simulate cat-human communication.\nFind even more instances when case is ignored.\ngrep cat guide.txt notes.txt \nExpected Output:\nguide.txt:CAT OWNER'S GUIDE:\nguide.txt:1. The cat owns you, not the other way around.\nguide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.\nnotes.txt:Observations from Cat HQ:\nnotes.txt:- Cats sleep 16 hours a day. Be like a cat.\nnotes.txt:- Main.py is where you simulate cat-human communication.\n\n\n\nExample 3\n\nGo back to the root",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#files",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html#files",
+    "title": "Grep and Regex",
+    "section": "Files",
+    "text": "Files\nfiles-for-cats.zip",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
     ]
   },
   {
