@@ -2,40 +2,56 @@
 title: Background
 ---
 
-## Terminal vs Shell
-
-
-::: {.callout-note}
-## Definition
-The shell is an interpreter that takes the commands you type and passes them to the operating system for execution.
-:::
+## Terminals
 
 ::: {.callout-note}
 ## Definition
 The Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.
 :::
 
-Note: We frequently use these terms interchangably, although they are different things.
+Some terminal applications that exist that you may have used in the past or will use in the near future include the following:
 
-## Various Shells
+- Terminal application on macOS
+- Terminal application on Ubuntu
+- Terminal application on Windows, which allows for different shells in different tabs.
+- If you've downloaded gitbash, it comes with its own terminal application
+- Some IDEs such as VS code have built in terminals that allow you to select different shells.
+
+
+## Shells 
+
+::: {.callout-note}
+## Definition
+The shell is an interpreter that takes the commands you type and passes them to the operating system for execution.
+:::
+
+Some shells you may use as you continue your career in computer science include the following:
 
 - bash - bash stands for Bourn Again SHell. Most unix-like systems use the bash shell.
 - zsh - Read allowed as zsh or as Z shell. A bash-like shell.
 - powershell - PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework [[source]](https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.4){target="_blank"}
+- the interactive Python shell
 - gitbash - bash emulation for windows [[source]](https://gitforwindows.org/){target="_blank"}
 - fish - friendly interactive shell [[source]](https://fishshell.com/){target="_blank"}
 
-## Various Terminals
+Note: We frequently use the terms **Terminal** and **Shell** interchangably when we speak, although they are different things.
 
-- Terminal application on macOS
-- Terminal application on Ubuntu
-- Terminal application on Windows
 
 
 ## Absolute vs Relative Filepaths
 
 Absolute filepaths describe the filepath from the root of the filesystem.
 
+```txt
+# An absolute filepath to a folder called csc222 on the desktop
+/home/josh/Desktop/csc222
+```
+
 Relative filepaths describe the filepath from where you currently are.
+
+```txt
+# A relative filepath from the user's home folder to csc222
+Desktop/csc222
+```
 
 If it starts with a /, or the ~, then it is an absolute filepath. If not, it is relative.

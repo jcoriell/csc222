@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -82,9 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      CSC 222 Systems Programming
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02 Terminal and Shell/00 Background.html">2 - Terminal and Shell</a></li><li class="breadcrumb-item"><a href="../02 Terminal and Shell/00 Background.html">Background</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -204,34 +237,55 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../02 Terminal/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2 - Terminal</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">2 - Terminal and Shell</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">02 Terminal/00 Background.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/00 Background.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Background</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">02 Terminal/01 Basic Commands.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/01 Basic Commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Navigation</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">02 Terminal/02 Working With Files.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/02 Working With Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Files</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">02 Terminal/03 Other Useful Tips.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/03 Other Useful Tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Other Useful Tips</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">02 Terminal/04 Redirection.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/04 Redirection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Redirection</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">02 Terminal/05 File Permissions.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/05 File Permissions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">File Permissions</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">02 Terminal/06 Grep and Regex.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/06 Grep and Regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Grep and Regex</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -506,9 +560,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#terminal-vs-shell" id="toc-terminal-vs-shell" class="nav-link active" data-scroll-target="#terminal-vs-shell">Terminal vs Shell</a></li>
-  <li><a href="#various-shells" id="toc-various-shells" class="nav-link" data-scroll-target="#various-shells">Various Shells</a></li>
-  <li><a href="#various-terminals" id="toc-various-terminals" class="nav-link" data-scroll-target="#various-terminals">Various Terminals</a></li>
+  <li><a href="#terminals" id="toc-terminals" class="nav-link active" data-scroll-target="#terminals">Terminals</a></li>
+  <li><a href="#shells" id="toc-shells" class="nav-link" data-scroll-target="#shells">Shells</a></li>
   <li><a href="#absolute-vs-relative-filepaths" id="toc-absolute-vs-relative-filepaths" class="nav-link" data-scroll-target="#absolute-vs-relative-filepaths">Absolute vs Relative Filepaths</a></li>
   </ul>
 </nav>
@@ -516,7 +569,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02 Terminal and Shell/00 Background.html">2 - Terminal and Shell</a></li><li class="breadcrumb-item"><a href="../02 Terminal and Shell/00 Background.html">Background</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Background</h1>
 </div>
@@ -535,21 +588,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="terminal-vs-shell" class="level2">
-<h2 class="anchored" data-anchor-id="terminal-vs-shell">Terminal vs Shell</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The shell is an interpreter that takes the commands you type and passes them to the operating system for execution.</p>
-</div>
-</div>
+<section id="terminals" class="level2">
+<h2 class="anchored" data-anchor-id="terminals">Terminals</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -563,30 +603,49 @@ ul.task-list li input[type="checkbox"] {
 <p>The Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.</p>
 </div>
 </div>
-<p>Note: We frequently use these terms interchangably, although they are different things.</p>
+<p>Some terminal applications that exist that you may have used in the past or will use in the near future include the following:</p>
+<ul>
+<li>Terminal application on macOS</li>
+<li>Terminal application on Ubuntu</li>
+<li>Terminal application on Windows, which allows for different shells in different tabs.</li>
+<li>If you’ve downloaded gitbash, it comes with its own terminal application</li>
+<li>Some IDEs such as VS code have built in terminals that allow you to select different shells.</li>
+</ul>
 </section>
-<section id="various-shells" class="level2">
-<h2 class="anchored" data-anchor-id="various-shells">Various Shells</h2>
+<section id="shells" class="level2">
+<h2 class="anchored" data-anchor-id="shells">Shells</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The shell is an interpreter that takes the commands you type and passes them to the operating system for execution.</p>
+</div>
+</div>
+<p>Some shells you may use as you continue your career in computer science include the following:</p>
 <ul>
 <li>bash - bash stands for Bourn Again SHell. Most unix-like systems use the bash shell.</li>
 <li>zsh - Read allowed as zsh or as Z shell. A bash-like shell.</li>
 <li>powershell - PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework <a href="https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.4" target="_blank">[source]</a></li>
+<li>the interactive Python shell</li>
 <li>gitbash - bash emulation for windows <a href="https://gitforwindows.org/" target="_blank">[source]</a></li>
 <li>fish - friendly interactive shell <a href="https://fishshell.com/" target="_blank">[source]</a></li>
 </ul>
-</section>
-<section id="various-terminals" class="level2">
-<h2 class="anchored" data-anchor-id="various-terminals">Various Terminals</h2>
-<ul>
-<li>Terminal application on macOS</li>
-<li>Terminal application on Ubuntu</li>
-<li>Terminal application on Windows</li>
-</ul>
+<p>Note: We frequently use the terms <strong>Terminal</strong> and <strong>Shell</strong> interchangably when we speak, although they are different things.</p>
 </section>
 <section id="absolute-vs-relative-filepaths" class="level2">
 <h2 class="anchored" data-anchor-id="absolute-vs-relative-filepaths">Absolute vs Relative Filepaths</h2>
 <p>Absolute filepaths describe the filepath from the root of the filesystem.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a># An absolute filepath to a folder called csc222 on the desktop</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>/home/josh/Desktop/csc222</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Relative filepaths describe the filepath from where you currently are.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a># A relative filepath from the user's home folder to csc222</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Desktop/csc222</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If it starts with a /, or the ~, then it is an absolute filepath. If not, it is relative.</p>
 
 

@@ -10,52 +10,51 @@ To see the file permissions for files in a directory run `ls -l`.
 
 The output will resemble the following:
 
-```
+```txt
 drwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop
 drwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents
 drwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads
 ```
 
-The first set of characters such as `drwxr-xr-x` denotes the file permissions.
+If we were to turn this output into a table where each column is labeled, we would see that the,first set of characters such as denotes the file permissions, second column represents the number of links to that file, the third and fouth columns denote the user and group assigned to the file, the fifth column represents the size for that file in bytes, the sixth column is the last date the file was modified, and the final column is the name of the file (directories in this case).
 
-The second column represents the number of links to that file (2, 3, and 2 respectively.)
-
-The third and fouth columns denote the user and group assigned to the file.
-
-The fifth column represents the size for that file (4096 bytes for each of the above.)
-
-The sixth column is the last date the file was modified.
-
-The final column is the name of the file (directories in this case).
+| Permissions | Num. Links | User Owner | Group Owner | Size (bytes) | Date Modified | File/Dir Name |
+|-------------|------------|------      |------       |------        |-------------- |-----------|
+| drwxr-xr-x  | 2          | josh       | josh        | 4096         | Nov 29 15:32  | Desktop   |
+| drwxr-xr-x  | 3          | josh       | josh        | 4096         | Nov 30 11:14  | Documents |
+| drwxr-xr-x  | 2          | josh       | josh        | 4096         | Nov 29 11:26  | Downloads |
 
 
 ## File Permission Breakdown
 
 Let's break down the permission string `drwxr-xr-x`.
 
-1. The 1st character is the type of file. The most common characters you will see here are:
+### First Character
 
-    ```
-    - for file.
-    d for directory.
-    l for link.
-    ```
+The 1st character in this string is the **type** of file. The most common characters you will see here are `-` for a regular file, `d` for directory, and `l` for link. Note that a link, or symbolic link, is conceptually similar to a "shortcut" on a Windows machine.
 
-    In the permissions `drwxr-xr-x`, the first character is `d`, so we have a directory.
+| Symbol    | Meaning           |
+| ------    | -------           | 
+| `-`       | a regular file    |
+| `d`       | a directory       |
+| `l`       | a symbolic link   |
 
-2. The next 9 characters are for 3 different permission classes
+
+In the permission string `drwxr-xr-x`, the first character is `d`, so we have a **directory**.
+
+### Remaining Characters
+
+The remaining 9 characters are to denote the permissions for 3 different permission classes
     
-    a. The owner of the file is the first set of 3 characters.
-        
-        In the string `drwxr-xr-x`, we have `rwx` which means the owner can read, write, and execute the file.
+a. The first set of 3 characters (character 2, 3, and 4) denote the permisions for the user that owns the file. In the string `drwxr-xr-x`, we have `rwx` which means the owner can **read**, **write**, and **execute** the file.
 
-    b. The group for the file is the second set of 3.
+b. The second set of 3 characters (character 5, 6, and 7) denote the permisions for the group that owns the file. Note that each user gets a group named after themselves. Also, users can be added to other groups. You can set permissions for an entire group.
 
-        In the string `drwxr-xr-x`, we have `r-x` which means anyone in the group for the file (users belong to groups) can read and execute the file.
+   In the string `drwxr-xr-x`, we have `r-x` as the 5th, 6th, and 7th characters. This means any user in the group that owns this file can read and execute the file.
 
-    c. The third set of 3 are for all other users (those not in the same user group, and not the owner)
+c. The final set of 3 characters are for all other users (those not in the group that owns the file, and not the user that owns the file)
 
-        In the string `drwxr-xr-x`, we have `r-x` which means all others can read and execute the file, but cannot modify it.
+   In the string `drwxr-xr-x`, we have `r-x` which means all others can read and execute the file, but cannot modify it.
 
 
 ## Changing File Permissions

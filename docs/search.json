@@ -836,203 +836,319 @@
     "href": "02 Terminal and Shell/04 Redirection.html",
     "title": "Redirection",
     "section": "",
-    "text": "frequently abbreviated as stdout\nredirection represented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\n\nOutput the results of one command to a file\necho \"print('hello world')\" &gt; hello.py\nOutput and concatenate the results to a new line in the file\necho \"print('another line')\" &gt;&gt; hello.py\nOutput but erase the contents of hello.py\necho \"print('erase that old stuff')\" &gt; hello.py"
+    "text": "frequently abbreviated as stdout\nredirection represented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\n\nOutput the results of one command to a file\necho \"print('hello world')\" &gt; hello.py\nOutput and concatenate the results to a new line in the file\necho \"print('another line')\" &gt;&gt; hello.py\nOutput but erase the contents of hello.py\necho \"print('erase that old stuff')\" &gt; hello.py",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Redirection"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/04 Redirection.html#standard-output",
     "href": "02 Terminal and Shell/04 Redirection.html#standard-output",
     "title": "Redirection",
     "section": "",
-    "text": "frequently abbreviated as stdout\nredirection represented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\n\nOutput the results of one command to a file\necho \"print('hello world')\" &gt; hello.py\nOutput and concatenate the results to a new line in the file\necho \"print('another line')\" &gt;&gt; hello.py\nOutput but erase the contents of hello.py\necho \"print('erase that old stuff')\" &gt; hello.py"
+    "text": "frequently abbreviated as stdout\nredirection represented with &gt;\nused to redirect the result of a command somewhere else\nthe contents of the file are overwritten when using &gt;\ncan use &gt;&gt; to append to the contents of a file\n\n\n\n\nOutput the results of one command to a file\necho \"print('hello world')\" &gt; hello.py\nOutput and concatenate the results to a new line in the file\necho \"print('another line')\" &gt;&gt; hello.py\nOutput but erase the contents of hello.py\necho \"print('erase that old stuff')\" &gt; hello.py",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Redirection"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/04 Redirection.html#standard-input",
     "href": "02 Terminal and Shell/04 Redirection.html#standard-input",
     "title": "Redirection",
     "section": "Standard Input",
-    "text": "Standard Input\n\nfrequently abbreviated as stdin\nredirection represented with &lt;\ncan be used to provide input into a program\n\n\nExample\n\nCreate a file named name.txt that contains your name.\necho \"josh\" &gt; name.txt   # create a file named name.txt that contains your name\nOpen a text editor\nvim greeting.py   # or nano greeting.py\nAdd the following code to the file.\nimport sys\nname = sys.stdin.read()\nprint(f\"Hi {name}\")\nSave and close the file.\nFeed the contents of the name.txt file into the greeting.py file while running the python file.\npython3 greeting.py &lt; name.txt"
+    "text": "Standard Input\n\nfrequently abbreviated as stdin\nredirection represented with &lt;\ncan be used to provide input into a program\n\n\nExample\n\nCreate a file named name.txt that contains your name.\necho \"josh\" &gt; name.txt   # create a file named name.txt that contains your name\nOpen a text editor\nvim greeting.py   # or nano greeting.py\nAdd the following code to the file.\nimport sys\nname = sys.stdin.read()\nprint(f\"Hi {name}\")\nSave and close the file.\nFeed the contents of the name.txt file into the greeting.py file while running the python file.\npython3 greeting.py &lt; name.txt",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Redirection"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/04 Redirection.html#standard-error",
     "href": "02 Terminal and Shell/04 Redirection.html#standard-error",
     "title": "Redirection",
     "section": "Standard Error",
-    "text": "Standard Error\n\nabbreviated as stderr\nrepresented with 2&gt;\ncan append with 2&gt;&gt;\nif an error is produced, you can redirect it elsewhere.\n\n\nExamples\nnotarealcommand 2&gt; error-file.txt\nnotarealcommand 2&gt;&gt; error-file.txt"
+    "text": "Standard Error\n\nFrequently abbreviated as stderr\nrepresented with 2&gt;\ncan append with 2&gt;&gt;\nif an error is produced, you can use this to redirect the error elsewhere, like a log file for errors\n\n\nExamples\nnotarealcommand 2&gt; error-file.txt\nnotarealcommand 2&gt;&gt; error-file.txt",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Redirection"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/04 Redirection.html#pipe",
     "href": "02 Terminal and Shell/04 Redirection.html#pipe",
     "title": "Redirection",
     "section": "Pipe",
-    "text": "Pipe\n\nrepresented with |\ncreates a “pipe” or “pipeline” between two programs\ntakes the output of the one command and uses it as input it into another command\n\n\nExample\nList the contents of /usr/bin, but use more to view them in a paginated way.\nls -al /usr/bin | more"
+    "text": "Pipe\n\nrepresented with |\ncreates a “pipe” or “pipeline” between two programs\ntakes the output of the one command and uses it as input it into another command\n\n\nExample\nList the contents of /usr/bin, but use more to view them in a paginated way.\nls -al /usr/bin | more",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Redirection"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/01 Basic Commands.html",
     "href": "02 Terminal and Shell/01 Basic Commands.html",
     "title": "Navigation",
     "section": "",
-    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it"
+    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Navigation"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/01 Basic Commands.html#basic-commands-and-some-options",
     "href": "02 Terminal and Shell/01 Basic Commands.html#basic-commands-and-some-options",
     "title": "Navigation",
     "section": "",
-    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it"
+    "text": "The cd command allows you to change the working directory in the terminal.\n\n\ncd              # go to user's home directory\ncd ~            # go to user's home directory\ncd [path]       # go to some location (absolute or relative)\ncd ~/Desktop    # go to the desktop using the absolute path\n\n\n\n\nThis command outputs the working directory (the current location in the terminal).\n\n\npwd         # outputs absolute path of current directory\n\n\n\n\nThe ls command lists the contents of the working directory or can be used to provide certain details about any file.\nls                  # list non-hidden contents\nls -a               # list everything, including hidden contents\nls -l               # include the details about each file \nls -al              # list everything in working directory with details \nls -alh             # use human readable file sizes (i.e KB, MB, GB) instead of just bytes.\nls -l [filename]    # output the details about one file\n\n\n\nmkdir [directory-name]   # create a directory or multiple\ntouch [filename]         # create a file or multiple\nrmdir [directory]        # remove an empty directory\nrm [filename]            # remove a file or multiple\nrm -rf [directory]       # remove a directory and everything inside of it",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Navigation"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/01 Basic Commands.html#example-1",
     "href": "02 Terminal and Shell/01 Basic Commands.html#example-1",
     "title": "Navigation",
     "section": "Example",
-    "text": "Example\nThe following example uses the above commands to nagivate the file system and create and remove files and directories.\ncd ~                            # navigate to the home directory\ncd                              # also navigate to the home directory\npwd                             # prove it\nls                              # look at the files in the home directory\ncd Desktop                      # navigate to the Desktop \nmkdir programs                  # create a folder called programs\nmkdir csc222                    # create a folder called csc222\ncd programs                     # navigate into the folder called programs using the relative path\ntouch hello.py                  # create a file called hello.py\ntouch .gitignore                # create a hidden file \ntouch .another-hidden-file      # create another hidden file\nls                              # list the files\nls -a                           # list the files, include hidden ones \nls -l                           # list the files with details\nls -alh                         # list the files, include hidden ones, include details, make the size human readable (i.e. Kb, Mb, etc.)\nls -l hello.py                  # only list the info about hello.py\ncd ~/Desktop/csc222             # navigate to the csc222 folder using an absolute path \ncd ..                           # navigate up one folder\ncd programs                     # navigate back into programs            \nrm .another-hidden-file         # remove the file\ncd ..                           # navigate up one directory\nrm -rf programs                 # remove the programs folder and everything in it (recursive, force)"
+    "text": "Example\nThe following example uses the above commands to nagivate the file system and create and remove files and directories.\ncd ~                            # navigate to the home directory\ncd                              # also navigate to the home directory\npwd                             # prove it\nls                              # look at the files in the home directory\ncd Desktop                      # navigate to the Desktop \nmkdir programs                  # create a folder called programs\nmkdir csc222                    # create a folder called csc222\ncd programs                     # navigate into the folder called programs using the relative path\ntouch hello.py                  # create a file called hello.py\ntouch .gitignore                # create a hidden file \ntouch .another-hidden-file      # create another hidden file\nls                              # list the files\nls -a                           # list the files, include hidden ones \nls -l                           # list the files with details\nls -alh                         # list the files, include hidden ones, include details, make the size human readable (i.e. Kb, Mb, etc.)\nls -l hello.py                  # only list the info about hello.py\ncd ~/Desktop/csc222             # navigate to the csc222 folder using an absolute path \ncd ..                           # navigate up one folder\ncd programs                     # navigate back into programs            \nrm .another-hidden-file         # remove the file\ncd ..                           # navigate up one directory\nrm -rf programs                 # remove the programs folder and everything in it (recursive, force)",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Navigation"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/06 Grep and Regex.html",
     "href": "02 Terminal and Shell/06 Grep and Regex.html",
     "title": "Grep and Regex",
     "section": "",
-    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.\n\n\n\n\n\n\nDownload the following zip file and extract it for the remainder of the examples on this page.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \nFind Cat in main.py\ngrep Cat main.py\nExpected result: (coming soon)\nFind cat in main.py\ngrep cat main.py\nExpected result: (coming soon)"
+    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.\n\n\n\n\n\n\nDownload the following zip file and extract it for the remainder of the examples on this page.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \nFind Cat in main.py\ngrep Cat main.py\nExpected result: (coming soon)\nFind cat in main.py\ngrep cat main.py\nExpected result: (coming soon)",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/06 Grep and Regex.html#grep",
     "href": "02 Terminal and Shell/06 Grep and Regex.html#grep",
     "title": "Grep and Regex",
     "section": "",
-    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.\n\n\n\n\n\n\nDownload the following zip file and extract it for the remainder of the examples on this page.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \nFind Cat in main.py\ngrep Cat main.py\nExpected result: (coming soon)\nFind cat in main.py\ngrep cat main.py\nExpected result: (coming soon)"
+    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.\n\n\n\n\n\n\nDownload the following zip file and extract it for the remainder of the examples on this page.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \nFind Cat in main.py\ngrep Cat main.py\nExpected result: (coming soon)\nFind cat in main.py\ngrep cat main.py\nExpected result: (coming soon)",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#files",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html#files",
+    "title": "Grep and Regex",
+    "section": "Files",
+    "text": "Files\nfiles-for-cats.zip",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/03 Other Useful Tips.html",
     "href": "02 Terminal and Shell/03 Other Useful Tips.html",
     "title": "Other Useful Tips",
     "section": "",
-    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command"
+    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Other Useful Tips"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/03 Other Useful Tips.html#other-useful-basic-commands",
     "href": "02 Terminal and Shell/03 Other Useful Tips.html#other-useful-basic-commands",
     "title": "Other Useful Tips",
     "section": "",
-    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command"
+    "text": "echo  [some-output] # create output... like print in python\nhistory             # show the terminal history\nhistory -c          # clear all the history from the terminal\nclear               # clear what is currently in the terminal (doesn't clear history)\nman [command]       # show the manual for a command",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Other Useful Tips"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/03 Other Useful Tips.html#other-useful-keyboard-shortcuts",
     "href": "02 Terminal and Shell/03 Other Useful Tips.html#other-useful-keyboard-shortcuts",
     "title": "Other Useful Tips",
     "section": "Other Useful Keyboard Shortcuts",
-    "text": "Other Useful Keyboard Shortcuts\nThe following shortcuts can make your life a bit easier while working in the Terminal. This is not an exhaustive list of shortcuts.\nup arrow        - pull up the previous command\ndown arrow      - show the next command (if one exists)\n\ntab             - autocomplete based on what commands or files or directories are available\nctrl + l        - clear\nctrl + c        - cancel the currently running process \nctrl + r        - search through the history \n\nctrl + a (or the home key) - jump to beginning of line\nctrl + e (or the end key)  - jump to the end of a line\n\nalt + left/right arrow key - navigate by word instead of character"
+    "text": "Other Useful Keyboard Shortcuts\nThe following shortcuts can make your life a bit easier while working in the Terminal. This is not an exhaustive list of shortcuts.\nup arrow        - pull up the previous command\ndown arrow      - show the next command (if one exists)\n\ntab             - autocomplete based on what commands or files or directories are available\nctrl + l        - clear\nctrl + c        - cancel the currently running process \nctrl + r        - search through the history \n\nctrl + a (or the home key) - jump to beginning of line\nctrl + e (or the end key)  - jump to the end of a line\n\nalt + left/right arrow key - navigate by word instead of character",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Other Useful Tips"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/02 Working With Files.html",
     "href": "02 Terminal and Shell/02 Working With Files.html",
     "title": "Working with Files",
     "section": "",
-    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application\n\n\n\nNavigate to Desktop and create a books and music directory\ncd ~/Desktop\nmkdir books music\nNavigate into the newly created books directory and download a book\ncd books\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt \nls\nRename the book\nmv pg98.txt a-tale-of-two-cities.txt\nmore a-tale-of-two-cities.txt \nDownload another book\nwget https://jcoriell.github.io/csc222/files/cnbc.txt\nmore cnbc.txt\nNavigate to the music directory from the books directory and download a song\ncd ..\ncd music\nwget https://jcoriell.github.io/csc222/files/mbe.mp3\nxdg-open mbe.mp3    # open it with the default application for the system"
+    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application\n\n\n\nNavigate to Desktop and create a books and music directory\ncd ~/Desktop\nmkdir books music\nNavigate into the newly created books directory and download a book\ncd books\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt \nls\nRename the book\nmv pg98.txt a-tale-of-two-cities.txt\nmore a-tale-of-two-cities.txt \nDownload another book\nwget https://jcoriell.github.io/csc222/files/cnbc.txt\nmore cnbc.txt\nNavigate to the music directory from the books directory and download a song\ncd ..\ncd music\nwget https://jcoriell.github.io/csc222/files/mbe.mp3\nxdg-open mbe.mp3    # open it with the default application for the system",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Working with Files"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/02 Working With Files.html#commands",
     "href": "02 Terminal and Shell/02 Working With Files.html#commands",
     "title": "Working with Files",
     "section": "",
-    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application\n\n\n\nNavigate to Desktop and create a books and music directory\ncd ~/Desktop\nmkdir books music\nNavigate into the newly created books directory and download a book\ncd books\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt \nls\nRename the book\nmv pg98.txt a-tale-of-two-cities.txt\nmore a-tale-of-two-cities.txt \nDownload another book\nwget https://jcoriell.github.io/csc222/files/cnbc.txt\nmore cnbc.txt\nNavigate to the music directory from the books directory and download a song\ncd ..\ncd music\nwget https://jcoriell.github.io/csc222/files/mbe.mp3\nxdg-open mbe.mp3    # open it with the default application for the system"
+    "text": "The following commands are commonly used commands for working with files.\ncat         # show the contents of a file\nmore        # show the contents of a file, forward scrolling/jumping\nless        # show the contents of a file, forward and backward scrolling\ncp          # copy a file\nmv          # move a file, rename a file\nwget        # download stuff (sudo apt install wget)\nxdg-open    # open a file or url in its default application\n\n\n\nNavigate to Desktop and create a books and music directory\ncd ~/Desktop\nmkdir books music\nNavigate into the newly created books directory and download a book\ncd books\nwget https://www.gutenberg.org/cache/epub/98/pg98.txt \nls\nRename the book\nmv pg98.txt a-tale-of-two-cities.txt\nmore a-tale-of-two-cities.txt \nDownload another book\nwget https://jcoriell.github.io/csc222/files/cnbc.txt\nmore cnbc.txt\nNavigate to the music directory from the books directory and download a song\ncd ..\ncd music\nwget https://jcoriell.github.io/csc222/files/mbe.mp3\nxdg-open mbe.mp3    # open it with the default application for the system",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Working with Files"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/02 Working With Files.html#text-editors",
     "href": "02 Terminal and Shell/02 Working With Files.html#text-editors",
     "title": "Working with Files",
     "section": "Text Editors",
-    "text": "Text Editors\n\nvim (Vi - Improved)\n\nsteep learning curve, but frequent users love it\nwill make you better that everyone else\ncan learn using the command vimtutor\n\nOpen with the command: vim [filename]\n\nVim Modes:\ninsert      - i to activate, escape to back out\n\nreplace     - r to enter replace mode, use it to write over text instead of inserting text\n            - escape to back out\n\nvisual      - v, V, or ctrl+v to activate character, line, or block visual mode \n            - used to select text and apply commands to that text\n            - ex: copy, cut, replace, indent, search, and more...\n            - escape to back out \n\ncommand     - : to activate. Some common commands:\n            - w to save\n            - q to quit\n            - wq or x to save and quit\n            - q! to quit without saving\n            - e [filename] to open a file\n            - saveas [filename] to save the file as a new name\n            - [an integer] to jump to a line\n\n\nExample\n\nUse the following two commands to create a file somewhere on your system.\ncd ~/Desktop/programs               # navigate to a folder to complete the example in\nvim random_number_generator.py      # open a file (it is ok if the file doesn't exist yet)\nAt this point vim should have opened.\nType i to enter insert mode and type the following code.\nimport random\n\nprint(random.randint())\nNow hit escape to exit insert mode.\nMove the cursor to the beginning of the word randint\nHit v to enter visual mode.\nUse the e key to go to the END of the word (b goes to the Beginning)\nUse the c key to CHANGE the selected text to random. (we are replacing randint with random)\nAt this point the python code should look like this:\nimport random\n\nprint(random.random())\nUse escape to exit insert mode.\nUse : to enter command mode.\nType wq and hit enter to save and exit.\nIf you’d like to run the code, use the following command:\npython3 random_number_generator.py\n\n\n\n\n\n\n\nTip\n\n\n\nIt is recommended at this point that you run the vimtutor command if you’d like to learn more about using vim.\n\n\n\n\n\nNano\n\na simple to use terminal based text editor\nlittle to no learning curve\n\n\nExample\nIn this example, we create a file and add “hello world” to it using nano.\n\nRun the following commands\ncd ~/Desktop/programs       # navigate to a folder to store a file\ntouch helloworld.py\nnano helloworld.py\nAt this point, the file should be open. Type print(\"hello world\") on the first line.\nType ctrl + x to be prompted to save and close.\nRun cat helloworld.py to see the contents.\nRun python3 helloworld.py to run the file."
+    "text": "Text Editors\n\nvim (Vi - Improved)\n\nsteep learning curve, but frequent users love it\nwill make you better that everyone else\ncan learn using the command vimtutor\n\nOpen with the command: vim [filename]\n\nVim Modes:\ninsert      - i to activate, escape to back out\n\nreplace     - r to enter replace mode, use it to write over text instead of inserting text\n            - escape to back out\n\nvisual      - v, V, or ctrl+v to activate character, line, or block visual mode \n            - used to select text and apply commands to that text\n            - ex: copy, cut, replace, indent, search, and more...\n            - escape to back out \n\ncommand     - : to activate. Some common commands:\n            - w to save\n            - q to quit\n            - wq or x to save and quit\n            - q! to quit without saving\n            - e [filename] to open a file\n            - saveas [filename] to save the file as a new name\n            - [an integer] to jump to a line\n\n\nExample\n\nUse the following two commands to create a file somewhere on your system.\ncd ~/Desktop/programs               # navigate to a folder to complete the example in\nvim random_number_generator.py      # open a file (it is ok if the file doesn't exist yet)\nAt this point vim should have opened.\nType i to enter insert mode and type the following code.\nimport random\n\nprint(random.randint())\nNow hit escape to exit insert mode.\nMove the cursor to the beginning of the word randint\nHit v to enter visual mode.\nUse the e key to go to the END of the word (b goes to the Beginning)\nUse the c key to CHANGE the selected text to random. (we are replacing randint with random)\nAt this point the python code should look like this:\nimport random\n\nprint(random.random())\nUse escape to exit insert mode.\nUse : to enter command mode.\nType wq and hit enter to save and exit.\nIf you’d like to run the code, use the following command:\npython3 random_number_generator.py\n\n\n\n\n\n\n\nTip\n\n\n\nIt is recommended at this point that you run the vimtutor command if you’d like to learn more about using vim.\n\n\n\n\n\nNano\n\na simple to use terminal based text editor\nlittle to no learning curve\n\n\nExample\nIn this example, we create a file and add “hello world” to it using nano.\n\nRun the following commands\ncd ~/Desktop/programs       # navigate to a folder to store a file\ntouch helloworld.py\nnano helloworld.py\nAt this point, the file should be open. Type print(\"hello world\") on the first line.\nType ctrl + x to be prompted to save and close.\nRun cat helloworld.py to see the contents.\nRun python3 helloworld.py to run the file.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Working with Files"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/02 Working With Files.html#reference-files",
     "href": "02 Terminal and Shell/02 Working With Files.html#reference-files",
     "title": "Working with Files",
     "section": "Reference Files",
-    "text": "Reference Files\n\nReference\nA Tale of Two Cities\nCajun Night Before Christmas\nMeow"
+    "text": "Reference Files\n\nReference\nA Tale of Two Cities\nCajun Night Before Christmas\nMeow",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Working with Files"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/00 Background.html",
     "href": "02 Terminal and Shell/00 Background.html",
     "title": "Background",
     "section": "",
-    "text": "NoteDefinition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\n\n\n\n\n\n\nNoteDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nNote: We frequently use these terms interchangably, although they are different things."
+    "text": "NoteDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nSome terminal applications that exist that you may have used in the past or will use in the near future include the following:\n\nTerminal application on macOS\nTerminal application on Ubuntu\nTerminal application on Windows, which allows for different shells in different tabs.\nIf you’ve downloaded gitbash, it comes with its own terminal application\nSome IDEs such as VS code have built in terminals that allow you to select different shells.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Background"
+    ]
   },
   {
-    "objectID": "02 Terminal and Shell/00 Background.html#terminal-vs-shell",
-    "href": "02 Terminal and Shell/00 Background.html#terminal-vs-shell",
+    "objectID": "02 Terminal and Shell/00 Background.html#terminals",
+    "href": "02 Terminal and Shell/00 Background.html#terminals",
     "title": "Background",
     "section": "",
-    "text": "NoteDefinition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\n\n\n\n\n\n\nNoteDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nNote: We frequently use these terms interchangably, although they are different things."
+    "text": "NoteDefinition\n\n\n\nThe Terminal (or Terminal Emulator) is an application that the user interacts with in order to interact with the shell.\n\n\nSome terminal applications that exist that you may have used in the past or will use in the near future include the following:\n\nTerminal application on macOS\nTerminal application on Ubuntu\nTerminal application on Windows, which allows for different shells in different tabs.\nIf you’ve downloaded gitbash, it comes with its own terminal application\nSome IDEs such as VS code have built in terminals that allow you to select different shells.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Background"
+    ]
   },
   {
-    "objectID": "02 Terminal and Shell/00 Background.html#various-shells",
-    "href": "02 Terminal and Shell/00 Background.html#various-shells",
+    "objectID": "02 Terminal and Shell/00 Background.html#shells",
+    "href": "02 Terminal and Shell/00 Background.html#shells",
     "title": "Background",
-    "section": "Various Shells",
-    "text": "Various Shells\n\nbash - bash stands for Bourn Again SHell. Most unix-like systems use the bash shell.\nzsh - Read allowed as zsh or as Z shell. A bash-like shell.\npowershell - PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework [source]\ngitbash - bash emulation for windows [source]\nfish - friendly interactive shell [source]"
-  },
-  {
-    "objectID": "02 Terminal and Shell/00 Background.html#various-terminals",
-    "href": "02 Terminal and Shell/00 Background.html#various-terminals",
-    "title": "Background",
-    "section": "Various Terminals",
-    "text": "Various Terminals\n\nTerminal application on macOS\nTerminal application on Ubuntu\nTerminal application on Windows"
+    "section": "Shells",
+    "text": "Shells\n\n\n\n\n\n\nNoteDefinition\n\n\n\nThe shell is an interpreter that takes the commands you type and passes them to the operating system for execution.\n\n\nSome shells you may use as you continue your career in computer science include the following:\n\nbash - bash stands for Bourn Again SHell. Most unix-like systems use the bash shell.\nzsh - Read allowed as zsh or as Z shell. A bash-like shell.\npowershell - PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework [source]\nthe interactive Python shell\ngitbash - bash emulation for windows [source]\nfish - friendly interactive shell [source]\n\nNote: We frequently use the terms Terminal and Shell interchangably when we speak, although they are different things.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Background"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/00 Background.html#absolute-vs-relative-filepaths",
     "href": "02 Terminal and Shell/00 Background.html#absolute-vs-relative-filepaths",
     "title": "Background",
     "section": "Absolute vs Relative Filepaths",
-    "text": "Absolute vs Relative Filepaths\nAbsolute filepaths describe the filepath from the root of the filesystem.\nRelative filepaths describe the filepath from where you currently are.\nIf it starts with a /, or the ~, then it is an absolute filepath. If not, it is relative."
+    "text": "Absolute vs Relative Filepaths\nAbsolute filepaths describe the filepath from the root of the filesystem.\n# An absolute filepath to a folder called csc222 on the desktop\n/home/josh/Desktop/csc222\nRelative filepaths describe the filepath from where you currently are.\n# A relative filepath from the user's home folder to csc222\nDesktop/csc222\nIf it starts with a /, or the ~, then it is an absolute filepath. If not, it is relative.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Background"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/05 File Permissions.html",
     "href": "02 Terminal and Shell/05 File Permissions.html",
     "title": "File Permissions",
     "section": "",
-    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe second column represents the number of links to that file (2, 3, and 2 respectively.)\nThe third and fouth columns denote the user and group assigned to the file.\nThe fifth column represents the size for that file (4096 bytes for each of the above.)\nThe sixth column is the last date the file was modified.\nThe final column is the name of the file (directories in this case)."
+    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nIf we were to turn this output into a table where each column is labeled, we would see that the,first set of characters such as denotes the file permissions, second column represents the number of links to that file, the third and fouth columns denote the user and group assigned to the file, the fifth column represents the size for that file in bytes, the sixth column is the last date the file was modified, and the final column is the name of the file (directories in this case).\n\n\n\n\n\n\n\n\n\n\n\n\nPermissions\nNum. Links\nUser Owner\nGroup Owner\nSize (bytes)\nDate Modified\nFile/Dir Name\n\n\n\n\ndrwxr-xr-x\n2\njosh\njosh\n4096\nNov 29 15:32\nDesktop\n\n\ndrwxr-xr-x\n3\njosh\njosh\n4096\nNov 30 11:14\nDocuments\n\n\ndrwxr-xr-x\n2\njosh\njosh\n4096\nNov 29 11:26\nDownloads",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "File Permissions"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/05 File Permissions.html#introduction",
     "href": "02 Terminal and Shell/05 File Permissions.html#introduction",
     "title": "File Permissions",
     "section": "",
-    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nThe first set of characters such as drwxr-xr-x denotes the file permissions.\nThe second column represents the number of links to that file (2, 3, and 2 respectively.)\nThe third and fouth columns denote the user and group assigned to the file.\nThe fifth column represents the size for that file (4096 bytes for each of the above.)\nThe sixth column is the last date the file was modified.\nThe final column is the name of the file (directories in this case)."
+    "text": "File permissions are expressed with a 10 character string.\nTo see the file permissions for files in a directory run ls -l.\nThe output will resemble the following:\ndrwxr-xr-x 2 josh josh 4096 Nov 29 15:32 Desktop\ndrwxr-xr-x 3 josh josh 4096 Nov 30 11:14 Documents\ndrwxr-xr-x 2 josh josh 4096 Nov 29 11:26 Downloads\nIf we were to turn this output into a table where each column is labeled, we would see that the,first set of characters such as denotes the file permissions, second column represents the number of links to that file, the third and fouth columns denote the user and group assigned to the file, the fifth column represents the size for that file in bytes, the sixth column is the last date the file was modified, and the final column is the name of the file (directories in this case).\n\n\n\n\n\n\n\n\n\n\n\n\nPermissions\nNum. Links\nUser Owner\nGroup Owner\nSize (bytes)\nDate Modified\nFile/Dir Name\n\n\n\n\ndrwxr-xr-x\n2\njosh\njosh\n4096\nNov 29 15:32\nDesktop\n\n\ndrwxr-xr-x\n3\njosh\njosh\n4096\nNov 30 11:14\nDocuments\n\n\ndrwxr-xr-x\n2\njosh\njosh\n4096\nNov 29 11:26\nDownloads",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "File Permissions"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/05 File Permissions.html#file-permission-breakdown",
     "href": "02 Terminal and Shell/05 File Permissions.html#file-permission-breakdown",
     "title": "File Permissions",
     "section": "File Permission Breakdown",
-    "text": "File Permission Breakdown\nLet’s break down the permission string drwxr-xr-x.\n\nThe 1st character is the type of file. The most common characters you will see here are:\n- for file.\nd for directory.\nl for link.\nIn the permissions drwxr-xr-x, the first character is d, so we have a directory.\nThe next 9 characters are for 3 different permission classes\n\nThe owner of the file is the first set of 3 characters.\nIn the string drwxr-xr-x, we have rwx which means the owner can read, write, and execute the file.\nThe group for the file is the second set of 3.\nIn the string drwxr-xr-x, we have r-x which means anyone in the group for the file (users belong to groups) can read and execute the file.\nThe third set of 3 are for all other users (those not in the same user group, and not the owner)\nIn the string drwxr-xr-x, we have r-x which means all others can read and execute the file, but cannot modify it."
+    "text": "File Permission Breakdown\nLet’s break down the permission string drwxr-xr-x.\n\nFirst Character\nThe 1st character in this string is the type of file. The most common characters you will see here are - for a regular file, d for directory, and l for link. Note that a link, or symbolic link, is conceptually similar to a “shortcut” on a Windows machine.\n\n\n\nSymbol\nMeaning\n\n\n\n\n-\na regular file\n\n\nd\na directory\n\n\nl\na symbolic link\n\n\n\nIn the permission string drwxr-xr-x, the first character is d, so we have a directory.\n\n\nRemaining Characters\nThe remaining 9 characters are to denote the permissions for 3 different permission classes\n\nThe first set of 3 characters (character 2, 3, and 4) denote the permisions for the user that owns the file. In the string drwxr-xr-x, we have rwx which means the owner can read, write, and execute the file.\nThe second set of 3 characters (character 5, 6, and 7) denote the permisions for the group that owns the file. Note that each user gets a group named after themselves. Also, users can be added to other groups. You can set permissions for an entire group.\nIn the string drwxr-xr-x, we have r-x as the 5th, 6th, and 7th characters. This means any user in the group that owns this file can read and execute the file.\nThe final set of 3 characters are for all other users (those not in the group that owns the file, and not the user that owns the file)\nIn the string drwxr-xr-x, we have r-x which means all others can read and execute the file, but cannot modify it.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "File Permissions"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/05 File Permissions.html#changing-file-permissions",
     "href": "02 Terminal and Shell/05 File Permissions.html#changing-file-permissions",
     "title": "File Permissions",
     "section": "Changing File Permissions",
-    "text": "Changing File Permissions\nWe use the command chmod to change the file permissions. You can use either of the following methods to change the permissions."
+    "text": "Changing File Permissions\nWe use the command chmod to change the file permissions. You can use either of the following methods to change the permissions.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "File Permissions"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/05 File Permissions.html#using-the-characters-that-represent-the-permissions",
     "href": "02 Terminal and Shell/05 File Permissions.html#using-the-characters-that-represent-the-permissions",
     "title": "File Permissions",
     "section": "Using the characters that represent the permissions",
-    "text": "Using the characters that represent the permissions\nThe characters for each type of user are:\n\nu for owner\ng for group\no for others\na for all\n\nThe characters for permissions are:\n\nr for read\nw for write\nx for execute\n\nTo add permissions, combine a usertype character with + and one or more of the permission characters.\nTo remove permissions, combine a usertype character with - and one or more of the permission characters.\n\nSamples\n\nchmod u+rwx filename to give read write and execute permissions to the owner.\nchmod g-x filename to remove execute permissions from the group.\n\n\n\nExample\n\nNavigate to a directory to work with. You may need to create one.\ncd ~/Desktop/programs/bash-scripts   \nCreate a bash script we can work with.\necho \"echo hello permissions\" &gt; permission-ex.sh \nView the permissions for all the files in this directory, or just the bash file.\nls -l                    # all the files\nls -l permission-ex.sh   # just permissions for that one file\nNotice it was not executable by the user.\nTry executing it just to see the error.\n./permission-ex.sh            # attempt to execute the file, get an error \nAdd execution permission and try to execute it again.\nchmod u+x                     # allow the user to execute the file \nls -l permission-ex.sh        # show the permissions again\n./permission-ex.sh            # execute successfully"
+    "text": "Using the characters that represent the permissions\nThe characters for each type of user are:\n\nu for owner\ng for group\no for others\na for all\n\nThe characters for permissions are:\n\nr for read\nw for write\nx for execute\n\nTo add permissions, combine a usertype character with + and one or more of the permission characters.\nTo remove permissions, combine a usertype character with - and one or more of the permission characters.\n\nSamples\n\nchmod u+rwx filename to give read write and execute permissions to the owner.\nchmod g-x filename to remove execute permissions from the group.\n\n\n\nExample\n\nNavigate to a directory to work with. You may need to create one.\ncd ~/Desktop/programs/bash-scripts   \nCreate a bash script we can work with.\necho \"echo hello permissions\" &gt; permission-ex.sh \nView the permissions for all the files in this directory, or just the bash file.\nls -l                    # all the files\nls -l permission-ex.sh   # just permissions for that one file\nNotice it was not executable by the user.\nTry executing it just to see the error.\n./permission-ex.sh            # attempt to execute the file, get an error \nAdd execution permission and try to execute it again.\nchmod u+x                     # allow the user to execute the file \nls -l permission-ex.sh        # show the permissions again\n./permission-ex.sh            # execute successfully",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "File Permissions"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/05 File Permissions.html#using-numeric-values",
     "href": "02 Terminal and Shell/05 File Permissions.html#using-numeric-values",
     "title": "File Permissions",
     "section": "Using Numeric Values",
-    "text": "Using Numeric Values\nThe values for each type of permission are:\nr = 4\nw = 2\nx = 1\nYou can place them adjacent to each other to get combos\nrw  = 4 + 2     = 6\nrwx = 4 + 2 + 1 = 7\nwx  =     2 + 1 = 3\nrx  = 4     + 1 = 5\nWhen referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string drwxr-xr-x we have:\nd    r w x    r - x    r - x\n     4 2 1    4   1    4   1\n\nSum:     7        5        5\nPermission is 755\n\nSample\n\nchmod 766 filename to give:\n\nrwx permissions to the owner\nrw permissions to the group\n\nrw permissions to the others\n\n\n\n\nExample\n\nCreate a file to work with.\ncd ~/Desktop/programs/bash-scripts\necho \"echo hello from bash\" &gt; perm-ex-2.sh\nList the permissions.\nls -l perm-ex-2.sh\nAllow the user to execute the file, group to read and execute, others to read and execute\nchmod 755 perm-ex-2.sh\nView the permissions and execute the file.\nls -l \n./perm-ex-2.sh"
+    "text": "Using Numeric Values\nThe values for each type of permission are:\nr = 4\nw = 2\nx = 1\nYou can place them adjacent to each other to get combos\nrw  = 4 + 2     = 6\nrwx = 4 + 2 + 1 = 7\nwx  =     2 + 1 = 3\nrx  = 4     + 1 = 5\nWhen referencing the permission string, notice that this is simply binary on a set of 3 characters. For example, with the string drwxr-xr-x we have:\nd    r w x    r - x    r - x\n     4 2 1    4   1    4   1\n\nSum:     7        5        5\nPermission is 755\n\nSample\n\nchmod 766 filename to give:\n\nrwx permissions to the owner\nrw permissions to the group\n\nrw permissions to the others\n\n\n\n\nExample\n\nCreate a file to work with.\ncd ~/Desktop/programs/bash-scripts\necho \"echo hello from bash\" &gt; perm-ex-2.sh\nList the permissions.\nls -l perm-ex-2.sh\nAllow the user to execute the file, group to read and execute, others to read and execute\nchmod 755 perm-ex-2.sh\nView the permissions and execute the file.\nls -l \n./perm-ex-2.sh",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "File Permissions"
+    ]
   },
   {
     "objectID": "02 Terminal and Shell/05 File Permissions.html#changing-ownership",
     "href": "02 Terminal and Shell/05 File Permissions.html#changing-ownership",
     "title": "File Permissions",
     "section": "Changing Ownership",
-    "text": "Changing Ownership\nThe command chown will change the ownership of a file\nFormat:\nsudo chown [new_owner] [filename]\nsudo chown :[new_group] [filename]\nsudo chown [new_owner] :[new_group] [filename]\n\nExample:\n\nCreate a new user.\nsudo useradd betty      # create a new user \nSet the password for the new user. Note that you will be prompted for a password after executing the following command.\nsudo passwd betty       # set the password for the new user\nSet the user for the perm-ex-2.sh file.\nsudo chown betty perm-ex-2.sh \nSet the group for the perm-ex-2.sh file.\nsudo chown :betty perm-ex-2.sh"
+    "text": "Changing Ownership\nThe command chown will change the ownership of a file\nFormat:\nsudo chown [new_owner] [filename]\nsudo chown :[new_group] [filename]\nsudo chown [new_owner] :[new_group] [filename]\n\nExample:\n\nCreate a new user.\nsudo useradd betty      # create a new user \nSet the password for the new user. Note that you will be prompted for a password after executing the following command.\nsudo passwd betty       # set the password for the new user\nSet the user for the perm-ex-2.sh file.\nsudo chown betty perm-ex-2.sh \nSet the group for the perm-ex-2.sh file.\nsudo chown :betty perm-ex-2.sh",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "File Permissions"
+    ]
   },
   {
     "objectID": "03 C Programming/05-More-on-Data.html",

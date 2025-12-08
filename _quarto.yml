@@ -34,16 +34,15 @@ website:
           # - linux/additional-steps.qmd
 
 
-      - section: "2 - Terminal"
-        href: 02 Terminal/
+      - section: "2 - Terminal and Shell"
         contents:
-          - 02 Terminal/00 Background.qmd
-          - 02 Terminal/01 Basic Commands.qmd
-          - 02 Terminal/02 Working With Files.qmd
-          - 02 Terminal/03 Other Useful Tips.qmd
-          - 02 Terminal/04 Redirection.qmd
-          - 02 Terminal/05 File Permissions.qmd
-          - 02 Terminal/06 Grep and Regex.qmd
+          - 02 Terminal and Shell/00 Background.qmd
+          - 02 Terminal and Shell/01 Basic Commands.qmd
+          - 02 Terminal and Shell/02 Working With Files.qmd
+          - 02 Terminal and Shell/03 Other Useful Tips.qmd
+          - 02 Terminal and Shell/04 Redirection.qmd
+          - 02 Terminal and Shell/05 File Permissions.qmd
+          - 02 Terminal and Shell/06 Grep and Regex.qmd
 
 
       - section: "3 - C Programming"

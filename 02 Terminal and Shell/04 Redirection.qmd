@@ -69,10 +69,10 @@ title: Redirection
 
 ## Standard Error
 
-- abbreviated as stderr
+- Frequently abbreviated as stderr
 - represented with `2>`
 - can append with `2>>`
-- if an error is produced, you can redirect it elsewhere.
+- if an error is produced, you can use this to redirect the error elsewhere, like a log file for errors
 
 
 ### Examples
