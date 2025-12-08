@@ -1,0 +1,19 @@
+---
+title: Terminal and Shell
+---
+
+## Contents
+
+[00 Background](00 Background.html)
+
+[01 Basic Commands](01 Basic Commands.html   )  
+
+[02 Working With Files](02 Working With Files.html )
+
+[03 Other Useful Tips](03 Other Useful Tips.html ) 
+
+[04 Redirection](04 Redirection.html     )   
+
+[05 File Permissions](05 File Permissions.html)
+
+[06 Grep and Regex](06 Grep and Regex.html)

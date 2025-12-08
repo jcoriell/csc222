@@ -39,36 +39,94 @@ After installing, use the command `ggrep` in place of `grep`.
 You can use the flag `--color` with `ggrep` to force text highlighting.
 :::
 
-### Example
+## Examples
 
-1. Download the following zip file and extract it for the remainder of the examples on this page.
+For each of these examples, download the files at [https://csc222.jcor.dev/files/files-for-cats.zip](https://csc222.jcor.dev/files/files-for-cats.zip), unzip them, and navigate into the top level directory in a terminal.
 
-    ```sh
-    wget https://jcoriell.github.io/csc222/files/files-for-cats.zip
-    unzip files-for-cats.zip -d files-for-cats
-    rm files-for-cats.zip
-    cd files-for-cats 
-    ```
+```sh
+# Downloading and extracting the files for the examples.
+wget https://jcoriell.github.io/csc222/files/files-for-cats.zip
+unzip files-for-cats.zip -d files-for-cats
+rm files-for-cats.zip
+cd files-for-cats 
+```
 
-2. Find `Cat` in main.py
+### Example 1
+
+1. Find `Cat` in main.py
 
     ```sh
     grep Cat main.py
     ```
 
     Expected result:
-    (coming soon)
+    
+    ```txt
+    print('Hello, Cats of the Internet!')
+    ```
 
-3. Find `cat` in main.py
+2. Find `cat` in main.py
 
     ```sh
     grep cat main.py
     ```
 
     Expected result:
-    (coming soon)
+    
+    ```txt
+    # nothing appears because it is case sensitive
+    ```
 
-4. 
+3. Ignore case with the `-i` flag.
+
+    ```sh
+    grep -i cat main.py
+    ```
+
+    Expected result:
+    ```txt
+    print('Hello, Cats of the Internet!')
+    ```
+
+### Example 2
+
+1. Navigate into the `docs` directory of `files-for-cats`
+
+2. Find more instances of `cat` in `guide.txt` and `notes.txt`
+
+    ```sh
+    grep cat guide.txt notes.txt 
+    ```
+
+    Expected Output:
+    ```txt
+    guide.txt:1. The cat owns you, not the other way around.
+    guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.
+    notes.txt:- Cats sleep 16 hours a day. Be like a cat.
+    notes.txt:- Main.py is where you simulate cat-human communication.
+    ```
+
+3. Find even more instances when case is ignored.
+
+    ```sh
+    grep cat guide.txt notes.txt 
+    ```
+
+    Expected Output:
+
+    ```txt
+    guide.txt:CAT OWNER'S GUIDE:
+    guide.txt:1. The cat owns you, not the other way around.
+    guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.
+    notes.txt:Observations from Cat HQ:
+    notes.txt:- Cats sleep 16 hours a day. Be like a cat.
+    notes.txt:- Main.py is where you simulate cat-human communication.
+    ```
+
+### Example 3
+
+1. Go back to the root
+
 
 
 ## Files
