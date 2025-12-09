@@ -66,8 +66,8 @@ There will be homework, quizzes, labs, and two exams (a midterm and final exam).
 | 90-100%   | A         |
 | 80-89%    | B         |
 | 70-79%    | C         |
-| 50-69%    | D         |
-| < 50%     | F         |
+| 60-69%    | D         |
+| < 60%     | F         |
 
 
 
