@@ -971,29 +971,7 @@
     "href": "02 Terminal and Shell/06 Grep and Regex.html",
     "title": "Grep and Regex",
     "section": "",
-    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.",
-    "crumbs": [
-      "2 - Terminal and Shell",
-      "Grep and Regex"
-    ]
-  },
-  {
-    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#grep",
-    "href": "02 Terminal and Shell/06 Grep and Regex.html#grep",
-    "title": "Grep and Regex",
-    "section": "",
-    "text": "Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\n\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.",
-    "crumbs": [
-      "2 - Terminal and Shell",
-      "Grep and Regex"
-    ]
-  },
-  {
-    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#examples",
-    "href": "02 Terminal and Shell/06 Grep and Regex.html#examples",
-    "title": "Grep and Regex",
-    "section": "Examples",
-    "text": "Examples\nFor each of these examples, download the files at https://csc222.jcor.dev/files/files-for-cats.zip, unzip them, and navigate into the top level directory in a terminal.\n# Downloading and extracting the files for the examples.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \n\nExample 1\n\nFind Cat in main.py\ngrep Cat main.py\nExpected result:\nprint('Hello, Cats of the Internet!')\nFind cat in main.py\ngrep cat main.py\nExpected result:\n# nothing appears because it is case sensitive\nIgnore case with the -i flag.\ngrep -i cat main.py\nExpected result: txt  print('Hello, Cats of the Internet!')\n\n\n\nExample 2\n\nNavigate into the docs directory of files-for-cats\nFind more instances of cat in guide.txt and notes.txt\ngrep cat guide.txt notes.txt \nExpected Output: txt  guide.txt:1. The cat owns you, not the other way around.  guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.  notes.txt:- Cats sleep 16 hours a day. Be like a cat.  notes.txt:- Main.py is where you simulate cat-human communication.\nFind even more instances when case is ignored.\ngrep cat guide.txt notes.txt \nExpected Output:\nguide.txt:CAT OWNER'S GUIDE:\nguide.txt:1. The cat owns you, not the other way around.\nguide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.\nnotes.txt:Observations from Cat HQ:\nnotes.txt:- Cats sleep 16 hours a day. Be like a cat.\nnotes.txt:- Main.py is where you simulate cat-human communication.\n\n\n\nExample 3\n\nGo back to the root",
+    "text": "Download the zip file files-for-cats.zip to perform the examples on this page.\nfiles-for-cats.zip\nDownload and unzip with the following:\nwget https://csc222.jcor.dev/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats",
     "crumbs": [
       "2 - Terminal and Shell",
       "Grep and Regex"
@@ -1003,8 +981,52 @@
     "objectID": "02 Terminal and Shell/06 Grep and Regex.html#files",
     "href": "02 Terminal and Shell/06 Grep and Regex.html#files",
     "title": "Grep and Regex",
-    "section": "Files",
-    "text": "Files\nfiles-for-cats.zip",
+    "section": "",
+    "text": "Download the zip file files-for-cats.zip to perform the examples on this page.\nfiles-for-cats.zip\nDownload and unzip with the following:\nwget https://csc222.jcor.dev/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#grep",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html#grep",
+    "title": "Grep and Regex",
+    "section": "Grep",
+    "text": "Grep\nGrep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.\nGrep stands for Globally search for a Regular Expression and Print\nA typical format for using the grep command is as follows:\ngrep [flags] [search string] [file or files]\n\nCommon Flags\nThe following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the man grep command.\nFlag        Meaning\n-i          ignore case for the search string\n-r          search recursively into a directory and the files in that directory\n-c          count the number of lines the search string occurrs on in each file\n-o          show each occurrence on its own line when the result is printed\n-P          allow the use of PCRE (Perl Compatible regular expressions)\nConcerning the last flag, we will be using Perl compatible regular expresssions as it greatly enhannces pattern matching and allows for more concise expressions compared to standard regular expressions.\nAny of the above flags can be combined, as will be shown in a few examples that follow.\n\n\n\n\n\n\nTipgrep on macOS\n\n\n\nIf you’re using macOS, the built in grep command does not highlight the matches when printing the result like it does in Ubuntu. To get highlighted matches, download GNU grep using the command brew install grep. If you do not have homebrew installed, install instructions are found at (https://brew.sh/)https://brew.sh/.\nAfter installing, use the command ggrep in place of grep.\nYou can use the flag --color with ggrep to force text highlighting.",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#grep-examples",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html#grep-examples",
+    "title": "Grep and Regex",
+    "section": "Grep Examples",
+    "text": "Grep Examples\nFor each of these examples, download the files at https://csc222.jcor.dev/files/files-for-cats.zip, unzip them, and navigate into the top level directory in a terminal.\n# Downloading and extracting the files for the examples.\nwget https://jcoriell.github.io/csc222/files/files-for-cats.zip\nunzip files-for-cats.zip -d files-for-cats\nrm files-for-cats.zip\ncd files-for-cats \n\nExample 1\n\nFind Cat in main.py\ngrep Cat main.py\nExpected result:\nprint('Hello, Cats of the Internet!')\nFind cat in main.py\ngrep cat main.py\nExpected result:\n# nothing appears because it is case sensitive\nIgnore case with the -i flag.\ngrep -i cat main.py\nExpected result: txt  print('Hello, Cats of the Internet!')\n\n\n\nExample 2\n\nNavigate into the docs directory of files-for-cats\nFind more instances of cat in guide.txt and notes.txt\ngrep cat guide.txt notes.txt \nExpected Output: txt  guide.txt:1. The cat owns you, not the other way around.  guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.  notes.txt:- Cats sleep 16 hours a day. Be like a cat.  notes.txt:- Main.py is where you simulate cat-human communication.\nFind even more instances when case is ignored.\ngrep cat guide.txt notes.txt \nExpected Output:\nguide.txt:CAT OWNER'S GUIDE:\nguide.txt:1. The cat owns you, not the other way around.\nguide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.\nnotes.txt:Observations from Cat HQ:\nnotes.txt:- Cats sleep 16 hours a day. Be like a cat.\nnotes.txt:- Main.py is where you simulate cat-human communication.\n\n\n\nExample 3\n\nGo back to the top level of ‘files-for-cats’\nUse -r to search recursively through the files in a directory and its sub-directories\ngrep -r cat docs\nExpected Output:\ndocs/guide.txt:1. The cat owns you, not the other way around.\ndocs/guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.\ndocs/notes.txt:- Cats sleep 16 hours a day. Be like a cat.\ndocs/notes.txt:- Main.py is where you simulate cat-human communication.\n\n\n\nExample 4\n\nYou can combine the flags. In the following, -o shows each occurance on its own line and -c shows the count of lines where occurances appeared.\nTry each of these commands out.\n\ngrep -irc meow .\ngrep -iro meow .\n# pipe the result of grep into the word count command\n# -l will count the number of lines input into word count\ngrep -iro meow . | wc -l",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#regex",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html#regex",
+    "title": "Grep and Regex",
+    "section": "Regex",
+    "text": "Regex\nWhen using many of these characters in our regular expressions, we pass the -P flag into grep to be sure they are recognized. The -P indicates we are using Perl compatible regular expressions. For more on Perl Compatible Regular Expressions, visit https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions.\n\nBasic Characters\n\n\n\nCharacter\nMeaning\n\n\n\n\n.\nAny character except newline\n\n\n\\d\nDigit (0–9)\n\n\n\\D\nNot a digit (not 0–9)\n\n\n\\w\nWord character (a–z, A–Z, 0–9, _)\n\n\n\\W\nNot a word character\n\n\n\\s\nWhitespace (space, tab, newline)\n\n\n\\S\nNot whitespace\n\n\n\n\n\nExamples\nEach of these examples uses the files-for-cats directory. Test them on your machine to see the outputs.\n# finds groups of 3 characters \ngrep -P \"...\" docs/contacts.txt\n\n# shows the same as above, but each occurrence  \ngrep -oP \"...\" docs/contacts.txt    \n\n# finds the letter s and then whitespace\ngrep -P \"s\\s\" docs/contacts.txt     \n\n# finds three digits, then a dash, then 3 digits\ngrep -P \"\\d\\d\\d-\\d\\d\\d\\d\" docs/contacts.txt     \n\n# finds a word character, whitespace, then an open parentheses\ngrep -P \"\\w\\s\\(\"  docs/contacts.txt    \n\n\nMeta Characters\n\n\n\nCharacter\nMeaning\n\n\n\n\n[]\nUsed for grouping several characters\n\n\n[^ ]\nUsed to not match the characters in brackets\n\n\n{}\nUsed for quantifying with exact matches\n\n\n()\nUsed for grouping\n\n\n\\\nEscape character (escapes the meaning of metacharacters)\n\n\n|\nOR\n\n\n?\nMatches 0 or 1 of something (and other uses)\n\n\n*\nMatches 0 or more of something\n\n\n+\nMatches 1 or more of something\n\n\n\n\n\nExamples\nEach of the following examples are performed from the top level of the files-for-cats directory.\n# find the phone numbers in the format (###) ###-####\ngrep -P \"\\(\\d{3}\\)\\s\\d{3}-\\d{4}\" docs/contacts.txt   \n\n# find entries with first and last names\ngrep -P \" \\w* \\w* \" docs/contacts.txt   \n\n# find a capital letter, then any number of lowercase letters, then a space, then any number of capital and lowercase letters \ngrep -P \"[A-Z][a-z]* [a-zA-Z]*\" docs/contacts.txt   \n\n# any instances of Purr or Meow\ngrep -P \"(Purr|Meow)\" docs/contacts.txt    \n\n# any instances of Purr or Meow where the case on purr doesn't matter\ngrep -P \"([pP]urr|Meow)\" docs/contacts.txt          \n\n# find instances of a . followed by at least two alphabetic characters\ngrep -P \"\\.[a-zA-Z]{2,}\" docs/contacts.txt           \n\n# find instances of a . followed by at least two but at most 3 alphabetic characters\ngrep -P \"\\.[a-zA-Z]{2,3}\" docs/contacts.txt \n\n# everything except lowercase letters\ngrep -P \"[^a-Z]\" docs/contacts.txt                  \n\n# find emails\ngrep -P \"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\" docs/contacts.txt    \n\n\nSearching For Boundaries\n\n\n\n\n\n\n\nCharacter\nMeaning\n\n\n\n\n\\b\nWord boundary (occurs when a word character is adjacent to a non-word character)\n\n\n\\B\nNot a word boundary\n\n\n^\nBeginning of a line\n\n\n$\nEnd of a line\n\n\n\n\n\nExamples\nThese examples are performed at the root of file-for-cats.\n# match furr or Furr only when there is a word boundary before it\ngrep -P \"\\b[fF]urr\" docs/contacts.txt   \n\n# lines that begin with a - \ngrep -P \"^-\" docs/contacts.txt    \n\n# lines that end with com\ngrep -P \"\\.com$\" docs/contacts.txt",
+    "crumbs": [
+      "2 - Terminal and Shell",
+      "Grep and Regex"
+    ]
+  },
+  {
+    "objectID": "02 Terminal and Shell/06 Grep and Regex.html#extra-practice",
+    "href": "02 Terminal and Shell/06 Grep and Regex.html#extra-practice",
+    "title": "Grep and Regex",
+    "section": "Extra Practice",
+    "text": "Extra Practice\nFor extra practice with grep and regex, check out the following tools. Over the wire bandit will give you more terminal practice as well.\n\nhttps://regexone.com/\nhttps://overthewire.org/wargames/bandit/",
     "crumbs": [
       "2 - Terminal and Shell",
       "Grep and Regex"

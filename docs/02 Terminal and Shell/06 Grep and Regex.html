@@ -560,17 +560,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#grep" id="toc-grep" class="nav-link active" data-scroll-target="#grep">Grep</a>
+  <li><a href="#files" id="toc-files" class="nav-link active" data-scroll-target="#files">Files</a></li>
+  <li><a href="#grep" id="toc-grep" class="nav-link" data-scroll-target="#grep">Grep</a>
   <ul class="collapse">
   <li><a href="#common-flags" id="toc-common-flags" class="nav-link" data-scroll-target="#common-flags">Common Flags</a></li>
   </ul></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
+  <li><a href="#grep-examples" id="toc-grep-examples" class="nav-link" data-scroll-target="#grep-examples">Grep Examples</a>
   <ul class="collapse">
   <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
   <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
   <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3</a></li>
+  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4</a></li>
   </ul></li>
-  <li><a href="#files" id="toc-files" class="nav-link" data-scroll-target="#files">Files</a></li>
+  <li><a href="#regex" id="toc-regex" class="nav-link" data-scroll-target="#regex">Regex</a>
+  <ul class="collapse">
+  <li><a href="#basic-characters" id="toc-basic-characters" class="nav-link" data-scroll-target="#basic-characters">Basic Characters</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#meta-characters" id="toc-meta-characters" class="nav-link" data-scroll-target="#meta-characters">Meta Characters</a></li>
+  <li><a href="#examples-1" id="toc-examples-1" class="nav-link" data-scroll-target="#examples-1">Examples</a></li>
+  <li><a href="#searching-for-boundaries" id="toc-searching-for-boundaries" class="nav-link" data-scroll-target="#searching-for-boundaries">Searching For Boundaries</a></li>
+  <li><a href="#examples-2" id="toc-examples-2" class="nav-link" data-scroll-target="#examples-2">Examples</a></li>
+  </ul></li>
+  <li><a href="#extra-practice" id="toc-extra-practice" class="nav-link" data-scroll-target="#extra-practice">Extra Practice</a></li>
   </ul>
 </nav>
     </div>
@@ -596,12 +607,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="files" class="level2">
+<h2 class="anchored" data-anchor-id="files">Files</h2>
+<p>Download the zip file <code>files-for-cats.zip</code> to perform the examples on this page.</p>
+<p><a href="../files/files-for-cats.zip" target="_blank">files-for-cats.zip</a></p>
+<p>Download and unzip with the following:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://csc222.jcor.dev/files/files-for-cats.zip</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> files-for-cats.zip <span class="at">-d</span> files-for-cats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="grep" class="level2">
 <h2 class="anchored" data-anchor-id="grep">Grep</h2>
 <p>Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern.</p>
 <p>Grep stands for <strong>G</strong>lobally search for a <strong>R</strong>egular <strong>E</strong>xpression and <strong>P</strong>rint</p>
 <p>A typical format for using the grep command is as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="pp">[</span><span class="ss">flags</span><span class="pp">]</span> [search string] [file or files]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="pp">[</span><span class="ss">flags</span><span class="pp">]</span> [search string] [file or files]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="common-flags" class="level3">
 <h3 class="anchored" data-anchor-id="common-flags">Common Flags</h3>
 <p>The following are some common flags on may use with grep and their meaning. This is not an exhaustive list. For more information on the flags, use the <code>man grep</code> command.</p>
@@ -630,27 +649,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<section id="grep-examples" class="level2">
+<h2 class="anchored" data-anchor-id="grep-examples">Grep Examples</h2>
 <p>For each of these examples, download the files at <a href="https://csc222.jcor.dev/files/files-for-cats.zip">https://csc222.jcor.dev/files/files-for-cats.zip</a>, unzip them, and navigate into the top level directory in a terminal.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Downloading and extracting the files for the examples.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://jcoriell.github.io/csc222/files/files-for-cats.zip</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> files-for-cats.zip <span class="at">-d</span> files-for-cats</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> files-for-cats.zip</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> files-for-cats </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Downloading and extracting the files for the examples.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://jcoriell.github.io/csc222/files/files-for-cats.zip</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> files-for-cats.zip <span class="at">-d</span> files-for-cats</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> files-for-cats.zip</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> files-for-cats </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="example-1" class="level3">
 <h3 class="anchored" data-anchor-id="example-1">Example 1</h3>
 <ol type="1">
 <li><p>Find <code>Cat</code> in main.py</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> Cat main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> Cat main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Expected result:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>print('Hello, Cats of the Internet!')</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>print('Hello, Cats of the Internet!')</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Find <code>cat</code> in main.py</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> cat main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> cat main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Expected result:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a># nothing appears because it is case sensitive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a># nothing appears because it is case sensitive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Ignore case with the <code>-i</code> flag.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> cat main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> cat main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Expected result: <code>txt  print('Hello, Cats of the Internet!')</code></p></li>
 </ol>
 </section>
@@ -659,29 +678,239 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>Navigate into the <code>docs</code> directory of <code>files-for-cats</code></p></li>
 <li><p>Find more instances of <code>cat</code> in <code>guide.txt</code> and <code>notes.txt</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> cat guide.txt notes.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> cat guide.txt notes.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Expected Output: <code>txt  guide.txt:1. The cat owns you, not the other way around.  guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.  notes.txt:- Cats sleep 16 hours a day. Be like a cat.  notes.txt:- Main.py is where you simulate cat-human communication.</code></p></li>
 <li><p>Find even more instances when case is ignored.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> cat guide.txt notes.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> cat guide.txt notes.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Expected Output:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>guide.txt:CAT OWNER'S GUIDE:</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>guide.txt:1. The cat owns you, not the other way around.</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>notes.txt:Observations from Cat HQ:</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>notes.txt:- Cats sleep 16 hours a day. Be like a cat.</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>notes.txt:- Main.py is where you simulate cat-human communication.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>guide.txt:CAT OWNER'S GUIDE:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>guide.txt:1. The cat owns you, not the other way around.</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>notes.txt:Observations from Cat HQ:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>notes.txt:- Cats sleep 16 hours a day. Be like a cat.</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>notes.txt:- Main.py is where you simulate cat-human communication.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
 <section id="example-3" class="level3">
 <h3 class="anchored" data-anchor-id="example-3">Example 3</h3>
 <ol type="1">
-<li>Go back to the root</li>
+<li><p>Go back to the top level of ‘files-for-cats’</p></li>
+<li><p>Use <code>-r</code> to search recursively through the files in a directory and its sub-directories</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> cat docs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Expected Output:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>docs/guide.txt:1. The cat owns you, not the other way around.</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>docs/guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>docs/notes.txt:- Cats sleep 16 hours a day. Be like a cat.</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>docs/notes.txt:- Main.py is where you simulate cat-human communication.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
+<section id="example-4" class="level3">
+<h3 class="anchored" data-anchor-id="example-4">Example 4</h3>
+<ol type="1">
+<li><p>You can combine the flags. In the following, <code>-o</code> shows each occurance on its own line and <code>-c</code> shows the count of lines where occurances appeared.</p></li>
+<li><p>Try each of these commands out.</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-irc</span> meow .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-iro</span> meow .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe the result of grep into the word count command</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -l will count the number of lines input into word count</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-iro</span> meow . <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span>   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="files" class="level2">
-<h2 class="anchored" data-anchor-id="files">Files</h2>
-<p><a href="../files/files-for-cats.zip" target="_blank">files-for-cats.zip</a></p>
+</section>
+<section id="regex" class="level2">
+<h2 class="anchored" data-anchor-id="regex">Regex</h2>
+<p>When using many of these characters in our regular expressions, we pass the -P flag into grep to be sure they are recognized. The <code>-P</code> indicates we are using Perl compatible regular expressions. For more on Perl Compatible Regular Expressions, visit <a href="https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions">https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions</a>.</p>
+<section id="basic-characters" class="level3">
+<h3 class="anchored" data-anchor-id="basic-characters">Basic Characters</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.</code></td>
+<td>Any character except newline</td>
+</tr>
+<tr class="even">
+<td><code>\d</code></td>
+<td>Digit (0–9)</td>
+</tr>
+<tr class="odd">
+<td><code>\D</code></td>
+<td>Not a digit (not 0–9)</td>
+</tr>
+<tr class="even">
+<td><code>\w</code></td>
+<td>Word character (<code>a–z</code>, <code>A–Z</code>, <code>0–9</code>, <code>_</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>\W</code></td>
+<td>Not a word character</td>
+</tr>
+<tr class="even">
+<td><code>\s</code></td>
+<td>Whitespace (space, tab, newline)</td>
+</tr>
+<tr class="odd">
+<td><code>\S</code></td>
+<td>Not whitespace</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<p>Each of these examples uses the <code>files-for-cats</code> directory. Test them on your machine to see the outputs.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># finds groups of 3 characters </span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"..."</span> docs/contacts.txt</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># shows the same as above, but each occurrence  </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-oP</span> <span class="st">"..."</span> docs/contacts.txt    </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># finds the letter s and then whitespace</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"s\s"</span> docs/contacts.txt     </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># finds three digits, then a dash, then 3 digits</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"\d\d\d-\d\d\d\d"</span> docs/contacts.txt     </span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># finds a word character, whitespace, then an open parentheses</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"\w\s\("</span>  docs/contacts.txt    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="meta-characters" class="level3">
+<h3 class="anchored" data-anchor-id="meta-characters">Meta Characters</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[]</code></td>
+<td>Used for grouping several characters</td>
+</tr>
+<tr class="even">
+<td><code>[^ ]</code></td>
+<td>Used to not match the characters in brackets</td>
+</tr>
+<tr class="odd">
+<td><code>{}</code></td>
+<td>Used for quantifying with exact matches</td>
+</tr>
+<tr class="even">
+<td><code>()</code></td>
+<td>Used for grouping</td>
+</tr>
+<tr class="odd">
+<td><code>\</code></td>
+<td>Escape character (escapes the meaning of metacharacters)</td>
+</tr>
+<tr class="even">
+<td><code>|</code></td>
+<td>OR</td>
+</tr>
+<tr class="odd">
+<td><code>?</code></td>
+<td>Matches 0 or 1 of something (and other uses)</td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>Matches 0 or more of something</td>
+</tr>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Matches 1 or more of something</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples-1" class="level3">
+<h3 class="anchored" data-anchor-id="examples-1">Examples</h3>
+<p>Each of the following examples are performed from the top level of the <code>files-for-cats</code> directory.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the phone numbers in the format (</span><span class="al">###</span><span class="co">) </span><span class="al">###</span><span class="co">-####</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"\(\d{3}\)\s\d{3}-\d{4}"</span> docs/contacts.txt   </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># find entries with first and last names</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">" \w* \w* "</span> docs/contacts.txt   </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># find a capital letter, then any number of lowercase letters, then a space, then any number of capital and lowercase letters </span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"[A-Z][a-z]* [a-zA-Z]*"</span> docs/contacts.txt   </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># any instances of Purr or Meow</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"(Purr|Meow)"</span> docs/contacts.txt    </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># any instances of Purr or Meow where the case on purr doesn't matter</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"([pP]urr|Meow)"</span> docs/contacts.txt          </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># find instances of a . followed by at least two alphabetic characters</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"\.[a-zA-Z]{2,}"</span> docs/contacts.txt           </span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># find instances of a . followed by at least two but at most 3 alphabetic characters</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"\.[a-zA-Z]{2,3}"</span> docs/contacts.txt </span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="co"># everything except lowercase letters</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"[^a-Z]"</span> docs/contacts.txt                  </span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co"># find emails</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"</span> docs/contacts.txt    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="searching-for-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="searching-for-boundaries">Searching For Boundaries</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\b</code></td>
+<td>Word boundary (occurs when a word character is adjacent to a non-word character)</td>
+</tr>
+<tr class="even">
+<td><code>\B</code></td>
+<td>Not a word boundary</td>
+</tr>
+<tr class="odd">
+<td><code>^</code></td>
+<td>Beginning of a line</td>
+</tr>
+<tr class="even">
+<td><code>$</code></td>
+<td>End of a line</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples-2" class="level3">
+<h3 class="anchored" data-anchor-id="examples-2">Examples</h3>
+<p>These examples are performed at the root of <code>file-for-cats</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match furr or Furr only when there is a word boundary before it</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"\b[fF]urr"</span> docs/contacts.txt   </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># lines that begin with a - </span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"^-"</span> docs/contacts.txt    </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># lines that end with com</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">"\.com$"</span> docs/contacts.txt      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="extra-practice" class="level2">
+<h2 class="anchored" data-anchor-id="extra-practice">Extra Practice</h2>
+<p>For extra practice with grep and regex, check out the following tools. Over the wire bandit will give you more terminal practice as well.</p>
+<ul>
+<li><p><a href="https://regexone.com/">https://regexone.com/</a></p></li>
+<li><p><a href="https://overthewire.org/wargames/bandit/">https://overthewire.org/wargames/bandit/</a></p></li>
+</ul>
 
 
 </section>

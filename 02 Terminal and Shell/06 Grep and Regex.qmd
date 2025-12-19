@@ -2,6 +2,19 @@
 title: Grep and Regex
 ---
 
+## Files
+
+Download the zip file `files-for-cats.zip` to perform the examples on this page. 
+
+<a href="/files/files-for-cats.zip" target="_blank">files-for-cats.zip</a>
+
+Download and unzip with the following:
+
+```sh
+wget https://csc222.jcor.dev/files/files-for-cats.zip
+unzip files-for-cats.zip -d files-for-cats
+```
+
 ## Grep
 
 Grep is a command used to search through the contents of files using regular expressions. A regular expression is a sequence of characters that represents a search pattern. 
@@ -39,7 +52,7 @@ After installing, use the command `ggrep` in place of `grep`.
 You can use the flag `--color` with `ggrep` to force text highlighting.
 :::
 
-## Examples
+## Grep Examples
 
 For each of these examples, download the files at [https://csc222.jcor.dev/files/files-for-cats.zip](https://csc222.jcor.dev/files/files-for-cats.zip), unzip them, and navigate into the top level directory in a terminal.
 
@@ -125,12 +138,173 @@ cd files-for-cats
 
 ### Example 3
 
-1. Go back to the root
+1. Go back to the top level of 'files-for-cats'
+
+2. Use `-r` to search recursively through the files in a directory and its sub-directories
+
+    ```sh
+    grep -r cat docs
+    ```
+
+    Expected Output:
+
+    ```txt
+    docs/guide.txt:1. The cat owns you, not the other way around.
+    docs/guide.txt:3. If a cat sits on your laptop, you are no longer allowed to work.
+    docs/notes.txt:- Cats sleep 16 hours a day. Be like a cat.
+    docs/notes.txt:- Main.py is where you simulate cat-human communication.
+    ```
+
+### Example 4
+
+1. You can combine the flags. In the following, `-o` shows each occurance on its own line and `-c` shows the count of lines where occurances appeared. 
+
+2. Try each of these commands out.
+
+```sh 
+grep -irc meow .
+```
+
+```sh 
+grep -iro meow .
+```
+
+```sh 
+# pipe the result of grep into the word count command
+# -l will count the number of lines input into word count
+grep -iro meow . | wc -l   
+```
+
+## Regex
+
+When using many of these characters in our regular expressions, we pass the -P flag into grep to be sure they are recognized. The `-P` indicates we are using Perl compatible regular expressions. For more on Perl Compatible Regular Expressions, visit [https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions](https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions).
+
+### Basic Characters
+
+
+| Character | Meaning |
+|----------|---------|
+| `.`  | Any character except newline |
+| `\d` | Digit (0–9) |
+| `\D` | Not a digit (not 0–9) |
+| `\w` | Word character (`a–z`, `A–Z`, `0–9`, `_`) |
+| `\W` | Not a word character |
+| `\s` | Whitespace (space, tab, newline) |
+| `\S` | Not whitespace |
+
+### Examples
+
+Each of these examples uses the `files-for-cats` directory. Test them on your machine to see the outputs.
+
+```sh 
+# finds groups of 3 characters 
+grep -P "..." docs/contacts.txt
+
+# shows the same as above, but each occurrence  
+grep -oP "..." docs/contacts.txt    
+
+# finds the letter s and then whitespace
+grep -P "s\s" docs/contacts.txt     
+
+# finds three digits, then a dash, then 3 digits
+grep -P "\d\d\d-\d\d\d\d" docs/contacts.txt     
+
+# finds a word character, whitespace, then an open parentheses
+grep -P "\w\s\("  docs/contacts.txt    
+```
+
+
+### Meta Characters
+
+| Character | Meaning |
+|----------|---------|
+| `[]`      | Used for grouping several characters |
+| `[^ ]`    | Used to not match the characters in brackets |
+| `{}`      | Used for quantifying with exact matches |
+| `()`      | Used for grouping |
+| `\`       | Escape character (escapes the meaning of metacharacters) |
+| `|`       | OR |
+| `?`       | Matches 0 or 1 of something (and other uses) |
+| `*`       | Matches 0 or more of something |
+| `+`       | Matches 1 or more of something |
+
+
+### Examples
+
+Each of the following examples are performed from the top level of the `files-for-cats` directory.
+
+```sh
+# find the phone numbers in the format (###) ###-####
+grep -P "\(\d{3}\)\s\d{3}-\d{4}" docs/contacts.txt   
+
+# find entries with first and last names
+grep -P " \w* \w* " docs/contacts.txt   
+
+# find a capital letter, then any number of lowercase letters, then a space, then any number of capital and lowercase letters 
+grep -P "[A-Z][a-z]* [a-zA-Z]*" docs/contacts.txt   
+
+# any instances of Purr or Meow
+grep -P "(Purr|Meow)" docs/contacts.txt    
+
+# any instances of Purr or Meow where the case on purr doesn't matter
+grep -P "([pP]urr|Meow)" docs/contacts.txt          
+
+# find instances of a . followed by at least two alphabetic characters
+grep -P "\.[a-zA-Z]{2,}" docs/contacts.txt           
+
+# find instances of a . followed by at least two but at most 3 alphabetic characters
+grep -P "\.[a-zA-Z]{2,3}" docs/contacts.txt 
+
+# everything except lowercase letters
+grep -P "[^a-Z]" docs/contacts.txt                  
+
+# find emails
+grep -P "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" docs/contacts.txt    
+```
+
+### Searching For Boundaries
+
+| Character | Meaning |
+|----------|---------|
+| `\b` | Word boundary (occurs when a word character is adjacent to a non-word character) |
+| `\B` | Not a word boundary |
+| `^` | Beginning of a line |
+| `$` | End of a line |
 
 
 
-## Files
 
-<a href="/files/files-for-cats.zip" target="_blank">files-for-cats.zip</a>
+### Examples
+
+These examples are performed at the root of `file-for-cats`.
+
+```sh
+# match furr or Furr only when there is a word boundary before it
+grep -P "\b[fF]urr" docs/contacts.txt   
+
+# lines that begin with a - 
+grep -P "^-" docs/contacts.txt    
+
+# lines that end with com
+grep -P "\.com$" docs/contacts.txt      
+```
+
+
+## Extra Practice 
+
+For extra practice with grep and regex, check out the following tools. Over the wire bandit will give you more terminal practice as well. 
+
+- [https://regexone.com/](https://regexone.com/)
+
+- [https://overthewire.org/wargames/bandit/](https://overthewire.org/wargames/bandit/)
+
+
+
+
+
+
+
+
+
 
 
