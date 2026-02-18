@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>accessing-values-with-operands – CSC 222 Systems Programming</title>
+<title>file-sections – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,6 +104,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -82,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">7 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/04 Accessing Values with Operands.html">Example:</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/index.html">7 - Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/02 File Sections.html">Sections of an ASM File</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -446,8 +510,8 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">7 Assembly Primer</span></a>
+            <a href="../07 Assembly Primer/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7 - Assembly Primer</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -455,62 +519,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/01 Register Names.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Register Names</span></a>
+  <a href="../07 Assembly Primer/00 Overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/02 Register Conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Register Usage Conventions</span></a>
+  <a href="../07 Assembly Primer/01 Hello World.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hello, World!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/03 Interpreting Operands.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Interpreting Operands</span></a>
+  <a href="../07 Assembly Primer/02 File Sections.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Sections of an ASM File</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/04 Accessing Values with Operands.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Example:</span></a>
+  <a href="../07 Assembly Primer/03 Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/05 The Move Instruction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 The Move Instruction.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/06 The Load Effective Address Instruction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 The Load Effective Address Instruction.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/07 Status Flags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07 Status Flags.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/08 Arithmetic Instructions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08 Arithmetic Instructions.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/09 Comparing and Jumps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Compare and Jump</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/10 Reverse Engineering with C.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reverse Engineering</span></a>
+  <a href="../07 Assembly Primer/04 The Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Stack</span></a>
   </div>
 </li>
       </ul>
@@ -525,112 +559,76 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example:</a></li>
-  <li><a href="#determine-the-value-accessed-from-the-following-operands" id="toc-determine-the-value-accessed-from-the-following-operands" class="nav-link" data-scroll-target="#determine-the-value-accessed-from-the-following-operands">Determine the value accessed from the following operands:</a></li>
+  <li><a href="#sections-of-an-asm-file" id="toc-sections-of-an-asm-file" class="nav-link active" data-scroll-target="#sections-of-an-asm-file">Sections of an ASM File</a>
+  <ul class="collapse">
+  <li><a href="#the-.data-section" id="toc-the-.data-section" class="nav-link" data-scroll-target="#the-.data-section">The <code>.data</code> Section</a>
+  <ul class="collapse">
+  <li><a href="#example-usage" id="toc-example-usage" class="nav-link" data-scroll-target="#example-usage">Example Usage</a></li>
+  </ul></li>
+  <li><a href="#the-.bss-section" id="toc-the-.bss-section" class="nav-link" data-scroll-target="#the-.bss-section">The <code>.bss</code> Section</a>
+  <ul class="collapse">
+  <li><a href="#example-usage-1" id="toc-example-usage-1" class="nav-link" data-scroll-target="#example-usage-1">Example Usage</a></li>
+  </ul></li>
+  <li><a href="#the-.rodata-section" id="toc-the-.rodata-section" class="nav-link" data-scroll-target="#the-.rodata-section">The <code>.rodata</code> Section</a>
+  <ul class="collapse">
+  <li><a href="#example-usage-2" id="toc-example-usage-2" class="nav-link" data-scroll-target="#example-usage-2">Example Usage</a></li>
+  </ul></li>
+  <li><a href="#the-.text-section" id="toc-the-.text-section" class="nav-link" data-scroll-target="#the-.text-section">The <code>.text</code> Section</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">7 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/04 Accessing Values with Operands.html">Example:</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/index.html">7 - Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/02 File Sections.html">Sections of an ASM File</a></li></ol></nav></header>
 
 
 
 
-<section id="example" class="level3">
-<h3 class="anchored" data-anchor-id="example">Example:</h3>
-<p>Assume the following tables depict memory and register values:</p>
-<section id="memory" class="level4">
-<h4 class="anchored" data-anchor-id="memory">Memory</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Address</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0x100</td>
-<td>0xFF</td>
-</tr>
-<tr class="even">
-<td>0x104</td>
-<td>0xAB</td>
-</tr>
-<tr class="odd">
-<td>0x108</td>
-<td>0x13</td>
-</tr>
-<tr class="even">
-<td>0x10C</td>
-<td>0x11</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="registers" class="level4">
-<h4 class="anchored" data-anchor-id="registers">Registers</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Register</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>%rax</td>
-<td>0x100</td>
-</tr>
-<tr class="even">
-<td>%rcx</td>
-<td>0x1</td>
-</tr>
-<tr class="odd">
-<td>%rdx</td>
-<td>0x3</td>
-</tr>
-</tbody>
-</table>
-<hr>
+<section id="sections-of-an-asm-file" class="level1">
+<h1>Sections of an ASM File</h1>
+<p>As you create more asm files and look at various examples, you’ll find there are 4 sections that will appear in some of the files. While not every file will contain every section, it is good to be aware of the usage of each section.</p>
+<section id="the-.data-section" class="level2">
+<h2 class="anchored" data-anchor-id="the-.data-section">The <code>.data</code> Section</h2>
+<p>The data section of an asm file is a read/write section. It is commonly used to initialize variables that will be used in the program.</p>
+<section id="example-usage" class="level3">
+<h3 class="anchored" data-anchor-id="example-usage">Example Usage</h3>
+<p>Some example code follows. Before reading the example, here is some additional helpful information.</p>
+<ul>
+<li><p>The <code>equ</code> means to create a symbolic constant, that is, memory isn’t allocated for it.</p></li>
+<li><p>The <code>$</code> is a reference to the memory address after the last defined data, that is, the memory address after the location of where the <code>0xA</code> newline character was placed.</p></li>
+<li><p>The <code>$ - msg</code> calculates the current position from the address of the variable named msg. Effectively, this is the length of the message <code>Hello, World!\n</code>.</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode asm code-with-copy"><code class="sourceCode fasm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">section</span> <span class="op">.</span>data</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    msg <span class="dt">db</span> <span class="st">"Hello, world!"</span> <span class="op">,</span> <span class="bn">0xA</span>  <span class="co">; string with newline</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    msgLen equ <span class="op">$</span> <span class="op">-</span> msg            <span class="co">; Dynamically calculate length</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="determine-the-value-accessed-from-the-following-operands" class="level3">
-<h3 class="anchored" data-anchor-id="determine-the-value-accessed-from-the-following-operands">Determine the value accessed from the following operands:</h3>
-<ol type="1">
-<li><p><code>%rax</code></p>
-<p>Since there are now parenthesis around %rax, we are simply accessing the value stored at rax, which is 0x100.</p>
-<p>Solution: 0x100</p></li>
-<li><p><code>0x104</code></p>
-<p>Since this is a hex value, and there is not a <code>$</code> symbol in front of it, then this represents a memory address. We access the value stored at the memory address 0x104 which is 0xAB.</p>
-<p>Solution: 0xAB</p></li>
-<li><p><code>$0x108</code></p>
-<p>Since this value has a <code>$</code> in front of it, this represents an immediate value. That is, it represents itself, 0x108.</p>
-<p>Solution: 0x108</p></li>
-<li><p><code>(%rax)</code></p>
-<p>rax holds the value 0x100. The parentheses tell us that we are going to need to visit memory and get the value at 0x100. The value stored at 0x100 is 0xFF.</p>
-<p>Solution: 0xFF</p></li>
-<li><p><code>4(%rax)</code></p>
-<p>rax holds the value 0x100. The parentheses tell us that we need to visit memory. Specifically, since there is a 4 out front, we need to visit the memory addresss that is 4 over from the address stored in rax. We then get the value from there.</p>
-<p>Thus, <code>%rax</code> holds <code>0x100</code>, and 4 memory locations over from <code>0x100</code> is memory location <code>0x104</code>.</p>
-<p>The value at <code>0x104</code> is 0xAB</p>
-<p>Solution: 0xAB</p></li>
-<li><p><code>9(%rax, %rdx)</code></p>
-<p><code>%rax</code> holds <code>0x100.</code>%rdx<code>holds</code>0x3`.</p>
-<p>We need to add these two values together to get a resulting address. Note that in the following calculation we padded the hex value with 0s to match in digit length</p>
-<pre><code>  0x100
-+ 0x003
--------
-  0x103</code></pre>
-<p>Now, we move 9 memory locations over from 0x103.</p>
-<pre><code>  0x103
-+ 0x009    &lt;- 9 in hex
--------
-  0x10C    &lt;- 3 + 9 = 12, 12 is C in hex</code></pre>
-<p>Now we get the value at 0x10C which is 0x11.</p></li>
-</ol>
+<section id="the-.bss-section" class="level2">
+<h2 class="anchored" data-anchor-id="the-.bss-section">The <code>.bss</code> Section</h2>
+<p>The <code>.bss</code> section is used for uninitialized variables. That is, we can use this section to reserve space for values that will be set later.</p>
+<section id="example-usage-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-usage-1">Example Usage</h3>
+<p>An example of how the <code>.bss</code> section may be used follows. Note that <code>resb</code> stands for <strong>reserve bytes</strong>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode s code-with-copy"><code class="sourceCode gnuassembler"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>section <span class="kw">.bss</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    someInput resb <span class="dv">20</span>   <span class="co">; reserve 20 bytes for a var named someInput</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="the-.rodata-section" class="level2">
+<h2 class="anchored" data-anchor-id="the-.rodata-section">The <code>.rodata</code> Section</h2>
+<p>The <code>.rodata</code> section is used for constants. That is, this section is for data that is not modified. For example, this is commonly used for strings.</p>
+<section id="example-usage-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-usage-2">Example Usage</h3>
+<p>In the following example, we define <span class="math inline">\(\pi\)</span> as a constant. The letters <code>dq</code> in this example stand for <strong>define quadword</strong>. Despite the name <strong>quadword</strong>, a <strong>quadword</strong> is a 64-bit/double-precision value.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode asm code-with-copy"><code class="sourceCode fasm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">section</span> <span class="op">.</span>rodata</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    pi <span class="dt">dq</span> <span class="fl">3.141592653589793</span>  <span class="co">; Define a quadword/double-precision constant</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="the-.text-section" class="level2">
+<h2 class="anchored" data-anchor-id="the-.text-section">The <code>.text</code> Section</h2>
+<p>The text section is where you place the executable code for your asm file. For an example, see the page titled <a href="../07 Assembly Primer/01 Hello World.html">Hello, World!</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

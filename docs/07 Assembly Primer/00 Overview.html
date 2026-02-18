@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Register Names – CSC 222 Systems Programming</title>
+<title>Overview – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">7 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">Register Names</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/index.html">7 - Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/00 Overview.html">Overview</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -446,8 +481,8 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">7 Assembly Primer</span></a>
+            <a href="../07 Assembly Primer/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7 - Assembly Primer</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -455,62 +490,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/01 Register Names.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Register Names</span></a>
+  <a href="../07 Assembly Primer/00 Overview.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/02 Register Conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Register Usage Conventions</span></a>
+  <a href="../07 Assembly Primer/01 Hello World.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hello, World!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/03 Interpreting Operands.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Interpreting Operands</span></a>
+  <a href="../07 Assembly Primer/02 File Sections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sections of an ASM File</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/04 Accessing Values with Operands.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Example:</span></a>
+  <a href="../07 Assembly Primer/03 Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/05 The Move Instruction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 The Move Instruction.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/06 The Load Effective Address Instruction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 The Load Effective Address Instruction.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/07 Status Flags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07 Status Flags.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/08 Arithmetic Instructions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08 Arithmetic Instructions.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/09 Comparing and Jumps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Compare and Jump</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/10 Reverse Engineering with C.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reverse Engineering</span></a>
+  <a href="../07 Assembly Primer/04 The Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Stack</span></a>
   </div>
 </li>
       </ul>
@@ -525,16 +530,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#additional-notes" id="toc-additional-notes" class="nav-link active" data-scroll-target="#additional-notes">Additional Notes:</a></li>
+  <li><a href="#common-instruction-sets" id="toc-common-instruction-sets" class="nav-link active" data-scroll-target="#common-instruction-sets">Common Instruction Sets</a></li>
+  <li><a href="#registers-x86_64" id="toc-registers-x86_64" class="nav-link" data-scroll-target="#registers-x86_64">Registers (x86_64)</a></li>
+  <li><a href="#registers-and-common-rolesconventions" id="toc-registers-and-common-rolesconventions" class="nav-link" data-scroll-target="#registers-and-common-rolesconventions">Registers and Common Roles/Conventions</a></li>
+  <li><a href="#standards-for-this-class" id="toc-standards-for-this-class" class="nav-link" data-scroll-target="#standards-for-this-class">Standards for this Class</a></li>
+  <li><a href="#install-nasm" id="toc-install-nasm" class="nav-link" data-scroll-target="#install-nasm">Install NASM</a></li>
+  <li><a href="#check-for-linker" id="toc-check-for-linker" class="nav-link" data-scroll-target="#check-for-linker">Check for Linker</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">7 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">Register Names</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/index.html">7 - Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/00 Overview.html">Overview</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Register Names</h1>
+<h1 class="title">Overview</h1>
 </div>
 
 
@@ -551,384 +561,220 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The following is a list of register names for x86-64 assembly</p>
-
-<meta charset="UTF-8">
-<style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
-            text-align: left;
-        }
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-        caption {
-            caption-side: top;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
-
-
-<table>
+<section id="common-instruction-sets" class="level2">
+<h2 class="anchored" data-anchor-id="common-instruction-sets">Common Instruction Sets</h2>
+<ul>
+<li><p>Intel x86 processors</p>
+<ul>
+<li><p>Applicable to most windows machines.</p></li>
+<li><p>What we are working under for this class. If you are using an m-series mac, follow the <a href="">Guide for Running x86_64 ASM with NASM on Your Mac</a>.</p></li>
+</ul></li>
+<li><p>ARM</p>
+<ul>
+<li>Applicable to most newer macs and smartphones/tablets.</li>
+</ul></li>
+<li><p>RISC-V</p>
+<ul>
+<li><p>Stands for Reduced Instruction Set Computers - Five</p></li>
+<li><p>Common in Embedded Systems and Microcontrollers</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="registers-x86_64" class="level2">
+<h2 class="anchored" data-anchor-id="registers-x86_64">Registers (x86_64)</h2>
+<p>We have 16 general purpose registers that can each hold 64 bits. The label/name for each one indicates how many of those 64 bits we are referring to.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 40%">
+</colgroup>
 <thead>
-<tr>
-<th>
-Base Label
-</th>
-<th colspan="4">
-Labels for Lower n-bits of a Register
-</th>
-<th>
-Additional Info
-</th>
-</tr>
-<tr>
-<th>
-</th>
-<th>
-8-bit
-</th>
-<th>
-16-bit
-</th>
-<th>
-32-bit
-</th>
-<th>
-64-bit
-</th>
-<th>
-</th>
+<tr class="header">
+<th>Base Label</th>
+<th>All 64-bits</th>
+<th>Lower 32-bits</th>
+<th>Lower 16-bits</th>
+<th>Lower 8-bits</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
-a
-</td>
-<td>
-al
-</td>
-<td>
-ax
-</td>
-<td>
-eax
-</td>
-<td>
-rax
-</td>
-<td>
-a for accumulator
-</td>
+<tr class="odd">
+<td>A</td>
+<td>RAX</td>
+<td>EAX</td>
+<td>AX</td>
+<td>AL</td>
+<td>Accumulator (results)</td>
 </tr>
-<tr>
-<td>
-b
-</td>
-<td>
-bl
-</td>
-<td>
-bx
-</td>
-<td>
-ebx
-</td>
-<td>
-rbx
-</td>
-<td>
-b for base
-</td>
+<tr class="even">
+<td>B</td>
+<td>RBX</td>
+<td>EBX</td>
+<td>BX</td>
+<td>BL</td>
+<td>Base (address calculations)</td>
 </tr>
-<tr>
-<td>
-c
-</td>
-<td>
-cl
-</td>
-<td>
-cx
-</td>
-<td>
-ecx
-</td>
-<td>
-rcx
-</td>
-<td>
-c for counter
-</td>
+<tr class="odd">
+<td>C</td>
+<td>RCX</td>
+<td>ECX</td>
+<td>CX</td>
+<td>CL</td>
+<td>Counter (loops)</td>
 </tr>
-<tr>
-<td>
-d
-</td>
-<td>
-dl
-</td>
-<td>
-dx
-</td>
-<td>
-edx
-</td>
-<td>
-rdx
-</td>
-<td>
-d for data
-</td>
+<tr class="even">
+<td>D</td>
+<td>RDX</td>
+<td>EDX</td>
+<td>DX</td>
+<td>DL</td>
+<td>Data (math and I/O)</td>
 </tr>
-<tr>
-<td>
-si
-</td>
-<td>
-sil
-</td>
-<td>
-si
-</td>
-<td>
-esi
-</td>
-<td>
-rsi
-</td>
-<td>
-source index
-</td>
+<tr class="odd">
+<td>SI</td>
+<td>RSI</td>
+<td>ESI</td>
+<td>SI</td>
+<td>SIL</td>
+<td>Source Index</td>
 </tr>
-<tr>
-<td>
-di
-</td>
-<td>
-dil
-</td>
-<td>
-di
-</td>
-<td>
-edi
-</td>
-<td>
-rdi
-</td>
-<td>
-destination index
-</td>
+<tr class="even">
+<td>DI</td>
+<td>RDI</td>
+<td>EDI</td>
+<td>DI</td>
+<td>DIL</td>
+<td>Destination Index</td>
 </tr>
-<tr>
-<td>
-bp
-</td>
-<td>
-bpl
-</td>
-<td>
-bp
-</td>
-<td>
-ebp
-</td>
-<td>
-rbp
-</td>
-<td>
-stack base pointer
-</td>
+<tr class="odd">
+<td>BP</td>
+<td>RBP</td>
+<td>EBP</td>
+<td>BP</td>
+<td>BPL</td>
+<td>Base Pointer</td>
 </tr>
-<tr>
-<td>
-sp
-</td>
-<td>
-spl
-</td>
-<td>
-sp
-</td>
-<td>
-esp
-</td>
-<td>
-rsp
-</td>
-<td>
-stack pointer (end position of runtime stack)
-</td>
+<tr class="even">
+<td>SP</td>
+<td>RSP</td>
+<td>ESP</td>
+<td>SP</td>
+<td>SPL</td>
+<td>Stack Pointer</td>
 </tr>
-<tr>
-<td>
-r8
-</td>
-<td>
-r8b
-</td>
-<td>
-r8w
-</td>
-<td>
-r8d
-</td>
-<td>
-r8
-</td>
-<td>
-</td>
+<tr class="odd">
+<td>8</td>
+<td>R8</td>
+<td>R8D</td>
+<td>R8W</td>
+<td>R8B</td>
+<td>General use</td>
 </tr>
-<tr>
-<td>
-r9
-</td>
-<td>
-r9b
-</td>
-<td>
-r9w
-</td>
-<td>
-r9d
-</td>
-<td>
-r9
-</td>
-<td>
-</td>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
 </tr>
-<tr>
-<td>
-r10
-</td>
-<td>
-r10b
-</td>
-<td>
-r10w
-</td>
-<td>
-r10d
-</td>
-<td>
-r10
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-r11
-</td>
-<td>
-r11b
-</td>
-<td>
-r11w
-</td>
-<td>
-r11d
-</td>
-<td>
-r11
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-r12
-</td>
-<td>
-r12b
-</td>
-<td>
-r12w
-</td>
-<td>
-r12d
-</td>
-<td>
-r12
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-r13
-</td>
-<td>
-r13b
-</td>
-<td>
-r13w
-</td>
-<td>
-r13d
-</td>
-<td>
-r13
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-r14
-</td>
-<td>
-r14b
-</td>
-<td>
-r14w
-</td>
-<td>
-r14d
-</td>
-<td>
-r14
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-r15
-</td>
-<td>
-r15b
-</td>
-<td>
-r15w
-</td>
-<td>
-r15d
-</td>
-<td>
-r15
-</td>
-<td>
-</td>
+<tr class="odd">
+<td>15</td>
+<td>R15</td>
+<td>R15D</td>
+<td>R15W</td>
+<td>R15B</td>
+<td>General use</td>
 </tr>
 </tbody>
 </table>
-
-
-<section id="additional-notes" class="level3">
-<h3 class="anchored" data-anchor-id="additional-notes">Additional Notes:</h3>
-<p>In the 8-bit column for the first 8 register, <code>l</code> stands for low or lower. You can actually address the upper 8-bits of the lower 16-bits with <code>h</code>.</p>
-<p>In the 4 central columns for registers r8 through r15, the letter <code>b</code> stands for byte (8-bits being addressed), <code>w</code> for word (there was a time where most machines had a word size of 16 bits, that is, this is a legacy holdover from that time), and <code>d</code> for double word (32-bits is twice 16-bits).</p>
-<p>There are some additional registers outside of the 16 mentioned above, that is the <code>ip</code>, or instruction pointer register, and then the status flags.</p>
+<p>Note that for registers A, B, C, and D, the upper 8 bits of the lower 16 bits can be addressed with AH, BH, CH, and DH.</p>
+</section>
+<section id="registers-and-common-rolesconventions" class="level2">
+<h2 class="anchored" data-anchor-id="registers-and-common-rolesconventions">Registers and Common Roles/Conventions</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Register(s)</th>
+<th>Convention</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RAX</td>
+<td>Return value (or accumulator)</td>
+</tr>
+<tr class="even">
+<td>RBX</td>
+<td>Callee-saved register</td>
+</tr>
+<tr class="odd">
+<td>RCX</td>
+<td>4th argument</td>
+</tr>
+<tr class="even">
+<td>RDX</td>
+<td>3rd argument</td>
+</tr>
+<tr class="odd">
+<td>RSI</td>
+<td>2nd argument</td>
+</tr>
+<tr class="even">
+<td>RDI</td>
+<td>1st argument</td>
+</tr>
+<tr class="odd">
+<td>RSP</td>
+<td>Stack pointer</td>
+</tr>
+<tr class="even">
+<td>RBP</td>
+<td>Base pointer</td>
+</tr>
+<tr class="odd">
+<td>R8–R9</td>
+<td>5th and 6th arguments</td>
+</tr>
+<tr class="even">
+<td>R10–R11</td>
+<td>Temporary values (caller-saved)</td>
+</tr>
+<tr class="odd">
+<td>R12–R15</td>
+<td>Callee-saved / general use</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="standards-for-this-class" class="level2">
+<h2 class="anchored" data-anchor-id="standards-for-this-class">Standards for this Class</h2>
+<ul>
+<li><p>RAX is for results</p></li>
+<li><p>RCX, RDX, RSI, RDI, R8, and R9 are for arguments</p></li>
+<li><p>RBP and RSP shouldn’t be touched unless you know what you’re doing.</p></li>
+</ul>
+</section>
+<section id="install-nasm" class="level2">
+<h2 class="anchored" data-anchor-id="install-nasm">Install NASM</h2>
+<p>To install nasm on your vm, run the following two commands.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nasm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To confirm the install, run the following command.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nasm</span> <span class="at">-v</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="check-for-linker" class="level2">
+<h2 class="anchored" data-anchor-id="check-for-linker">Check for Linker</h2>
+<p>To double check that you have the gcc linker installed, run the following command.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ld</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If for some reason it is not installed, run the following command to install the entire GNU compiler collection and related tools.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install build-essential</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

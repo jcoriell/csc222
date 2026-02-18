@@ -1,0 +1,105 @@
+---
+title: Overview
+---
+
+
+## Common Instruction Sets
+
+- Intel x86 processors
+
+    * Applicable to most windows machines.
+
+    * What we are working under for this class. If you are using an m-series mac, follow the [Guide for Running x86_64 ASM with NASM on Your Mac]().
+
+- ARM 
+
+    * Applicable to most newer macs and smartphones/tablets.
+
+- RISC-V
+
+    * Stands for Reduced Instruction Set Computers - Five
+
+    * Common in Embedded Systems and Microcontrollers
+
+
+## Registers (x86_64)
+
+We have 16 general purpose registers that can each hold 64 bits. The label/name for each one indicates how many of those 64 bits we are referring to.
+
+
+| Base Label | All 64-bits | Lower 32-bits | Lower 16-bits | Lower 8-bits  | Description                         |
+|------------|------------|----------|----------|----------|-------------------------------------|
+| A          | RAX    | EAX      | AX       | AL                    | Accumulator (results)               |
+| B          | RBX    | EBX      | BX       | BL                    | Base (address calculations)         |
+| C          | RCX    | ECX      | CX       | CL                    | Counter (loops)                     |
+| D          | RDX    | EDX      | DX       | DL                    | Data (math and I/O)                 |
+| SI         | RSI    | ESI      | SI       | SIL                   | Source Index                        |
+| DI         | RDI    | EDI      | DI       | DIL                   | Destination Index                   |
+| BP         | RBP    | EBP      | BP       | BPL                   | Base Pointer                        |
+| SP         | RSP    | ESP      | SP       | SPL                   | Stack Pointer                       |
+| 8          | R8     | R8D      | R8W      | R8B                   | General use                         |
+| …          | …      | …        | …        | …                     | …                                   |
+| 15         | R15    | R15D     | R15W     | R15B                  | General use                         |
+
+
+Note that for registers A, B, C, and D, the upper 8 bits of the lower 16 bits can be addressed with AH, BH, CH, and DH.
+
+
+
+## Registers and Common Roles/Conventions
+
+| Register(s) | Convention                          |
+|-------------|-------------------------------------|
+| RAX         | Return value (or accumulator)        |
+| RBX         | Callee-saved register                |
+| RCX         | 4th argument                         |
+| RDX         | 3rd argument                         |
+| RSI         | 2nd argument                         |
+| RDI         | 1st argument                         |
+| RSP         | Stack pointer                        |
+| RBP         | Base pointer                         |
+| R8–R9       | 5th and 6th arguments                |
+| R10–R11     | Temporary values (caller-saved)      |
+| R12–R15     | Callee-saved / general use           |
+
+
+## Standards for this Class
+
+- RAX is for results
+
+- RCX, RDX, RSI, RDI, R8, and R9 are for arguments
+
+- RBP and RSP shouldn't be touched unless you know what you're doing.
+
+
+## Install NASM
+
+To install nasm on your vm, run the following two commands.
+
+```sh
+sudo apt update
+sudo apt install nasm
+```
+
+To confirm the install, run the following command.
+
+```sh 
+nasm -v
+```
+
+## Check for Linker 
+
+To double check that you have the gcc linker installed, run the following command.
+
+```sh
+ld --version
+```
+
+If for some reason it is not installed, run the following command to install the entire GNU compiler collection and related tools.
+
+```sh
+sudo apt update
+sudo apt install build-essential
+```
+
+

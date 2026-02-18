@@ -1,0 +1,57 @@
+
+# Sections of an ASM File
+
+As you create more asm files and look at various examples, you'll find there are 4 sections that will appear in some of the files. While not every file will contain every section, it is good to be aware of the usage of each section.
+
+## The `.data` Section
+
+The data section of an asm file is a read/write section. It is commonly used to initialize variables that will be used in the program.
+
+### Example Usage
+
+Some example code follows. Before reading the example, here is some additional helpful information.
+
+- The `equ` means to create a symbolic constant, that is, memory isn't allocated for it.
+
+- The `$` is a reference to the memory address after the last defined data, that is, the memory address after the location of where the `0xA` newline character was placed.
+
+- The `$ - msg` calculates the current position from the address of the variable named msg. Effectively, this is the length of the message `Hello, World!\n`.
+
+```asm
+section .data
+    msg db "Hello, world!" , 0xA  ; string with newline
+    msgLen equ $ - msg            ; Dynamically calculate length
+```
+
+## The `.bss` Section
+
+The `.bss` section is used for uninitialized variables. That is, we can use this section to reserve space for values that will be set later.
+
+### Example Usage
+
+An example of how the `.bss` section may be used follows. Note that `resb` stands for **reserve bytes**.
+
+```s
+section .bss
+    someInput resb 20   ; reserve 20 bytes for a var named someInput
+```
+
+## The `.rodata` Section
+
+The `.rodata` section is used for constants. That is, this section is for data that is not modified. For example, this is commonly used for strings.
+
+
+### Example Usage
+
+In the following example, we define $\pi$ as a constant. The letters `dq` in this example stand for **define quadword**. Despite the name **quadword**, a **quadword** is a 64-bit/double-precision value.
+
+```asm
+section .rodata
+    pi dq 3.141592653589793  ; Define a quadword/double-precision constant
+```
+
+## The `.text` Section
+
+The text section is where you place the executable code for your asm file. For an example, see the page titled [Hello, World!](01 Hello World.qmd).
+
+

@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/05 The Move Instruction.html</loc>
-    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/03 Variables.html</loc>
+    <lastmod>2026-02-18T20:35:43.230Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/08 Arithmetic Instructions.html</loc>
-    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/00 Overview.html</loc>
+    <lastmod>2026-02-18T18:58:10.727Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/02 Register Conventions.html</loc>
-    <lastmod>2025-02-25T18:35:56.167Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/index.html</loc>
+    <lastmod>2026-02-18T20:43:22.295Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/07 Status Flags.html</loc>
-    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/10 Reverse Engineering with C.html</loc>
+    <lastmod>2025-02-26T21:57:13.110Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/06 The Load Effective Address Instruction.html</loc>
-    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/09 Comparing and Jumps.html</loc>
+    <lastmod>2025-02-26T22:32:45.246Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/03 Interpreting Operands.html</loc>
+    <lastmod>2025-02-25T19:30:19.225Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/01 Register Names.html</loc>
+    <lastmod>2025-02-25T18:26:54.794Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/04 Accessing Values with Operands.html</loc>
+    <lastmod>2025-02-25T19:30:21.596Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/06 Bash Scripting/05-Case.html</loc>
@@ -225,23 +237,35 @@
     <lastmod>2025-02-20T16:30:15.769Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/04 Accessing Values with Operands.html</loc>
-    <lastmod>2025-02-25T19:30:21.596Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/04 The Stack.html</loc>
+    <lastmod>2026-02-18T20:56:40.873Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/01 Register Names.html</loc>
-    <lastmod>2025-02-25T18:26:54.794Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/06 The Load Effective Address Instruction.html</loc>
+    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/03 Interpreting Operands.html</loc>
-    <lastmod>2025-02-25T19:30:19.225Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/07 Status Flags.html</loc>
+    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/09 Comparing and Jumps.html</loc>
-    <lastmod>2025-02-26T22:32:45.246Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/02 Register Conventions.html</loc>
+    <lastmod>2025-02-25T18:35:56.167Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/07 Assembly Primer/10 Reverse Engineering with C.html</loc>
-    <lastmod>2025-02-26T21:57:13.110Z</lastmod>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/08 Arithmetic Instructions.html</loc>
+    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/old/05 The Move Instruction.html</loc>
+    <lastmod>2025-02-25T18:29:11.158Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/02 File Sections.html</loc>
+    <lastmod>2026-02-18T19:34:37.299Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/07 Assembly Primer/01 Hello World.html</loc>
+    <lastmod>2026-02-18T19:09:32.064Z</lastmod>
   </url>
 </urlset>

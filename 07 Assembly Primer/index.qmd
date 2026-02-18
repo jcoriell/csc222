@@ -1,0 +1,21 @@
+---
+title: Assembly Primer
+---
+
+## Contents
+
+[00 Overview](00 Overview.qmd)
+
+[01 Hello World](01 Hello World.qmd)
+
+[02 File Sections](02 File Sections.qmd)
+
+[03 Variables](03 Variables.qmd)
+
+[04 The Stack](04 The Stack.qmd)
+
+<!-- 05 Functions
+
+06 Conditionals
+
+07 Loops -->

@@ -1,0 +1,44 @@
+---
+title: Hello, World!
+---
+
+Since this is probably your first time writing in an assembly language, you shouldn't be robbed of a hello world program.
+
+Below you'll see an example of sending "hello" to standard output using the write and exit system calls.
+
+
+```asm
+section .rodata            ; Section of asm file for read-only data 
+                           ; This section is commonly used for strings and constants.
+
+greeting:                  ; greeting is an identifier for our data
+    db "hello", 0xA        ; 0xA or 10 is for the '\n' char. 
+                           ; db for define byte
+
+section .text              ; The section of the asm file for executable code.
+    global _start          ; Export _start so the linker can use it as entry point
+
+
+_start:               
+    ; In c, we would perform: write(1, greeting, 6)
+    ; Instruction format is: inst destination, source
+    mov     rax, 1         ; we load 1 into rax to indicate write
+    mov     rdi, 1         ; we place 1 into rdi to indicate standard output
+    mov     rsi, greeting  ; give the &greeting to rsi
+    mov     rdx, 6         ; the size of the greeting is 6 bytes. Load 6 into rdx
+    syscall                ; make the syscall
+
+    ; In c, we would perform exit(0)
+    mov     rax, 60        ; load 60 into rax for the exit syscall
+    mov     rdi, 0         ; load the exit status of 0 into rdi
+    syscall
+```
+
+Run the program by using the following three commands:
+
+```sh
+# pass it through the assembler
+nasm -f elf64 hello.asm -o hello.o 
+ld hello.o -o hello
+./hello
+```

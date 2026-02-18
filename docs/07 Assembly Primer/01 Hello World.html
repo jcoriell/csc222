@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Register Usage Conventions – CSC 222 Systems Programming</title>
+<title>Hello, World! – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">7 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/02 Register Conventions.html">Register Usage Conventions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/index.html">7 - Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Hello World.html">Hello, World!</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -446,8 +481,8 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">7 Assembly Primer</span></a>
+            <a href="../07 Assembly Primer/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7 - Assembly Primer</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -455,62 +490,32 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/01 Register Names.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Register Names</span></a>
+  <a href="../07 Assembly Primer/00 Overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/02 Register Conventions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Register Usage Conventions</span></a>
+  <a href="../07 Assembly Primer/01 Hello World.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Hello, World!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/03 Interpreting Operands.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Interpreting Operands</span></a>
+  <a href="../07 Assembly Primer/02 File Sections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sections of an ASM File</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/04 Accessing Values with Operands.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Example:</span></a>
+  <a href="../07 Assembly Primer/03 Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/05 The Move Instruction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 The Move Instruction.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/06 The Load Effective Address Instruction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 The Load Effective Address Instruction.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/07 Status Flags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07 Status Flags.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/08 Arithmetic Instructions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08 Arithmetic Instructions.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/09 Comparing and Jumps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Compare and Jump</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/10 Reverse Engineering with C.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reverse Engineering</span></a>
+  <a href="../07 Assembly Primer/04 The Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Stack</span></a>
   </div>
 </li>
       </ul>
@@ -520,21 +525,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">7 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/02 Register Conventions.html">Register Usage Conventions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/index.html">7 - Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Hello World.html">Hello, World!</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Register Usage Conventions</h1>
+<h1 class="title">Hello, World!</h1>
 </div>
 
 
@@ -551,108 +550,39 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Assume Function A calls Function B. Then A is the caller and B is the callee.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Register</th>
-<th>Convention</th>
-<th>Callee or Caller Owned?</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a</td>
-<td>return value</td>
-<td>callee owned</td>
-</tr>
-<tr class="even">
-<td>b</td>
-<td>local variable</td>
-<td>caller owned</td>
-</tr>
-<tr class="odd">
-<td>c</td>
-<td>4th argument</td>
-<td>callee owned</td>
-</tr>
-<tr class="even">
-<td>d</td>
-<td>3rd argument</td>
-<td>callee owned</td>
-</tr>
-<tr class="odd">
-<td>si</td>
-<td>2nd argument</td>
-<td>callee owned</td>
-</tr>
-<tr class="even">
-<td>di</td>
-<td>1st argument</td>
-<td>callee owned</td>
-</tr>
-<tr class="odd">
-<td>bp</td>
-<td>local var</td>
-<td>caller owned</td>
-</tr>
-<tr class="even">
-<td>sp</td>
-<td>stack pointer</td>
-<td>caller owned</td>
-</tr>
-<tr class="odd">
-<td>r8</td>
-<td>5th argument</td>
-<td>callee owned</td>
-</tr>
-<tr class="even">
-<td>r9</td>
-<td>6th argument</td>
-<td>callee owned</td>
-</tr>
-<tr class="odd">
-<td>r10</td>
-<td>scratch/temp</td>
-<td>callee owned</td>
-</tr>
-<tr class="even">
-<td>r11</td>
-<td>scratch/temp</td>
-<td>callee owned</td>
-</tr>
-<tr class="odd">
-<td>r12</td>
-<td>local var</td>
-<td>caller owned</td>
-</tr>
-<tr class="even">
-<td>r13</td>
-<td>local var</td>
-<td>caller owned</td>
-</tr>
-<tr class="odd">
-<td>r14</td>
-<td>local var</td>
-<td>caller owned</td>
-</tr>
-<tr class="even">
-<td>r15</td>
-<td>local var</td>
-<td>caller owned</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<section id="notes" class="level3">
-<h3 class="anchored" data-anchor-id="notes">Notes</h3>
-<ul>
-<li><strong>Callee Owned / Caller Saved / Call Clobbered</strong> – used for temporary quantities.</li>
-<li><strong>Caller Owned / Caller Saved / Call Preserved</strong> – used for values needed across calls.</li>
-</ul>
+<p>Since this is probably your first time writing in an assembly language, you shouldn’t be robbed of a hello world program.</p>
+<p>Below you’ll see an example of sending “hello” to standard output using the write and exit system calls.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode asm code-with-copy"><code class="sourceCode fasm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">section</span> <span class="op">.</span>rodata            <span class="co">; Section of asm file for read-only data </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                           <span class="co">; This section is commonly used for strings and constants.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">greeting:</span>                  <span class="co">; greeting is an identifier for our data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">db</span> <span class="st">"hello"</span><span class="op">,</span> <span class="bn">0xA</span>        <span class="co">; 0xA or 10 is for the '\n' char. </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                           <span class="co">; db for define byte</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">section</span> <span class="op">.</span>text              <span class="co">; The section of the asm file for executable code.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    global _start          <span class="co">; Export _start so the linker can use it as entry point</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">_start:</span>               </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">; In c, we would perform: write(1, greeting, 6)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">; Instruction format is: inst destination, source</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">mov</span>     <span class="kw">rax</span><span class="op">,</span> <span class="dv">1</span>         <span class="co">; we load 1 into rax to indicate write</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">mov</span>     <span class="kw">rdi</span><span class="op">,</span> <span class="dv">1</span>         <span class="co">; we place 1 into rdi to indicate standard output</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">mov</span>     <span class="kw">rsi</span><span class="op">,</span> greeting  <span class="co">; give the &amp;greeting to rsi</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">mov</span>     <span class="kw">rdx</span><span class="op">,</span> <span class="dv">6</span>         <span class="co">; the size of the greeting is 6 bytes. Load 6 into rdx</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">syscall</span>                <span class="co">; make the syscall</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">; In c, we would perform exit(0)</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">mov</span>     <span class="kw">rax</span><span class="op">,</span> <span class="dv">60</span>        <span class="co">; load 60 into rax for the exit syscall</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">mov</span>     <span class="kw">rdi</span><span class="op">,</span> <span class="dv">0</span>         <span class="co">; load the exit status of 0 into rdi</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">syscall</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the program by using the following three commands:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pass it through the assembler</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nasm</span> <span class="at">-f</span> elf64 hello.asm <span class="at">-o</span> hello.o </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ld</span> hello.o <span class="at">-o</span> hello</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./hello</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

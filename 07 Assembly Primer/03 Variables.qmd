@@ -1,0 +1,357 @@
+---
+title: Variables
+---
+
+## Initializing
+
+When initializing a variable, you specify an identifier, size, and value. This is no different than you may have done in typed/ languages as the datatype in many typed lanaguages specifies the size. 
+
+An example of four different variables being initialized as `count`, `min`, `max`, and `amount` follows.
+
+
+```asm
+; example of defining variables
+count   db 0x20                 ; db for Define Byte
+min     dw 0x2323               ; db for Define Word (16 bits)
+max     dd 0x12345678           ; dd for Define Doubleword  (32 bits)
+amount  dq 0x1122334455667788   ; dq for Define Quadword (64 bits)
+```
+
+## Accessing and Modifying the Variables
+
+Typically modifying a variable follows a specific flow:
+
+1. Move 
+
+2. Modify
+
+3. Store
+
+
+An example of doing this within a file follows.
+
+```asm
+; an example of modifying a variable named myVar
+mov eax, [myVar]    ; Take the value from memory and move it into eax
+add eax, 5          ; Add 5 to the value
+mov [myVar], eax    ; Remove the value from eax and store in memory
+```
+
+If you see square brackets around a variable or register, such as in the previous example, then this indicates a memory access (or lookup), or some sort of computation. Such a computed address is known as a **effective address**.
+
+
+### Examples of Brackets with Variables
+
+If you want to load the **memory address assocated with a variable** into the register `rax`, you would not use the brackets around the variable's identifier.
+
+```asm
+mov rax, myVar    ; load the mem address associated with var into rax.
+```
+
+If instead you want to load the **value of the variable** into `rax`, you would use the brackets around the variable's identifier
+
+```asm
+mov rax, [myVar]  ; load the **value** stored at the mem addr of var.
+```
+
+In the reverse direction, if you wanted to store the value held by `rax` into memory, you would place brackets around `rax`, however, the arguments would be reversed since the instructions follow a format of `instruction destination, source`.
+
+```asm
+mov [var], rax  ; means store the value of rax into memory at address associated with var
+```
+
+
+### Examples of Brackets with Registers
+
+
+#### Example 1
+
+Starting with a simple example, assume `rbx` holds a memory address. If we wanted to copy the value at that memory address into `rax`, we would do the following:
+
+```asm
+mov rax, [rbx]
+```
+
+If we just wanted to copy the memory address held by rbx into rax, we would do the following.
+
+```asm
+mov rax, rbx
+```
+
+#### Example 2
+
+For this example, assume `rbx` holds a memory address. If we wanted to store the value held by `rax` into the memory address held by `rbx` we would write the following:
+
+```asm
+mov [rbx], rax
+```
+
+#### Example 3
+
+When working with registers, we frequently have computed values, or **effective addresses**. For this example, assume we have an array named `myArray` that is holding integer data. Also, let's assume that `rdi` is holding an index associated with the array.
+
+First, let's load the memory addess that points to the start of the array into rsi.
+
+```asm
+mov rsi, myArray        ; load mem loc of myArray into rsi
+```
+
+To access the second element of this array, we can compute it using the square brackets and addition of 4 (for 4 bytes, the size of an int).
+
+```asm
+mov rax, [rsi + 4]      ; access the second element (4-byte ints)
+```
+
+To access some indexed element of the array where the index has been loaded into `rdi`, we can do a computation with the square brackets as follows. Note that we are using 4 because an int is 4 bytes and we've previously determined that `myArray` is an array of ints.
+
+```asm
+mov rax, [rsi + rdi*4]  ; access some indexed element in the array (rdi holds index)
+```
+
+
+## Address Computation Practice
+
+
+### Practice 1
+
+Given the following information about values stored in specific addresses of memory and in specific registers, determine how each of the following operands are evaluated.
+
+Memory
+
+| Address | Value |
+|:-------:|:-----:|
+| 0x100   | 0xFF  |
+| 0x104   | 0xAB  |
+| 0x108   | 0x13  |
+| 0x10C   | 0x11  |
+
+Registers
+
+| Register | Value |
+|:--------:|:-----:|
+| rax      | 0x100 |
+| rcx      | 0x1   |
+| rdx      | 0x3   |
+
+
+Compute the following.
+
+1. `rax`
+
+2. `[0x104]`
+
+3. `0x108`
+
+4. `[rax + 4]`
+
+5. `[rax + rdx + 9]`
+
+6. `[rax + rdx * 4]`
+
+
+### Solutions 1
+
+1. `rax`
+
+   `rax` holds the value `0x100`. The solution is `0x100`.
+
+2. `[0x104]`
+
+    The brackets indicate we need to do a memory lookup at address `0x104`. The address `0x104` holds the value `0xAB.` The solution is `0xAB`.
+
+3. `0x108`
+
+    This is an immediate value/constant. There is no lookup. Thus the solution is `0x108`.
+
+4. `[rax + 4]`
+
+    We take the value stored at rax and add 4 to it, then we do a memory lookup at the resulting address since this value is inside brackets. 
+    
+    The value at rax is `0x100`. Adding 4 to this value results in 0x104. Performing a memory lookup at `0x104` results in `0xAB`.
+
+5. `[rax + rdx + 9]`
+
+    We take the value stored at rax, add the value stored at rdx, and then add 9. We then perform a memory lookup since the value is in brackets. 
+
+    Following this, we have `rax=0x100` and `rdx=0x3`. The result of `rax + rdx` is `0x103`. Adding 9 to this result yields `0x10C` (that is, `3 + 9 = 12`, and 12 is C in hex). We then perform a memory lookup at `0x10C` to get `0x11`. 
+
+6. `[rax + rdx * 4]`
+
+    First multiply the value in rdx by 4. Then add the result to rax. Last perform a memory lookup.
+
+    First, `rdx * 4 = 0x3 * 4 = 12` or 0xC. Then `rax + rdx = 0x100 + 0xC = 0x10C`. Performing a memory lookup at `0x10C` yields `0x11`.
+
+
+
+## A Full Program
+
+The following code block shows us how to access a variable, modify it, and print it again. Note that this program is dependent on another program named print_rax.asm. The codeblock for print_rax.asm follows.
+
+```asm 
+; variables.asm
+; This file is dependent on print_rax.asm (see below)
+
+extern print_rax
+section .data
+    myVar dd 10     ; 32 bit value, set to 10 
+
+section .bss
+    temp resd 1
+
+section .text
+    global _start  ; tell linker where to start
+
+
+_start:
+
+    ; print
+    mov rax, [myVar]    ; load the int into rax
+    call print_rax      ; print it
+
+    ; modify the variable
+    mov eax, [myVar]    ; take the value from memory and move into eax
+    add eax, 5          ; add 5 to the value
+    mov [myVar], eax    ; remove the value from eax and store in memory
+
+    ; print again
+    mov rax, [myVar]    ; load the int into rax
+    call print_rax      ; print it
+
+    ; exit
+    mov eax, 60
+    xor edi, edi        ; results in 0 for status (common way of doing it)
+    syscall
+
+```
+
+```asm
+; ------------------------------------------------------------
+; print_rax.asm
+;
+; Exports a function named `print_rax`
+; Caller places an *unsigned* integer in RAX and calls print_rax
+; The function prints the number in decimal followed by '\n'
+; This file is for support when we want to print an integer.
+; ------------------------------------------------------------
+
+section .text
+    global print_rax              ; allow other files to call this symbol
+
+print_rax:
+
+    ; setup
+    push rbp                      ; save old base pointer (callee-saved)
+    mov rbp, rsp                  ; establish a stack frame for this function
+
+    ; Allocate a temporary buffer
+    ; We will build the decimal string *backwards* in this buffer.
+    ; 32 bytes is more than enough for:
+    ;   - up to 20 digits (max 64-bit unsigned)
+    ;   - 1 newline
+    ;   - safety padding
+
+    sub rsp, 32                   ; move stack pointer down 32 bytes
+
+    ; Prepare pointer to end of buffer, 
+    mov rsi, rsp                  ; RSI = start of buffer
+    add rsi, 31                   ; RSI = last byte in buffer (offset 31)
+
+    mov byte [rsi], 0xA           ; store '\n' (ASCII 10) at end
+    sub rsi, 1                    ; move left to where digits will be stored
+
+    ; Set RCX tp 10, and we will repeatedly divide by 10 to extract the next
+    ; more significant digit.
+    mov rcx, 10                   ; RCX = divisor (base 10)
+
+
+    ; If RAX == 0, then we have a special case 
+    ; and do not need to do the division loop.
+    test rax, rax                 ; if RAX == 0, then ZF is set to 0.
+    jnz .convert_loop             ; Jump to .convert_loop if RAX != 0
+    mov byte [rsi], '0'           ; store ASCII '0'
+    sub rsi, 1                    ; move buffer pointer left
+    jmp .write_out                ; skip conversion loop
+
+
+
+.convert_loop:
+
+    ; ---------------------------
+    ; Convert number to decimal
+    ; ---------------------------
+    ; Repeatedly divide RAX by 10.
+    ; Each remainder (RDX) is one digit.
+    ; Digits are produced least-significant first.
+              
+    ; DIV uses RDX and RAX as the dividend.
+    ; RDX holds the remainder.
+    ; RAX holds the quotient.
+    ; RAX = RAX / 10
+    ; RDX = RAX % 10 (remainder)
+                        
+    mov rdx, 0          ; Zero out RDX before calling the DIV instruction
+    div rcx             ; perform the division by 10 (RCX holds 10 right now)
+
+    add dl, '0'         ; convert remainder (0–9) to ASCII
+    mov [rsi], dl       ; store remainder char in buffer
+    sub rsi, 1          ; move left for next digit
+
+    test rax, rax       ; check if quotient is zero
+    jnz .convert_loop   ; if not zero, more digits remain, repeat
+
+
+.write_out:
+
+    ; Compute length = (buffer_end) - (start_pointer)
+    ; buffer_end = rsp + 32
+    add rsi, 1              ; adjust pointer to first valid character
+    mov rdx, rsp            ; RDX = buffer base
+    add rdx, 32             ; RDX = buffer end (one past last byte)
+    sub rdx, rsi            ; RDX = number of bytes to write
+
+
+    ; write(1, rsi, rdx)
+    mov eax, 1              ; syscall number 1 = sys_write
+    mov edi, 1              ; file descriptor 1 = stdout
+                            ; RSI = pointer to buffer
+                            ; RDX = length
+    syscall                 ; perform write
+
+    ; restore rsp and rbp before returning to caller
+    mov rsp, rbp                  ; restore stack pointer
+    pop rbp                       ; restore old base pointer
+    ret                           ; return to caller
+```
+
+To run this example, you'll need to assmeble both files and then use the linker to create an executable with both.  
+
+```sh
+# assemble
+nasm -f elf64 variables.asm -o variables.o 
+nasm -f elf64 print_rax.asm -o print_rax.o
+
+# link
+ld variables.o print_rax.o -o variables
+
+# run
+./variables
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

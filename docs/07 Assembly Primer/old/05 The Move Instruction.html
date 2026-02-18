@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Interpreting Operands – CSC 222 Systems Programming</title>
+<title>the-move-instruction – CSC 222 Systems Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ff63373b1067ca6f91cf1456aa1f00a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ff63373b1067ca6f91cf1456aa1f00a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -82,7 +82,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">7 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/03 Interpreting Operands.html">Interpreting Operands</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      CSC 222 Systems Programming
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -97,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">CSC 222 Systems Programming</a> 
+      <a href="../../">CSC 222 Systems Programming</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -118,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../00 Housekeeping/01 Syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../../00 Housekeeping/01 Syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
@@ -135,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/01 A Brief History.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/01 A Brief History.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Brief History</span></a>
   </div>
 </li>
@@ -150,43 +152,43 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/02 VM Install/01 Overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/02 VM Install/01 Overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/02 VM Install/02 Virtualization Software Install.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/02 VM Install/02 Virtualization Software Install.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installing Virtualization Software</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/02 VM Install/03 Download an Image.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/02 VM Install/03 Download an Image.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Downloading An Image</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/02 VM Install/04 Creating the VM.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/02 VM Install/04 Creating the VM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating The Virtual Machine</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/02 VM Install/05 Installing the VM.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/02 VM Install/05 Installing the VM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installing The Virtual Machine</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/02 VM Install/06 Creating a Shared Folder.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/02 VM Install/06 Creating a Shared Folder.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Create a Shared Folder</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/02 VM Install/07 Installing Tools on VM.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/02 VM Install/07 Installing Tools on VM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virtual Machine Tools</span></a>
   </div>
 </li>
@@ -194,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01 Linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
+  <a href="../../01 Linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linux Filesystem</span></a>
   </div>
 </li>
@@ -211,43 +213,43 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal and Shell/00 Background.html" class="sidebar-item-text sidebar-link">
+  <a href="../../02 Terminal and Shell/00 Background.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Background</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal and Shell/01 Basic Commands.html" class="sidebar-item-text sidebar-link">
+  <a href="../../02 Terminal and Shell/01 Basic Commands.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Navigation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal and Shell/02 Working With Files.html" class="sidebar-item-text sidebar-link">
+  <a href="../../02 Terminal and Shell/02 Working With Files.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working with Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal and Shell/03 Other Useful Tips.html" class="sidebar-item-text sidebar-link">
+  <a href="../../02 Terminal and Shell/03 Other Useful Tips.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Other Useful Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal and Shell/04 Redirection.html" class="sidebar-item-text sidebar-link">
+  <a href="../../02 Terminal and Shell/04 Redirection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Redirection</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal and Shell/05 File Permissions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../02 Terminal and Shell/05 File Permissions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">File Permissions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02 Terminal and Shell/06 Grep and Regex.html" class="sidebar-item-text sidebar-link">
+  <a href="../../02 Terminal and Shell/06 Grep and Regex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Grep and Regex</span></a>
   </div>
 </li>
@@ -264,37 +266,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hello World</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Types and Format Specifiers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/03-Operators.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/03-Operators.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/04-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/04-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">More on Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sample Applications</span></a>
   </div>
 </li>
@@ -303,37 +305,37 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Structs and Unions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sample Applications</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/10-Files.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/10-Files.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/11-Fork.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/11-Fork.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fork</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/12-Piping.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/12-Piping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Piping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03 C Programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../03 C Programming/13-Exec-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exec Functions</span></a>
   </div>
 </li>
@@ -350,31 +352,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04 Computing Systems and Data Representation/01 Computing Systems.html" class="sidebar-item-text sidebar-link">
+  <a href="../../04 Computing Systems and Data Representation/01 Computing Systems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Computing Systems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04 Computing Systems and Data Representation/02 The Compilation Process.html" class="sidebar-item-text sidebar-link">
+  <a href="../../04 Computing Systems and Data Representation/02 The Compilation Process.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Compilation Process</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04 Computing Systems and Data Representation/03 Representing Programs.html" class="sidebar-item-text sidebar-link">
+  <a href="../../04 Computing Systems and Data Representation/03 Representing Programs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Representing Programs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04 Computing Systems and Data Representation/04 Representing Numeric Data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../04 Computing Systems and Data Representation/04 Representing Numeric Data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Representing and Manipulating Information</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04 Computing Systems and Data Representation/05 Byte Ordering Conventions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../04 Computing Systems and Data Representation/05 Byte Ordering Conventions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05 Byte Ordering Conventions.html</span></a>
   </div>
 </li>
@@ -402,43 +404,43 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06 Bash Scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../06 Bash Scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06 Bash Scripting/02-Args.html" class="sidebar-item-text sidebar-link">
+  <a href="../../06 Bash Scripting/02-Args.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Args</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06 Bash Scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
+  <a href="../../06 Bash Scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conditionals</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06 Bash Scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../06 Bash Scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exit Codes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06 Bash Scripting/05-Case.html" class="sidebar-item-text sidebar-link">
+  <a href="../../06 Bash Scripting/05-Case.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Case</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06 Bash Scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
+  <a href="../../06 Bash Scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loops</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06 Bash Scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../06 Bash Scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
@@ -446,71 +448,41 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">7 Assembly Primer</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a href="../../07 Assembly Primer/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7 - Assembly Primer</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/01 Register Names.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Register Names</span></a>
+  <a href="../../07 Assembly Primer/00 Overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/02 Register Conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Register Usage Conventions</span></a>
+  <a href="../../07 Assembly Primer/01 Hello World.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hello, World!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/03 Interpreting Operands.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Interpreting Operands</span></a>
+  <a href="../../07 Assembly Primer/02 File Sections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sections of an ASM File</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/04 Accessing Values with Operands.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Example:</span></a>
+  <a href="../../07 Assembly Primer/03 Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/05 The Move Instruction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 The Move Instruction.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/06 The Load Effective Address Instruction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06 The Load Effective Address Instruction.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/07 Status Flags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07 Status Flags.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/08 Arithmetic Instructions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08 Arithmetic Instructions.html</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/09 Comparing and Jumps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Compare and Jump</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../07 Assembly Primer/10 Reverse Engineering with C.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reverse Engineering</span></a>
+  <a href="../../07 Assembly Primer/04 The Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Stack</span></a>
   </div>
 </li>
       </ul>
@@ -520,120 +492,17 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#scaling-shifting-and-indexing" id="toc-scaling-shifting-and-indexing" class="nav-link" data-scroll-target="#scaling-shifting-and-indexing">Scaling, Shifting, and Indexing</a></li>
-  <li><a href="#examples-1" id="toc-examples-1" class="nav-link" data-scroll-target="#examples-1">Examples</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/01 Register Names.html">7 Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/03 Interpreting Operands.html">Interpreting Operands</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Interpreting Operands</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
 
-
-<p>With ATT syntax, we address the registers, memory, and immediate values using the following symbols:</p>
-<ul>
-<li><code>$</code> is used in front of immediate values.</li>
-<li><code>%</code> is used in front of registers.</li>
-<li><code>()</code> are used to dereference a memory address typically (i.e., get the value from memory).</li>
-</ul>
-<hr>
-<section id="examples" class="level3">
-<h3 class="anchored" data-anchor-id="examples">Examples</h3>
-<ul>
-<li><code>$-17</code> represents the integer -17.<br>
-</li>
-<li><code>$0xC</code> represents the integer 12 (that is, C in base 16 is 12 in base 10).<br>
-</li>
-<li><code>0x108</code> is a memory address.<br>
-</li>
-<li><code>%rax</code> accesses the value stored at the register addressed with<code>rax</code>.<br>
-</li>
-<li><code>(%rax)</code> accesses the value stored in memory (where <code>rax</code> is holding a memory address, opcode dependent).</li>
-</ul>
-<hr>
-</section>
-<section id="scaling-shifting-and-indexing" class="level3">
-<h3 class="anchored" data-anchor-id="scaling-shifting-and-indexing">Scaling, Shifting, and Indexing</h3>
-<p>An operand can be given in the format of <code>A ( B, I, S )</code> where</p>
-<ul>
-<li><code>B</code> is a base value that can be indexed, scaled, and shifted with I, S, and A.</li>
-<li><code>I</code> represents an index. We add the value of I to the base value B.<br>
-</li>
-<li><code>S</code> is the scale for the index. We scale the value of I by S. The value of S must be 1, 2, 4, or 8.<br>
-</li>
-<li><code>A</code> is a shift, similar to I. We add A to the result of applying I and S to B.</li>
-</ul>
-</section>
-<section id="examples-1" class="level3">
-<h3 class="anchored" data-anchor-id="examples-1">Examples</h3>
-<p>The following are semi-abstract, descriptive examples that describe the memory address that gets accessed (assuming the instruction we are using would dereference it).</p>
-<ol type="1">
-<li><p><code>9(%rax)</code></p>
-<ol type="a">
-<li>Assume rax is storing a memory address.</li>
-<li>We shift 9 memory addresses over from the address stored at rax.</li>
-<li>We access the value stored at that resulting address.</li>
-</ol></li>
-<li><p><code>(%rbx, %rdi)</code></p>
-<ol type="a">
-<li>Assume rbx is storing a memory address.</li>
-<li>rdi stores a value that we will add to rbx to get a new memory address.</li>
-<li>The parenthesis will tell us to access the value at that final memory address.</li>
-</ol></li>
-<li><p><code>-12(%rbx, %rdi)</code></p>
-<ol type="a">
-<li>Assume rbx is storing a memory address.</li>
-<li>rdi stores a value we need to add to that memory address to get a resulting memory address</li>
-<li>-12 tells us to subtract 12 from the previous memory address to get a new memory address</li>
-<li>Access the value at that final memory address.</li>
-</ol></li>
-<li><p><code>(,%rdi,4)</code></p>
-<ol type="a">
-<li>rdi is storing a value that gets multiplied by 4</li>
-<li>Assume the resulting value is a memory address that we can visit.</li>
-<li>We get the value at that memory address.</li>
-</ol></li>
-<li><p><code>10(,%rdi,4)</code></p>
-<ol type="a">
-<li>rdi is storing a value that gets multiplied by 4</li>
-<li>Assume the resulting value is a memory address that we can visit.</li>
-<li>Shift 10 memory addresses over from the previously resulting memory address.</li>
-<li>Access that value.</li>
-</ol></li>
-<li><p><code>10(%rbx, %rdi, 4)</code></p>
-<ol type="a">
-<li>Assume rbx stores a memory location</li>
-<li>Multiply the value stored at rdi by 4 and then add the result to the memory location stored in rbx for a new resulting memory address.</li>
-<li>Now shift 10 memory addresses over from the previous result.</li>
-<li>Access the value at that address.</li>
-</ol></li>
-</ol>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

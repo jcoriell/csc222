@@ -1,14 +1,204 @@
 [
   {
-    "objectID": "07 Assembly Primer/02 Register Conventions.html",
-    "href": "07 Assembly Primer/02 Register Conventions.html",
-    "title": "Register Usage Conventions",
+    "objectID": "07 Assembly Primer/03 Variables.html",
+    "href": "07 Assembly Primer/03 Variables.html",
+    "title": "Variables",
     "section": "",
-    "text": "Assume Function A calls Function B. Then A is the caller and B is the callee.\n\n\n\nRegister\nConvention\nCallee or Caller Owned?\n\n\n\n\na\nreturn value\ncallee owned\n\n\nb\nlocal variable\ncaller owned\n\n\nc\n4th argument\ncallee owned\n\n\nd\n3rd argument\ncallee owned\n\n\nsi\n2nd argument\ncallee owned\n\n\ndi\n1st argument\ncallee owned\n\n\nbp\nlocal var\ncaller owned\n\n\nsp\nstack pointer\ncaller owned\n\n\nr8\n5th argument\ncallee owned\n\n\nr9\n6th argument\ncallee owned\n\n\nr10\nscratch/temp\ncallee owned\n\n\nr11\nscratch/temp\ncallee owned\n\n\nr12\nlocal var\ncaller owned\n\n\nr13\nlocal var\ncaller owned\n\n\nr14\nlocal var\ncaller owned\n\n\nr15\nlocal var\ncaller owned\n\n\n\n\n\nNotes\n\nCallee Owned / Caller Saved / Call Clobbered – used for temporary quantities.\nCaller Owned / Caller Saved / Call Preserved – used for values needed across calls.",
+    "text": "When initializing a variable, you specify an identifier, size, and value. This is no different than you may have done in typed/ languages as the datatype in many typed lanaguages specifies the size.\nAn example of four different variables being initialized as count, min, max, and amount follows.\n; example of defining variables\ncount   db 0x20                 ; db for Define Byte\nmin     dw 0x2323               ; db for Define Word (16 bits)\nmax     dd 0x12345678           ; dd for Define Doubleword  (32 bits)\namount  dq 0x1122334455667788   ; dq for Define Quadword (64 bits)",
     "crumbs": [
-      "7 Assembly Primer",
-      "Register Usage Conventions"
+      "7 - Assembly Primer",
+      "Variables"
     ]
+  },
+  {
+    "objectID": "07 Assembly Primer/03 Variables.html#initializing",
+    "href": "07 Assembly Primer/03 Variables.html#initializing",
+    "title": "Variables",
+    "section": "",
+    "text": "When initializing a variable, you specify an identifier, size, and value. This is no different than you may have done in typed/ languages as the datatype in many typed lanaguages specifies the size.\nAn example of four different variables being initialized as count, min, max, and amount follows.\n; example of defining variables\ncount   db 0x20                 ; db for Define Byte\nmin     dw 0x2323               ; db for Define Word (16 bits)\nmax     dd 0x12345678           ; dd for Define Doubleword  (32 bits)\namount  dq 0x1122334455667788   ; dq for Define Quadword (64 bits)",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Variables"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/03 Variables.html#accessing-and-modifying-the-variables",
+    "href": "07 Assembly Primer/03 Variables.html#accessing-and-modifying-the-variables",
+    "title": "Variables",
+    "section": "Accessing and Modifying the Variables",
+    "text": "Accessing and Modifying the Variables\nTypically modifying a variable follows a specific flow:\n\nMove\nModify\nStore\n\nAn example of doing this within a file follows.\n; an example of modifying a variable named myVar\nmov eax, [myVar]    ; Take the value from memory and move it into eax\nadd eax, 5          ; Add 5 to the value\nmov [myVar], eax    ; Remove the value from eax and store in memory\nIf you see square brackets around a variable or register, such as in the previous example, then this indicates a memory access (or lookup), or some sort of computation. Such a computed address is known as a effective address.\n\nExamples of Brackets with Variables\nIf you want to load the memory address assocated with a variable into the register rax, you would not use the brackets around the variable’s identifier.\nmov rax, myVar    ; load the mem address associated with var into rax.\nIf instead you want to load the value of the variable into rax, you would use the brackets around the variable’s identifier\nmov rax, [myVar]  ; load the **value** stored at the mem addr of var.\nIn the reverse direction, if you wanted to store the value held by rax into memory, you would place brackets around rax, however, the arguments would be reversed since the instructions follow a format of instruction destination, source.\nmov [var], rax  ; means store the value of rax into memory at address associated with var\n\n\nExamples of Brackets with Registers\n\nExample 1\nStarting with a simple example, assume rbx holds a memory address. If we wanted to copy the value at that memory address into rax, we would do the following:\nmov rax, [rbx]\nIf we just wanted to copy the memory address held by rbx into rax, we would do the following.\nmov rax, rbx\n\n\nExample 2\nFor this example, assume rbx holds a memory address. If we wanted to store the value held by rax into the memory address held by rbx we would write the following:\nmov [rbx], rax\n\n\nExample 3\nWhen working with registers, we frequently have computed values, or effective addresses. For this example, assume we have an array named myArray that is holding integer data. Also, let’s assume that rdi is holding an index associated with the array.\nFirst, let’s load the memory addess that points to the start of the array into rsi.\nmov rsi, myArray        ; load mem loc of myArray into rsi\nTo access the second element of this array, we can compute it using the square brackets and addition of 4 (for 4 bytes, the size of an int).\nmov rax, [rsi + 4]      ; access the second element (4-byte ints)\nTo access some indexed element of the array where the index has been loaded into rdi, we can do a computation with the square brackets as follows. Note that we are using 4 because an int is 4 bytes and we’ve previously determined that myArray is an array of ints.\nmov rax, [rsi + rdi*4]  ; access some indexed element in the array (rdi holds index)",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Variables"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/03 Variables.html#address-computation-practice",
+    "href": "07 Assembly Primer/03 Variables.html#address-computation-practice",
+    "title": "Variables",
+    "section": "Address Computation Practice",
+    "text": "Address Computation Practice\n\nPractice 1\nGiven the following information about values stored in specific addresses of memory and in specific registers, determine how each of the following operands are evaluated.\nMemory\n\n\n\nAddress\nValue\n\n\n\n\n0x100\n0xFF\n\n\n0x104\n0xAB\n\n\n0x108\n0x13\n\n\n0x10C\n0x11\n\n\n\nRegisters\n\n\n\nRegister\nValue\n\n\n\n\nrax\n0x100\n\n\nrcx\n0x1\n\n\nrdx\n0x3\n\n\n\nCompute the following.\n\nrax\n[0x104]\n0x108\n[rax + 4]\n[rax + rdx + 9]\n[rax + rdx * 4]\n\n\n\nSolutions 1\n\nrax\nrax holds the value 0x100. The solution is 0x100.\n[0x104]\nThe brackets indicate we need to do a memory lookup at address 0x104. The address 0x104 holds the value 0xAB. The solution is 0xAB.\n0x108\nThis is an immediate value/constant. There is no lookup. Thus the solution is 0x108.\n[rax + 4]\nWe take the value stored at rax and add 4 to it, then we do a memory lookup at the resulting address since this value is inside brackets.\nThe value at rax is 0x100. Adding 4 to this value results in 0x104. Performing a memory lookup at 0x104 results in 0xAB.\n[rax + rdx + 9]\nWe take the value stored at rax, add the value stored at rdx, and then add 9. We then perform a memory lookup since the value is in brackets.\nFollowing this, we have rax=0x100 and rdx=0x3. The result of rax + rdx is 0x103. Adding 9 to this result yields 0x10C (that is, 3 + 9 = 12, and 12 is C in hex). We then perform a memory lookup at 0x10C to get 0x11.\n[rax + rdx * 4]\nFirst multiply the value in rdx by 4. Then add the result to rax. Last perform a memory lookup.\nFirst, rdx * 4 = 0x3 * 4 = 12 or 0xC. Then rax + rdx = 0x100 + 0xC = 0x10C. Performing a memory lookup at 0x10C yields 0x11.",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Variables"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/03 Variables.html#a-full-program",
+    "href": "07 Assembly Primer/03 Variables.html#a-full-program",
+    "title": "Variables",
+    "section": "A Full Program",
+    "text": "A Full Program\nThe following code block shows us how to access a variable, modify it, and print it again. Note that this program is dependent on another program named print_rax.asm. The codeblock for print_rax.asm follows.\n; variables.asm\n; This file is dependent on print_rax.asm (see below)\n\nextern print_rax\nsection .data\n    myVar dd 10     ; 32 bit value, set to 10 \n\nsection .bss\n    temp resd 1\n\nsection .text\n    global _start  ; tell linker where to start\n\n\n_start:\n\n    ; print\n    mov rax, [myVar]    ; load the int into rax\n    call print_rax      ; print it\n\n    ; modify the variable\n    mov eax, [myVar]    ; take the value from memory and move into eax\n    add eax, 5          ; add 5 to the value\n    mov [myVar], eax    ; remove the value from eax and store in memory\n\n    ; print again\n    mov rax, [myVar]    ; load the int into rax\n    call print_rax      ; print it\n\n    ; exit\n    mov eax, 60\n    xor edi, edi        ; results in 0 for status (common way of doing it)\n    syscall\n; ------------------------------------------------------------\n; print_rax.asm\n;\n; Exports a function named `print_rax`\n; Caller places an *unsigned* integer in RAX and calls print_rax\n; The function prints the number in decimal followed by '\\n'\n; This file is for support when we want to print an integer.\n; ------------------------------------------------------------\n\nsection .text\n    global print_rax              ; allow other files to call this symbol\n\nprint_rax:\n\n    ; setup\n    push rbp                      ; save old base pointer (callee-saved)\n    mov rbp, rsp                  ; establish a stack frame for this function\n\n    ; Allocate a temporary buffer\n    ; We will build the decimal string *backwards* in this buffer.\n    ; 32 bytes is more than enough for:\n    ;   - up to 20 digits (max 64-bit unsigned)\n    ;   - 1 newline\n    ;   - safety padding\n\n    sub rsp, 32                   ; move stack pointer down 32 bytes\n\n    ; Prepare pointer to end of buffer, \n    mov rsi, rsp                  ; RSI = start of buffer\n    add rsi, 31                   ; RSI = last byte in buffer (offset 31)\n\n    mov byte [rsi], 0xA           ; store '\\n' (ASCII 10) at end\n    sub rsi, 1                    ; move left to where digits will be stored\n\n    ; Set RCX tp 10, and we will repeatedly divide by 10 to extract the next\n    ; more significant digit.\n    mov rcx, 10                   ; RCX = divisor (base 10)\n\n\n    ; If RAX == 0, then we have a special case \n    ; and do not need to do the division loop.\n    test rax, rax                 ; if RAX == 0, then ZF is set to 0.\n    jnz .convert_loop             ; Jump to .convert_loop if RAX != 0\n    mov byte [rsi], '0'           ; store ASCII '0'\n    sub rsi, 1                    ; move buffer pointer left\n    jmp .write_out                ; skip conversion loop\n\n\n\n.convert_loop:\n\n    ; ---------------------------\n    ; Convert number to decimal\n    ; ---------------------------\n    ; Repeatedly divide RAX by 10.\n    ; Each remainder (RDX) is one digit.\n    ; Digits are produced least-significant first.\n              \n    ; DIV uses RDX and RAX as the dividend.\n    ; RDX holds the remainder.\n    ; RAX holds the quotient.\n    ; RAX = RAX / 10\n    ; RDX = RAX % 10 (remainder)\n                        \n    mov rdx, 0          ; Zero out RDX before calling the DIV instruction\n    div rcx             ; perform the division by 10 (RCX holds 10 right now)\n\n    add dl, '0'         ; convert remainder (0–9) to ASCII\n    mov [rsi], dl       ; store remainder char in buffer\n    sub rsi, 1          ; move left for next digit\n\n    test rax, rax       ; check if quotient is zero\n    jnz .convert_loop   ; if not zero, more digits remain, repeat\n\n\n.write_out:\n\n    ; Compute length = (buffer_end) - (start_pointer)\n    ; buffer_end = rsp + 32\n    add rsi, 1              ; adjust pointer to first valid character\n    mov rdx, rsp            ; RDX = buffer base\n    add rdx, 32             ; RDX = buffer end (one past last byte)\n    sub rdx, rsi            ; RDX = number of bytes to write\n\n\n    ; write(1, rsi, rdx)\n    mov eax, 1              ; syscall number 1 = sys_write\n    mov edi, 1              ; file descriptor 1 = stdout\n                            ; RSI = pointer to buffer\n                            ; RDX = length\n    syscall                 ; perform write\n\n    ; restore rsp and rbp before returning to caller\n    mov rsp, rbp                  ; restore stack pointer\n    pop rbp                       ; restore old base pointer\n    ret                           ; return to caller\nTo run this example, you’ll need to assmeble both files and then use the linker to create an executable with both.\n# assemble\nnasm -f elf64 variables.asm -o variables.o \nnasm -f elf64 print_rax.asm -o print_rax.o\n\n# link\nld variables.o print_rax.o -o variables\n\n# run\n./variables",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Variables"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/00 Overview.html",
+    "href": "07 Assembly Primer/00 Overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "Intel x86 processors\n\nApplicable to most windows machines.\nWhat we are working under for this class. If you are using an m-series mac, follow the Guide for Running x86_64 ASM with NASM on Your Mac.\n\nARM\n\nApplicable to most newer macs and smartphones/tablets.\n\nRISC-V\n\nStands for Reduced Instruction Set Computers - Five\nCommon in Embedded Systems and Microcontrollers",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/00 Overview.html#common-instruction-sets",
+    "href": "07 Assembly Primer/00 Overview.html#common-instruction-sets",
+    "title": "Overview",
+    "section": "",
+    "text": "Intel x86 processors\n\nApplicable to most windows machines.\nWhat we are working under for this class. If you are using an m-series mac, follow the Guide for Running x86_64 ASM with NASM on Your Mac.\n\nARM\n\nApplicable to most newer macs and smartphones/tablets.\n\nRISC-V\n\nStands for Reduced Instruction Set Computers - Five\nCommon in Embedded Systems and Microcontrollers",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/00 Overview.html#registers-x86_64",
+    "href": "07 Assembly Primer/00 Overview.html#registers-x86_64",
+    "title": "Overview",
+    "section": "Registers (x86_64)",
+    "text": "Registers (x86_64)\nWe have 16 general purpose registers that can each hold 64 bits. The label/name for each one indicates how many of those 64 bits we are referring to.\n\n\n\n\n\n\n\n\n\n\n\nBase Label\nAll 64-bits\nLower 32-bits\nLower 16-bits\nLower 8-bits\nDescription\n\n\n\n\nA\nRAX\nEAX\nAX\nAL\nAccumulator (results)\n\n\nB\nRBX\nEBX\nBX\nBL\nBase (address calculations)\n\n\nC\nRCX\nECX\nCX\nCL\nCounter (loops)\n\n\nD\nRDX\nEDX\nDX\nDL\nData (math and I/O)\n\n\nSI\nRSI\nESI\nSI\nSIL\nSource Index\n\n\nDI\nRDI\nEDI\nDI\nDIL\nDestination Index\n\n\nBP\nRBP\nEBP\nBP\nBPL\nBase Pointer\n\n\nSP\nRSP\nESP\nSP\nSPL\nStack Pointer\n\n\n8\nR8\nR8D\nR8W\nR8B\nGeneral use\n\n\n…\n…\n…\n…\n…\n…\n\n\n15\nR15\nR15D\nR15W\nR15B\nGeneral use\n\n\n\nNote that for registers A, B, C, and D, the upper 8 bits of the lower 16 bits can be addressed with AH, BH, CH, and DH.",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/00 Overview.html#registers-and-common-rolesconventions",
+    "href": "07 Assembly Primer/00 Overview.html#registers-and-common-rolesconventions",
+    "title": "Overview",
+    "section": "Registers and Common Roles/Conventions",
+    "text": "Registers and Common Roles/Conventions\n\n\n\nRegister(s)\nConvention\n\n\n\n\nRAX\nReturn value (or accumulator)\n\n\nRBX\nCallee-saved register\n\n\nRCX\n4th argument\n\n\nRDX\n3rd argument\n\n\nRSI\n2nd argument\n\n\nRDI\n1st argument\n\n\nRSP\nStack pointer\n\n\nRBP\nBase pointer\n\n\nR8–R9\n5th and 6th arguments\n\n\nR10–R11\nTemporary values (caller-saved)\n\n\nR12–R15\nCallee-saved / general use",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/00 Overview.html#standards-for-this-class",
+    "href": "07 Assembly Primer/00 Overview.html#standards-for-this-class",
+    "title": "Overview",
+    "section": "Standards for this Class",
+    "text": "Standards for this Class\n\nRAX is for results\nRCX, RDX, RSI, RDI, R8, and R9 are for arguments\nRBP and RSP shouldn’t be touched unless you know what you’re doing.",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/00 Overview.html#install-nasm",
+    "href": "07 Assembly Primer/00 Overview.html#install-nasm",
+    "title": "Overview",
+    "section": "Install NASM",
+    "text": "Install NASM\nTo install nasm on your vm, run the following two commands.\nsudo apt update\nsudo apt install nasm\nTo confirm the install, run the following command.\nnasm -v",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/00 Overview.html#check-for-linker",
+    "href": "07 Assembly Primer/00 Overview.html#check-for-linker",
+    "title": "Overview",
+    "section": "Check for Linker",
+    "text": "Check for Linker\nTo double check that you have the gcc linker installed, run the following command.\nld --version\nIf for some reason it is not installed, run the following command to install the entire GNU compiler collection and related tools.\nsudo apt update\nsudo apt install build-essential",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/index.html",
+    "href": "07 Assembly Primer/index.html",
+    "title": "Assembly Primer",
+    "section": "",
+    "text": "00 Overview\n01 Hello World\n02 File Sections\n03 Variables\n04 The Stack",
+    "crumbs": [
+      "7 - Assembly Primer"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/index.html#contents",
+    "href": "07 Assembly Primer/index.html#contents",
+    "title": "Assembly Primer",
+    "section": "",
+    "text": "00 Overview\n01 Hello World\n02 File Sections\n03 Variables\n04 The Stack",
+    "crumbs": [
+      "7 - Assembly Primer"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/old/10 Reverse Engineering with C.html",
+    "href": "07 Assembly Primer/old/10 Reverse Engineering with C.html",
+    "title": "Reverse Engineering",
+    "section": "",
+    "text": "Reverse engineer the ASM to fill in the blanks for the C code.\n\n\nexample:                           # NOTES:\n    movq    %rdi, %rax             # rax = rdi\n    addq    %rsi, %rax             # rax = rax + rsi\n    cmpq    $3, %rax               # Jump to L2 if rax &gt;= 3. Don't jump if rax &lt; 3\n    jge     L2  \n\nL2:\n    movq    %rsi, %rax             # rax = rsi\n    ret\n\n\n\nlong example(long x, long y) {  \n    // First argument x is stored in rdi\n    // Second argument y is stored in rsi\n\n    long result = __________;       // solution: x + y\n\n    if (__________) {               // solution: result &lt; 3\n        return result;\n    }\n\n    result = __________;            // solution: y\n\n    return result;\n}"
+  },
+  {
+    "objectID": "07 Assembly Primer/old/10 Reverse Engineering with C.html#example",
+    "href": "07 Assembly Primer/old/10 Reverse Engineering with C.html#example",
+    "title": "Reverse Engineering",
+    "section": "",
+    "text": "Reverse engineer the ASM to fill in the blanks for the C code.\n\n\nexample:                           # NOTES:\n    movq    %rdi, %rax             # rax = rdi\n    addq    %rsi, %rax             # rax = rax + rsi\n    cmpq    $3, %rax               # Jump to L2 if rax &gt;= 3. Don't jump if rax &lt; 3\n    jge     L2  \n\nL2:\n    movq    %rsi, %rax             # rax = rsi\n    ret\n\n\n\nlong example(long x, long y) {  \n    // First argument x is stored in rdi\n    // Second argument y is stored in rsi\n\n    long result = __________;       // solution: x + y\n\n    if (__________) {               // solution: result &lt; 3\n        return result;\n    }\n\n    result = __________;            // solution: y\n\n    return result;\n}"
+  },
+  {
+    "objectID": "07 Assembly Primer/old/10 Reverse Engineering with C.html#example-1",
+    "href": "07 Assembly Primer/old/10 Reverse Engineering with C.html#example-1",
+    "title": "Reverse Engineering",
+    "section": "Example:",
+    "text": "Example:\n\nASM\nexample:\n    leaq (%rdi, %rsi), %rax      # rax = rdi + rsi\n    leaq (%rsi, %rdx), %r10      # r10 = rsi + rdx\n    cmpq %r10, %rax              # compare rax and r10\n    jge  L2                      # jump if rax &gt;= r10, don't jump if rax &lt; r10\n    addq %r10, %rax              # rax = rax + r10\n    ret\n\nL2:\n    cmpq $0, %rax                # compare rax and 0\n    jle  L3                      # jump if rax &lt;= 0, don't jump if rax &gt; 0\n    imulq %rsi, %rax             # rax = rax * rsi\n\nL3:\n    movq %rdx, %rax              # rax = rdx\n    ret\n\n\nC\nlong example(long x, long y, long z) {\n    // x (first arg) is stored in rdi, \n    // y (second arg) is stored in rsi, \n    // z (third arg) is stored in rdx\n\n                                // Solutions:\n    long val1 = __________;     // x + y\n    long val2 = __________;     // y + z\n\n    if (__________) {           // val1 &lt; val2\n        val1 = __________;      // val1 + val2\n        return val1;\n    } else if (__________) {    // val1 &gt; 0\n        val1 = __________;      // val1 * y\n        return val1\n    }\n    val1 = ___________;         // z\n    return val1;\n}"
+  },
+  {
+    "objectID": "07 Assembly Primer/old/09 Comparing and Jumps.html",
+    "href": "07 Assembly Primer/old/09 Comparing and Jumps.html",
+    "title": "Compare and Jump",
+    "section": "",
+    "text": "Compare\nCompare Command\nFormat: cmp op2, op1   // result = op1 - op2\nDescription: \n    - result = op1 - op2\n    - The result will potentially cause the ZF, SF, OF, and CF flags to be set to at high state.\n    - The state of the flags can then be used with a conditional jump to go to another part of the code.\n\n\nJumps\nUnconditional Jump\nFormat: `jmp [target]`\nDescription:\n    - An unconditional jump to target.\nJump if Equal To:\nFormat: `je [target]`\nDescription:\n    - If ZF == 1, jump to target.\n    - If `previous_result = op1 - op2 == 0`)\n    - Jump if op2 == op1.\n    - Don't jump if op2 != op1.\nJump if Not Equal To:\nFormat: `jne [target]` \nDescription: \n    - If `ZF == 0`, jump to target.\n    - Jump if `op1 != op2`.\n    - Don't jump if `op1 == op2`\nJump if Greater Than:\nFormat: `jg [target]`\nDescription:\n- If ZF == 0 and SF == OF, jump.\n- Jump if op1 &gt; op2.\n- Don't jump if op1 &lt;= op2.\nJump if Greater Than or Equal:\n- Format: `jge [target]`\n- Description: \n    - If SF == OF, jump.\n    - Jump if op1 &gt;= op2.\n    - Don't jump if op1 &lt; op2.\nJump if Less Than:\n- Format: `jl [target]`\n- Description: \n    - If SF != OF, jump.\n    - Jump if op1 &lt; op2.\n    - Don't jump if op1 &gt;= op2.\nJump if Less or equal:\n- Format: `jle [target]`\n- Description: \n    - If ZF == 1 or SF != OF, jump.\n    - Jump if op1 &lt;= op2. \n    - Don't jump if op1 &gt; op2."
+  },
+  {
+    "objectID": "07 Assembly Primer/old/03 Interpreting Operands.html",
+    "href": "07 Assembly Primer/old/03 Interpreting Operands.html",
+    "title": "Interpreting Operands",
+    "section": "",
+    "text": "With ATT syntax, we address the registers, memory, and immediate values using the following symbols:\n\n$ is used in front of immediate values.\n% is used in front of registers.\n() are used to dereference a memory address typically (i.e., get the value from memory).\n\n\n\nExamples\n\n$-17 represents the integer -17.\n\n$0xC represents the integer 12 (that is, C in base 16 is 12 in base 10).\n\n0x108 is a memory address.\n\n%rax accesses the value stored at the register addressed withrax.\n\n(%rax) accesses the value stored in memory (where rax is holding a memory address, opcode dependent).\n\n\n\n\nScaling, Shifting, and Indexing\nAn operand can be given in the format of A ( B, I, S ) where\n\nB is a base value that can be indexed, scaled, and shifted with I, S, and A.\nI represents an index. We add the value of I to the base value B.\n\nS is the scale for the index. We scale the value of I by S. The value of S must be 1, 2, 4, or 8.\n\nA is a shift, similar to I. We add A to the result of applying I and S to B.\n\n\n\nExamples\nThe following are semi-abstract, descriptive examples that describe the memory address that gets accessed (assuming the instruction we are using would dereference it).\n\n9(%rax)\n\nAssume rax is storing a memory address.\nWe shift 9 memory addresses over from the address stored at rax.\nWe access the value stored at that resulting address.\n\n(%rbx, %rdi)\n\nAssume rbx is storing a memory address.\nrdi stores a value that we will add to rbx to get a new memory address.\nThe parenthesis will tell us to access the value at that final memory address.\n\n-12(%rbx, %rdi)\n\nAssume rbx is storing a memory address.\nrdi stores a value we need to add to that memory address to get a resulting memory address\n-12 tells us to subtract 12 from the previous memory address to get a new memory address\nAccess the value at that final memory address.\n\n(,%rdi,4)\n\nrdi is storing a value that gets multiplied by 4\nAssume the resulting value is a memory address that we can visit.\nWe get the value at that memory address.\n\n10(,%rdi,4)\n\nrdi is storing a value that gets multiplied by 4\nAssume the resulting value is a memory address that we can visit.\nShift 10 memory addresses over from the previously resulting memory address.\nAccess that value.\n\n10(%rbx, %rdi, 4)\n\nAssume rbx stores a memory location\nMultiply the value stored at rdi by 4 and then add the result to the memory location stored in rbx for a new resulting memory address.\nNow shift 10 memory addresses over from the previous result.\nAccess the value at that address."
+  },
+  {
+    "objectID": "07 Assembly Primer/old/01 Register Names.html",
+    "href": "07 Assembly Primer/old/01 Register Names.html",
+    "title": "Register Names",
+    "section": "",
+    "text": "The following is a list of register names for x86-64 assembly\n\n\n\n\n\n\n\n\n\nBase Label\n\n\nLabels for Lower n-bits of a Register\n\n\nAdditional Info\n\n\n\n\n\n\n8-bit\n\n\n16-bit\n\n\n32-bit\n\n\n64-bit\n\n\n\n\n\n\n\n\na\n\n\nal\n\n\nax\n\n\neax\n\n\nrax\n\n\na for accumulator\n\n\n\n\nb\n\n\nbl\n\n\nbx\n\n\nebx\n\n\nrbx\n\n\nb for base\n\n\n\n\nc\n\n\ncl\n\n\ncx\n\n\necx\n\n\nrcx\n\n\nc for counter\n\n\n\n\nd\n\n\ndl\n\n\ndx\n\n\nedx\n\n\nrdx\n\n\nd for data\n\n\n\n\nsi\n\n\nsil\n\n\nsi\n\n\nesi\n\n\nrsi\n\n\nsource index\n\n\n\n\ndi\n\n\ndil\n\n\ndi\n\n\nedi\n\n\nrdi\n\n\ndestination index\n\n\n\n\nbp\n\n\nbpl\n\n\nbp\n\n\nebp\n\n\nrbp\n\n\nstack base pointer\n\n\n\n\nsp\n\n\nspl\n\n\nsp\n\n\nesp\n\n\nrsp\n\n\nstack pointer (end position of runtime stack)\n\n\n\n\nr8\n\n\nr8b\n\n\nr8w\n\n\nr8d\n\n\nr8\n\n\n\n\n\n\nr9\n\n\nr9b\n\n\nr9w\n\n\nr9d\n\n\nr9\n\n\n\n\n\n\nr10\n\n\nr10b\n\n\nr10w\n\n\nr10d\n\n\nr10\n\n\n\n\n\n\nr11\n\n\nr11b\n\n\nr11w\n\n\nr11d\n\n\nr11\n\n\n\n\n\n\nr12\n\n\nr12b\n\n\nr12w\n\n\nr12d\n\n\nr12\n\n\n\n\n\n\nr13\n\n\nr13b\n\n\nr13w\n\n\nr13d\n\n\nr13\n\n\n\n\n\n\nr14\n\n\nr14b\n\n\nr14w\n\n\nr14d\n\n\nr14\n\n\n\n\n\n\nr15\n\n\nr15b\n\n\nr15w\n\n\nr15d\n\n\nr15\n\n\n\n\n\n\n\n\n\nAdditional Notes:\nIn the 8-bit column for the first 8 register, l stands for low or lower. You can actually address the upper 8-bits of the lower 16-bits with h.\nIn the 4 central columns for registers r8 through r15, the letter b stands for byte (8-bits being addressed), w for word (there was a time where most machines had a word size of 16 bits, that is, this is a legacy holdover from that time), and d for double word (32-bits is twice 16-bits).\nThere are some additional registers outside of the 16 mentioned above, that is the ip, or instruction pointer register, and then the status flags."
+  },
+  {
+    "objectID": "07 Assembly Primer/old/04 Accessing Values with Operands.html",
+    "href": "07 Assembly Primer/old/04 Accessing Values with Operands.html",
+    "title": "CSC 222 Systems Programming",
+    "section": "",
+    "text": "Example:\nAssume the following tables depict memory and register values:\n\nMemory\n\n\n\nAddress\nValue\n\n\n\n\n0x100\n0xFF\n\n\n0x104\n0xAB\n\n\n0x108\n0x13\n\n\n0x10C\n0x11\n\n\n\n\n\nRegisters\n\n\n\nRegister\nValue\n\n\n\n\n%rax\n0x100\n\n\n%rcx\n0x1\n\n\n%rdx\n0x3\n\n\n\n\n\n\n\nDetermine the value accessed from the following operands:\n\n%rax\nSince there are now parenthesis around %rax, we are simply accessing the value stored at rax, which is 0x100.\nSolution: 0x100\n0x104\nSince this is a hex value, and there is not a $ symbol in front of it, then this represents a memory address. We access the value stored at the memory address 0x104 which is 0xAB.\nSolution: 0xAB\n$0x108\nSince this value has a $ in front of it, this represents an immediate value. That is, it represents itself, 0x108.\nSolution: 0x108\n(%rax)\nrax holds the value 0x100. The parentheses tell us that we are going to need to visit memory and get the value at 0x100. The value stored at 0x100 is 0xFF.\nSolution: 0xFF\n4(%rax)\nrax holds the value 0x100. The parentheses tell us that we need to visit memory. Specifically, since there is a 4 out front, we need to visit the memory addresss that is 4 over from the address stored in rax. We then get the value from there.\nThus, %rax holds 0x100, and 4 memory locations over from 0x100 is memory location 0x104.\nThe value at 0x104 is 0xAB\nSolution: 0xAB\n9(%rax, %rdx)\n%rax holds 0x100.%rdxholds0x3`.\nWe need to add these two values together to get a resulting address. Note that in the following calculation we padded the hex value with 0s to match in digit length\n  0x100\n+ 0x003\n-------\n  0x103\nNow, we move 9 memory locations over from 0x103.\n  0x103\n+ 0x009    &lt;- 9 in hex\n-------\n  0x10C    &lt;- 3 + 9 = 12, 12 is C in hex\nNow we get the value at 0x10C which is 0x11."
   },
   {
     "objectID": "06 Bash Scripting/05-Case.html",
@@ -2083,80 +2273,120 @@
     ]
   },
   {
-    "objectID": "07 Assembly Primer/04 Accessing Values with Operands.html",
-    "href": "07 Assembly Primer/04 Accessing Values with Operands.html",
-    "title": "CSC 222 Systems Programming",
+    "objectID": "07 Assembly Primer/04 The Stack.html",
+    "href": "07 Assembly Primer/04 The Stack.html",
+    "title": "The Stack",
     "section": "",
-    "text": "Example:\nAssume the following tables depict memory and register values:\n\nMemory\n\n\n\nAddress\nValue\n\n\n\n\n0x100\n0xFF\n\n\n0x104\n0xAB\n\n\n0x108\n0x13\n\n\n0x10C\n0x11\n\n\n\n\n\nRegisters\n\n\n\nRegister\nValue\n\n\n\n\n%rax\n0x100\n\n\n%rcx\n0x1\n\n\n%rdx\n0x3\n\n\n\n\n\n\n\nDetermine the value accessed from the following operands:\n\n%rax\nSince there are now parenthesis around %rax, we are simply accessing the value stored at rax, which is 0x100.\nSolution: 0x100\n0x104\nSince this is a hex value, and there is not a $ symbol in front of it, then this represents a memory address. We access the value stored at the memory address 0x104 which is 0xAB.\nSolution: 0xAB\n$0x108\nSince this value has a $ in front of it, this represents an immediate value. That is, it represents itself, 0x108.\nSolution: 0x108\n(%rax)\nrax holds the value 0x100. The parentheses tell us that we are going to need to visit memory and get the value at 0x100. The value stored at 0x100 is 0xFF.\nSolution: 0xFF\n4(%rax)\nrax holds the value 0x100. The parentheses tell us that we need to visit memory. Specifically, since there is a 4 out front, we need to visit the memory addresss that is 4 over from the address stored in rax. We then get the value from there.\nThus, %rax holds 0x100, and 4 memory locations over from 0x100 is memory location 0x104.\nThe value at 0x104 is 0xAB\nSolution: 0xAB\n9(%rax, %rdx)\n%rax holds 0x100.%rdxholds0x3`.\nWe need to add these two values together to get a resulting address. Note that in the following calculation we padded the hex value with 0s to match in digit length\n  0x100\n+ 0x003\n-------\n  0x103\nNow, we move 9 memory locations over from 0x103.\n  0x103\n+ 0x009    &lt;- 9 in hex\n-------\n  0x10C    &lt;- 3 + 9 = 12, 12 is C in hex\nNow we get the value at 0x10C which is 0x11.",
+    "text": "NoneDefinition\n\n\n\nThe stack is a region of memory used for temporary storage. It a LIFO structure. It is primarily used to manage function calls, local variables, saved registers, and return addresses.\nTo work with the stack we perform operation on rsp. The rsp register always points to the top of the stack and changes as data is pushed or popped. The other register that refers to stack related information is rbp. This marks the base for the current function’s stack frame.",
     "crumbs": [
-      "7 Assembly Primer",
-      "Example:"
+      "7 - Assembly Primer",
+      "The Stack"
     ]
   },
   {
-    "objectID": "07 Assembly Primer/01 Register Names.html",
-    "href": "07 Assembly Primer/01 Register Names.html",
-    "title": "Register Names",
-    "section": "",
-    "text": "The following is a list of register names for x86-64 assembly\n\n\n\n\n\n\n\n\n\nBase Label\n\n\nLabels for Lower n-bits of a Register\n\n\nAdditional Info\n\n\n\n\n\n\n8-bit\n\n\n16-bit\n\n\n32-bit\n\n\n64-bit\n\n\n\n\n\n\n\n\na\n\n\nal\n\n\nax\n\n\neax\n\n\nrax\n\n\na for accumulator\n\n\n\n\nb\n\n\nbl\n\n\nbx\n\n\nebx\n\n\nrbx\n\n\nb for base\n\n\n\n\nc\n\n\ncl\n\n\ncx\n\n\necx\n\n\nrcx\n\n\nc for counter\n\n\n\n\nd\n\n\ndl\n\n\ndx\n\n\nedx\n\n\nrdx\n\n\nd for data\n\n\n\n\nsi\n\n\nsil\n\n\nsi\n\n\nesi\n\n\nrsi\n\n\nsource index\n\n\n\n\ndi\n\n\ndil\n\n\ndi\n\n\nedi\n\n\nrdi\n\n\ndestination index\n\n\n\n\nbp\n\n\nbpl\n\n\nbp\n\n\nebp\n\n\nrbp\n\n\nstack base pointer\n\n\n\n\nsp\n\n\nspl\n\n\nsp\n\n\nesp\n\n\nrsp\n\n\nstack pointer (end position of runtime stack)\n\n\n\n\nr8\n\n\nr8b\n\n\nr8w\n\n\nr8d\n\n\nr8\n\n\n\n\n\n\nr9\n\n\nr9b\n\n\nr9w\n\n\nr9d\n\n\nr9\n\n\n\n\n\n\nr10\n\n\nr10b\n\n\nr10w\n\n\nr10d\n\n\nr10\n\n\n\n\n\n\nr11\n\n\nr11b\n\n\nr11w\n\n\nr11d\n\n\nr11\n\n\n\n\n\n\nr12\n\n\nr12b\n\n\nr12w\n\n\nr12d\n\n\nr12\n\n\n\n\n\n\nr13\n\n\nr13b\n\n\nr13w\n\n\nr13d\n\n\nr13\n\n\n\n\n\n\nr14\n\n\nr14b\n\n\nr14w\n\n\nr14d\n\n\nr14\n\n\n\n\n\n\nr15\n\n\nr15b\n\n\nr15w\n\n\nr15d\n\n\nr15\n\n\n\n\n\n\n\n\n\nAdditional Notes:\nIn the 8-bit column for the first 8 register, l stands for low or lower. You can actually address the upper 8-bits of the lower 16-bits with h.\nIn the 4 central columns for registers r8 through r15, the letter b stands for byte (8-bits being addressed), w for word (there was a time where most machines had a word size of 16 bits, that is, this is a legacy holdover from that time), and d for double word (32-bits is twice 16-bits).\nThere are some additional registers outside of the 16 mentioned above, that is the ip, or instruction pointer register, and then the status flags.",
+    "objectID": "07 Assembly Primer/04 The Stack.html#example",
+    "href": "07 Assembly Primer/04 The Stack.html#example",
+    "title": "The Stack",
+    "section": "Example",
+    "text": "Example\nGiven the following representation of the stack, determine the value of RAX based on each instruction that follows.\nThe asterisk indicates the top of the stack. Note that traditionally we say the stack grows downward, meaning it grows into smaller memory addresses. So the top is actually at the bottom when depicted with larger memory addresses higher up.\n\n\n\nValue\nAddr\nTop Indicator\n\n\n\n\n10\n0x100\n\n\n\n20\n0x0F8\n\n\n\n15\n0x0F0\n\n\n\n12\n0x0E8\n*\n\n\n\n\nmov rax, rsp\nCopies the address associated with the top of the stack (asterisk *) into rax. Thus, rax will hold 0x0E8.\nmov rax, [rsp]\nDereferences the memory address held by rsp, thus gets the value in the stack. Therefore, rax will hold 12.\nmov rax, [rsp + 8]\nSince rsp holds the address at the top of this stack, this will dereference the address that is 8 bits past the top of the stack (that is, 1 byte after, thus the next memory address since memory is byte addressable). The next value in the stack is 15.\nmov rax, [rsp + 16]\nGets the value at the memory address two memory locations down on the stack (16 bits). Thus 20.\nmov rax, [rsp + 24]\nGets the value at the memory address three memory locations down on the stack (24 bits). Thus 10.\nadd rsp, 8 then mov rax, [rsp]\nMoves the top of the stack 8 bits (i.e. pops one value off the top). Then stores the value associated with the new rsp address in rax. Thus 15.",
     "crumbs": [
-      "7 Assembly Primer",
-      "Register Names"
+      "7 - Assembly Primer",
+      "The Stack"
     ]
   },
   {
-    "objectID": "07 Assembly Primer/03 Interpreting Operands.html",
-    "href": "07 Assembly Primer/03 Interpreting Operands.html",
-    "title": "Interpreting Operands",
-    "section": "",
-    "text": "With ATT syntax, we address the registers, memory, and immediate values using the following symbols:\n\n$ is used in front of immediate values.\n% is used in front of registers.\n() are used to dereference a memory address typically (i.e., get the value from memory).\n\n\n\nExamples\n\n$-17 represents the integer -17.\n\n$0xC represents the integer 12 (that is, C in base 16 is 12 in base 10).\n\n0x108 is a memory address.\n\n%rax accesses the value stored at the register addressed withrax.\n\n(%rax) accesses the value stored in memory (where rax is holding a memory address, opcode dependent).\n\n\n\n\nScaling, Shifting, and Indexing\nAn operand can be given in the format of A ( B, I, S ) where\n\nB is a base value that can be indexed, scaled, and shifted with I, S, and A.\nI represents an index. We add the value of I to the base value B.\n\nS is the scale for the index. We scale the value of I by S. The value of S must be 1, 2, 4, or 8.\n\nA is a shift, similar to I. We add A to the result of applying I and S to B.\n\n\n\nExamples\nThe following are semi-abstract, descriptive examples that describe the memory address that gets accessed (assuming the instruction we are using would dereference it).\n\n9(%rax)\n\nAssume rax is storing a memory address.\nWe shift 9 memory addresses over from the address stored at rax.\nWe access the value stored at that resulting address.\n\n(%rbx, %rdi)\n\nAssume rbx is storing a memory address.\nrdi stores a value that we will add to rbx to get a new memory address.\nThe parenthesis will tell us to access the value at that final memory address.\n\n-12(%rbx, %rdi)\n\nAssume rbx is storing a memory address.\nrdi stores a value we need to add to that memory address to get a resulting memory address\n-12 tells us to subtract 12 from the previous memory address to get a new memory address\nAccess the value at that final memory address.\n\n(,%rdi,4)\n\nrdi is storing a value that gets multiplied by 4\nAssume the resulting value is a memory address that we can visit.\nWe get the value at that memory address.\n\n10(,%rdi,4)\n\nrdi is storing a value that gets multiplied by 4\nAssume the resulting value is a memory address that we can visit.\nShift 10 memory addresses over from the previously resulting memory address.\nAccess that value.\n\n10(%rbx, %rdi, 4)\n\nAssume rbx stores a memory location\nMultiply the value stored at rdi by 4 and then add the result to the memory location stored in rbx for a new resulting memory address.\nNow shift 10 memory addresses over from the previous result.\nAccess the value at that address.",
+    "objectID": "07 Assembly Primer/04 The Stack.html#push-instruction",
+    "href": "07 Assembly Primer/04 The Stack.html#push-instruction",
+    "title": "The Stack",
+    "section": "Push Instruction",
+    "text": "Push Instruction\nThe push instruction pushes values onto the stack. It also results in subtracting 8 from the value stored in rsp.\n\nExample\nPush 20 and 15 to the stack given. A starting point is given using the first row.\n\n\n\nValue\nAddr\nTop Indicator\n\n\n\n\n10\n0x100\n*\n\n\n\nFirst let’s push 20 onto the stack. Note that this results in a subtraction of 8 from rsp to give us a new value for rsp.\npush 20  ; subtract 8 from current addr of rsp (move stack pointer)\n         ; store new value of 20\n         ; rsp = 0x100 - 8\nThe stack can now be represented as follows:\n\n\n\nValue\nAddr\nTop Indicator\n\n\n\n\n10\n0x100\n\n\n\n20\n0x0F8\n*\n\n\n\nNow let’s push 15 onto the stack. Again, this results in a subtraction of 8 from rsp to give us a new value for rsp.\npush 15 ; rsp = 0x0F8 - 8\nThe stack now appears as follows.\n\n\n\nValue\nAddr\nTop Indicator\n\n\n\n\n10\n0x100\n\n\n\n20\n0x0F8\n\n\n\n15\n0x0F0\n*",
     "crumbs": [
-      "7 Assembly Primer",
-      "Interpreting Operands"
+      "7 - Assembly Primer",
+      "The Stack"
     ]
   },
   {
-    "objectID": "07 Assembly Primer/09 Comparing and Jumps.html",
-    "href": "07 Assembly Primer/09 Comparing and Jumps.html",
-    "title": "Compare and Jump",
-    "section": "",
-    "text": "Compare\nCompare Command\nFormat: cmp op2, op1   // result = op1 - op2\nDescription: \n    - result = op1 - op2\n    - The result will potentially cause the ZF, SF, OF, and CF flags to be set to at high state.\n    - The state of the flags can then be used with a conditional jump to go to another part of the code.\n\n\nJumps\nUnconditional Jump\nFormat: `jmp [target]`\nDescription:\n    - An unconditional jump to target.\nJump if Equal To:\nFormat: `je [target]`\nDescription:\n    - If ZF == 1, jump to target.\n    - If `previous_result = op1 - op2 == 0`)\n    - Jump if op2 == op1.\n    - Don't jump if op2 != op1.\nJump if Not Equal To:\nFormat: `jne [target]` \nDescription: \n    - If `ZF == 0`, jump to target.\n    - Jump if `op1 != op2`.\n    - Don't jump if `op1 == op2`\nJump if Greater Than:\nFormat: `jg [target]`\nDescription:\n- If ZF == 0 and SF == OF, jump.\n- Jump if op1 &gt; op2.\n- Don't jump if op1 &lt;= op2.\nJump if Greater Than or Equal:\n- Format: `jge [target]`\n- Description: \n    - If SF == OF, jump.\n    - Jump if op1 &gt;= op2.\n    - Don't jump if op1 &lt; op2.\nJump if Less Than:\n- Format: `jl [target]`\n- Description: \n    - If SF != OF, jump.\n    - Jump if op1 &lt; op2.\n    - Don't jump if op1 &gt;= op2.\nJump if Less or equal:\n- Format: `jle [target]`\n- Description: \n    - If ZF == 1 or SF != OF, jump.\n    - Jump if op1 &lt;= op2. \n    - Don't jump if op1 &gt; op2.",
+    "objectID": "07 Assembly Primer/04 The Stack.html#pop-instruction",
+    "href": "07 Assembly Primer/04 The Stack.html#pop-instruction",
+    "title": "The Stack",
+    "section": "Pop Instruction",
+    "text": "Pop Instruction\nThe pop instruction removes values from the stack into a designated register. It also results in adding 8 to the value stored in rsp.\n\nExample\nGiven the representation of the stack shown, pop the top value of the give stack into rax.\n\n\n\nValue\nAddr\nTop Indicator\n\n\n\n\n10\n0x100\n\n\n\n20\n0x0F8\n\n\n\n15\n0x0F0\n*\n\n\n\npop rax\nA representation of the stack after the pop operation follows.\n\n\n\nValue\nAddr\nTop Indicator\n\n\n\n\n10\n0x100\n\n\n\n20\n0x0F8\n*\n\n\n\nAdditionally, we have that rsp = 0x0F8 and rax=15.",
     "crumbs": [
-      "7 Assembly Primer",
-      "Compare and Jump"
+      "7 - Assembly Primer",
+      "The Stack"
     ]
   },
   {
-    "objectID": "07 Assembly Primer/10 Reverse Engineering with C.html",
-    "href": "07 Assembly Primer/10 Reverse Engineering with C.html",
-    "title": "Reverse Engineering",
+    "objectID": "07 Assembly Primer/old/02 Register Conventions.html",
+    "href": "07 Assembly Primer/old/02 Register Conventions.html",
+    "title": "Register Usage Conventions",
     "section": "",
-    "text": "Reverse engineer the ASM to fill in the blanks for the C code.\n\n\nexample:                           # NOTES:\n    movq    %rdi, %rax             # rax = rdi\n    addq    %rsi, %rax             # rax = rax + rsi\n    cmpq    $3, %rax               # Jump to L2 if rax &gt;= 3. Don't jump if rax &lt; 3\n    jge     L2  \n\nL2:\n    movq    %rsi, %rax             # rax = rsi\n    ret\n\n\n\nlong example(long x, long y) {  \n    // First argument x is stored in rdi\n    // Second argument y is stored in rsi\n\n    long result = __________;       // solution: x + y\n\n    if (__________) {               // solution: result &lt; 3\n        return result;\n    }\n\n    result = __________;            // solution: y\n\n    return result;\n}",
+    "text": "Assume Function A calls Function B. Then A is the caller and B is the callee.\n\n\n\nRegister\nConvention\nCallee or Caller Owned?\n\n\n\n\na\nreturn value\ncallee owned\n\n\nb\nlocal variable\ncaller owned\n\n\nc\n4th argument\ncallee owned\n\n\nd\n3rd argument\ncallee owned\n\n\nsi\n2nd argument\ncallee owned\n\n\ndi\n1st argument\ncallee owned\n\n\nbp\nlocal var\ncaller owned\n\n\nsp\nstack pointer\ncaller owned\n\n\nr8\n5th argument\ncallee owned\n\n\nr9\n6th argument\ncallee owned\n\n\nr10\nscratch/temp\ncallee owned\n\n\nr11\nscratch/temp\ncallee owned\n\n\nr12\nlocal var\ncaller owned\n\n\nr13\nlocal var\ncaller owned\n\n\nr14\nlocal var\ncaller owned\n\n\nr15\nlocal var\ncaller owned\n\n\n\n\n\nNotes\n\nCallee Owned / Caller Saved / Call Clobbered – used for temporary quantities.\nCaller Owned / Caller Saved / Call Preserved – used for values needed across calls."
+  },
+  {
+    "objectID": "07 Assembly Primer/02 File Sections.html",
+    "href": "07 Assembly Primer/02 File Sections.html",
+    "title": "Sections of an ASM File",
+    "section": "",
+    "text": "As you create more asm files and look at various examples, you’ll find there are 4 sections that will appear in some of the files. While not every file will contain every section, it is good to be aware of the usage of each section.\n\n\nThe data section of an asm file is a read/write section. It is commonly used to initialize variables that will be used in the program.\n\n\nSome example code follows. Before reading the example, here is some additional helpful information.\n\nThe equ means to create a symbolic constant, that is, memory isn’t allocated for it.\nThe $ is a reference to the memory address after the last defined data, that is, the memory address after the location of where the 0xA newline character was placed.\nThe $ - msg calculates the current position from the address of the variable named msg. Effectively, this is the length of the message Hello, World!\\n.\n\nsection .data\n    msg db \"Hello, world!\" , 0xA  ; string with newline\n    msgLen equ $ - msg            ; Dynamically calculate length\n\n\n\n\nThe .bss section is used for uninitialized variables. That is, we can use this section to reserve space for values that will be set later.\n\n\nAn example of how the .bss section may be used follows. Note that resb stands for reserve bytes.\nsection .bss\n    someInput resb 20   ; reserve 20 bytes for a var named someInput\n\n\n\n\nThe .rodata section is used for constants. That is, this section is for data that is not modified. For example, this is commonly used for strings.\n\n\nIn the following example, we define \\(\\pi\\) as a constant. The letters dq in this example stand for define quadword. Despite the name quadword, a quadword is a 64-bit/double-precision value.\nsection .rodata\n    pi dq 3.141592653589793  ; Define a quadword/double-precision constant\n\n\n\n\nThe text section is where you place the executable code for your asm file. For an example, see the page titled Hello, World!.",
     "crumbs": [
-      "7 Assembly Primer",
-      "Reverse Engineering"
+      "7 - Assembly Primer",
+      "Sections of an ASM File"
     ]
   },
   {
-    "objectID": "07 Assembly Primer/10 Reverse Engineering with C.html#example",
-    "href": "07 Assembly Primer/10 Reverse Engineering with C.html#example",
-    "title": "Reverse Engineering",
+    "objectID": "07 Assembly Primer/02 File Sections.html#the-.data-section",
+    "href": "07 Assembly Primer/02 File Sections.html#the-.data-section",
+    "title": "Sections of an ASM File",
     "section": "",
-    "text": "Reverse engineer the ASM to fill in the blanks for the C code.\n\n\nexample:                           # NOTES:\n    movq    %rdi, %rax             # rax = rdi\n    addq    %rsi, %rax             # rax = rax + rsi\n    cmpq    $3, %rax               # Jump to L2 if rax &gt;= 3. Don't jump if rax &lt; 3\n    jge     L2  \n\nL2:\n    movq    %rsi, %rax             # rax = rsi\n    ret\n\n\n\nlong example(long x, long y) {  \n    // First argument x is stored in rdi\n    // Second argument y is stored in rsi\n\n    long result = __________;       // solution: x + y\n\n    if (__________) {               // solution: result &lt; 3\n        return result;\n    }\n\n    result = __________;            // solution: y\n\n    return result;\n}",
+    "text": "The data section of an asm file is a read/write section. It is commonly used to initialize variables that will be used in the program.\n\n\nSome example code follows. Before reading the example, here is some additional helpful information.\n\nThe equ means to create a symbolic constant, that is, memory isn’t allocated for it.\nThe $ is a reference to the memory address after the last defined data, that is, the memory address after the location of where the 0xA newline character was placed.\nThe $ - msg calculates the current position from the address of the variable named msg. Effectively, this is the length of the message Hello, World!\\n.\n\nsection .data\n    msg db \"Hello, world!\" , 0xA  ; string with newline\n    msgLen equ $ - msg            ; Dynamically calculate length",
     "crumbs": [
-      "7 Assembly Primer",
-      "Reverse Engineering"
+      "7 - Assembly Primer",
+      "Sections of an ASM File"
     ]
   },
   {
-    "objectID": "07 Assembly Primer/10 Reverse Engineering with C.html#example-1",
-    "href": "07 Assembly Primer/10 Reverse Engineering with C.html#example-1",
-    "title": "Reverse Engineering",
-    "section": "Example:",
-    "text": "Example:\n\nASM\nexample:\n    leaq (%rdi, %rsi), %rax      # rax = rdi + rsi\n    leaq (%rsi, %rdx), %r10      # r10 = rsi + rdx\n    cmpq %r10, %rax              # compare rax and r10\n    jge  L2                      # jump if rax &gt;= r10, don't jump if rax &lt; r10\n    addq %r10, %rax              # rax = rax + r10\n    ret\n\nL2:\n    cmpq $0, %rax                # compare rax and 0\n    jle  L3                      # jump if rax &lt;= 0, don't jump if rax &gt; 0\n    imulq %rsi, %rax             # rax = rax * rsi\n\nL3:\n    movq %rdx, %rax              # rax = rdx\n    ret\n\n\nC\nlong example(long x, long y, long z) {\n    // x (first arg) is stored in rdi, \n    // y (second arg) is stored in rsi, \n    // z (third arg) is stored in rdx\n\n                                // Solutions:\n    long val1 = __________;     // x + y\n    long val2 = __________;     // y + z\n\n    if (__________) {           // val1 &lt; val2\n        val1 = __________;      // val1 + val2\n        return val1;\n    } else if (__________) {    // val1 &gt; 0\n        val1 = __________;      // val1 * y\n        return val1\n    }\n    val1 = ___________;         // z\n    return val1;\n}",
+    "objectID": "07 Assembly Primer/02 File Sections.html#the-.bss-section",
+    "href": "07 Assembly Primer/02 File Sections.html#the-.bss-section",
+    "title": "Sections of an ASM File",
+    "section": "",
+    "text": "The .bss section is used for uninitialized variables. That is, we can use this section to reserve space for values that will be set later.\n\n\nAn example of how the .bss section may be used follows. Note that resb stands for reserve bytes.\nsection .bss\n    someInput resb 20   ; reserve 20 bytes for a var named someInput",
     "crumbs": [
-      "7 Assembly Primer",
-      "Reverse Engineering"
+      "7 - Assembly Primer",
+      "Sections of an ASM File"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/02 File Sections.html#the-.rodata-section",
+    "href": "07 Assembly Primer/02 File Sections.html#the-.rodata-section",
+    "title": "Sections of an ASM File",
+    "section": "",
+    "text": "The .rodata section is used for constants. That is, this section is for data that is not modified. For example, this is commonly used for strings.\n\n\nIn the following example, we define \\(\\pi\\) as a constant. The letters dq in this example stand for define quadword. Despite the name quadword, a quadword is a 64-bit/double-precision value.\nsection .rodata\n    pi dq 3.141592653589793  ; Define a quadword/double-precision constant",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Sections of an ASM File"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/02 File Sections.html#the-.text-section",
+    "href": "07 Assembly Primer/02 File Sections.html#the-.text-section",
+    "title": "Sections of an ASM File",
+    "section": "",
+    "text": "The text section is where you place the executable code for your asm file. For an example, see the page titled Hello, World!.",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Sections of an ASM File"
+    ]
+  },
+  {
+    "objectID": "07 Assembly Primer/01 Hello World.html",
+    "href": "07 Assembly Primer/01 Hello World.html",
+    "title": "Hello, World!",
+    "section": "",
+    "text": "Since this is probably your first time writing in an assembly language, you shouldn’t be robbed of a hello world program.\nBelow you’ll see an example of sending “hello” to standard output using the write and exit system calls.\nsection .rodata            ; Section of asm file for read-only data \n                           ; This section is commonly used for strings and constants.\n\ngreeting:                  ; greeting is an identifier for our data\n    db \"hello\", 0xA        ; 0xA or 10 is for the '\\n' char. \n                           ; db for define byte\n\nsection .text              ; The section of the asm file for executable code.\n    global _start          ; Export _start so the linker can use it as entry point\n\n\n_start:               \n    ; In c, we would perform: write(1, greeting, 6)\n    ; Instruction format is: inst destination, source\n    mov     rax, 1         ; we load 1 into rax to indicate write\n    mov     rdi, 1         ; we place 1 into rdi to indicate standard output\n    mov     rsi, greeting  ; give the &greeting to rsi\n    mov     rdx, 6         ; the size of the greeting is 6 bytes. Load 6 into rdx\n    syscall                ; make the syscall\n\n    ; In c, we would perform exit(0)\n    mov     rax, 60        ; load 60 into rax for the exit syscall\n    mov     rdi, 0         ; load the exit status of 0 into rdi\n    syscall\nRun the program by using the following three commands:\n# pass it through the assembler\nnasm -f elf64 hello.asm -o hello.o \nld hello.o -o hello\n./hello",
+    "crumbs": [
+      "7 - Assembly Primer",
+      "Hello, World!"
     ]
   }
 ]
