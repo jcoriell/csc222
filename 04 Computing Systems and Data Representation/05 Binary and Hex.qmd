@@ -1,0 +1,17 @@
+---
+title: Binary and Hex
+---
+
+
+## Unsigned Binary
+
+[todo: examples of decimal values in binary]
+
+## Twos Complement
+
+[todo: example of two's complement values]
+
+## Hexadecimal
+
+[todo: examples of hexadecimal]
+

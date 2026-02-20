@@ -1,3 +1,128 @@
 ---
 title: Signals
 ---
+
+## The `kill()` Function
+
+To send signals to other processes, we use the `kill()` function. Despite the name, it isn't always used to stop another process, it is simply the available funtion to send signals to other processes.
+
+An example follows.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h> // contains kill() to send signals
+#include <signal.h> // contains some useful macros, like SIGKILL and SIGTERM
+#include <sys/wait.h>
+
+int main(void) {
+
+    pid_t pid = fork();
+
+    if (pid < 0) {
+        perror("fork failed");
+        exit(1);
+    }
+
+    if (pid == 0) {
+        // Child process
+        printf("Child: PID = %d\n", getpid());
+
+        // a loop that wont stop
+        while (1) {
+            printf("Child is running...\n");
+            sleep(2);
+        }
+    } else {
+        // Parent process
+        printf("Parent: PID = %d, Child PID = %d\n", getpid(), pid);
+
+        sleep(5);  // Let the child run for a bit
+
+        printf("Parent: sending SIGTERM to child\n");
+        // recall in the parent process pid = child process id
+        // use kill() to send signals
+        // Using SIGTERM here, but can use SIGKILL also. 
+        // SIGKILL is like "Force Quit" (no recovering if needed)
+        kill(pid, SIGTERM); 
+
+        // Wait for the child to terminate
+        wait(NULL);
+        printf("Parent: child has terminated\n");
+    }
+
+    return 0;
+}
+```
+
+
+## Handling Signals
+
+
+Two files are shown below, one designed to handle a received signal named `receive.c` and another designed to send a signal to the receiver named `send.c`. Be sure to run each file in separate terminals.
+
+```c
+// receive.c
+// run with ./receive
+// It will print a pid that you will use to run send.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <string.h>
+
+void handle_signal(int sig){
+    // this is our handler function
+    // be sure you have \n inside or fflush() after printf() to end the line/buffer
+    printf("Received %d: %s\n", sig, strsignal(sig));
+    
+}
+
+int main(){
+    printf("Receiver PID: %d\n", getpid());
+
+    // register the handler for a SIGUSR1 signal
+    signal(SIGUSR1, handle_signal);
+
+    printf("Receiver: waiting...\n");
+
+    while(1){
+        pause();
+    }
+
+    return 0;
+}
+```
+
+```c
+// send.c
+// Run receive.c first to get a process id
+// Run ./send <receiver-pid> to send the signal
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[]) {
+   
+    // check that the target pid was provided
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <receiver-pid>\n", argv[0]);
+        exit(1);
+    }
+
+    // converts the target pid to an int
+    pid_t targetProcess = atoi(argv[1]);
+
+    printf("Sender: sending SIGUSR1 to PID %d\n", targetProcess);
+
+    // send the signal (siguser1)
+    kill(targetProcess, SIGUSR1);
+
+    return 0;
+}
+```
+
+
+

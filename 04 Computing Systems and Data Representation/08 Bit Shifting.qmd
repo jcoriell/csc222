@@ -1,0 +1,91 @@
+---
+title: Bit Shifting
+---
+
+
+### Left Shift
+
+A left shift of bits can be performed with the `<<` operator. Note that the operator points toward the left.
+
+To shift a bit vector `x` over by `y` positions, you would write `x << y`.
+
+The leftmost bits will be thrown away as you shift.
+
+The right side of the bit array will be filled with 0s. 
+
+### Right Shift
+
+A right shift of bits can be performed with the `>>` operator. Note that the operator points toward the right.
+
+To shift a bit vector `x` over by `y` positions, you would write `x >> y`.
+
+The rightmost bits will be thrown away as you shift.
+
+In the case of a `Logical Shift`, the left side of the bit array will be filled with 0s. This happens if `x` is an unsigned value.
+
+In the case of an `Arithmetic Shift`, the left side of the bit array will be filled with 0s or 1s depending on the parity of the value x. That is, if x is a negative signed number, then it will fill with 1s.
+
+
+
+### Example 1
+
+Let `x = 0x62` be an **unsigned int**. Find the binary representation of `x << 3`.
+
+Solution:
+
+- 0x62 in binary is 1100010
+
+- However, recall that ints are 4 bytes, or 32-bits.
+
+- Thus, 0x62 in memory is as follows 
+  ```
+  00000000 00000000 00000000 01100010
+  ```
+  Note that we have space separated the bytes for visual purposes.
+
+- Now if we shift the bits 3 places to the left, we get the following:
+  ```
+  00000000 00000000 00000011 00010000
+  ```
+
+### Example 2
+
+Let `x = 0x62` be an **unsigned char**. Find the binary representation of `x << 3`.
+
+Solution:
+
+- 0x62 in binary is 1100010
+
+- However, recall that ints are 1 byte, or 8-bits.
+
+- Thus, 0x62 in memory is as follows 
+  ```
+  01100010
+  ```
+  Note that we only added a leading zero.
+
+- Now if we shift the bits 3 places to the left, we get the following:
+  ```
+  00010000
+  ```
+- Notice how we lost several bits in the shift.
+
+
+### Example 3
+
+Let `x = -8` (base 10) be an **signed char**. Find the binary representation of `x >> 2`.
+
+
+Solution:
+
+- -8 in binary, as an unsigned char is 11111000
+
+- Recall that this uses two's complement notation.
+
+- If we shift the bits 2 places to the right as an arithmetic shift, we get the following:
+  ```
+  11111110
+  ```
+- Notice how the left side was filled with 1s to maintain the sign.
+
+- The resulting base 10 value is -2. 

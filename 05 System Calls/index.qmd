@@ -8,7 +8,7 @@ title: System Calls
 
 [01 Using Syscall](01 Using Syscall.qmd)
 
-[02 Fork Function](02 Fork Function.qmd)
+[02 Fork and Wait](02 Fork and Wait.qmd)
 
 [03 Exec Functions](03 Exec Functions.qmd)
 

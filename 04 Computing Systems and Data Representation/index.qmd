@@ -1,0 +1,31 @@
+---
+title: Computing Systems and Data Representation
+---
+
+## Contents
+
+[01 Computing Systems](01 Computing Systems.qmd)
+
+[02 The Compilation Process](02 The Compilation Process.qmd)
+
+[03 Representing Programs](03 Representing Programs.qmd)
+
+[04 Data in a System](04 Data in a System.qmd)
+
+[05 Binary and Hex](05 Binary and Hex.qmd)
+
+[06 Bitwise Operations](06 Bitwise Operations.qmd)
+
+[07 Logical Operations at the Bit Level](07 Logical Operations at the Bit Level.qmd)
+
+[08 Bit Shifting](08 Bit Shifting.qmd)
+
+[09 Sign Extension](09 Sign Extension.qmd)
+
+[10 Power of Two Operations](10 Power of Two Operations.qmd)
+
+[11 Fractional Binary](11 Fractional Binary.qmd)
+
+[12 IEEE 754 Values](12 IEEE 754 Values.qmd)
+
+

@@ -1,0 +1,115 @@
+---
+title: Logical Operations at the Bit Level
+---
+
+
+## Boolean Algebra
+
+- Developed by George Boole in 19th Century
+- Encode True as 1 and False as 0
+
+- Primitive/Basic gates:
+    - And: A&B = 1 when both A = 1 and B = 1
+    - Or:  A|B = 1 when either A = 1 or B = 1
+    - Not: ~A = 1 when A = 0
+
+- We can use the primitive gate to get exclusive or (XOR):
+    - A ^ B = (~A & B) | (A & ~B)
+    - A ^ B = 1 When A = 1 or B = 1, but not both
+
+
+
+#### Properties of AND and XOR
+| Property                  | Expression     |
+|---------------------------|----------------|
+| Commutative sum           | A ^ B = B ^ A
+| Commutative product       | A & B = B & A
+| Associative sum           | (A ^ B) ^ C = A ^ (B ^ C)
+| Associative product       | (A & B) & C = A &(B & C)
+| Product over sum          | A & (B ^ C) = (A ^ B) & (A ^ C)
+| 0 is sum identity         | A ^ 0 = A
+| 1 is product identity     | A & 1 = A
+| 0 is product annihilator  | A & 0 = 0
+| Additive inverse          | A ^ A = 0
+
+
+## Logical Operations in C
+
+The Logical Operators are: 
+    - && for AND, 
+    - || for OR
+    - and ! for NOT
+
+Note the following:
+    - The value 0 is viewed as False
+    - Anything else is True
+    - The operators &&, ||, and ! will always return 0 or 1
+
+### Example 1:
+
+Find `!0x41` as a hex value.
+
+Solution:
+```c
+ 0x41    // original value is not a zero valued quantity, thus it's boolean value is True
+!0x41   // Thus, not True is False.
+ 0x00    // 0x00 is the numeric representation of False. Final Result.
+```
+
+### Example 2:
+
+Find `!0x00` as a hex value.
+
+Solution:
+```c
+ 0x00    // boolean value is False
+!0x00   // Thus, not False is True.
+ 0x01    // 0x01 is the numeric representation of True. Final Result.
+```
+
+### Example 3:
+
+Find `!!0x41` as a hex value.
+
+Solution:
+```c
+ 0x41    // boolean value is True
+
+!0x41   // Thus, not True is False, resulting in 0x00
+ 0x00   // result from previous application of !
+
+!0x00   // Apply another ! operator. Not False is True.
+ 0x01    // 0x01 is the numeric representation of True. Final Result.
+```
+
+
+### Example 4:
+
+Find the result of `0x69 && 0x55` as a hex value.
+
+Solution:
+```c
+        Hex     Boolean Value
+       0x69              True
+    && 0x55     AND      True
+    -------     -------------
+       0x01              True
+```
+
+The final result is `0x01`.
+
+
+### Example 4:
+
+Find the result of `0x69 || 0x55` as a hex value.
+
+Solution:
+```c
+        Hex     Boolean Value
+       0x69              True
+    || 0x55     OR       True
+    -------     -------------
+       0x01              True
+```
+
+The final result is `0x01`.

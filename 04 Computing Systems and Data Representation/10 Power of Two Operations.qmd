@@ -1,0 +1,34 @@
+---
+title: Power of Two Operations
+---
+
+
+## Power of 2 Multiplication and Division with Shifting
+
+Power-of-2 Multiplication with Shift
+- Operation:
+    - u << k is equivalent u * 2^k
+    - for signed and unsigned 
+
+- Left Shift: x << y
+    - shift bit vector x left by y positions
+        - throw away extra bits on left
+        - Fill with 0's on the right
+
+### Example: 
+    - u << 3 = u*8
+
+Power of 2 Divide with shift
+- Quotient of Unsigned by Power of 2:
+    - u >> k give u / 2^k
+    - Uses logical shift
+
+- Quotient of signed by power of 2
+    - u >> k gives u / 2^k
+    - uses the arithmetic shift
+
+- Right shift: x >> y
+    - Shift bit vector x by y positions
+    - Logical shift: fill with 0's on the left
+    - Arithmetic shift: Replicate the sign bit on the left
+

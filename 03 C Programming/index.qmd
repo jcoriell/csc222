@@ -1,0 +1,27 @@
+---
+title: C Programming
+---
+
+This section provides an intro to C programming concepts.
+
+
+## Contents
+
+[01 HelloWorld](01-HelloWorld.qmd)
+
+[02 DataTypes](02-DataTypes.qmd)
+
+[03 Operators](03-Operators.qmd)
+
+[04 Functions](04-Functions.qmd)
+
+[05 More on Data](05-More-on-Data.qmd)
+
+[06 Sample Applications](06-Sample-Applications.qmd)
+
+[07 Memory Allocation](07-Memory-Allocation.qmd)
+
+[08 Structs and Unions](08-Structs-and-Unions.qmd)
+
+[09 Sample Applications](09-Sample-Applications.qmd)
+

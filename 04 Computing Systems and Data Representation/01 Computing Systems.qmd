@@ -39,7 +39,7 @@ $ ./hello
 To understand what happens to our hello program when we run it, we need to understand 
 the hardware organization of a typical system.
 
-[include an image of a system's hardware here]
+[TODO: place a diagram that shows hardware]
 
 ### Buses
 
@@ -78,15 +78,15 @@ From the time electrical power is applied to the system until power is shut off,
 
 When the shell loads and runs the `hello` program, a message of `Hello, World!` prints to the terminal. However, the executable `hello` program didn't access the hardware such as the display, disk, or main memory directly. Rather, it relied on the services provided by the operating system to get the message to appear in the terminal.
 
-[insert diagram of os acting as intermediary layer]
+[TODO: insert diagram of os acting as intermediary layer]
 
 We can think of the operating system as a layer of software interposed between the application program and the hardware. All attempts by an application to manipulate the hardware must go through the operating system.
 
 The operating system has two primary purposes:
 
-1. To protect the hardware from misuse by runaway applications;
+1. To protect the hardware;
 
-2. To provide applications with simple uniform mechanisms for manipulating complicated and often wildly different low-level hardware devices.
+2. To provide applications with simple interfaces for different low-level hardware devices.
 
 The operating system achieves both goals via the fundamental abstractions:
 

@@ -2,3 +2,33 @@
 title: Dup2
 ---
 
+
+```c
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
+
+int main(){
+    int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    
+    if (fd < 0){
+        perror("The open() func caused an error on line 6.");
+        return 1;
+    }
+
+    // use dup2 to redirect stdout to output.txt
+    // note that this reassigns the fd for stdout to be our new fd
+    // therefore, anything going to stdout will go to the new file instead
+    dup2(fd, STDOUT_FILENO); 
+    // dup2 is the "sequel" to dup(). 
+    // dup() takes a file descriptor and creates a new one (i.e. duplicates)
+    // there is also a dup3()....
+    
+    close(fd); // we can close the new file descriptor and just point everything to stdout
+
+    // now produce some output
+    printf("These are the contents.");
+    return 0;
+}
+
+```

@@ -78,15 +78,15 @@
   </url>
   <url>
     <loc>https://csc222.jcor.dev/05 System Calls/06 Piping.html</loc>
-    <lastmod>2026-02-18T22:18:42.448Z</lastmod>
+    <lastmod>2026-02-20T13:58:48.238Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/05 System Calls/05 Dup2.html</loc>
-    <lastmod>2026-02-18T22:18:35.338Z</lastmod>
+    <lastmod>2026-02-20T13:55:43.373Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/05 System Calls/07 Signals.html</loc>
-    <lastmod>2026-02-18T22:18:48.954Z</lastmod>
+    <lastmod>2026-02-20T14:05:31.416Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/05 System Calls/03 Exec Functions.html</loc>
@@ -101,31 +101,87 @@
     <lastmod>2023-11-20T21:48:25.211Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/03 Representing Programs.html</loc>
-    <lastmod>2025-11-20T19:23:42.083Z</lastmod>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/08 Bit Shifting.html</loc>
+    <lastmod>2026-02-20T14:27:01.796Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/05 Binary and Hex.html</loc>
+    <lastmod>2026-02-20T14:23:16.078Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/01 Computing Systems.html</loc>
-    <lastmod>2025-11-20T20:05:42.604Z</lastmod>
+    <lastmod>2026-02-20T14:15:32.293Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/04 Representing Numeric Data.html</loc>
-    <lastmod>2025-01-28T15:52:57.221Z</lastmod>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/11 Fractional Binary.html</loc>
+    <lastmod>2026-02-20T14:38:11.794Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/12-Piping.html</loc>
-    <lastmod>2024-12-05T14:14:30.631Z</lastmod>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/index.html</loc>
+    <lastmod>2026-02-20T21:43:19.745Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/13-Exec-Functions.html</loc>
-    <lastmod>2024-12-05T14:14:30.631Z</lastmod>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/12 IEEE 754 Values.html</loc>
+    <lastmod>2026-02-20T21:41:31.595Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/02-DataTypes.html</loc>
-    <lastmod>2024-12-05T14:14:30.629Z</lastmod>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/09 Sign Extension.html</loc>
+    <lastmod>2026-02-20T14:30:32.904Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/04-Functions.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/03 C Programming/06-Sample-Applications.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/index.html</loc>
+    <lastmod>2026-02-20T14:08:54.229Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/03-Operators.html</loc>
+    <lastmod>2024-12-05T14:14:30.629Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/08-Structs-and-Unions.html</loc>
+    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/04 Redirection.html</loc>
+    <lastmod>2025-12-05T21:38:27.922Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/01 Basic Commands.html</loc>
+    <lastmod>2024-12-18T19:32:03.882Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/index.html</loc>
+    <lastmod>2025-12-08T21:46:41.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/03 Other Useful Tips.html</loc>
+    <lastmod>2024-12-19T15:54:00.013Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/06 Grep and Regex.html</loc>
+    <lastmod>2025-12-19T19:49:25.777Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/02 Working With Files.html</loc>
+    <lastmod>2025-12-05T21:32:21.837Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/00 Background.html</loc>
+    <lastmod>2025-12-05T21:31:18.509Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/02 Terminal and Shell/05 File Permissions.html</loc>
+    <lastmod>2025-12-05T22:00:06.224Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/03 C Programming/05-More-on-Data.html</loc>
     <lastmod>2024-12-05T14:14:30.630Z</lastmod>
   </url>
   <url>
@@ -133,80 +189,44 @@
     <lastmod>2024-12-05T14:14:30.630Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/05-More-on-Data.html</loc>
-    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/05 File Permissions.html</loc>
-    <lastmod>2025-12-05T22:00:06.224Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/00 Background.html</loc>
-    <lastmod>2025-12-05T21:31:18.509Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/02 Working With Files.html</loc>
-    <lastmod>2025-12-05T21:32:21.837Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/06 Grep and Regex.html</loc>
-    <lastmod>2025-12-19T19:49:25.777Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/03 Other Useful Tips.html</loc>
-    <lastmod>2024-12-19T15:54:00.013Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/index.html</loc>
-    <lastmod>2025-12-08T21:46:41.418Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/01 Basic Commands.html</loc>
-    <lastmod>2024-12-18T19:32:03.882Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/02 Terminal and Shell/04 Redirection.html</loc>
-    <lastmod>2025-12-05T21:38:27.922Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/08-Structs-and-Unions.html</loc>
-    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/03-Operators.html</loc>
-    <lastmod>2024-12-05T14:14:30.629Z</lastmod>
-  </url>
-  <url>
     <loc>https://csc222.jcor.dev/03 C Programming/09-Sample-Applications.html</loc>
     <lastmod>2024-12-05T14:14:30.630Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/11-Fork.html</loc>
-    <lastmod>2024-12-05T14:14:30.631Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/10-Files.html</loc>
-    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
-  </url>
-  <url>
-    <loc>https://csc222.jcor.dev/03 C Programming/04-Functions.html</loc>
-    <lastmod>2024-12-05T14:14:30.630Z</lastmod>
+    <loc>https://csc222.jcor.dev/03 C Programming/02-DataTypes.html</loc>
+    <lastmod>2024-12-05T14:14:30.629Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/03 C Programming/01-HelloWorld.html</loc>
     <lastmod>2024-12-05T14:14:30.629Z</lastmod>
   </url>
   <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/04 Data in a System.html</loc>
+    <lastmod>2026-02-20T14:38:49.030Z</lastmod>
+  </url>
+  <url>
     <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/02 The Compilation Process.html</loc>
     <lastmod>2025-11-20T22:05:33.974Z</lastmod>
   </url>
   <url>
-    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/05 Byte Ordering Conventions.html</loc>
-    <lastmod>2025-11-18T23:26:19.284Z</lastmod>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/10 Power of Two Operations.html</loc>
+    <lastmod>2026-02-20T14:37:12.840Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/06 Bitwise Operations.html</loc>
+    <lastmod>2026-02-20T14:24:43.579Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/07 Logical Operations at the Bit Level.html</loc>
+    <lastmod>2026-02-20T14:25:57.847Z</lastmod>
+  </url>
+  <url>
+    <loc>https://csc222.jcor.dev/04 Computing Systems and Data Representation/03 Representing Programs.html</loc>
+    <lastmod>2025-11-20T19:23:42.083Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/index.html</loc>
-    <lastmod>2025-12-08T21:54:14.648Z</lastmod>
+    <lastmod>2026-02-20T14:12:41.752Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/00 Housekeeping/01 Syllabus.html</loc>
@@ -218,7 +238,7 @@
   </url>
   <url>
     <loc>https://csc222.jcor.dev/05 System Calls/index.html</loc>
-    <lastmod>2026-02-18T22:41:47.543Z</lastmod>
+    <lastmod>2026-02-20T21:46:50.581Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/05 System Calls/00 Overview.html</loc>
@@ -230,7 +250,7 @@
   </url>
   <url>
     <loc>https://csc222.jcor.dev/05 System Calls/04 Working with Files.html</loc>
-    <lastmod>2026-02-18T22:18:26.431Z</lastmod>
+    <lastmod>2026-02-20T13:55:09.610Z</lastmod>
   </url>
   <url>
     <loc>https://csc222.jcor.dev/01 Linux/02 VM Install/04 Creating the VM.html</loc>

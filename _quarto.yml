@@ -27,6 +27,7 @@ website:
           - 00 Housekeeping/01 Syllabus.qmd
 
       - section: "1 - Linux"
+        href: "01 Linux/index.qmd"
         contents:
           - 01 Linux/01 A Brief History.qmd
           - section: "VM Install"
@@ -45,6 +46,7 @@ website:
 
 
       - section: "2 - Terminal and Shell"
+        href: "02 Terminal and Shell/index.html"
         contents:
           - 02 Terminal and Shell/00 Background.qmd
           - 02 Terminal and Shell/01 Basic Commands.qmd
@@ -56,6 +58,7 @@ website:
 
 
       - section: "3 - C Programming"
+        href: "03 C Programming/index.qmd"
         contents:
           - 03 C Programming/01-HelloWorld.qmd
           - 03 C Programming/02-DataTypes.qmd
@@ -66,18 +69,24 @@ website:
           - 03 C Programming/07-Memory-Allocation.qm4
           - 03 C Programming/08-Structs-and-Unions.qmd
           - 03 C Programming/09-Sample-Applications.qmd
-          - 03 C Programming/10-Files.qmd
-          - 03 C Programming/11-Fork.qmd
-          - 03 C Programming/12-Piping.qmd
-          - 03 C Programming/13-Exec-Functions.qmd
+
 
       - section: "4 - Computing Systems and Data Representation"
+        href: "04 Computing Systems and Data Representation/index.qmd"
         contents: 
           - 04 Computing Systems and Data Representation/01 Computing Systems.qmd
           - 04 Computing Systems and Data Representation/02 The Compilation Process.qmd
           - 04 Computing Systems and Data Representation/03 Representing Programs.qmd
-          - 04 Computing Systems and Data Representation/04 Representing Numeric Data.qmd
-          - 04 Computing Systems and Data Representation/05 Byte Ordering Conventions.qmd
+          - 04 Computing Systems and Data Representation/04 Data in a System.qmd
+          - 04 Computing Systems and Data Representation/05 Binary and Hex.qmd
+          - 04 Computing Systems and Data Representation/06 Bitwise Operations.qmd
+          - 04 Computing Systems and Data Representation/07 Logical Operations at the Bit Level.qmd
+          - 04 Computing Systems and Data Representation/08 Bit Shifting.qmd
+          - 04 Computing Systems and Data Representation/09 Sign Extension.qmd
+          - 04 Computing Systems and Data Representation/10 Power of Two Operations.qmd
+          - 04 Computing Systems and Data Representation/11 Fractional Binary.qmd
+          - 04 Computing Systems and Data Representation/12 IEEE 754 Values.qmd
+
 
 
       - section: "5 - System Calls"

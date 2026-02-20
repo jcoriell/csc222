@@ -1,0 +1,108 @@
+---
+title: Data in a System
+---
+
+## Overview of Binary Representations
+
+A binary value can be interpreted in various ways. In this section we look at various encodings of binary values including unsigned binary, two's complement, and IEEE 754 floating point notation. Additionally, we look at how binary values can be represented using hexadecimal. 
+
+Assume we have the 32-bits `11000001 00001100 00000000 00000000`
+
+As an unsigned integer value, or regular unsiged binary, this could be interpreted as the base 10 value of 3238789120.
+
+If we were using a two's complement encoding, the same 32-bit value could also be interpreted as the base 10 value -1056178176, as is done in C when the data type of a variable is an int.
+
+Under a IEEE 754 standards for floating point notation, the same set of 32-bits could be interpreted as the base 10 value -8.75, as is done in C when the data type is a float.
+
+## Bytes and Hex
+
+Recall that one byte is 8 bits. Thus one byte can hold the binary values from `00000000` through `11111111`, or as integers in base 10, 0 through 255. 
+
+As we add more bytes, writing binary values can become lengthy, thus using hexadecimal reduces the number of digits we have, making it easier to look at and communicate to others. 
+
+The values `00000000` through `11111111` can be represented in hexadecimal as 00 through FF. Recall that hexadecimal uses the characters 0 through 9 and A - F to represent the base 10 quantities of 0 through 15.
+
+In C, we can represent our hexadecimal values by putting a `0x` in front of them. We will use this notation moving foward to represent hex values.
+
+```c
+Example:
+// the hex value FA1D37B in c
+int num = 0xFA1D37B
+```
+
+Notice that each character in hex represents 4-bits or half a byte. Thus every 2 hex digits represents 1 full byte.
+
+## Word
+
+Machine have what we refer to as **word size**. Unlike the term **byte** where a **byte** always represents 8 bits, the **word-size** of one machine is not necessarily the same number of bits from one machine to another.
+
+The word size of a machine is the nominal size of integer-valued data. On a 64-bit machine, ints are typically 8 bytes (i.e. 64 bits), thus the word size is 64-bits. On 32-bit machines, ints are typically 4 bytes (i.e. 32-bits), thus the word size is 32-bits.
+
+Note that the integer size of the machine may or may not be the size of an int for a specific language. In c, when we declare ints, they are 4 bytes, even on most 64-bit machines.
+
+- Most current machines are 64-bit (8 bytes)
+    - Potentially address 1.8 * 10^19 bytes
+
+- Older machines are 32-bits (4 bytes)
+    - limits addresses to 4GB
+    - too small for memory intensive applications
+
+- Machines support multiple data formats
+    - Fractions or multiples of word size
+    - Always integral number of bytes
+
+Word-Oriented Memory Organization
+- Addresses specifiy Byte Locations
+    - Address of the first byte in word
+    - Addresses of successive words differ by 4 (32-bit) or 8 (64-bit)
+
+## Data Representation in C
+
+-Sizes of C data Types (in bytes)
+
+    C Data Types    Typical 64-bit      Typical 32-bit
+        int                     4                   4
+        long int                8                   4
+        char                    1                   1
+        short                   2                   2
+        float                   4                   4
+        double                  8                   8
+        char *                  8                   4
+
+
+## Byte Ordering in Memory
+
+The **Big Endian** convention places the least significant byte at the highest address. 
+
+The **Little Endian** convention places the least significant byte has lowest address space.       
+
+### Example: 
+
+Assume, in c, we have a variable `x` such that `x = 0x01234567`
+If we call on `&x` to get the address, we would receive 0x100, since it is the lowest memory address that contains any of the value. 
+
+The table below shows how the value is actually stored depending on if the machine is using the big endian or little endian convention.
+
+|Memory Address  | 0x099 | 0x100 | 0x101 | 0x102 | 0x103 | 0x104 | 0x105 |
+|----------------|-------|-------|-------|-------|-------|-------|-------|
+|Big Endian      |       |   01  |   23  |   45  |   67  |       |       |
+|Little Endian   |       |   67  |   45  |   23  |   01  |       |       | 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

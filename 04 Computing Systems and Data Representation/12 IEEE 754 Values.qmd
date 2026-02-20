@@ -1,0 +1,258 @@
+---
+title: IEEE 754 Floating Point Representation
+---
+
+IEEE 754 is a set of standards that describe how floating point values should be represented at the machine level. This page contains a summary of how this is done. For more details see Chapter 2 of the course textbook.
+
+
+## General Information
+
+As a binary value, there are 3 fields that form an IEEE 754 formated number: The sign field, the exponent field, and the mantissa field.
+
+The sign field is 1 bit, while the other two fields vary depending on the precision of the value. A 16-bit number is referred to as a half-precision value, a 32-bit number is a single precision value, and a 64-bit number is a double precision value. An example of a signle precision value follows in the text field below.
+
+```text
+Sign Field    Exponent Field    Mantissa Field
+-----------   ---------------   ----------------------------
+1             1000 0001         0001 0000 0000 0000 0000 000
+```
+
+Floats in the C language are 32-bit single precision value while doubles are 64-bit double precision values. The number of bits in each field for single and double precision values is indicated in the table that follows.
+
+| Precision | Sign Bits | Exponent Bits | Mantissa Bits |
+|-----------|-----------|---------------|---------------|
+| Single    | 1         | 8             | 23            |
+| Double    | 1         | 11            | 52            |
+
+
+When representing floating point values, there are three cases of this standard we need to consider:
+
+1. Normalized Form
+
+    - The "common" case.
+
+    - Used to represent values that aren't very close to 0. 
+
+2. Denormalized Form
+
+    - Used to represent 0 and values very close to 0.
+
+3. Special values
+
+    - Used for special numbers like $+\infty$ and $-\infty$
+
+
+## Case 1: Normalize Form
+
+This is the common case. Some key features of this form include:
+
+- The exponent field is not all 0s.
+
+- The exponent field is not all 1s.
+
+- The exponent field is biased in some way. 
+
+    * For 32-bit values the bias is 127
+
+    * For 64-bit values, the bias is 1023
+
+- The mantissa field will represent a fractional value $x$. To get the full value, we will need to attach a 1 in front of it and place the x after the decimal point. That is, if we have a value $1.0110$, then the mantissa field is $0110$ (the contents after the $1.$) 
+
+### Example 1
+
+Convert -4.25 to single precision IEEE 754 floating point number (i.e. 32-bits).
+
+
+1. **Convert base number (ignoring sign) to binary**
+
+    **Whole Part:**
+
+    
+    Whole part is 4. Divide quotients by 2 repeatedly and read the remainders in reverse order to get the binary value.
+ 
+    ```
+        4 / 2 = 2r0
+        2 / 2 = 1r0
+        1 / 2 = 0r1    // stop when quotient is 0
+    ```
+    Reading the remainders in reverse gives $100$.
+    
+
+    **Fractional Part:**
+
+
+    Fractional Part is 0.25. Multiply the fractional parts by 2 repeatedly and read the whole parts from the top down.
+
+    ```
+                   Whole part
+                   |
+                   | Fractional Part
+                   | |  
+                   v v
+        0.25 * 2 = 0.5
+        0.5  * 2 = 1.0  // stop when fractional part is 0
+    ```
+
+    Reading the whole parts from top down gives $01$.
+
+    **Recombine**
+
+    Finish this step by combining the whole and fractional binary results into $100.01$
+
+2. **Implicitly Normalize the Previous Result**
+
+   Shift the radix point (decimal point) to the right of the most significant bit. This shift is done by multiplying your binary value by $2^k$ where $k$ is the number of place values you need to shift your radix point.
+
+   ```
+        100.01 
+        10.001   // shifted left one place
+        1.0001   // shifted left 2 places total. stop here.
+   ```
+
+   **Identify the True Exponent**
+
+   The exponent is $2$ since we shifted $2$ places to the left.
+   We will refer to this exponent as the `TrueExponent`. Recall that the exponent field holds a `BiasedExponent` instead of the `TrueExponent`.
+
+   **Identify the Mantissa Field**
+
+   The mantissa field will start with $0001$ since that is the value to the right of the radix point.
+   *Do not discard leading 0s in the mantissa*. The leading 0s are important. We can (and will), however, place trailing 0s after this value.
+
+
+
+3. **Bias the Exponent**
+
+    Apply a bias to your `TrueExponent` value. Since we are working under single precision (32-bit), our bias is 127.
+    
+    $$ 
+    \begin{aligned}
+    \text{BiasedExponent} &= \text{TrueExponent} + 127\\
+    \text{BiasedExponent} &= 2 + 127\\
+    \text{BiasedExponent} &= 129\\
+    \end{aligned}
+    $$
+
+4. **Convert the Biased Exponent to Binary**
+
+    The exponent is represented using 8 bits in single precision.
+
+    Using the subtraction method:
+
+    $$
+    \begin{aligned}
+    129 - 2^7 &= 1\\
+    1 - 2^0 &= 0\\
+    \end{aligned}
+    $$
+
+    So our binary representation is $1000 0001$. Thus our exponent field is `1000 0001`
+
+5. **Put it all together**
+
+    In the previous steps, we saw: 
+
+    - Sign is -, thus the sign field is 1.
+    
+    - The exponent field was `1000 0001` 
+    
+    - The mantissa field was `0001`.
+
+    Placing each value into their respective fields and adding trailing 0s to the mantissa give the following result.
+
+    ```
+    Final Result:
+    S    Exponent    Mantissa (23 bits total)
+    --   ----------  ----------------------------
+    1    1000 0001   0001 0000 0000 0000 0000 000
+    ```
+
+    Note that we placed spaces after every 4 bits for readability. The true result would be: `11000000100010000000000000000000`.
+
+
+### Example 2
+
+Convert the following 32-bit IEEE 754 normalized form value to decimal.
+
+```
+S    Exponent    Mantissa (23 bits total)
+--   ----------  ----------------------------
+0    1000 0011   1000 1100 0000 0000 0000 000
+```
+
+
+1. **Convert the Exponent to Decimal** 
+
+   Convert the exponent to decimal by multiplying by the appropriate powers of two and adding the sums.
+
+   ```
+         1    0   0   0   0   0   1   1
+    x  128   64  32  16   8   4   2   1 
+    ------------------------------------
+       128 +  0 + 0 + 0 + 0 + 0 + 2 + 1  = 131
+   ```
+
+2. **Unbias the Exponent**
+
+    Recall the exponent field holds a biased exponent, thus we need to unbias it. For 32-bit values, the bias is 127. We subtract 127 from the biased exponent. 
+
+    $$
+    \begin{align}
+    \text{TrueExponent} &= \text{BiasedExponent} - 127\\
+    \text{TrueExponent} &= 131 - 127\\
+    \text{TrueExponent} &= 4\\
+    \end{align}
+    $$
+
+3. **Use the Formula to Express the Value as Fractional Binary**
+
+    We can use the following formula where $MF$ is the mantissa field, $TE$ is the true exponent, and $S$ is the sign to get a fractional binary form.
+
+    $$(-1)^S \times 1.MF \times 2^{TE}$$
+
+    Recall that the mantissa field is `1000 11` without the trailing 0s.
+
+    We get the following:
+
+    $$(-1)^0 \times 1.100011 \times 2^{4}$$
+
+    Simplifying this expressing gives $11000.11$ as a fractional binary expression.
+
+4. **Convert the Fractional Binary Expression to Base 10**
+
+    Convert the fractional binary expression $11000.11$ to decimal by multiplying by the appropriate powers of two and adding the sums.
+
+   ```
+          1   1   0   0   0 .   1     1
+    x    16   8   4   2   1   0.5  0.25
+    ------------------------------------
+        16 +  8 + 0 + 0 + 0 + 0.5 + 0.25  = 24.75
+   ```
+
+   The value is $24.75$ in base 10.
+
+For more practice with normalized form, try using the linked [IEEE-754 Floating Point Convert](https://www.h-schmidt.net/FloatConverter/IEEE754.html). 
+
+
+## Case 2: Denormalized Form
+
+Denormalized form is used to express the value 0 and values that are very close to zero. Here are some nuggets to know about denormalized form:
+
+- A value in denormalized form has an exponent field of all 0s. 
+
+- There is no implicitly applied 1 in front of the radix point with respect to the mantissa field's value (therefore we can actually represent 0.0)
+
+- $\text{TrueExponent} = 1 - \text{Bias}$
+
+
+For practice with denormalized form, try using the linked [IEEE-754 Floating Point Convert](https://www.h-schmidt.net/FloatConverter/IEEE754.html). The values are too small to reasonably convert by hand.
+
+
+## Case 3: Special Values
+
+The last case we discuss is used to represent special values. When working in the last case, the exponent field is all 1s. 
+
+If the mantissa field is all 0s, then we have either $+\infty$ or $-\infty$ (depending on the sign bit).
+
+If the mantissa field is not all 0s, then we have `NaN`, which stands for **Not a Number**. Example `NaN` values include $\sqrt{-1}$ or expressions like $\infty - \infty$.
+

@@ -1,0 +1,124 @@
+---
+title: Bitwise Operations
+---
+
+## Bitwise Operators in C
+
+The bitwise operators in c for and, or, not and exclusive are  `&`, `|`, `~`, and `^` respectively. That is, if we apply these to any primitive data type, the bit-level representation of the two operands will be operated on.
+
+### Example: NOT
+
+Assume we have the variables `x=0x41` and `y=0xBE`. Note that each is 1 byte in size (2 hex digits). Since they are only 1 byte, let's say they represent a char.
+
+Performing `~x`: 
+
+```c
+// Given
+~x             
+
+// Represent the value as it was given in hex.
+~0x41        
+
+// Note that the hex value 4 is 0100 in binary and the hex value of 1 is 0001 in binary.
+// We can represent them together as the following:
+// Note that the space is only included for visual purposes here.
+~0100 0001    
+
+// Now we apply the negation and flip every bit.           
+ 1011 1110
+
+// Representing this back in it's hex form gives the following.
+// The bits 1011 are the hex value B and the bits 1110 are the hex value E.
+ 0xBE   // The final result after negation and as a hex value.
+```
+
+### Example: AND
+
+Find the result (in hex) of simplifying the expression `x & y` when `x = 0x69` and `y = 0x55`
+
+Solution:
+```c
+        Binary     Hex
+
+      01101001    0x69     // Value 1
+    & 01010101    0x55     // Value 2
+    ----------   -----
+      01000001    0x41     // Result
+```
+
+### Example: AND and NOT
+
+Find the result (in hex) of simplifying the expression `~(x & y)` when `x = 0xb4` and `y = 0x87`
+
+Solution:
+```c
+
+        Binary     Hex
+      10110100    0xb4      // x
+   &  10000111    0x87      // y
+   -----------   -----
+      10000100    0x84      // Intermediate result (x & y)
+
+     ~10000100    0x84      // Apply ~
+   -----------   -----
+      01111011    0x7B      // Final result ~(x & y)
+```
+
+### Example: OR
+
+Find the result (in hex) of simplifying the expression `x | y` when `x = 0x69` and `y = 0x55`.
+
+Solution:
+```c
+        Binary     Hex
+
+      01101001    0x69     // Value 1
+    | 01010101    0x55     // Value 2
+    ----------   -----
+      01111101    0x7D     // Result   
+``` 
+
+
+### Example: OR 
+
+Find the result (in hex) of simplifying the expression `x | y` when `x = 0xb4` and `y = 0x87`.
+
+Solution:
+```c
+        Binary     Hex
+
+      10110100    0xb4
+    | 10000111    0x87
+    ----------   -----
+      10110111    0xB7
+```
+
+### Example: NOT, OR, and AND
+
+Find the result (in hex) of simplifying the expression `x | ~(y & z)` when `x = 0xA7`, `y = 0x8`, and `z = 0x5`.
+
+Solution:
+```c
+        Binary     Hex
+
+    // Get the intermediate result (y & z)
+        Binary     Hex
+          1000     0x8   // y
+    &     0101     0x5   // z
+    ----------   -----
+          0000     0x0   // (y & z)
+
+
+    // Get the intermediate result ~(y & z)
+        Binary     Hex
+    ~     0000     0x0   // (y & z)
+    ----------   -----
+          1111     0xF   // ~(y & z)
+
+    // Get the final result
+        Binary     Hex
+      10100111    0xA7   // x
+    | 00001111    0x0F   // ~(y & z)
+    ----------   -----
+      10101111    0xAF   // Final Result x | ~(y & z)
+```

@@ -2,3 +2,54 @@
 title: Piping
 ---
 
+```c
+#include <stdio.h>
+#include <unistd.h>
+
+int main(){
+
+    // create an array for file descriptors 
+    // the file descriptors are integer references for the two sides of the pipe
+    // fd[0] is for the read end of the pipe
+    // fd[1] is for the write end of the pipe
+    int fd[2]; 
+    
+    // provide fd to the pipe() function to create the pipe
+    pipe(fd); // returns 0 on success
+
+    pid_t pid = fork();
+
+    if (pid == 0){
+        // Child Process - writing to pipe here
+
+        // close the read end since we are writing here
+        close(fd[0]);    
+
+        // prompt for data
+        int x;
+        printf("Child: Give me an int: \n");
+        scanf("%d", &x);
+
+        // write the data to the pipe
+        write(fd[1], &x, sizeof(int)); 
+
+        // close the write end
+        close(fd[1]);   
+
+    } else {
+        // Parent Process  - reading here
+
+        // close the write end (since we are reading here)
+        close(fd[1]);
+
+        // read the data from the pipe
+        int y;
+        read(fd[0], &y, sizeof(int)); 
+        printf("Parent: Received from child: %d\n", y);
+
+        // close the read end
+        close(fd[0]);
+    }
+}
+
+```
