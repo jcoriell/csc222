@@ -1,0 +1,153 @@
+---
+title: Overview
+---
+
+## Exceptions
+
+With respect to a processor, an **exception** is an abrupt changein the control flow in response to some change in the processor's state.
+
+### Classes of Exceptions
+
+1. Interrupts - caused by a signal from an I/O device.
+
+2. Traps and **System Calls** - An intentional exception caused by executing an instruction.
+
+3. Faults - potentially recoverable errors
+
+4. Aborts - non-recoverable errors
+
+
+## System Calls
+
+**System calls** are procedure-like interfaces between user programs and the kernel of the OS.
+
+In C, we can invoke them with the `syscall()` function, although this is not typical. We typically use one of the wrappers for the syscalls found in `stdlib` or `unistd`.
+
+In IA32 ASM (Intel Architecture), we frequently find the `int` instruction (for interrupt) with `$0x80` to invoke a system call. 
+
+In x86_64 architecture, we typically invoke it with the `syscall` instruction.
+
+The syscall is indicated via a different number, corresponding to each call, loaded in a specific register (commonly register `eax`). 
+
+
+
+### Common Calls with their Number for x86 32-bit Arch
+
+Here is a list of commonly used system calls and their corresponding number for 32-bit x86 machines. A complete list can be found at [x86.syscall.sh](https://x86.syscall.sh/).
+
+| Number | System Call |
+|--------|-------------|
+| 1      | exit        |
+| 2      | fork        |
+| 3      | read        |
+| 4      | write       |
+| 5      | open        |
+| 6      | close       |
+| 7      | waitpid     |
+| 11     | execve      |
+| 20     | getpid      |
+| 63     | dup2        |
+| 64     | getppid     |
+
+### Common Calls with their Number for x86_64 Arch 
+
+Here is a list of commonly used system calls and their corresponding number for 64-bit x86 machines. A complete list can be found at [x64.syscall.sh](https://x64.syscall.sh/).
+
+
+| Number | System Call |
+|--------|-------------|
+| 60     | exit        |
+| 57     | fork        |
+| 0      | read        |
+| 1      | write       |
+| 2      | open        |
+| 3      | close       |
+| 61     | wait4       |
+| 59     | execve      |
+| 39     | getpid      |
+| 33     | dup2        |
+| 110    | getppid     |
+
+
+## Sample 32-bit ASM Using System Calls
+
+```asm
+; Some sample asm for writing hello
+; note: this is for x86 32 bit, with ATT syntax
+; note this is an incomplete program
+
+string:
+    .ascii "hello, world\n"
+
+movl $4, %eax       ; Load syscall 4 (write) into register eax
+movl $1, %ebx       ; Load 1 (for stdout) into register ebx
+movl $string, %ecx  ; Load "Hello, world\n" string into register ecx
+movl $13, %edx      ; Load the length of our string into register edx
+int $0x80           ; trigger the syscall
+```
+
+## Sample 64-bit ASM Using System Calls
+
+```asm
+; Some sample ASM for the Write Syscall
+; Note: This is not a full program. 
+; This program uses "Intel Syntax" vs "AT&T Syntax"
+
+greeting:                  ; greeting is a label
+    db "hello", 10         ; 10 is '\n'. db for define byte
+
+_start:
+    mov     rax, 1         ; we load 1 into rax to indicate write
+    mov     rdi, 1         ; we place 1 into rdi to indicate standard output
+    mov     rsi, greeting  ; give the &greeting to rsi
+    mov     rdx, 6         ; the size of the greeting is 6 bytes. Load 6 into rdx
+    syscall                ; make the syscall
+```
+
+### User Mode vs Kernel Mode
+
+**User Mode** - the standard mode process begin execution in. Note that system calls do not run in user mode.
+
+**Kernel Mode** - an elevated-privilege mode process can run in to interact with the hardware in order to create new files and processes.
+
+The **system calls interface** allows us to initiate a switch between the two modes.
+
+
+## Zombies and Reaping
+
+**Zombie** - a completed process that hasn't been removed form the system. When a process terminates, the kernel doesn't remove it immediately from the system.
+
+**Reaping** - the action of a parent process removing a terminated child process form the system.
+
+`fork()` - the syscall interface function used to create child processes
+
+Terminating Processes:
+
+- recieving a signal to do so 
+
+- returning from main   
+
+- calling the `exit()` syscall interface
+
+If a parent terminates without reaping its zombie children, the kernel will handle it.
+
+`wait()`/`waitpid()` - the syscall interface to wait for children to terminate
+
+## Signals
+
+A signal is a small message that notifies a process that an event of some type has occcurred in the system. 
+
+### Some Common Signals
+
+`SIGKILL` - kills a program 
+
+`SIGQUIT` - quit from keyboard
+
+`SIGINT`  - interrupt from keyboard 
+
+In c, we have the `signal.h` lib to assist with signals. Visit the [Signals](07 Signals.qmd) page for more details on signals.
+
+
+## Source Material
+
+Chapter 8 of Computer Systems: A Programmer's Perspective

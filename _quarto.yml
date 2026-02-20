@@ -4,6 +4,16 @@ project:
   resources:
     - CNAME
 
+format:
+  html:
+    # theme: 
+    #   dark: [dark, atom-one-dark.scss]
+    #   light: light
+    # highlight-style: atom-one-dark
+    css: styles.css
+    toc: true
+    googlefonts: false
+
 website:
   title: "CSC 222 Systems Programming"
   site-url: https://csc222.jcor.dev
@@ -71,8 +81,16 @@ website:
 
 
       - section: "5 - System Calls"
+        href: "05 System Calls/index.qmd"
         contents:
-          - ""
+          - "05 System Calls/00 Overview.qmd"
+          - "05 System Calls/01 Using Syscall.qmd"
+          - "05 System Calls/02 Fork and Wait.qmd"
+          - "05 System Calls/03 Exec Functions.qmd"
+          - "05 System Calls/04 Working with Files.qmd"
+          - "05 System Calls/05 Dup2.qmd"
+          - "05 System Calls/06 Piping.qmd"
+          - "05 System Calls/07 Signals.qmd"
 
       - section: "6 - Bash Scripting"
         contents:
@@ -102,14 +120,7 @@ website:
 
 
 
-format:
-  html:
-    # theme: 
-    #   dark: darkly
-    #   light: cosmo
-    css: styles.css
-    toc: true
-    googlefonts: false
+
 
 
 

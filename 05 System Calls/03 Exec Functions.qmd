@@ -1,0 +1,176 @@
+---
+title: Exec Functions
+---
+
+
+The `exec` functions execute programs. We typically proved the binary/program name to `exec` along with any arguments we may need to pass to the specific `exec` function. 
+
+Note that these functions take over the process. Anything that we place in the program to happen after calling them does not happen, unless an error occurs. The solution to execute a program and continue doing other stuff is to fork, run exec in the child process, and then make the parent process wait.
+
+We divid the exec functions into two categories, the `execl` functions and the `execv` functions. 
+
+## The `execl` functions
+
+The `l` in `execl` stands for list.
+
+### The `execl()` Function
+
+```c
+// generalized format
+execl(char *pathToExecutable, char arg0, char *arg1, ... , NULL)
+```
+
+**Some Details**
+
+- loads and runs an executable path with args
+
+- `arg0` is the name of the executable
+
+- `arg1` is the first space separated real argument
+
+- `NULL` follows all the args
+
+- returns -1 if there is an error
+
+```c
+// example with ls
+execl("/bin/ls", "ls", "-al", "-h", NULL); 
+```
+
+### The `execlp()` Function
+
+
+```c
+// generalized format
+execlp(char *file, char *arg0, char *arg1, ..., NULL)
+```
+
+**Some Details**
+
+- Main difference between `execl` and `execlp` is the file is sought for using the `PATH` environment variable.
+
+- To view you `PATH` environment variable run `$PATH` in a bash terminal. The directories listed indicate where your machine searches for executable files.
+
+```c
+// example with ls
+execlp("ls", "ls", "-al", "-h", NULL)
+```
+
+
+### The `execle()` Function
+
+```c
+// Generalized Format
+execle(char *executable, char *arg0, char *arg1, ..., NULL, char *envp[])
+```
+
+
+**Some Details**
+
+- Allows inclusion of an array of environment variables (`envp` in the sample above)
+
+- Environment variables are in the format "NAME=VALUE"
+
+
+
+```c
+// example with ls
+
+// providing our own PATH var and a var named LANG
+char *envp[] = {
+    "PATH=/bin:/usr/bin",
+    "LANG=C",
+    NULL    // envp must be NULL-terminated
+};
+
+execlp("ls", "ls", "-al", "-h", NULL, envp)
+```
+
+## The `execv` functions
+
+The `v` in `execv` stands for vector (an array). That is, we provide an array instead of listing out every argument.
+
+### The `execv()` Function
+
+```c 
+// General Format
+execv(char* pathToExecutable, char *args[])
+```
+
+**Some Details**
+
+- The first element of `args` is the name of the executable
+
+- The `args` array should have atleast one `NULL` in it.
+
+```c 
+// Example with ls
+char *args[] = {
+    "ls",
+    "-l",
+    NULL,  // NULL terminated, 
+    NULL   // could have more than 1 NULL here (useful for project)
+};
+
+execv("/bin/ls", args)
+```
+
+### The `execvp()` Function
+
+```c
+// General Format
+execvp(char* executable, char *args[])
+```
+
+**Some Details**
+
+- Similar to `execv`, but uses PATH variable to find the file to execute
+
+- First element of `args` is also the filename
+
+- `args` is `NULL` terminated
+
+```c 
+// Example with ls
+char *args[] = {
+    "ls",
+    "-l",
+    NULL,  // NULL terminated, 
+    NULL   // could have more than 1 NULL here (useful for project)
+};
+
+execvp(args[0], args)
+```
+
+### The `execvpe()` Function
+
+```c
+// General Format
+execvpe(char* executable, char *args[], char *env[])
+```
+
+**Some Details** 
+
+- Allows for the passing in of environment variables like with `execle()`
+
+```c
+// An example with ls and envp
+
+char *args[] = {
+    "ls",
+    "-l",
+    NULL,  // NULL terminated, 
+    NULL   // could have more than 1 NULL here (useful for project)
+};
+
+char *envp[] = {
+    "PATH=/bin:/usr/bin",
+    "LANG=C",
+    NULL         // envp must be NULL-terminated
+};
+
+execvpe(args[0], args, envp)
+```
+
+
+

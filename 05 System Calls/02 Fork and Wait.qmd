@@ -1,0 +1,175 @@
+---
+title: Fork and Wait
+---
+
+## Intro to Fork
+
+The `fork()` function makes a fork system call. This causes the process to create a duplicate of itself that is referred to as the child process. Note that anything that runs after the call to `fork()` is part of both the parent and child process, unless placed inside of appropriate conditional statements. 
+
+Note that `fork()` is called once, but it returns twice. The return value is -1 if there is an error, 0 if you are in the child process, and some integer greater than 0 if you are in the parent process. Note that in the parent process the returned value is the process id of the child process.
+
+An example of fork() follows. 
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h> // may need for types
+
+
+int main(){
+
+    printf("This is in the parent process\n");
+
+    int pid = fork(); // can use typedef pid_t instead
+
+    // if pid is -1, then it failed to create the child
+    if (pid < 0){
+        printf("Failed to create child process\n");
+        return 1;
+    }
+
+    // if pid == 0, then you are in the child process.
+    if (pid == 0){
+        // Child Process
+        printf("Hello from the child process!\n");
+    } else{
+        // Parent process
+        printf("Hello from the parent process!\n");
+    }
+
+    return 0;
+}
+
+```
+
+Here is another example that takes a deeper look at process id's. To get the process id of a current process, we use the `getpid()` function. To get the process id of the current processes parent process, use the `getppid()` function.
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h> 
+
+
+int main(){
+
+    pid_t pid = fork();
+
+    // if pid is -1, then it failed to create the child
+    if (pid == -1){
+        printf("Failed to create child process");
+        return 1;
+    }
+
+    if (pid == 0){
+        // Child Process
+        printf("From Child: pid is: %d\n", pid);
+        printf("From child: id of child is: %d\n", getpid()); 
+        printf("From child: id of parent is: %d\n", getppid()); 
+    } else {
+        // Parent Process
+        wait(NULL); // wait for any child to finish, we only have 1 here.
+        printf("From parent, my child is: %d\n", pid);
+        printf("From parent, id of parent is: %d\n", getpid());
+    }
+
+    return 0; 
+}
+```
+
+## The `wait()` and `waitpid()` Functions
+
+The previous example used the `wait()` function. This function is just a wrapper for a more robust function referred to as `waitpid()`.
+
+The `waitpid()` function can be used to wait for a specific child process, a process group, or any child process, while the `wait()` function is for any child process. 
+
+An example of waitpid is provided. 
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(void) {
+    /*
+    We frequently create a variable named status to hold info 
+    about how the child changed state. Note that this status is a bit encoded integer, 
+    so we need the type to be int, but the value holds more information
+    than just the exit status of the child we wait on. 
+
+    The bit encoded int for status can hold info that answers any of these questions:
+     - did the process exit normally? 
+     - what was the exit code?
+     - did the process terminate by a signal? and which one?
+     - did the process stop? did it continue from a stopped state?
+
+    To extract that information. We can use macros from sys/wait.h.
+    */
+
+    int status;     
+
+    pid_t pid = fork();
+
+    if (pid < 0) {
+        perror("The fork() call failed");
+        exit(EXIT_FAILURE);
+    }
+
+    if (pid == 0) {
+        // Child process
+        printf("Child: my PID is %d\n", getpid());
+        // pretend to do some work
+        sleep(2);  
+        // exit with a specific exit code to view later
+        // choosing 42 for no reason
+        exit(42);  
+    } else {
+        // Parent process
+        printf("Parent: waiting for child %d\n", pid);
+
+        // waitpid() takes in a process id 
+        //      -1 for ANY child of the calling process; 
+        //      0 for any child in the same process group (collection of related processes)
+        //      > 0 for a specific process
+        // a pointer for where to store the exit status
+        // options for the last arg (0 is most common)
+        // others include 
+        //      WNOHANG - doesn't block parent/causes waitpid to return immediately
+        //      WUNTRACED - returns if the child is stopped (ex: via a signal like SIGSTOP)
+        //      WCONTINUED - returns if a stopped child is resumed
+        // waitpid returns:
+        //      >0 means the pid of a child whose state changed (affected by options)
+        //      0 for when WNOHANG is used and the child didn't change state
+        //      -1 for an error
+
+
+        pid_t waited = waitpid(pid, &status, 0);
+        // wait(&status) is the same as waitpid(-1, &status, 0)
+
+        if (waited == -1) {
+            perror("waitpid failed");
+            exit(EXIT_FAILURE);
+        }
+        
+        // some macros to extract info about the status
+        if (WIFEXITED(status)) { 
+            // child exited normally
+
+            // WEXITSTATUS gets the integer the child passed to 
+            // can only use WEXITSTATUS if child exited normally
+            printf("Parent: child exited normally with status %d\n", WEXITSTATUS(status));
+            printf("Parent: status %d\n", status); // notice how it is not just the exit code
+
+        } else if (WIFSIGNALED(status)) {
+            // child was killed by a signal (for example: SIGTERM, SIGKILL, SIGINT, etc...)
+            // WTERMSIG gets the number for the signal
+            // strsignal(WTERMSIG(status)) makes it human readable
+            printf("Parent: child was killed by signal %d\n", WTERMSIG(status));
+        }
+    }
+
+    return 0;
+}
+```

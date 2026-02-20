@@ -1,0 +1,89 @@
+/*-- scss:defaults --*/
+
+/* Atom One Dark palette */
+$atom-bg: #282c34;
+$atom-fg: #abb2bf;
+$atom-comment: #5c6370;
+$atom-red: #e06c75;
+$atom-orange: #d19a66;
+$atom-yellow: #e5c07b;
+$atom-green: #98c379;
+$atom-cyan: #56b6c2;
+$atom-blue: #61afef;
+$atom-purple: #c678dd;
+
+/* Bootstrap/Quarto variables */
+$body-bg: $atom-bg;
+$body-color: $atom-fg;
+
+$link-color: $atom-blue;
+$link-hover-color: lighten($atom-blue, 10%);
+
+$headings-color: #e6e6e6;
+
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI",
+  Roboto, Helvetica, Arial, sans-serif;
+
+$code-color: $atom-fg;
+$code-bg: darken($atom-bg, 2%);
+
+$table-bg: transparent;
+$table-color: $atom-fg;
+$table-border-color: darken($atom-bg, 8%);
+
+
+/*-- scss:rules --*/
+
+div.sourceCode {
+  background-color: $atom-bg !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+div.sourceCode pre {
+  background-color: $atom-bg !important;
+}
+
+div.sourceCode {
+  overflow-x: auto;
+}
+
+pre,
+div.sourceCode pre {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important; /* thin */
+  background-color: $atom-bg !important;
+  color: $atom-fg !important;
+  box-shadow: none !important;
+}
+
+/* Kill the light-gray indented-code look */
+pre:not(.sourceCode) {
+  background-color: $atom-bg !important;
+}
+
+
+
+#TOC a { color: $atom-fg; }
+#TOC a:hover { color: $atom-blue; }
+
+.callout {
+  background-color: darken($atom-bg, 2%);
+  border-left: 1px solid $atom-blue;
+}
+
+.btn-primary {
+  background-color: $atom-blue;
+  border-color: $atom-blue;
+}
+.btn-primary:hover {
+  background-color: lighten($atom-blue, 5%);
+}
+
+::selection {
+  background: rgba(97, 175, 239, 0.35);
+}
+
+blockquote {
+  border-left: 1px solid $atom-purple;
+  color: lighten($atom-fg, 5%);
+}

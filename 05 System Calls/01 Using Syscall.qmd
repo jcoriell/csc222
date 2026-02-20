@@ -1,0 +1,130 @@
+---
+title: Using Syscall
+---
+
+On this page, you are presented with how to use the system call `write` at three different levels which can be described as the following:
+
+1. Using an assembly language on an x86_64 bit Linux machine.
+
+2. Using the `syscall()` function in c.
+
+3. Using the `write()` function in c.
+
+On other pages in this section on System Calls, we skip the usage of `syscall()` and the assembly code and only look at the wrapper functions for each syscall to focus on the functionality of the call.
+
+
+## Assembly
+
+```asm
+; hello.asm
+
+; Some sample asm for writing hello to the terminal.
+; If the name of this file is hello.asm, you can run it using the following 
+; This is for x86-64 Linux, with NASM.
+
+; Don't have nasm? Install it with suda apt update && sudo apt install nasm
+
+
+section .rodata            ; read-only data (strings and constants)
+greeting:                  ; greeting is a label
+    db "hello", 10         ; 10 is '\n'. db for define byte
+
+section .text              ; executable machine code
+global _start              ; export _start so the linker can use it as entry point
+
+_start:
+    ; In c, we have write(1, greeting, 6)
+    ; NASM instruction format: instruction destination, source
+    mov     rax, 1         ; 1 in RAX = write (see https://x64.syscall.sh)
+    mov     rdi, 1         ; fd of 1 = stdout
+    mov     rsi, greeting  ; buf = &greeting 
+    mov     rdx, 6         ; size of buf = 6 ("hello\n" is 6 bytes)
+    syscall                ; perform the syscall
+
+    ; exit(0)
+    mov     rax, 60        ; syscall: exit
+    mov     rdi, 0         ; status = 0
+    syscall
+```
+
+If you want to run the file shown above, run each of the following commands.
+
+```sh 
+# install nasm
+sudo apt update
+sudo apt install nasm
+
+# assmeble the file
+nasm -f elf64 hello.asm -o hello.o
+
+# pass it through the gcc linker
+ld hello.o -o hello
+
+# run the file
+./hello
+```
+
+
+
+## Syscall Function in C
+
+The asm code above can be written at a slightly higher level using the `syscall()` function in C as follows. 
+
+```c
+// syscall_write.c
+#include <unistd.h> // syscall() is in here
+#include <sys/syscall.h> // has system specific constants like SYS_write
+
+int main(void) {
+
+    // write
+    syscall(
+        SYS_write,   // Use the macro for SYS_write because the number
+                     // is different on different systems.
+                     // ex: 1 on x86_64 arch
+                     // ex: 4 on x86 (32-bit) arch 
+                     // ex: 64 on arm arch)
+                     // see https://syscall.sh for more
+        1,           // 1 for stdout
+        "Hello\n",   // the message
+        6            // 6 chars, 6 bytes
+    );
+
+    // exit
+    syscall(
+        SYS_exit,   // different number on different systems 
+        0           // the exit status is 0
+    );
+
+}
+```
+
+## Write Function in C
+
+The system calls have wrapper functions in c so that we do not need to be concerned with the syscall() function. For the write syscall, the function is named `write()`. The following code demonstrates the usage of `write()`.  
+
+
+```c
+// write.c
+#include <unistd.h> // syscall() is in here
+#include <sys/syscall.h> // has system specific constants like SYS_write
+
+int main(void) {
+
+    // write
+    syscall(
+        SYS_write,   // different number on different systems (1, 4, 64?)
+        1,           // 1 for stdout
+        "Hello\n",   // the message
+        6            // 6 chars, 6 bytes
+    );
+
+    // exit
+    syscall(
+        SYS_exit,   // different number on different systems (0, 60, 93?)
+        0           // the exit status is 0
+    );
+
+}
+
+```
