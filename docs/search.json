@@ -630,18 +630,7 @@
     "href": "04 Computing Systems and Data Representation/05 Binary and Hex.html",
     "title": "Binary and Hex",
     "section": "",
-    "text": "[todo: examples of decimal values in binary]",
-    "crumbs": [
-      "4 - Computing Systems and Data Representation",
-      "Binary and Hex"
-    ]
-  },
-  {
-    "objectID": "04 Computing Systems and Data Representation/05 Binary and Hex.html#unsigned-binary",
-    "href": "04 Computing Systems and Data Representation/05 Binary and Hex.html#unsigned-binary",
-    "title": "Binary and Hex",
-    "section": "",
-    "text": "[todo: examples of decimal values in binary]",
+    "text": "Two’s complement is the standard way computers represent signed integers in binary.\nPositive numbers are stored as usual in binary, while negative numbers are represented by inverting all bits of the positive value and adding 1.\nThis system has several advantages:\n\nAddition and subtraction use the same hardware for signed and unsigned values\nThere is only one zero\nThe leftmost bit acts as the sign bit and supports sign extension\n\nBecause of these properties, two’s complement is used by virtually all modern CPUs for integer arithmetic.\n\n\nRepresent −18 as an 8-bit two’s complement value\n\nWrite the magnitude in binary\n\\[18_10 = 00010010_2\\]\nInvert the bits\n00010010  &lt;- what we started with\n11101101  &lt;- inverted/flipped\nAdd 1 to the previous result\nAdd 1 to get the two’s complement representation:\n11101101\n+       1\n---------\n11101110\n\nThe final result is 11101110",
     "crumbs": [
       "4 - Computing Systems and Data Representation",
       "Binary and Hex"
@@ -651,8 +640,8 @@
     "objectID": "04 Computing Systems and Data Representation/05 Binary and Hex.html#twos-complement",
     "href": "04 Computing Systems and Data Representation/05 Binary and Hex.html#twos-complement",
     "title": "Binary and Hex",
-    "section": "Twos Complement",
-    "text": "Twos Complement\n[todo: example of two’s complement values]",
+    "section": "",
+    "text": "Two’s complement is the standard way computers represent signed integers in binary.\nPositive numbers are stored as usual in binary, while negative numbers are represented by inverting all bits of the positive value and adding 1.\nThis system has several advantages:\n\nAddition and subtraction use the same hardware for signed and unsigned values\nThere is only one zero\nThe leftmost bit acts as the sign bit and supports sign extension\n\nBecause of these properties, two’s complement is used by virtually all modern CPUs for integer arithmetic.\n\n\nRepresent −18 as an 8-bit two’s complement value\n\nWrite the magnitude in binary\n\\[18_10 = 00010010_2\\]\nInvert the bits\n00010010  &lt;- what we started with\n11101101  &lt;- inverted/flipped\nAdd 1 to the previous result\nAdd 1 to get the two’s complement representation:\n11101101\n+       1\n---------\n11101110\n\nThe final result is 11101110",
     "crumbs": [
       "4 - Computing Systems and Data Representation",
       "Binary and Hex"
@@ -663,7 +652,7 @@
     "href": "04 Computing Systems and Data Representation/05 Binary and Hex.html#hexadecimal",
     "title": "Binary and Hex",
     "section": "Hexadecimal",
-    "text": "Hexadecimal\n[todo: examples of hexadecimal]",
+    "text": "Hexadecimal\n\nExample\nConvert the binary value 10110110 to hexadecimal.\n\nGroup bits into nibbles (4 bits)\nStarting from the right, group the binary digits into sets of four:\n1011 0110\nConvert each nibble to hex\nBinary: 1011  0110\nHex:       B     6\n\nThe final value is B6 in hex.",
     "crumbs": [
       "4 - Computing Systems and Data Representation",
       "Binary and Hex"
@@ -700,6 +689,39 @@
     "crumbs": [
       "4 - Computing Systems and Data Representation",
       "Computing Systems"
+    ]
+  },
+  {
+    "objectID": "04 Computing Systems and Data Representation/11 Fractional Binary.html",
+    "href": "04 Computing Systems and Data Representation/11 Fractional Binary.html",
+    "title": "Fractional Binary",
+    "section": "",
+    "text": "Using a similar mechanisms to unsigned binary, we can represent fractional values in binary using what we refer to as fractional binary. Note that we cover this because this is a representation that will appear as an intermediary value when performing conversion from the standard IEEE 754 conversion of a floating point value to and from their base 10 representations.",
+    "crumbs": [
+      "4 - Computing Systems and Data Representation",
+      "Fractional Binary"
+    ]
+  },
+  {
+    "objectID": "04 Computing Systems and Data Representation/11 Fractional Binary.html#example-1",
+    "href": "04 Computing Systems and Data Representation/11 Fractional Binary.html#example-1",
+    "title": "Fractional Binary",
+    "section": "Example 1",
+    "text": "Example 1\nConvert the fractional binary value 101.11 to decimal.\nSolution\nWe currently have an understanding that each place value on the left hand side of the radix point is represented by a positive power of two. We can extend this understanding to the right hand side of the radix point by using negative powers of 2.\n\n\n\nBinary value\n1\n0\n1\n.\n1\n1\n\n\n\n\nPower of 2\n2²\n2¹\n2⁰\n.\n2⁻¹\n2⁻²\n\n\nDecimal value\n4\n2\n1\n.\n0.5\n0.25\n\n\n\nThus, we just need to find the sum of \\(4 + 1 + 0.5 + 0.25\\). This give the decimal value of \\(5.75\\).",
+    "crumbs": [
+      "4 - Computing Systems and Data Representation",
+      "Fractional Binary"
+    ]
+  },
+  {
+    "objectID": "04 Computing Systems and Data Representation/11 Fractional Binary.html#example-2",
+    "href": "04 Computing Systems and Data Representation/11 Fractional Binary.html#example-2",
+    "title": "Fractional Binary",
+    "section": "Example 2",
+    "text": "Example 2\nConvert the fraction \\(\\dfrac{26}{128}\\) to fractional binary.\nSolution\nWe can rewrite this value as \\(26 \\times \\dfrac{1}{128}\\) or \\(26 \\times 2^{-7}\\).\nConvering 26 to binary gives \\(11010\\).\nMultiplying by \\(2^{-7}\\) moves the radix point 7 places to the left. Leading 0s are added as needed.\n\\[\n\\begin{aligned}\n& 00011010. \\quad (0)\\\\\n& 0001101.0 \\quad (1)\\\\\n& 000110.10 \\quad (2)\\\\\n& 00011.010 \\quad (3)\\\\\n& 0001.1010 \\quad (4)\\\\\n& 000.11010 \\quad (5)\\\\\n& 00.011010 \\quad (6)\\\\\n& 0.0011010 \\quad (7)\n\\end{aligned}\n\\]\nThe final result is \\(0.0011010\\)",
+    "crumbs": [
+      "4 - Computing Systems and Data Representation",
+      "Fractional Binary"
     ]
   },
   {
@@ -775,6 +797,17 @@
     "crumbs": [
       "4 - Computing Systems and Data Representation",
       "IEEE 754 Floating Point Representation"
+    ]
+  },
+  {
+    "objectID": "04 Computing Systems and Data Representation/09 Sign Extension.html",
+    "href": "04 Computing Systems and Data Representation/09 Sign Extension.html",
+    "title": "Sign Extension",
+    "section": "",
+    "text": "Sign extension is the process of preserving the numeric value of a signed integer when it is casted to a type that uses a larger number of bits.\nIt applies to two’s complement integers when increasing bit width (e.g., 8-bits to 16-bits) and when moving values between registers of different sizes.\nIn order to properly perform a sign extension, we copy the sign bit into all newly added high-order bits.\nFor example, if we have a positive number, the sign bit is 0, then we fill to the left with 0s. If we have a negative number, then the sign bit is 1, then we fill to the left with 1s.\n\nExample\nShow how sign extension works when casting the value 5 as a short int to an int.\nAs a short int, 5 is represented with 16 bits as follows:\n00000000 00000101\nThe leftmost bit is 0, indicating that we have a positive value. Thus, when extending to an int (4 bytes), we must duplicate this bit.\nAs an int, 5 is represented with 32 bits as follows:\n00000000 00000000 00000000 00000101\n\n\nExample\nShow how sign extension works when casting the value -5 as a short int to an int.\nAs a short int, -5 is represented with 16 bits as follows:\n11111111 11111011\nThe leftmost bit is 1, indicating that we have a negative value. Thus, when extending to an int (4 bytes), we must maintain this negative value by extending with 1s.\nAs an int, -5 is represented with 32 bits as follows:\n11111111 11111111 11111111 11111011",
+    "crumbs": [
+      "4 - Computing Systems and Data Representation",
+      "Sign Extension"
     ]
   },
   {
@@ -1686,18 +1719,29 @@
     "href": "04 Computing Systems and Data Representation/10 Power of Two Operations.html",
     "title": "Power of Two Operations",
     "section": "",
-    "text": "Power-of-2 Multiplication with Shift - Operation: - u &lt;&lt; k is equivalent u * 2^k - for signed and unsigned\n\nLeft Shift: x &lt;&lt; y\n\nshift bit vector x left by y positions\n\nthrow away extra bits on left\nFill with 0’s on the right\n\n\n\n\n\n- u &lt;&lt; 3 = u*8\nPower of 2 Divide with shift - Quotient of Unsigned by Power of 2: - u &gt;&gt; k give u / 2^k - Uses logical shift\n\nQuotient of signed by power of 2\n\nu &gt;&gt; k gives u / 2^k\nuses the arithmetic shift\n\nRight shift: x &gt;&gt; y\n\nShift bit vector x by y positions\nLogical shift: fill with 0’s on the left\nArithmetic shift: Replicate the sign bit on the left",
+    "text": "When multiplying and dividing by powers of two, the quickest way for the machine to perform this operations is through a simple bit shift.",
     "crumbs": [
       "4 - Computing Systems and Data Representation",
       "Power of Two Operations"
     ]
   },
   {
-    "objectID": "04 Computing Systems and Data Representation/10 Power of Two Operations.html#power-of-2-multiplication-and-division-with-shifting",
-    "href": "04 Computing Systems and Data Representation/10 Power of Two Operations.html#power-of-2-multiplication-and-division-with-shifting",
+    "objectID": "04 Computing Systems and Data Representation/10 Power of Two Operations.html#power-of-2-multiplication-with-shifting",
+    "href": "04 Computing Systems and Data Representation/10 Power of Two Operations.html#power-of-2-multiplication-with-shifting",
     "title": "Power of Two Operations",
-    "section": "",
-    "text": "Power-of-2 Multiplication with Shift - Operation: - u &lt;&lt; k is equivalent u * 2^k - for signed and unsigned\n\nLeft Shift: x &lt;&lt; y\n\nshift bit vector x left by y positions\n\nthrow away extra bits on left\nFill with 0’s on the right\n\n\n\n\n\n- u &lt;&lt; 3 = u*8\nPower of 2 Divide with shift - Quotient of Unsigned by Power of 2: - u &gt;&gt; k give u / 2^k - Uses logical shift\n\nQuotient of signed by power of 2\n\nu &gt;&gt; k gives u / 2^k\nuses the arithmetic shift\n\nRight shift: x &gt;&gt; y\n\nShift bit vector x by y positions\nLogical shift: fill with 0’s on the left\nArithmetic shift: Replicate the sign bit on the left",
+    "section": "Power of 2 Multiplication with Shifting",
+    "text": "Power of 2 Multiplication with Shifting\nThe left shift operation u &lt;&lt; k is equivalent \\(u \\times 2^k\\). Recall that when performing a left shift, we fill with 0s on the right.\n\nExample\nShow that \\(3 \\times 4\\) is the same as \\(3 &lt;&lt; 2\\)\nSolution\nStarting with the expression \\(3 \\times 4\\), we know \\(3 \\times 4 = 12\\) and \\(12\\) in binary is \\(1100\\).\nFrom the other side of the proposition, we also know that \\(3\\) in binary is \\(11\\). A left shift of 2 on this value results in \\(1100\\).\nThe results from each statement above are equal.",
+    "crumbs": [
+      "4 - Computing Systems and Data Representation",
+      "Power of Two Operations"
+    ]
+  },
+  {
+    "objectID": "04 Computing Systems and Data Representation/10 Power of Two Operations.html#power-of-2-division-with-shifting",
+    "href": "04 Computing Systems and Data Representation/10 Power of Two Operations.html#power-of-2-division-with-shifting",
+    "title": "Power of Two Operations",
+    "section": "Power of 2 Division with Shifting",
+    "text": "Power of 2 Division with Shifting\nThe right shift operation u &gt;&gt; k is equivalent \\(\\dfrac{u}{2^k}\\). Recall that when performing a right shift, we fill with the sign bit on the left, that is, if the number is negative, fill with 1s.\n\nExample\nShow that \\(12 / 4\\) is the same as \\(12 &gt;&gt; 2\\)\nSolution\nStarting with the expression \\(12 / 4\\), we know \\(12/4\\) is \\(3\\), which is \\(11\\) in binary.\nFrom the other side of the proposition, we also know that \\(12\\) in binary is \\(1100\\). A right shift of 2 on this value results in \\(0011\\).\nThe results from each statement above are equivalent.",
     "crumbs": [
       "4 - Computing Systems and Data Representation",
       "Power of Two Operations"

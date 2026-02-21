@@ -2,33 +2,39 @@
 title: Power of Two Operations
 ---
 
+When multiplying and dividing by powers of two, the quickest way for the machine to perform this operations is through a simple bit shift. 
 
-## Power of 2 Multiplication and Division with Shifting
+## Power of 2 Multiplication with Shifting
 
-Power-of-2 Multiplication with Shift
-- Operation:
-    - u << k is equivalent u * 2^k
-    - for signed and unsigned 
 
-- Left Shift: x << y
-    - shift bit vector x left by y positions
-        - throw away extra bits on left
-        - Fill with 0's on the right
+The left shift operation `u << k` is equivalent $u \times 2^k$. Recall that when performing a left shift, we fill with 0s on the right. 
 
-### Example: 
-    - u << 3 = u*8
+### Example
 
-Power of 2 Divide with shift
-- Quotient of Unsigned by Power of 2:
-    - u >> k give u / 2^k
-    - Uses logical shift
+Show that $3 \times 4$ is the same as $3 << 2$
 
-- Quotient of signed by power of 2
-    - u >> k gives u / 2^k
-    - uses the arithmetic shift
+**Solution**
 
-- Right shift: x >> y
-    - Shift bit vector x by y positions
-    - Logical shift: fill with 0's on the left
-    - Arithmetic shift: Replicate the sign bit on the left
+Starting with the expression $3 \times 4$, we know $3 \times 4 = 12$ and $12$ in binary is $1100$. 
 
+From the other side of the proposition, we also know that $3$ in binary is $11$. A left shift of 2 on this value results in $1100$. 
+
+The results from each statement above are equal. 
+
+
+## Power of 2 Division with Shifting
+
+The right shift operation `u >> k` is equivalent $\dfrac{u}{2^k}$. Recall that when performing a right shift, we fill with the sign bit on the left, that is, if the number is negative, fill with 1s. 
+
+
+### Example
+
+Show that $12 / 4$ is the same as $12 >> 2$
+
+**Solution**
+
+Starting with the expression $12 / 4$, we know $12/4$ is $3$, which is $11$ in binary. 
+
+From the other side of the proposition, we also know that $12$ in binary is $1100$. A right shift of 2 on this value results in $0011$.
+
+The results from each statement above are equivalent. 

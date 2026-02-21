@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -561,9 +590,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#power-of-2-multiplication-and-division-with-shifting" id="toc-power-of-2-multiplication-and-division-with-shifting" class="nav-link active" data-scroll-target="#power-of-2-multiplication-and-division-with-shifting">Power of 2 Multiplication and Division with Shifting</a>
+  <li><a href="#power-of-2-multiplication-with-shifting" id="toc-power-of-2-multiplication-with-shifting" class="nav-link active" data-scroll-target="#power-of-2-multiplication-with-shifting">Power of 2 Multiplication with Shifting</a>
   <ul class="collapse">
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example:</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#power-of-2-division-with-shifting" id="toc-power-of-2-division-with-shifting" class="nav-link" data-scroll-target="#power-of-2-division-with-shifting">Power of 2 Division with Shifting</a>
+  <ul class="collapse">
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -590,36 +623,29 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="power-of-2-multiplication-and-division-with-shifting" class="level2">
-<h2 class="anchored" data-anchor-id="power-of-2-multiplication-and-division-with-shifting">Power of 2 Multiplication and Division with Shifting</h2>
-<p>Power-of-2 Multiplication with Shift - Operation: - u &lt;&lt; k is equivalent u * 2^k - for signed and unsigned</p>
-<ul>
-<li>Left Shift: x &lt;&lt; y
-<ul>
-<li>shift bit vector x left by y positions
-<ul>
-<li>throw away extra bits on left</li>
-<li>Fill with 0’s on the right</li>
-</ul></li>
-</ul></li>
-</ul>
+<p>When multiplying and dividing by powers of two, the quickest way for the machine to perform this operations is through a simple bit shift.</p>
+<section id="power-of-2-multiplication-with-shifting" class="level2">
+<h2 class="anchored" data-anchor-id="power-of-2-multiplication-with-shifting">Power of 2 Multiplication with Shifting</h2>
+<p>The left shift operation <code>u &lt;&lt; k</code> is equivalent <span class="math inline">\(u \times 2^k\)</span>. Recall that when performing a left shift, we fill with 0s on the right.</p>
 <section id="example" class="level3">
-<h3 class="anchored" data-anchor-id="example">Example:</h3>
-<pre><code>- u &lt;&lt; 3 = u*8</code></pre>
-<p>Power of 2 Divide with shift - Quotient of Unsigned by Power of 2: - u &gt;&gt; k give u / 2^k - Uses logical shift</p>
-<ul>
-<li>Quotient of signed by power of 2
-<ul>
-<li>u &gt;&gt; k gives u / 2^k</li>
-<li>uses the arithmetic shift</li>
-</ul></li>
-<li>Right shift: x &gt;&gt; y
-<ul>
-<li>Shift bit vector x by y positions</li>
-<li>Logical shift: fill with 0’s on the left</li>
-<li>Arithmetic shift: Replicate the sign bit on the left</li>
-</ul></li>
-</ul>
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>Show that <span class="math inline">\(3 \times 4\)</span> is the same as <span class="math inline">\(3 &lt;&lt; 2\)</span></p>
+<p><strong>Solution</strong></p>
+<p>Starting with the expression <span class="math inline">\(3 \times 4\)</span>, we know <span class="math inline">\(3 \times 4 = 12\)</span> and <span class="math inline">\(12\)</span> in binary is <span class="math inline">\(1100\)</span>.</p>
+<p>From the other side of the proposition, we also know that <span class="math inline">\(3\)</span> in binary is <span class="math inline">\(11\)</span>. A left shift of 2 on this value results in <span class="math inline">\(1100\)</span>.</p>
+<p>The results from each statement above are equal.</p>
+</section>
+</section>
+<section id="power-of-2-division-with-shifting" class="level2">
+<h2 class="anchored" data-anchor-id="power-of-2-division-with-shifting">Power of 2 Division with Shifting</h2>
+<p>The right shift operation <code>u &gt;&gt; k</code> is equivalent <span class="math inline">\(\dfrac{u}{2^k}\)</span>. Recall that when performing a right shift, we fill with the sign bit on the left, that is, if the number is negative, fill with 1s.</p>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<p>Show that <span class="math inline">\(12 / 4\)</span> is the same as <span class="math inline">\(12 &gt;&gt; 2\)</span></p>
+<p><strong>Solution</strong></p>
+<p>Starting with the expression <span class="math inline">\(12 / 4\)</span>, we know <span class="math inline">\(12/4\)</span> is <span class="math inline">\(3\)</span>, which is <span class="math inline">\(11\)</span> in binary.</p>
+<p>From the other side of the proposition, we also know that <span class="math inline">\(12\)</span> in binary is <span class="math inline">\(1100\)</span>. A right shift of 2 on this value results in <span class="math inline">\(0011\)</span>.</p>
+<p>The results from each statement above are equivalent.</p>
 
 
 </section>

@@ -3,15 +3,82 @@ title: Binary and Hex
 ---
 
 
-## Unsigned Binary
-
-[todo: examples of decimal values in binary]
 
 ## Twos Complement
 
-[todo: example of two's complement values]
+Two’s complement is the standard way computers represent **signed integers** in binary.  
+Positive numbers are stored as usual in binary, while negative numbers are represented by **inverting all bits of the positive value and adding 1**.
+
+This system has several advantages:
+
+- Addition and subtraction use the **same hardware** for signed and unsigned values
+
+- There is **only one zero**
+
+- The leftmost bit acts as the **sign bit** and supports sign extension
+
+Because of these properties, two’s complement is used by virtually all modern CPUs for integer arithmetic.
+
+### Example: 
+
+Represent −18 as an 8-bit two’s complement value
+
+
+1. **Write the magnitude in binary**
+
+    $$18_10 = 00010010_2$$
+    
+
+
+
+2. **Invert the bits**
+
+    ```
+    00010010  <- what we started with
+    11101101  <- inverted/flipped
+    ```
+
+3. **Add 1 to the previous result**
+
+    Add 1 to get the two’s complement representation:
+
+    ```
+    11101101
+    +       1
+    ---------
+    11101110
+    ```
+
+
+The final result is `11101110`
+
 
 ## Hexadecimal
 
-[todo: examples of hexadecimal]
+
+### Example
+
+Convert the binary value **10110110** to hexadecimal.
+
+
+
+1. **Group bits into nibbles (4 bits)**
+
+    Starting from the right, group the binary digits into sets of four:
+
+    ```text
+    1011 0110
+    ```
+
+
+
+2. **Convert each nibble to hex**
+
+    ```
+    Binary: 1011  0110
+    Hex:       B     6
+    ```
+
+
+The final value is `B6` in hex.
 

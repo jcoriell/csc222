@@ -556,8 +556,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -581,8 +588,30 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><strong>Sign extension</strong> is the process of preserving the numeric value of a signed integer when it is casted to a type that uses a larger number of bits.</p>
+<p>It applies to <strong>two’s complement integers</strong> when increasing bit width (e.g., 8-bits to 16-bits) and when moving values between registers of different sizes.</p>
+<p>In order to properly perform a sign extension, we copy the sign bit into all newly added high-order bits.</p>
+<p>For example, if we have a positive number, the sign bit is <code>0</code>, then we fill to the left with <code>0s</code>. If we have a negative number, then the sign bit is <code>1</code>, then we fill to the left with <code>1s</code>.</p>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>Show how sign extension works when casting the value 5 as a <code>short int</code> to an <code>int</code>.</p>
+<p>As a short int, 5 is represented with 16 bits as follows:</p>
+<pre class="text"><code>00000000 00000101</code></pre>
+<p>The leftmost bit is 0, indicating that we have a positive value. Thus, when extending to an int (4 bytes), we must duplicate this bit.</p>
+<p>As an int, 5 is represented with 32 bits as follows:</p>
+<pre class="text"><code>00000000 00000000 00000000 00000101</code></pre>
+</section>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<p>Show how sign extension works when casting the value -5 as a <code>short int</code> to an <code>int</code>.</p>
+<p>As a short int, -5 is represented with 16 bits as follows:</p>
+<pre class="text"><code>11111111 11111011</code></pre>
+<p>The leftmost bit is 1, indicating that we have a negative value. Thus, when extending to an int (4 bytes), we must maintain this negative value by extending with 1s.</p>
+<p>As an int, -5 is represented with 32 bits as follows:</p>
+<pre class="text"><code>11111111 11111111 11111111 11111011</code></pre>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

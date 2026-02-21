@@ -2,3 +2,50 @@
 title: Fractional Binary
 ---
 
+Using a similar mechanisms to unsigned binary, we can represent fractional values in binary using what we refer to as fractional binary. Note that we cover this because this is a representation that will appear as an intermediary value when performing conversion from the standard IEEE 754 conversion of a floating point value to and from their base 10 representations.
+
+
+## Example 1
+
+Convert the fractional binary value 101.11 to decimal.
+
+**Solution**
+
+We currently have an understanding that each place value on the left hand side of the radix point is represented by a positive power of two. We can extend this understanding to the right hand side of the radix point by using negative powers of 2.
+
+
+| Binary value | 1 | 0 | 1 | . | 1 | 1 |
+|--------------|---|---|---|---|----|----|
+| Power of 2   | 2² | 2¹ | 2⁰ | .  | 2⁻¹ | 2⁻²  | 
+| Decimal value| 4  | 2  | 1  | .  | 0.5 | 0.25 |
+
+
+Thus, we just need to find the sum of $4 + 1 + 0.5 + 0.25$. This give the decimal value of $5.75$.
+
+
+## Example 2
+
+Convert the fraction $\dfrac{26}{128}$ to fractional binary.
+
+**Solution**
+
+We can rewrite this value as $26 \times \dfrac{1}{128}$ or $26 \times 2^{-7}$.
+
+Convering 26 to binary gives $11010$.
+
+Multiplying by $2^{-7}$ moves the radix point 7 places to the left. Leading 0s are added as needed.
+
+$$
+\begin{aligned}
+& 00011010. \quad (0)\\
+& 0001101.0 \quad (1)\\
+& 000110.10 \quad (2)\\
+& 00011.010 \quad (3)\\
+& 0001.1010 \quad (4)\\
+& 000.11010 \quad (5)\\
+& 00.011010 \quad (6)\\
+& 0.0011010 \quad (7)
+\end{aligned}
+$$
+
+The final result is $0.0011010$

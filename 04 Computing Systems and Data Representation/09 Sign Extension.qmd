@@ -2,3 +2,52 @@
 title: Sign Extension
 ---
 
+**Sign extension** is the process of preserving the numeric value of a signed integer when it is casted to a type that uses a larger number of bits.
+
+It applies to **two’s complement integers** when increasing bit width (e.g., 8-bits to 16-bits) and when moving values between registers of different sizes.
+
+
+In order to properly perform a sign extension, we copy the sign bit into all newly added high-order bits.
+
+For example, if we have a positive number, the sign bit is `0`, then we fill to the left with `0s`. If we have a negative number, then the sign bit is `1`, then we fill to the left with `1s`.
+
+
+### Example
+
+Show how sign extension works when casting the value 5 as a `short int` to an `int`.
+
+As a short int, 5 is represented with 16 bits as follows:
+
+```text
+00000000 00000101
+```
+
+The leftmost bit is 0, indicating that we have a positive value. Thus, when extending to an int (4 bytes), we must duplicate this bit.
+
+As an int, 5 is represented with 32 bits as follows:
+
+```text
+00000000 00000000 00000000 00000101
+```
+
+
+### Example
+
+Show how sign extension works when casting the value -5 as a `short int` to an `int`.
+
+As a short int, -5 is represented with 16 bits as follows:
+
+```text
+11111111 11111011
+```
+
+The leftmost bit is 1, indicating that we have a negative value. Thus, when extending to an int (4 bytes), we must maintain this negative value by extending with 1s.
+
+As an int, -5 is represented with 32 bits as follows:
+
+```text
+11111111 11111111 11111111 11111011
+```
+
+
+
