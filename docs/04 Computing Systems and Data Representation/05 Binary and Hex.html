@@ -488,7 +488,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a href="../06 Bash Scripting/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">6 - Bash Scripting</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -639,16 +639,16 @@ Positive numbers are stored as usual in binary, while negative numbers are repre
 <p>Represent −18 as an 8-bit two’s complement value</p>
 <ol type="1">
 <li><p><strong>Write the magnitude in binary</strong></p>
-<p><span class="math display">\[18_10 = 00010010_2\]</span></p></li>
+<p><span class="math display">\[18_{10} = 00010010_2\]</span></p></li>
 <li><p><strong>Invert the bits</strong></p>
 <pre><code>00010010  &lt;- what we started with
 11101101  &lt;- inverted/flipped</code></pre></li>
 <li><p><strong>Add 1 to the previous result</strong></p>
 <p>Add 1 to get the two’s complement representation:</p>
-<pre><code>11101101
+<pre><code> 11101101
 +       1
 ---------
-11101110</code></pre></li>
+ 11101110</code></pre></li>
 </ol>
 <p>The final result is <code>11101110</code></p>
 </section>

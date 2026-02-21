@@ -102,6 +102,7 @@ website:
           - "05 System Calls/07 Signals.qmd"
 
       - section: "6 - Bash Scripting"
+        href: "06 Bash Scripting/index.qmd"
         contents:
           - 06 Bash Scripting/01-Intro.qmd
           - 06 Bash Scripting/02-Args.qmd

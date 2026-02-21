@@ -1,0 +1,18 @@
+---
+title: Bash Scripting
+---
+
+[01 Intro](01-Intro.qmd)
+
+[02 Args](02-Args.qmd)
+
+[03 Conditionals](03-Conditionals.qmd)
+
+[04 Exit Codes](04-Exit-Codes.qmd)
+
+[05 Case](05-Case.qmd)
+
+[06 Loops](06-Loops.qmd)
+
+[07 Functions](07-Functions.qmd)
+
