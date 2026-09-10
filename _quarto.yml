@@ -13,12 +13,14 @@ format:
     css: styles.css
     toc: true
     googlefonts: false
+    axe: 
+      output: console
 
 website:
   title: "CSC 222 Systems Programming"
   site-url: https://csc222.jcor.dev
   sidebar:
-    style: "floating"
+    # style: "floating"
     search: true
     collapse-level: 1
     contents:

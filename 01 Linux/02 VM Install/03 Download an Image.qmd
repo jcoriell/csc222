@@ -28,9 +28,9 @@ In order to install a guest operating system with Virtual Box, you'll want a `.i
 
 ### For Mac Users
 
-If you have an **Apple Silicon** based Mac, download [Ubuntu 24 Server for Arm](https://ubuntu.com/download/server/arm). Note that Ubuntu Server does not come with a GUI based desktop environment, but it does allow you to install one, which is recomended for this course.
+If you have an **Apple Silicon** based Mac, download the latest [LTS for Ubuntu](https://ubuntu.com/download/desktop). Be aware that we're encouraging non-arm based machines to use [Linux Mint](https://www.linuxmint.com/download.php) for their builds to have as many people as possible on the same OS, however there is no out of the box arm based version of Mint, thus Ubuntu Desktop is the way to go.
 
-If you have an **Intel** based Mac, download [Ubuntu 24 LTS](https://ubuntu.com/download/desktop).
+If you have an **Intel** based Mac, it is recommended that you choose [Linux Mint](https://www.linuxmint.com/download.php) for this course and CSC 442.
 
 Once you have downloaded the `.iso` file, move the downloaded file to the folder you have created for this course on your computer so you can easily find it when you need it later.
 
@@ -45,8 +45,8 @@ Not sure what type of Mac you have? Click the Apple icon in the top left corner 
 
 If you have an **x86-64/amd64** based machine, choose between either of the following. If you use Ubuntu regularly, try Mint, if you use Mint, try Ubuntu. If you're a Linux user and you want to try Arch or a non GNU/Linux based distro, go for it, just know that support for this course will be limited to Ubuntu and Mint.
 
-- [Ubuntu 24 LTS](https://ubuntu.com/download/desktop)
 - [Linux Mint](https://www.linuxmint.com/download.php)
+- [Ubuntu Desktop](https://ubuntu.com/download/desktop)
 
 Once you have downloaded the `.iso` file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later.
 
@@ -63,10 +63,10 @@ Also, perhaps there is software we will install that you don't necessarily want 
 
 ### For Windows Users
 
-If you have an **x86-64/amd64** based machine, choose between either of the following:
+If you have an **x86-64/amd64** based machine, you're encouraged to use Linux Mint for CSC 222 and CSC 442:
 
-- [Ubuntu 24 LTS](https://ubuntu.com/download/desktop)
 - [Linux Mint](https://www.linuxmint.com/download.php)
+- [Ubuntu Desktop](https://ubuntu.com/download/desktop)
 
 Once you have downloaded the `.iso` file, move the file to the folder you have created for this course on your computer so you can easily find it when you need it later.
 
