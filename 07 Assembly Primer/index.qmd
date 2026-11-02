@@ -6,6 +6,8 @@ title: Assembly Primer
 
 [00 Overview](00 Overview.qmd)
 
+[Running x86_64 on a Mac (M-series)](Running x86_64 on a Mac.qmd)
+
 [01 Hello World](01 Hello World.qmd)
 
 [02 File Sections](02 File Sections.qmd)

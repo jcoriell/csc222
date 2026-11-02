@@ -9,7 +9,7 @@ title: Overview
 
     * Applicable to most windows machines.
 
-    * What we are working under for this class. If you are using an m-series mac, follow the [Guide for Running x86_64 ASM with NASM on Your Mac]().
+    * What we are working under for this class. If you are using an m-series mac, follow the [Guide for Running x86_64 ASM with NASM on Your Mac](Running x86_64 on a Mac.qmd).
 
 - ARM 
 

@@ -1,0 +1,228 @@
+---
+title: Running x86_64 ASM with NASM on Your Mac
+---
+
+## Introduction
+
+The assembly in this class is written for **x86_64** processors. Macs with an M-series chip (M1, M2, etc.) use an **ARM** processor, so x86_64 programs will not run on them natively. To get around this, we will use **UTM** to *emulate* an x86_64 computer, and run a bare-bones Ubuntu Server inside it. You will then connect to it from VS Code over SSH, so you can write and run your assembly from the editor on your Mac.
+
+:::{.callout-note}
+# Emulation is slow
+Because UTM is pretending to be a different type of processor, everything inside the VM runs noticeably slower than normal (the install and first boot especially). This is expected. Your assembly programs are tiny, so once everything is set up you should barely notice.
+:::
+
+:::{.callout-tip}
+# Not on an M-series Mac?
+If you have an Intel Mac or a Windows machine, you can skip this guide and follow the normal [VM install](../01 Linux/02 VM Install/01 Overview.qmd), then [install NASM](00 Overview.qmd#install-nasm).
+:::
+
+### Prerequisites
+
+- An M-series Mac running macOS
+- About 30 GB of free disk space
+- [VS Code](https://code.visualstudio.com/) installed on your Mac
+
+## Part 1: Install UTM
+
+Download UTM from [https://mac.getutm.app](https://mac.getutm.app) and drag it into your Applications folder. (The App Store version costs money but is the same software. The free download from the website is fine.)
+
+If you use Homebrew, you can instead run:
+
+```sh
+brew install --cask utm
+```
+
+## Part 2: Download Ubuntu Server (x86_64)
+
+1. Go to [https://ubuntu.com/download/server](https://ubuntu.com/download/server).
+
+2. Download the main **Ubuntu Server** LTS option (the big download button at the top of the page). This is the **amd64** (x86_64) version, which is what we want.
+
+3. Do **not** choose the ARM option. The page also lists an "Ubuntu Server for ARM" download further down. Skip it.
+
+4. When the download finishes, check the file name in your Downloads folder. It should look like `ubuntu-24.04.x-live-server-amd64.iso`. If the name contains `arm64` instead of `amd64`, delete it and download the correct one.
+
+:::{.callout-warning}
+# Make sure it says amd64
+`amd64` is the name for 64-bit x86 (it works for both Intel and AMD). An `arm64` image would give you a VM that cannot assemble x86_64 code with NASM, even though it would install and run without errors.
+:::
+
+## Part 3: Create the Virtual Machine
+
+1. Open UTM and click **Create a New Virtual Machine**.
+
+2. Choose **Emulate** (not Virtualize).
+
+3. Choose **Linux**.
+
+4. Under **Boot ISO Image**, click **Browse** and select the Ubuntu Server ISO you just downloaded. Click **Continue**.
+
+5. On the hardware screen, set the following.
+
+    - **Architecture:** `x86_64`
+    - **System:** `Standard PC (Q35 ICH9, 2009)` (the default)
+    - **Memory:** `2048` MB (or `4096` if your Mac has 16 GB or more)
+    - **CPU Cores:** `2` to `4`
+
+    Click **Continue**.
+
+6. Set the storage to **24 GB** (or more). Click **Continue**.
+
+7. Skip the shared directory step by clicking **Continue**.
+
+8. Name the VM something like `csc222-x86` and click **Save**.
+
+## Part 4: Install Ubuntu Server
+
+1. Select your VM in the UTM sidebar and click the **Play** button. A window with a console will appear. Wait for the installer to load (this can take a few minutes).
+
+2. Click inside the window and use the keyboard to go through the installer. Use the arrow keys to move, `Enter` to select, and `Space` to check or uncheck boxes.
+
+    | Screen | What to choose |
+    |---|---|
+    | Language | English |
+    | Installer update | `Continue without updating` |
+    | Keyboard | Your layout (probably the default) |
+    | Type of install | **Ubuntu Server (minimized)** is fine. The regular **Ubuntu Server** works too. |
+    | Network | Leave the defaults (DHCP) |
+    | Proxy / mirror | Leave the defaults |
+    | Storage | Use an entire disk (the defaults) |
+    | Profile setup | Pick a **name**, **server name**, **username**, and **password**. Remember the username and password. You will need them to log in. |
+    | Ubuntu Pro | `Skip for now` |
+    | SSH | **Check `Install OpenSSH server`**. This is required for VS Code to connect. Do not import any SSH identity. |
+    | Featured snaps | Select nothing |
+
+:::{.callout-note}
+# No desktop
+
+Notice that we never choose a desktop environment. Ubuntu Server only gives you a terminal, which is all we need.
+:::
+
+3. The install will now run. This is the slowest step and can take 20 to 40 minutes under emulation. Wait until the top of the screen says **Install complete!** and the **Reboot Now** option appears.
+
+4. **Before you reboot**, remove the install disc so it does not boot the installer again.
+
+    - In the UTM window toolbar (or the VM's settings), find the **CD/DVD** drive entry and choose **Clear** (sometimes labeled *Eject*).
+
+5. Select **Reboot Now**. If you see a message about removing the installation medium, just press `Enter`.
+
+6. After it boots (it may take a minute or two), you will see a `login:` prompt. Log in with the username and password you created.
+
+## Part 5: Find the VM's IP Address
+
+In the VM's console, run the following command.
+
+```sh
+ip -4 addr show
+```
+
+Look for an address like `192.168.64.x` under the main network interface (it is probably named `enp0s1` or similar). Ignore `127.0.0.1`, since that is the VM talking to itself. In the rest of this guide we will pretend the address is `192.168.64.5`. Use your own.
+
+:::{.callout-tip}
+# No address showing up?
+Open the VM's settings in UTM, go to **Network**, and make sure the **Network Mode** is **Shared Network**. Then restart the VM.
+:::
+
+## Part 6: Connect from the Mac Terminal
+
+Before using VS Code, check that SSH works. In a terminal **on your Mac** (not in the UTM window), run the following. Replace `josh` with your VM username and the IP with your own.
+
+```sh
+ssh josh@192.168.64.5
+```
+
+The first time, it will ask `Are you sure you want to continue connecting?` Type `yes` and press `Enter`, then enter your VM password. If you land at a prompt on the VM, SSH is working. Type `exit` to come back to your Mac.
+
+:::{.callout-tip}
+# Skip the password with an SSH key (optional)
+Run the following on your Mac to create a key (press `Enter` through the prompts if you don't already have one), and copy it to the VM. You will not have to type your password each time you connect.
+
+```sh
+ssh-keygen -t ed25519
+ssh-copy-id josh@192.168.64.5
+```
+:::
+
+## Part 7: Connect with VS Code
+
+1. Open VS Code on your Mac and open the Extensions panel (`Cmd+Shift+X`).
+
+2. Search for **Remote - SSH** (published by Microsoft) and install it.
+
+3. Open the Command Palette with `Cmd+Shift+P` and run **Remote-SSH: Open SSH Configuration File...**. Choose the one inside your home folder (`~/.ssh/config`).
+
+4. Add an entry for your VM, using your own username and IP.
+
+    ```
+    Host csc222-x86
+        HostName 192.168.64.5
+        User josh
+    ```
+
+5. Open the Command Palette again and run **Remote-SSH: Connect to Host...**, then choose `csc222-x86`.
+
+6. A new VS Code window will open. Select **Linux** if asked about the platform, and enter your password if asked. The first connection downloads and installs VS Code's helper (the *VS Code Server*) onto the VM. Under emulation this can take a few minutes.
+
+7. When it finishes, the bottom left corner of the window will show `SSH: csc222-x86`. Use **File → Open Folder...** to open a folder on the VM (such as your home folder), and open a terminal inside VS Code with `` Ctrl+` ``. That terminal is running **on the VM**.
+
+:::{.callout-warning}
+# The IP address can change
+If VS Code can't connect later, the VM may have been given a different IP address. Log in at the UTM console, run `ip -4 addr show` again, and update `HostName` in your `~/.ssh/config`. The VM must be running in UTM for SSH to work, but you can minimize the UTM window.
+:::
+
+## Part 8: Install NASM and the Build Tools
+
+In the VS Code terminal (or over SSH), run the following.
+
+```sh
+sudo apt update
+sudo apt install nasm build-essential
+```
+
+Confirm the installs and check that you are really on x86_64.
+
+```sh
+nasm -v
+gcc --version
+uname -m
+```
+
+`uname -m` should print `x86_64`. If it prints `aarch64`, you installed the ARM image by mistake. Go back to Part 2.
+
+## Part 9: Test It
+
+Create a file called `hello.asm` in VS Code with the following contents.
+
+```nasm
+global _start
+
+section .data
+    msg db "Hello from x86_64!", 10
+    len equ $ - msg
+
+section .text
+_start:
+    mov rax, 1          ; sys_write
+    mov rdi, 1          ; stdout
+    mov rsi, msg
+    mov rdx, len
+    syscall
+
+    mov rax, 60         ; sys_exit
+    mov rdi, 0
+    syscall
+```
+
+Then assemble, link, and run it from the terminal.
+
+```sh
+nasm -f elf64 hello.asm -o hello.o
+ld hello.o -o hello
+./hello
+```
+
+If you see `Hello from x86_64!`, you are all set. Continue to [Hello World](01 Hello World.qmd).
+
+## Shutting Down
+
+To shut down the VM cleanly, run `sudo shutdown now` in the VM's terminal, then close UTM. To start again, open UTM, select the VM, and press **Play**. You do not need the ISO again.

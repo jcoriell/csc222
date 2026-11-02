@@ -118,6 +118,7 @@ website:
         href: "07 Assembly Primer/index.qmd"
         contents:
           - 07 Assembly Primer/00 Overview.qmd
+          - 07 Assembly Primer/Running x86_64 on a Mac.qmd
           - 07 Assembly Primer/01 Hello World.qmd
           - 07 Assembly Primer/02 File Sections.qmd
           - 07 Assembly Primer/03 Variables.qmd

@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Running x86_64 ASM with NASM on Your Mac – CSC 222 Systems Programming</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-87a70df21f20059c8b6e2201a5afcb3c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script id="quarto-axe-checker-options" type="text/plain">eyJvdXRwdXQiOiJjb25zb2xlIn0=</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/index.html">7 - Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/Running x86_64 on a Mac.html">Running x86_64 ASM with NASM on Your Mac</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">CSC 222 Systems Programming</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">0 - Housekeeping</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../00 Housekeeping/01 Syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../01 Linux/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Linux</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/01 A Brief History.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A Brief History</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">VM Install</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/02 VM Install/01 Overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/02 VM Install/02 Virtualization Software Install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing Virtualization Software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/02 VM Install/03 Download an Image.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloading An Image</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/02 VM Install/04 Creating the VM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating The Virtual Machine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/02 VM Install/05 Installing the VM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing The Virtual Machine</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/02 VM Install/06 Creating a Shared Folder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Create a Shared Folder</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/02 VM Install/07 Installing Tools on VM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Machine Tools</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01 Linux/linux-filesystem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linux Filesystem</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../02 Terminal and Shell/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 - Terminal and Shell</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/00 Background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/01 Basic Commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Navigation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/02 Working With Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/03 Other Useful Tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Other Useful Tips</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/04 Redirection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Redirection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/05 File Permissions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">File Permissions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02 Terminal and Shell/06 Grep and Regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Grep and Regex</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../03 C Programming/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 - C Programming</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03 C Programming/01-HelloWorld.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hello World</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03 C Programming/02-DataTypes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Types and Format Specifiers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03 C Programming/03-Operators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03 C Programming/04-Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03 C Programming/05-More-on-Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More on Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03 C Programming/06-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample Applications</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">03 C Programming/07-Memory-Allocation.qm4</span>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03 C Programming/08-Structs-and-Unions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Structs and Unions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03 C Programming/09-Sample-Applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample Applications</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../04 Computing Systems and Data Representation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 - Computing Systems and Data Representation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/01 Computing Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computing Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/02 The Compilation Process.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Compilation Process</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/03 Representing Programs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Representing Programs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/04 Data in a System.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data in a System</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/05 Binary and Hex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binary and Hex</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/06 Bitwise Operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bitwise Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/07 Logical Operations at the Bit Level.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logical Operations at the Bit Level</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/08 Bit Shifting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bit Shifting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/09 Sign Extension.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sign Extension</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/10 Power of Two Operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Power of Two Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/11 Fractional Binary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fractional Binary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04 Computing Systems and Data Representation/12 IEEE 754 Values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IEEE 754 Floating Point Representation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../05 System Calls/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 - System Calls</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05 System Calls/00 Overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05 System Calls/01 Using Syscall.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using Syscall</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05 System Calls/02 Fork and Wait.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fork and Wait</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05 System Calls/03 Exec Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exec Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05 System Calls/04 Working with Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05 System Calls/05 Dup2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dup2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05 System Calls/06 Piping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Piping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05 System Calls/07 Signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Signals</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../06 Bash Scripting/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6 - Bash Scripting</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06 Bash Scripting/01-Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06 Bash Scripting/02-Args.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Args</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06 Bash Scripting/03-Conditionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conditionals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06 Bash Scripting/04-Exit-Codes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exit Codes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06 Bash Scripting/05-Case.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Case</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06 Bash Scripting/06-Loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06 Bash Scripting/07-Functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../07 Assembly Primer/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7 - Assembly Primer</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/00 Overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/Running x86_64 on a Mac.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Running x86_64 ASM with NASM on Your Mac</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/01 Hello World.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hello, World!</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/02 File Sections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sections of an ASM File</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/03 Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07 Assembly Primer/04 The Stack.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Stack</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  </ul></li>
+  <li><a href="#part-1-install-utm" id="toc-part-1-install-utm" class="nav-link" data-scroll-target="#part-1-install-utm">Part 1: Install UTM</a></li>
+  <li><a href="#part-2-download-ubuntu-server-x86_64" id="toc-part-2-download-ubuntu-server-x86_64" class="nav-link" data-scroll-target="#part-2-download-ubuntu-server-x86_64">Part 2: Download Ubuntu Server (x86_64)</a></li>
+  <li><a href="#part-3-create-the-virtual-machine" id="toc-part-3-create-the-virtual-machine" class="nav-link" data-scroll-target="#part-3-create-the-virtual-machine">Part 3: Create the Virtual Machine</a></li>
+  <li><a href="#part-4-install-ubuntu-server" id="toc-part-4-install-ubuntu-server" class="nav-link" data-scroll-target="#part-4-install-ubuntu-server">Part 4: Install Ubuntu Server</a></li>
+  <li><a href="#part-5-find-the-vms-ip-address" id="toc-part-5-find-the-vms-ip-address" class="nav-link" data-scroll-target="#part-5-find-the-vms-ip-address">Part 5: Find the VM’s IP Address</a></li>
+  <li><a href="#part-6-connect-from-the-mac-terminal" id="toc-part-6-connect-from-the-mac-terminal" class="nav-link" data-scroll-target="#part-6-connect-from-the-mac-terminal">Part 6: Connect from the Mac Terminal</a></li>
+  <li><a href="#part-7-connect-with-vs-code" id="toc-part-7-connect-with-vs-code" class="nav-link" data-scroll-target="#part-7-connect-with-vs-code">Part 7: Connect with VS Code</a></li>
+  <li><a href="#part-8-install-nasm-and-the-build-tools" id="toc-part-8-install-nasm-and-the-build-tools" class="nav-link" data-scroll-target="#part-8-install-nasm-and-the-build-tools">Part 8: Install NASM and the Build Tools</a></li>
+  <li><a href="#part-9-test-it" id="toc-part-9-test-it" class="nav-link" data-scroll-target="#part-9-test-it">Part 9: Test It</a></li>
+  <li><a href="#shutting-down" id="toc-shutting-down" class="nav-link" data-scroll-target="#shutting-down">Shutting Down</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07 Assembly Primer/index.html">7 - Assembly Primer</a></li><li class="breadcrumb-item"><a href="../07 Assembly Primer/Running x86_64 on a Mac.html">Running x86_64 ASM with NASM on Your Mac</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Running x86_64 ASM with NASM on Your Mac</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The assembly in this class is written for <strong>x86_64</strong> processors. Macs with an M-series chip (M1, M2, etc.) use an <strong>ARM</strong> processor, so x86_64 programs will not run on them natively. To get around this, we will use <strong>UTM</strong> to <em>emulate</em> an x86_64 computer, and run a bare-bones Ubuntu Server inside it. You will then connect to it from VS Code over SSH, so you can write and run your assembly from the editor on your Mac.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Emulation is slow
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because UTM is pretending to be a different type of processor, everything inside the VM runs noticeably slower than normal (the install and first boot especially). This is expected. Your assembly programs are tiny, so once everything is set up you should barely notice.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Not on an M-series Mac?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have an Intel Mac or a Windows machine, you can skip this guide and follow the normal <a href="../01 Linux/02 VM Install/01 Overview.html">VM install</a>, then <a href="../07 Assembly Primer/00 Overview.html#install-nasm">install NASM</a>.</p>
+</div>
+</div>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
+<ul>
+<li>An M-series Mac running macOS</li>
+<li>About 30 GB of free disk space</li>
+<li><a href="https://code.visualstudio.com/">VS Code</a> installed on your Mac</li>
+</ul>
+</section>
+</section>
+<section id="part-1-install-utm" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-install-utm">Part 1: Install UTM</h2>
+<p>Download UTM from <a href="https://mac.getutm.app">https://mac.getutm.app</a> and drag it into your Applications folder. (The App Store version costs money but is the same software. The free download from the website is fine.)</p>
+<p>If you use Homebrew, you can instead run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> utm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="part-2-download-ubuntu-server-x86_64" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-download-ubuntu-server-x86_64">Part 2: Download Ubuntu Server (x86_64)</h2>
+<ol type="1">
+<li><p>Go to <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a>.</p></li>
+<li><p>Download the main <strong>Ubuntu Server</strong> LTS option (the big download button at the top of the page). This is the <strong>amd64</strong> (x86_64) version, which is what we want.</p></li>
+<li><p>Do <strong>not</strong> choose the ARM option. The page also lists an “Ubuntu Server for ARM” download further down. Skip it.</p></li>
+<li><p>When the download finishes, check the file name in your Downloads folder. It should look like <code>ubuntu-24.04.x-live-server-amd64.iso</code>. If the name contains <code>arm64</code> instead of <code>amd64</code>, delete it and download the correct one.</p></li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Make sure it says amd64
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>amd64</code> is the name for 64-bit x86 (it works for both Intel and AMD). An <code>arm64</code> image would give you a VM that cannot assemble x86_64 code with NASM, even though it would install and run without errors.</p>
+</div>
+</div>
+</section>
+<section id="part-3-create-the-virtual-machine" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-create-the-virtual-machine">Part 3: Create the Virtual Machine</h2>
+<ol type="1">
+<li><p>Open UTM and click <strong>Create a New Virtual Machine</strong>.</p></li>
+<li><p>Choose <strong>Emulate</strong> (not Virtualize).</p></li>
+<li><p>Choose <strong>Linux</strong>.</p></li>
+<li><p>Under <strong>Boot ISO Image</strong>, click <strong>Browse</strong> and select the Ubuntu Server ISO you just downloaded. Click <strong>Continue</strong>.</p></li>
+<li><p>On the hardware screen, set the following.</p>
+<ul>
+<li><strong>Architecture:</strong> <code>x86_64</code></li>
+<li><strong>System:</strong> <code>Standard PC (Q35 ICH9, 2009)</code> (the default)</li>
+<li><strong>Memory:</strong> <code>2048</code> MB (or <code>4096</code> if your Mac has 16 GB or more)</li>
+<li><strong>CPU Cores:</strong> <code>2</code> to <code>4</code></li>
+</ul>
+<p>Click <strong>Continue</strong>.</p></li>
+<li><p>Set the storage to <strong>24 GB</strong> (or more). Click <strong>Continue</strong>.</p></li>
+<li><p>Skip the shared directory step by clicking <strong>Continue</strong>.</p></li>
+<li><p>Name the VM something like <code>csc222-x86</code> and click <strong>Save</strong>.</p></li>
+</ol>
+</section>
+<section id="part-4-install-ubuntu-server" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-install-ubuntu-server">Part 4: Install Ubuntu Server</h2>
+<ol type="1">
+<li><p>Select your VM in the UTM sidebar and click the <strong>Play</strong> button. A window with a console will appear. Wait for the installer to load (this can take a few minutes).</p></li>
+<li><p>Click inside the window and use the keyboard to go through the installer. Use the arrow keys to move, <code>Enter</code> to select, and <code>Space</code> to check or uncheck boxes.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Screen</th>
+<th>What to choose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Language</td>
+<td>English</td>
+</tr>
+<tr class="even">
+<td>Installer update</td>
+<td><code>Continue without updating</code></td>
+</tr>
+<tr class="odd">
+<td>Keyboard</td>
+<td>Your layout (probably the default)</td>
+</tr>
+<tr class="even">
+<td>Type of install</td>
+<td><strong>Ubuntu Server (minimized)</strong> is fine. The regular <strong>Ubuntu Server</strong> works too.</td>
+</tr>
+<tr class="odd">
+<td>Network</td>
+<td>Leave the defaults (DHCP)</td>
+</tr>
+<tr class="even">
+<td>Proxy / mirror</td>
+<td>Leave the defaults</td>
+</tr>
+<tr class="odd">
+<td>Storage</td>
+<td>Use an entire disk (the defaults)</td>
+</tr>
+<tr class="even">
+<td>Profile setup</td>
+<td>Pick a <strong>name</strong>, <strong>server name</strong>, <strong>username</strong>, and <strong>password</strong>. Remember the username and password. You will need them to log in.</td>
+</tr>
+<tr class="odd">
+<td>Ubuntu Pro</td>
+<td><code>Skip for now</code></td>
+</tr>
+<tr class="even">
+<td>SSH</td>
+<td><strong>Check <code>Install OpenSSH server</code></strong>. This is required for VS Code to connect. Do not import any SSH identity.</td>
+</tr>
+<tr class="odd">
+<td>Featured snaps</td>
+<td>Select nothing</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>No desktop
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice that we never choose a desktop environment. Ubuntu Server only gives you a terminal, which is all we need.</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>The install will now run. This is the slowest step and can take 20 to 40 minutes under emulation. Wait until the top of the screen says <strong>Install complete!</strong> and the <strong>Reboot Now</strong> option appears.</p></li>
+<li><p><strong>Before you reboot</strong>, remove the install disc so it does not boot the installer again.</p>
+<ul>
+<li>In the UTM window toolbar (or the VM’s settings), find the <strong>CD/DVD</strong> drive entry and choose <strong>Clear</strong> (sometimes labeled <em>Eject</em>).</li>
+</ul></li>
+<li><p>Select <strong>Reboot Now</strong>. If you see a message about removing the installation medium, just press <code>Enter</code>.</p></li>
+<li><p>After it boots (it may take a minute or two), you will see a <code>login:</code> prompt. Log in with the username and password you created.</p></li>
+</ol>
+</section>
+<section id="part-5-find-the-vms-ip-address" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-find-the-vms-ip-address">Part 5: Find the VM’s IP Address</h2>
+<p>In the VM’s console, run the following command.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> <span class="at">-4</span> addr show</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Look for an address like <code>192.168.64.x</code> under the main network interface (it is probably named <code>enp0s1</code> or similar). Ignore <code>127.0.0.1</code>, since that is the VM talking to itself. In the rest of this guide we will pretend the address is <code>192.168.64.5</code>. Use your own.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>No address showing up?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Open the VM’s settings in UTM, go to <strong>Network</strong>, and make sure the <strong>Network Mode</strong> is <strong>Shared Network</strong>. Then restart the VM.</p>
+</div>
+</div>
+</section>
+<section id="part-6-connect-from-the-mac-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="part-6-connect-from-the-mac-terminal">Part 6: Connect from the Mac Terminal</h2>
+<p>Before using VS Code, check that SSH works. In a terminal <strong>on your Mac</strong> (not in the UTM window), run the following. Replace <code>josh</code> with your VM username and the IP with your own.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> josh@192.168.64.5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The first time, it will ask <code>Are you sure you want to continue connecting?</code> Type <code>yes</code> and press <code>Enter</code>, then enter your VM password. If you land at a prompt on the VM, SSH is working. Type <code>exit</code> to come back to your Mac.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Skip the password with an SSH key (optional)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Run the following on your Mac to create a key (press <code>Enter</code> through the prompts if you don’t already have one), and copy it to the VM. You will not have to type your password each time you connect.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-copy-id</span> josh@192.168.64.5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="part-7-connect-with-vs-code" class="level2">
+<h2 class="anchored" data-anchor-id="part-7-connect-with-vs-code">Part 7: Connect with VS Code</h2>
+<ol type="1">
+<li><p>Open VS Code on your Mac and open the Extensions panel (<code>Cmd+Shift+X</code>).</p></li>
+<li><p>Search for <strong>Remote - SSH</strong> (published by Microsoft) and install it.</p></li>
+<li><p>Open the Command Palette with <code>Cmd+Shift+P</code> and run <strong>Remote-SSH: Open SSH Configuration File…</strong>. Choose the one inside your home folder (<code>~/.ssh/config</code>).</p></li>
+<li><p>Add an entry for your VM, using your own username and IP.</p>
+<pre><code>Host csc222-x86
+    HostName 192.168.64.5
+    User josh</code></pre></li>
+<li><p>Open the Command Palette again and run <strong>Remote-SSH: Connect to Host…</strong>, then choose <code>csc222-x86</code>.</p></li>
+<li><p>A new VS Code window will open. Select <strong>Linux</strong> if asked about the platform, and enter your password if asked. The first connection downloads and installs VS Code’s helper (the <em>VS Code Server</em>) onto the VM. Under emulation this can take a few minutes.</p></li>
+<li><p>When it finishes, the bottom left corner of the window will show <code>SSH: csc222-x86</code>. Use <strong>File → Open Folder…</strong> to open a folder on the VM (such as your home folder), and open a terminal inside VS Code with <code>Ctrl+`</code>. That terminal is running <strong>on the VM</strong>.</p></li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The IP address can change
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If VS Code can’t connect later, the VM may have been given a different IP address. Log in at the UTM console, run <code>ip -4 addr show</code> again, and update <code>HostName</code> in your <code>~/.ssh/config</code>. The VM must be running in UTM for SSH to work, but you can minimize the UTM window.</p>
+</div>
+</div>
+</section>
+<section id="part-8-install-nasm-and-the-build-tools" class="level2">
+<h2 class="anchored" data-anchor-id="part-8-install-nasm-and-the-build-tools">Part 8: Install NASM and the Build Tools</h2>
+<p>In the VS Code terminal (or over SSH), run the following.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nasm build-essential</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Confirm the installs and check that you are really on x86_64.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nasm</span> <span class="at">-v</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">--version</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">uname</span> <span class="at">-m</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>uname -m</code> should print <code>x86_64</code>. If it prints <code>aarch64</code>, you installed the ARM image by mistake. Go back to Part 2.</p>
+</section>
+<section id="part-9-test-it" class="level2">
+<h2 class="anchored" data-anchor-id="part-9-test-it">Part 9: Test It</h2>
+<p>Create a file called <code>hello.asm</code> in VS Code with the following contents.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode nasm code-with-copy"><code class="sourceCode nasm"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> _start</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.data</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    msg <span class="dt">db</span> <span class="st">"Hello from x86_64!"</span><span class="op">,</span> <span class="dv">10</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    len <span class="dt">equ</span> <span class="op">$</span> <span class="op">-</span> msg</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">section</span> <span class="fu">.text</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">_start:</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">rax</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; sys_write</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">rdi</span><span class="op">,</span> <span class="dv">1</span>          <span class="co">; stdout</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">rsi</span><span class="op">,</span> msg</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">rdx</span><span class="op">,</span> len</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">syscall</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">rax</span><span class="op">,</span> <span class="dv">60</span>         <span class="co">; sys_exit</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">mov</span> <span class="kw">rdi</span><span class="op">,</span> <span class="dv">0</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">syscall</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then assemble, link, and run it from the terminal.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nasm</span> <span class="at">-f</span> elf64 hello.asm <span class="at">-o</span> hello.o</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ld</span> hello.o <span class="at">-o</span> hello</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./hello</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you see <code>Hello from x86_64!</code>, you are all set. Continue to <a href="../07 Assembly Primer/01 Hello World.html">Hello World</a>.</p>
+</section>
+<section id="shutting-down" class="level2">
+<h2 class="anchored" data-anchor-id="shutting-down">Shutting Down</h2>
+<p>To shut down the VM cleanly, run <code>sudo shutdown now</code> in the VM’s terminal, then close UTM. To start again, open UTM, select the VM, and press <strong>Play</strong>. You do not need the ISO again.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/csc222\.jcor\.dev");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
